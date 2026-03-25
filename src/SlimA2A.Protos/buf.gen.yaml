@@ -1,0 +1,14 @@
+# A2A gRPC protos — ref pinned with slim-a2a-go; verify vs a2a-dotnet v1.0 when upgrading.
+version: v2
+managed:
+  enabled: true
+inputs:
+  - git_repo: https://github.com/a2aproject/A2A.git
+    ref: e7cf203ecdd7003c0f1740bb712248d2b5252bf1
+    subdir: specification/grpc
+plugins:
+  - remote: buf.build/protocolbuffers/csharp
+    out: Generated
+  - local: ../../../slim/data-plane/slimrpc-compiler/target/release/protoc-gen-slimrpc-csharp
+    out: Generated
+    opt: base_namespace=A2a.V1,types_namespace=A2a.V1

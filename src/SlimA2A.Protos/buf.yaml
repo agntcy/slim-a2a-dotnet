@@ -1,0 +1,2 @@
+# Module root for `buf generate` (see buf.gen.yaml for plugins and pinned A2A proto ref).
+version: v2

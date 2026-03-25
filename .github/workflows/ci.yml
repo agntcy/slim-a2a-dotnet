@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone slim (sibling of default checkout root for buf + native assets)
+        run: git clone --depth 1 https://github.com/agntcy/slim.git "${GITHUB_WORKSPACE}/../slim"
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Build protoc-gen-slimrpc-csharp
+        run: cargo build --release -p agntcy-protoc-slimrpc-plugin
+        working-directory: ${{ github.workspace }}/../slim/data-plane/slimrpc-compiler
+
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ github.token }}
+
+      - name: buf generate
+        run: buf generate
+        working-directory: src/SlimA2A.Protos
+
+      - name: dotnet build and test
+        run: |
+          dotnet build SlimA2A.sln -c Release
+          dotnet test SlimA2A.sln -c Release --no-build
