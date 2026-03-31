@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SlimA2A\SlimA2A.csproj" />
-    <ProjectReference Include="..\..\..\slim\data-plane\bindings\dotnet\Slim.SlimRpc\Slim.SlimRpc.csproj" />
   </ItemGroup>
 
 </Project>
