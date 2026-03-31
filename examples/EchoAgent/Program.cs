@@ -118,15 +118,44 @@ if (mode == "client")
             MessageId = Guid.NewGuid().ToString("N"),
             Parts = [Part.FromText(outboundText)],
         };
+        var sendReq = new SendMessageRequest { Message = msg };
 
+        Console.WriteLine();
+        Console.WriteLine("=== 1) A2A unary-unary (SendMessage → single SendMessageResponse) ===");
         Console.WriteLine($"[EchoAgent] client: SendMessage messageId={msg.MessageId} text={outboundText}");
-        var response = await client.SendMessageAsync(new SendMessageRequest { Message = msg }).ConfigureAwait(false);
-        var taskId = response.Task?.Id;
-        var taskState = response.Task?.Status?.State.ToString();
-        if (taskId is not null || taskState is not null)
-            Console.WriteLine($"[EchoAgent] client: response task id={taskId} state={taskState}");
-        var text = response.Message?.Parts?.FirstOrDefault()?.Text ?? response.Task?.Status.Message?.Parts?.FirstOrDefault()?.Text;
-        Console.WriteLine($"[EchoAgent] client: response text: {text ?? "(no text in response)"} General Kenobi!");
+        var unaryResp = await client.SendMessageAsync(sendReq).ConfigureAwait(false);
+        var uText = unaryResp.Message?.Parts?.FirstOrDefault()?.Text
+            ?? unaryResp.Task?.Status?.Message?.Parts?.FirstOrDefault()?.Text;
+        Console.WriteLine($"[EchoAgent] client: unary-unary response text: {uText ?? "(no text)"}");
+
+        Console.WriteLine();
+        Console.WriteLine("=== 2) A2A unary-stream (SendStreamingMessage → stream of StreamResponse) ===");
+        var stream = client.SendStreamingMessageAsync(sendReq);
+        var i = 0;
+        await foreach (var ev in stream.ConfigureAwait(false))
+        {
+            i++;
+            switch (ev)
+            {
+                case { Message: { } m }:
+                {
+                    var text = m.Parts?.FirstOrDefault()?.Text;
+                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} message: {text ?? "(no text)"}");
+                    break;
+                }
+                case { Task: { } t }:
+                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} task id={t.Id} state={t.Status?.State}");
+                    break;
+                case { StatusUpdate: not null }:
+                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} statusUpdate");
+                    break;
+                default:
+                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} (other payload)");
+                    break;
+            }
+        }
+
+        Console.WriteLine($"[EchoAgent] client: unary-stream finished ({i} events).");
     }
 
     return;

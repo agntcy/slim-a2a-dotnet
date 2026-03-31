@@ -11,5 +11,7 @@ internal sealed class EchoHandler : IAgentHandler
         var responder = new MessageResponder(eventQueue, context.ContextId);
         await responder.ReplyAsync(reply, cancellationToken).ConfigureAwait(false);
         Console.WriteLine($"[EchoAgent] server: sent reply ({reply.Length} chars)");
+        await responder.ReplyAsync("[stream] second event (unary-stream demo).", cancellationToken).ConfigureAwait(false);
+        Console.WriteLine("[EchoAgent] server: sent second streamed message part");
     }
 }
