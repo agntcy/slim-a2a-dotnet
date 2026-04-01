@@ -1,4 +1,4 @@
-# A2A gRPC protos — ref pinned with slim-a2a-go; verify vs a2a-dotnet v1.0 when upgrading.
+# A2A gRPC protos — inputs from git (no local A2A clone). Install plugin: cargo install agntcy-protoc-slimrpc-plugin
 version: v2
 managed:
   enabled: true
@@ -9,6 +9,7 @@ inputs:
 plugins:
   - remote: buf.build/protocolbuffers/csharp
     out: Generated
-  - local: ../../../slim/data-plane/slimrpc-compiler/target/release/protoc-gen-slimrpc-csharp
+  # Same pattern as slim-a2a-go / slim-a2a-python: executable on PATH (see README codegen).
+  - local: protoc-gen-slimrpc-csharp
     out: Generated
     opt: base_namespace=A2a.V1,types_namespace=A2a.V1

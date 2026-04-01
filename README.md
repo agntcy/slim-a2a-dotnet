@@ -2,26 +2,18 @@
 
 .NET library that maps the [A2A](https://github.com/a2aproject/A2A) gRPC contract to [a2a-dotnet](https://github.com/a2aproject/a2a-dotnet) (`IA2AClient` / `IA2ARequestHandler`) over **SLIMRPC**, similar to slim-a2a-go / slim-a2a-python.
 
-## Layout (local dev)
+## Dependencies
 
-Place the **slim** repo next to this repo so project and `buf` paths resolve:
-
-```text
-WORK/
-  slim-a2a-dotnet/    ← this repository
-  slim/               ← github.com/agntcy/slim
-```
-
-`SlimA2A.Protos` uses `ProjectReference` to `slim/data-plane/bindings/dotnet` (**Agntcy.Slim**, **Agntcy.Slim.SlimRpc**) until those packages are published on NuGet. Then you can switch to `PackageReference` and simplify CI.
+**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)).
 
 **A2A** is consumed from NuGet (`A2A` preview) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
 
 ## Codegen
 
-1. Build the Slim RPC C# plugin (from the slim repo):
+1. Install the SlimRPC `protoc` plugin so `protoc-gen-slimrpc-csharp` is on your `PATH` (published as [agntcy-protoc-slimrpc-plugin](https://crates.io/crates/agntcy-protoc-slimrpc-plugin) on crates.io):
 
    ```bash
-   cargo build --release -p agntcy-protoc-slimrpc-plugin
+   cargo install agntcy-protoc-slimrpc-plugin --version 1.3.0
    ```
 
 2. From `src/SlimA2A.Protos`:
@@ -30,7 +22,7 @@ WORK/
    buf generate
    ```
 
-The A2A proto git ref is pinned in `buf.gen.yaml` (comment links to slim-a2a-go alignment); re-verify when bumping **a2a-dotnet** / spec versions.
+The A2A proto git ref is pinned in `buf.gen.yaml`; re-verify when bumping **a2a-dotnet** / spec versions. When you upgrade the plugin, align the `cargo install` version (and CI) with the release you want.
 
 ## Build & test
 
