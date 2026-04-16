@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SlimA2A.Protos</RootNamespace>
+    <AssemblyName>SlimA2A.Protos</AssemblyName>
+    <NoWarn>$(NoWarn);CS8981</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Agntcy.Slim.SlimRpc" Version="1.3.0" />
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.15.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.28.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="SlimA2A" />
+    <InternalsVisibleTo Include="SlimA2A.Tests" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+# A2A gRPC protos — inputs from git (no local A2A clone). Install plugin: cargo install agntcy-protoc-slimrpc-plugin
+version: v2
+managed:
+  enabled: true
+inputs:
+  - git_repo: https://github.com/a2aproject/A2A.git
+    ref: e7cf203ecdd7003c0f1740bb712248d2b5252bf1
+    subdir: specification/grpc
+plugins:
+  - remote: buf.build/protocolbuffers/csharp
+    out: Generated
+  # Same pattern as slim-a2a-go / slim-a2a-python: executable on PATH (see README codegen).
+  - local: protoc-gen-slimrpc-csharp
+    out: Generated
+    opt: base_namespace=A2a.V1,types_namespace=A2a.V1

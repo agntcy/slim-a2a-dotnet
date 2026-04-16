@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SlimA2A</RootNamespace>
+    <AssemblyName>SlimA2A</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SlimA2A.Protos\SlimA2A.Protos.csproj" />
+    <PackageReference Include="A2A" Version="1.0.0-preview" />
+  </ItemGroup>
+
+</Project>
