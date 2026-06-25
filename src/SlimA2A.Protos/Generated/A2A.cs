@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace A2a.V1 {
+namespace Lf.A2a.V1 {
 
   /// <summary>Holder for reflection information generated from a2a.proto</summary>
   public static partial class A2AReflection {
@@ -24,289 +24,320 @@ namespace A2a.V1 {
     static A2AReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CglhMmEucHJvdG8SBmEyYS52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5w",
-            "cm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aH2dvb2dsZS9hcGkvZmll",
-            "bGRfYmVoYXZpb3IucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5wcm90",
-            "bxocZ29vZ2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90bxofZ29vZ2xlL3Byb3Rv",
-            "YnVmL3RpbWVzdGFtcC5wcm90byLeAQoYU2VuZE1lc3NhZ2VDb25maWd1cmF0",
-            "aW9uEjIKFWFjY2VwdGVkX291dHB1dF9tb2RlcxgBIAMoCVITYWNjZXB0ZWRP",
-            "dXRwdXRNb2RlcxJLChFwdXNoX25vdGlmaWNhdGlvbhgCIAEoCzIeLmEyYS52",
-            "MS5QdXNoTm90aWZpY2F0aW9uQ29uZmlnUhBwdXNoTm90aWZpY2F0aW9uEiUK",
-            "Dmhpc3RvcnlfbGVuZ3RoGAMgASgFUg1oaXN0b3J5TGVuZ3RoEhoKCGJsb2Nr",
-            "aW5nGAQgASgIUghibG9ja2luZyLxAQoEVGFzaxIOCgJpZBgBIAEoCVICaWQS",
-            "HQoKY29udGV4dF9pZBgCIAEoCVIJY29udGV4dElkEioKBnN0YXR1cxgDIAEo",
-            "CzISLmEyYS52MS5UYXNrU3RhdHVzUgZzdGF0dXMSLgoJYXJ0aWZhY3RzGAQg",
-            "AygLMhAuYTJhLnYxLkFydGlmYWN0UglhcnRpZmFjdHMSKQoHaGlzdG9yeRgF",
-            "IAMoCzIPLmEyYS52MS5NZXNzYWdlUgdoaXN0b3J5EjMKCG1ldGFkYXRhGAYg",
-            "ASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIIbWV0YWRhdGEimQEKClRh",
-            "c2tTdGF0dXMSJwoFc3RhdGUYASABKA4yES5hMmEudjEuVGFza1N0YXRlUgVz",
-            "dGF0ZRIoCgZ1cGRhdGUYAiABKAsyDy5hMmEudjEuTWVzc2FnZVIHbWVzc2Fn",
-            "ZRI4Cgl0aW1lc3RhbXAYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0",
-            "YW1wUgl0aW1lc3RhbXAiqQEKBFBhcnQSFAoEdGV4dBgBIAEoCUgAUgR0ZXh0",
-            "EiYKBGZpbGUYAiABKAsyEC5hMmEudjEuRmlsZVBhcnRIAFIEZmlsZRImCgRk",
-            "YXRhGAMgASgLMhAuYTJhLnYxLkRhdGFQYXJ0SABSBGRhdGESMwoIbWV0YWRh",
-            "dGEYBCABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UghtZXRhZGF0YUIG",
-            "CgRwYXJ0IpMBCghGaWxlUGFydBIkCg1maWxlX3dpdGhfdXJpGAEgASgJSABS",
-            "C2ZpbGVXaXRoVXJpEigKD2ZpbGVfd2l0aF9ieXRlcxgCIAEoDEgAUg1maWxl",
-            "V2l0aEJ5dGVzEhsKCW1pbWVfdHlwZRgDIAEoCVIIbWltZVR5cGUSEgoEbmFt",
-            "ZRgEIAEoCVIEbmFtZUIGCgRmaWxlIjcKCERhdGFQYXJ0EisKBGRhdGEYASAB",
-            "KAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgRkYXRhIqkCCgdNZXNzYWdl",
-            "Eh0KCm1lc3NhZ2VfaWQYASABKAlSCW1lc3NhZ2VJZBIdCgpjb250ZXh0X2lk",
-            "GAIgASgJUgljb250ZXh0SWQSFwoHdGFza19pZBgDIAEoCVIGdGFza0lkEiAK",
-            "BHJvbGUYBCABKA4yDC5hMmEudjEuUm9sZVIEcm9sZRIiCgVwYXJ0cxgFIAMo",
-            "CzIMLmEyYS52MS5QYXJ0UgVwYXJ0cxIzCghtZXRhZGF0YRgGIAEoCzIXLmdv",
-            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3RSCG1ldGFkYXRhEh4KCmV4dGVuc2lvbnMY",
-            "ByADKAlSCmV4dGVuc2lvbnMSLAoScmVmZXJlbmNlX3Rhc2tfaWRzGAggAygJ",
-            "UhByZWZlcmVuY2VUYXNrSWRzItoBCghBcnRpZmFjdBIfCgthcnRpZmFjdF9p",
-            "ZBgBIAEoCVIKYXJ0aWZhY3RJZBISCgRuYW1lGAMgASgJUgRuYW1lEiAKC2Rl",
-            "c2NyaXB0aW9uGAQgASgJUgtkZXNjcmlwdGlvbhIiCgVwYXJ0cxgFIAMoCzIM",
-            "LmEyYS52MS5QYXJ0UgVwYXJ0cxIzCghtZXRhZGF0YRgGIAEoCzIXLmdvb2ds",
-            "ZS5wcm90b2J1Zi5TdHJ1Y3RSCG1ldGFkYXRhEh4KCmV4dGVuc2lvbnMYByAD",
-            "KAlSCmV4dGVuc2lvbnMixgEKFVRhc2tTdGF0dXNVcGRhdGVFdmVudBIXCgd0",
-            "YXNrX2lkGAEgASgJUgZ0YXNrSWQSHQoKY29udGV4dF9pZBgCIAEoCVIJY29u",
-            "dGV4dElkEioKBnN0YXR1cxgDIAEoCzISLmEyYS52MS5UYXNrU3RhdHVzUgZz",
-            "dGF0dXMSFAoFZmluYWwYBCABKAhSBWZpbmFsEjMKCG1ldGFkYXRhGAUgASgL",
-            "MhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIIbWV0YWRhdGEi6wEKF1Rhc2tB",
-            "cnRpZmFjdFVwZGF0ZUV2ZW50EhcKB3Rhc2tfaWQYASABKAlSBnRhc2tJZBId",
-            "Cgpjb250ZXh0X2lkGAIgASgJUgljb250ZXh0SWQSLAoIYXJ0aWZhY3QYAyAB",
-            "KAsyEC5hMmEudjEuQXJ0aWZhY3RSCGFydGlmYWN0EhYKBmFwcGVuZBgEIAEo",
-            "CFIGYXBwZW5kEh0KCmxhc3RfY2h1bmsYBSABKAhSCWxhc3RDaHVuaxIzCght",
-            "ZXRhZGF0YRgGIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSCG1ldGFk",
-            "YXRhIpQBChZQdXNoTm90aWZpY2F0aW9uQ29uZmlnEg4KAmlkGAEgASgJUgJp",
-            "ZBIQCgN1cmwYAiABKAlSA3VybBIUCgV0b2tlbhgDIAEoCVIFdG9rZW4SQgoO",
-            "YXV0aGVudGljYXRpb24YBCABKAsyGi5hMmEudjEuQXV0aGVudGljYXRpb25J",
-            "bmZvUg5hdXRoZW50aWNhdGlvbiJQChJBdXRoZW50aWNhdGlvbkluZm8SGAoH",
-            "c2NoZW1lcxgBIAMoCVIHc2NoZW1lcxIgCgtjcmVkZW50aWFscxgCIAEoCVIL",
-            "Y3JlZGVudGlhbHMiQAoOQWdlbnRJbnRlcmZhY2USEAoDdXJsGAEgASgJUgN1",
-            "cmwSHAoJdHJhbnNwb3J0GAIgASgJUgl0cmFuc3BvcnQiyAcKCUFnZW50Q2Fy",
-            "ZBIpChBwcm90b2NvbF92ZXJzaW9uGBAgASgJUg9wcm90b2NvbFZlcnNpb24S",
-            "EgoEbmFtZRgBIAEoCVIEbmFtZRIgCgtkZXNjcmlwdGlvbhgCIAEoCVILZGVz",
-            "Y3JpcHRpb24SEAoDdXJsGAMgASgJUgN1cmwSLwoTcHJlZmVycmVkX3RyYW5z",
-            "cG9ydBgOIAEoCVIScHJlZmVycmVkVHJhbnNwb3J0EksKFWFkZGl0aW9uYWxf",
-            "aW50ZXJmYWNlcxgPIAMoCzIWLmEyYS52MS5BZ2VudEludGVyZmFjZVIUYWRk",
-            "aXRpb25hbEludGVyZmFjZXMSMQoIcHJvdmlkZXIYBCABKAsyFS5hMmEudjEu",
-            "QWdlbnRQcm92aWRlclIIcHJvdmlkZXISGAoHdmVyc2lvbhgFIAEoCVIHdmVy",
-            "c2lvbhIrChFkb2N1bWVudGF0aW9uX3VybBgGIAEoCVIQZG9jdW1lbnRhdGlv",
-            "blVybBI9CgxjYXBhYmlsaXRpZXMYByABKAsyGS5hMmEudjEuQWdlbnRDYXBh",
-            "YmlsaXRpZXNSDGNhcGFiaWxpdGllcxJRChBzZWN1cml0eV9zY2hlbWVzGAgg",
-            "AygLMiYuYTJhLnYxLkFnZW50Q2FyZC5TZWN1cml0eVNjaGVtZXNFbnRyeVIP",
-            "c2VjdXJpdHlTY2hlbWVzEiwKCHNlY3VyaXR5GAkgAygLMhAuYTJhLnYxLlNl",
-            "Y3VyaXR5UghzZWN1cml0eRIuChNkZWZhdWx0X2lucHV0X21vZGVzGAogAygJ",
-            "UhFkZWZhdWx0SW5wdXRNb2RlcxIwChRkZWZhdWx0X291dHB1dF9tb2RlcxgL",
-            "IAMoCVISZGVmYXVsdE91dHB1dE1vZGVzEioKBnNraWxscxgMIAMoCzISLmEy",
-            "YS52MS5BZ2VudFNraWxsUgZza2lsbHMSTwokc3VwcG9ydHNfYXV0aGVudGlj",
-            "YXRlZF9leHRlbmRlZF9jYXJkGA0gASgIUiFzdXBwb3J0c0F1dGhlbnRpY2F0",
-            "ZWRFeHRlbmRlZENhcmQSOgoKc2lnbmF0dXJlcxgRIAMoCzIaLmEyYS52MS5B",
-            "Z2VudENhcmRTaWduYXR1cmVSCnNpZ25hdHVyZXMSGQoIaWNvbl91cmwYEiAB",
-            "KAlSB2ljb25VcmwaWgoUU2VjdXJpdHlTY2hlbWVzRW50cnkSEAoDa2V5GAEg",
-            "ASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5hMmEudjEuU2VjdXJpdHlTY2hl",
-            "bWVSBXZhbHVlOgI4ASJFCg1BZ2VudFByb3ZpZGVyEhAKA3VybBgBIAEoCVID",
-            "dXJsEiIKDG9yZ2FuaXphdGlvbhgCIAEoCVIMb3JnYW5pemF0aW9uItIBChFB",
-            "Z2VudENhcGFiaWxpdGllcxIcCglzdHJlYW1pbmcYASABKAhSCXN0cmVhbWlu",
-            "ZxItChJwdXNoX25vdGlmaWNhdGlvbnMYAiABKAhSEXB1c2hOb3RpZmljYXRp",
-            "b25zEjYKCmV4dGVuc2lvbnMYAyADKAsyFi5hMmEudjEuQWdlbnRFeHRlbnNp",
-            "b25SCmV4dGVuc2lvbnMSOAoYc3RhdGVfdHJhbnNpdGlvbl9oaXN0b3J5GAQg",
-            "ASgIUhZzdGF0ZVRyYW5zaXRpb25IaXN0b3J5IpEBCg5BZ2VudEV4dGVuc2lv",
-            "bhIQCgN1cmkYASABKAlSA3VyaRIgCgtkZXNjcmlwdGlvbhgCIAEoCVILZGVz",
-            "Y3JpcHRpb24SGgoIcmVxdWlyZWQYAyABKAhSCHJlcXVpcmVkEi8KBnBhcmFt",
-            "cxgEIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBnBhcmFtcyL0AQoK",
-            "QWdlbnRTa2lsbBIOCgJpZBgBIAEoCVICaWQSEgoEbmFtZRgCIAEoCVIEbmFt",
-            "ZRIgCgtkZXNjcmlwdGlvbhgDIAEoCVILZGVzY3JpcHRpb24SEgoEdGFncxgE",
-            "IAMoCVIEdGFncxIaCghleGFtcGxlcxgFIAMoCVIIZXhhbXBsZXMSHwoLaW5w",
-            "dXRfbW9kZXMYBiADKAlSCmlucHV0TW9kZXMSIQoMb3V0cHV0X21vZGVzGAcg",
-            "AygJUgtvdXRwdXRNb2RlcxIsCghzZWN1cml0eRgIIAMoCzIQLmEyYS52MS5T",
-            "ZWN1cml0eVIIc2VjdXJpdHkiiwEKEkFnZW50Q2FyZFNpZ25hdHVyZRIhCglw",
-            "cm90ZWN0ZWQYASABKAlCA+BBAlIJcHJvdGVjdGVkEiEKCXNpZ25hdHVyZRgC",
-            "IAEoCUID4EECUglzaWduYXR1cmUSLwoGaGVhZGVyGAMgASgLMhcuZ29vZ2xl",
-            "LnByb3RvYnVmLlN0cnVjdFIGaGVhZGVyIooBChpUYXNrUHVzaE5vdGlmaWNh",
-            "dGlvbkNvbmZpZxISCgRuYW1lGAEgASgJUgRuYW1lElgKGHB1c2hfbm90aWZp",
-            "Y2F0aW9uX2NvbmZpZxgCIAEoCzIeLmEyYS52MS5QdXNoTm90aWZpY2F0aW9u",
-            "Q29uZmlnUhZwdXNoTm90aWZpY2F0aW9uQ29uZmlnIiAKClN0cmluZ0xpc3QS",
-            "EgoEbGlzdBgBIAMoCVIEbGlzdCKTAQoIU2VjdXJpdHkSNwoHc2NoZW1lcxgB",
-            "IAMoCzIdLmEyYS52MS5TZWN1cml0eS5TY2hlbWVzRW50cnlSB3NjaGVtZXMa",
-            "TgoMU2NoZW1lc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EigKBXZhbHVlGAIg",
-            "ASgLMhIuYTJhLnYxLlN0cmluZ0xpc3RSBXZhbHVlOgI4ASLmAwoOU2VjdXJp",
-            "dHlTY2hlbWUSVQoXYXBpX2tleV9zZWN1cml0eV9zY2hlbWUYASABKAsyHC5h",
-            "MmEudjEuQVBJS2V5U2VjdXJpdHlTY2hlbWVIAFIUYXBpS2V5U2VjdXJpdHlT",
-            "Y2hlbWUSWwoZaHR0cF9hdXRoX3NlY3VyaXR5X3NjaGVtZRgCIAEoCzIeLmEy",
-            "YS52MS5IVFRQQXV0aFNlY3VyaXR5U2NoZW1lSABSFmh0dHBBdXRoU2VjdXJp",
-            "dHlTY2hlbWUSVAoWb2F1dGgyX3NlY3VyaXR5X3NjaGVtZRgDIAEoCzIcLmEy",
-            "YS52MS5PQXV0aDJTZWN1cml0eVNjaGVtZUgAUhRvYXV0aDJTZWN1cml0eVNj",
-            "aGVtZRJrCh9vcGVuX2lkX2Nvbm5lY3Rfc2VjdXJpdHlfc2NoZW1lGAQgASgL",
-            "MiMuYTJhLnYxLk9wZW5JZENvbm5lY3RTZWN1cml0eVNjaGVtZUgAUhtvcGVu",
-            "SWRDb25uZWN0U2VjdXJpdHlTY2hlbWUSUwoUbXRsc19zZWN1cml0eV9zY2hl",
-            "bWUYBSABKAsyHy5hMmEudjEuTXV0dWFsVGxzU2VjdXJpdHlTY2hlbWVIAFIS",
-            "bXRsc1NlY3VyaXR5U2NoZW1lQggKBnNjaGVtZSJoChRBUElLZXlTZWN1cml0",
-            "eVNjaGVtZRIgCgtkZXNjcmlwdGlvbhgBIAEoCVILZGVzY3JpcHRpb24SGgoI",
-            "bG9jYXRpb24YAiABKAlSCGxvY2F0aW9uEhIKBG5hbWUYAyABKAlSBG5hbWUi",
-            "dwoWSFRUUEF1dGhTZWN1cml0eVNjaGVtZRIgCgtkZXNjcmlwdGlvbhgBIAEo",
-            "CVILZGVzY3JpcHRpb24SFgoGc2NoZW1lGAIgASgJUgZzY2hlbWUSIwoNYmVh",
-            "cmVyX2Zvcm1hdBgDIAEoCVIMYmVhcmVyRm9ybWF0IpIBChRPQXV0aDJTZWN1",
-            "cml0eVNjaGVtZRIgCgtkZXNjcmlwdGlvbhgBIAEoCVILZGVzY3JpcHRpb24S",
-            "KAoFZmxvd3MYAiABKAsyEi5hMmEudjEuT0F1dGhGbG93c1IFZmxvd3MSLgoT",
-            "b2F1dGgyX21ldGFkYXRhX3VybBgDIAEoCVIRb2F1dGgyTWV0YWRhdGFVcmwi",
-            "bgobT3BlbklkQ29ubmVjdFNlY3VyaXR5U2NoZW1lEiAKC2Rlc2NyaXB0aW9u",
-            "GAEgASgJUgtkZXNjcmlwdGlvbhItChNvcGVuX2lkX2Nvbm5lY3RfdXJsGAIg",
-            "ASgJUhBvcGVuSWRDb25uZWN0VXJsIjsKF011dHVhbFRsc1NlY3VyaXR5U2No",
-            "ZW1lEiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbiKwAgoKT0F1",
-            "dGhGbG93cxJTChJhdXRob3JpemF0aW9uX2NvZGUYASABKAsyIi5hMmEudjEu",
-            "QXV0aG9yaXphdGlvbkNvZGVPQXV0aEZsb3dIAFIRYXV0aG9yaXphdGlvbkNv",
-            "ZGUSUwoSY2xpZW50X2NyZWRlbnRpYWxzGAIgASgLMiIuYTJhLnYxLkNsaWVu",
-            "dENyZWRlbnRpYWxzT0F1dGhGbG93SABSEWNsaWVudENyZWRlbnRpYWxzEjcK",
-            "CGltcGxpY2l0GAMgASgLMhkuYTJhLnYxLkltcGxpY2l0T0F1dGhGbG93SABS",
-            "CGltcGxpY2l0EjcKCHBhc3N3b3JkGAQgASgLMhkuYTJhLnYxLlBhc3N3b3Jk",
-            "T0F1dGhGbG93SABSCHBhc3N3b3JkQgYKBGZsb3ciigIKGkF1dGhvcml6YXRp",
-            "b25Db2RlT0F1dGhGbG93EisKEWF1dGhvcml6YXRpb25fdXJsGAEgASgJUhBh",
-            "dXRob3JpemF0aW9uVXJsEhsKCXRva2VuX3VybBgCIAEoCVIIdG9rZW5VcmwS",
-            "HwoLcmVmcmVzaF91cmwYAyABKAlSCnJlZnJlc2hVcmwSRgoGc2NvcGVzGAQg",
-            "AygLMi4uYTJhLnYxLkF1dGhvcml6YXRpb25Db2RlT0F1dGhGbG93LlNjb3Bl",
-            "c0VudHJ5UgZzY29wZXMaOQoLU2NvcGVzRW50cnkSEAoDa2V5GAEgASgJUgNr",
-            "ZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4ASLdAQoaQ2xpZW50Q3JlZGVu",
-            "dGlhbHNPQXV0aEZsb3cSGwoJdG9rZW5fdXJsGAEgASgJUgh0b2tlblVybBIf",
-            "CgtyZWZyZXNoX3VybBgCIAEoCVIKcmVmcmVzaFVybBJGCgZzY29wZXMYAyAD",
-            "KAsyLi5hMmEudjEuQ2xpZW50Q3JlZGVudGlhbHNPQXV0aEZsb3cuU2NvcGVz",
-            "RW50cnlSBnNjb3Blcxo5CgtTY29wZXNFbnRyeRIQCgNrZXkYASABKAlSA2tl",
-            "eRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgBItsBChFJbXBsaWNpdE9BdXRo",
-            "RmxvdxIrChFhdXRob3JpemF0aW9uX3VybBgBIAEoCVIQYXV0aG9yaXphdGlv",
-            "blVybBIfCgtyZWZyZXNoX3VybBgCIAEoCVIKcmVmcmVzaFVybBI9CgZzY29w",
-            "ZXMYAyADKAsyJS5hMmEudjEuSW1wbGljaXRPQXV0aEZsb3cuU2NvcGVzRW50",
-            "cnlSBnNjb3Blcxo5CgtTY29wZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIU",
-            "CgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgBIssBChFQYXNzd29yZE9BdXRoRmxv",
-            "dxIbCgl0b2tlbl91cmwYASABKAlSCHRva2VuVXJsEh8KC3JlZnJlc2hfdXJs",
-            "GAIgASgJUgpyZWZyZXNoVXJsEj0KBnNjb3BlcxgDIAMoCzIlLmEyYS52MS5Q",
-            "YXNzd29yZE9BdXRoRmxvdy5TY29wZXNFbnRyeVIGc2NvcGVzGjkKC1Njb3Bl",
+            "CglhMmEucHJvdG8SCWxmLmEyYS52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9u",
+            "cy5wcm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aH2dvb2dsZS9hcGkv",
+            "ZmllbGRfYmVoYXZpb3IucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5w",
+            "cm90bxocZ29vZ2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90bxofZ29vZ2xlL3By",
+            "b3RvYnVmL3RpbWVzdGFtcC5wcm90byKmAgoYU2VuZE1lc3NhZ2VDb25maWd1",
+            "cmF0aW9uEjIKFWFjY2VwdGVkX291dHB1dF9tb2RlcxgBIAMoCVITYWNjZXB0",
+            "ZWRPdXRwdXRNb2RlcxJoCh10YXNrX3B1c2hfbm90aWZpY2F0aW9uX2NvbmZp",
+            "ZxgCIAEoCzIlLmxmLmEyYS52MS5UYXNrUHVzaE5vdGlmaWNhdGlvbkNvbmZp",
+            "Z1IadGFza1B1c2hOb3RpZmljYXRpb25Db25maWcSKgoOaGlzdG9yeV9sZW5n",
+            "dGgYAyABKAVIAFINaGlzdG9yeUxlbmd0aIgBARItChJyZXR1cm5faW1tZWRp",
+            "YXRlbHkYBCABKAhSEXJldHVybkltbWVkaWF0ZWx5QhEKD19oaXN0b3J5X2xl",
+            "bmd0aCKEAgoEVGFzaxITCgJpZBgBIAEoCUID4EECUgJpZBIdCgpjb250ZXh0",
+            "X2lkGAIgASgJUgljb250ZXh0SWQSMgoGc3RhdHVzGAMgASgLMhUubGYuYTJh",
+            "LnYxLlRhc2tTdGF0dXNCA+BBAlIGc3RhdHVzEjEKCWFydGlmYWN0cxgEIAMo",
+            "CzITLmxmLmEyYS52MS5BcnRpZmFjdFIJYXJ0aWZhY3RzEiwKB2hpc3RvcnkY",
+            "BSADKAsyEi5sZi5hMmEudjEuTWVzc2FnZVIHaGlzdG9yeRIzCghtZXRhZGF0",
+            "YRgGIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSCG1ldGFkYXRhIqUB",
+            "CgpUYXNrU3RhdHVzEi8KBXN0YXRlGAEgASgOMhQubGYuYTJhLnYxLlRhc2tT",
+            "dGF0ZUID4EECUgVzdGF0ZRIsCgdtZXNzYWdlGAIgASgLMhIubGYuYTJhLnYx",
+            "Lk1lc3NhZ2VSB21lc3NhZ2USOAoJdGltZXN0YW1wGAMgASgLMhouZ29vZ2xl",
+            "LnByb3RvYnVmLlRpbWVzdGFtcFIJdGltZXN0YW1wIu0BCgRQYXJ0EhQKBHRl",
+            "eHQYASABKAlIAFIEdGV4dBISCgNyYXcYAiABKAxIAFIDcmF3EhIKA3VybBgD",
+            "IAEoCUgAUgN1cmwSLAoEZGF0YRgEIAEoCzIWLmdvb2dsZS5wcm90b2J1Zi5W",
+            "YWx1ZUgAUgRkYXRhEjMKCG1ldGFkYXRhGAUgASgLMhcuZ29vZ2xlLnByb3Rv",
+            "YnVmLlN0cnVjdFIIbWV0YWRhdGESGgoIZmlsZW5hbWUYBiABKAlSCGZpbGVu",
+            "YW1lEh0KCm1lZGlhX3R5cGUYByABKAlSCW1lZGlhVHlwZUIJCgdjb250ZW50",
+            "Ir4CCgdNZXNzYWdlEiIKCm1lc3NhZ2VfaWQYASABKAlCA+BBAlIJbWVzc2Fn",
+            "ZUlkEh0KCmNvbnRleHRfaWQYAiABKAlSCWNvbnRleHRJZBIXCgd0YXNrX2lk",
+            "GAMgASgJUgZ0YXNrSWQSKAoEcm9sZRgEIAEoDjIPLmxmLmEyYS52MS5Sb2xl",
+            "QgPgQQJSBHJvbGUSKgoFcGFydHMYBSADKAsyDy5sZi5hMmEudjEuUGFydEID",
+            "4EECUgVwYXJ0cxIzCghtZXRhZGF0YRgGIAEoCzIXLmdvb2dsZS5wcm90b2J1",
+            "Zi5TdHJ1Y3RSCG1ldGFkYXRhEh4KCmV4dGVuc2lvbnMYByADKAlSCmV4dGVu",
+            "c2lvbnMSLAoScmVmZXJlbmNlX3Rhc2tfaWRzGAggAygJUhByZWZlcmVuY2VU",
+            "YXNrSWRzIucBCghBcnRpZmFjdBIkCgthcnRpZmFjdF9pZBgBIAEoCUID4EEC",
+            "UgphcnRpZmFjdElkEhIKBG5hbWUYAiABKAlSBG5hbWUSIAoLZGVzY3JpcHRp",
+            "b24YAyABKAlSC2Rlc2NyaXB0aW9uEioKBXBhcnRzGAQgAygLMg8ubGYuYTJh",
+            "LnYxLlBhcnRCA+BBAlIFcGFydHMSMwoIbWV0YWRhdGEYBSABKAsyFy5nb29n",
+            "bGUucHJvdG9idWYuU3RydWN0UghtZXRhZGF0YRIeCgpleHRlbnNpb25zGAYg",
+            "AygJUgpleHRlbnNpb25zIsIBChVUYXNrU3RhdHVzVXBkYXRlRXZlbnQSHAoH",
+            "dGFza19pZBgBIAEoCUID4EECUgZ0YXNrSWQSIgoKY29udGV4dF9pZBgCIAEo",
+            "CUID4EECUgljb250ZXh0SWQSMgoGc3RhdHVzGAMgASgLMhUubGYuYTJhLnYx",
+            "LlRhc2tTdGF0dXNCA+BBAlIGc3RhdHVzEjMKCG1ldGFkYXRhGAQgASgLMhcu",
+            "Z29vZ2xlLnByb3RvYnVmLlN0cnVjdFIIbWV0YWRhdGEi/QEKF1Rhc2tBcnRp",
+            "ZmFjdFVwZGF0ZUV2ZW50EhwKB3Rhc2tfaWQYASABKAlCA+BBAlIGdGFza0lk",
+            "EiIKCmNvbnRleHRfaWQYAiABKAlCA+BBAlIJY29udGV4dElkEjQKCGFydGlm",
+            "YWN0GAMgASgLMhMubGYuYTJhLnYxLkFydGlmYWN0QgPgQQJSCGFydGlmYWN0",
+            "EhYKBmFwcGVuZBgEIAEoCFIGYXBwZW5kEh0KCmxhc3RfY2h1bmsYBSABKAhS",
+            "CWxhc3RDaHVuaxIzCghtZXRhZGF0YRgGIAEoCzIXLmdvb2dsZS5wcm90b2J1",
+            "Zi5TdHJ1Y3RSCG1ldGFkYXRhIlMKEkF1dGhlbnRpY2F0aW9uSW5mbxIbCgZz",
+            "Y2hlbWUYASABKAlCA+BBAlIGc2NoZW1lEiAKC2NyZWRlbnRpYWxzGAIgASgJ",
+            "UgtjcmVkZW50aWFscyKfAQoOQWdlbnRJbnRlcmZhY2USFQoDdXJsGAEgASgJ",
+            "QgPgQQJSA3VybBIuChBwcm90b2NvbF9iaW5kaW5nGAIgASgJQgPgQQJSD3By",
+            "b3RvY29sQmluZGluZxIWCgZ0ZW5hbnQYAyABKAlSBnRlbmFudBIuChBwcm90",
+            "b2NvbF92ZXJzaW9uGAQgASgJQgPgQQJSD3Byb3RvY29sVmVyc2lvbiKYBwoJ",
+            "QWdlbnRDYXJkEhcKBG5hbWUYASABKAlCA+BBAlIEbmFtZRIlCgtkZXNjcmlw",
+            "dGlvbhgCIAEoCUID4EECUgtkZXNjcmlwdGlvbhJRChRzdXBwb3J0ZWRfaW50",
+            "ZXJmYWNlcxgDIAMoCzIZLmxmLmEyYS52MS5BZ2VudEludGVyZmFjZUID4EEC",
+            "UhNzdXBwb3J0ZWRJbnRlcmZhY2VzEjQKCHByb3ZpZGVyGAQgASgLMhgubGYu",
+            "YTJhLnYxLkFnZW50UHJvdmlkZXJSCHByb3ZpZGVyEh0KB3ZlcnNpb24YBSAB",
+            "KAlCA+BBAlIHdmVyc2lvbhIwChFkb2N1bWVudGF0aW9uX3VybBgGIAEoCUgA",
+            "UhBkb2N1bWVudGF0aW9uVXJsiAEBEkUKDGNhcGFiaWxpdGllcxgHIAEoCzIc",
+            "LmxmLmEyYS52MS5BZ2VudENhcGFiaWxpdGllc0ID4EECUgxjYXBhYmlsaXRp",
+            "ZXMSVAoQc2VjdXJpdHlfc2NoZW1lcxgIIAMoCzIpLmxmLmEyYS52MS5BZ2Vu",
+            "dENhcmQuU2VjdXJpdHlTY2hlbWVzRW50cnlSD3NlY3VyaXR5U2NoZW1lcxJT",
+            "ChVzZWN1cml0eV9yZXF1aXJlbWVudHMYCSADKAsyHi5sZi5hMmEudjEuU2Vj",
+            "dXJpdHlSZXF1aXJlbWVudFIUc2VjdXJpdHlSZXF1aXJlbWVudHMSMwoTZGVm",
+            "YXVsdF9pbnB1dF9tb2RlcxgKIAMoCUID4EECUhFkZWZhdWx0SW5wdXRNb2Rl",
+            "cxI1ChRkZWZhdWx0X291dHB1dF9tb2RlcxgLIAMoCUID4EECUhJkZWZhdWx0",
+            "T3V0cHV0TW9kZXMSMgoGc2tpbGxzGAwgAygLMhUubGYuYTJhLnYxLkFnZW50",
+            "U2tpbGxCA+BBAlIGc2tpbGxzEj0KCnNpZ25hdHVyZXMYDSADKAsyHS5sZi5h",
+            "MmEudjEuQWdlbnRDYXJkU2lnbmF0dXJlUgpzaWduYXR1cmVzEh4KCGljb25f",
+            "dXJsGA4gASgJSAFSB2ljb25VcmyIAQEaXQoUU2VjdXJpdHlTY2hlbWVzRW50",
+            "cnkSEAoDa2V5GAEgASgJUgNrZXkSLwoFdmFsdWUYAiABKAsyGS5sZi5hMmEu",
+            "djEuU2VjdXJpdHlTY2hlbWVSBXZhbHVlOgI4AUIUChJfZG9jdW1lbnRhdGlv",
+            "bl91cmxCCwoJX2ljb25fdXJsIk8KDUFnZW50UHJvdmlkZXISFQoDdXJsGAEg",
+            "ASgJQgPgQQJSA3VybBInCgxvcmdhbml6YXRpb24YAiABKAlCA+BBAlIMb3Jn",
+            "YW5pemF0aW9uIpcCChFBZ2VudENhcGFiaWxpdGllcxIhCglzdHJlYW1pbmcY",
+            "ASABKAhIAFIJc3RyZWFtaW5niAEBEjIKEnB1c2hfbm90aWZpY2F0aW9ucxgC",
+            "IAEoCEgBUhFwdXNoTm90aWZpY2F0aW9uc4gBARI5CgpleHRlbnNpb25zGAMg",
+            "AygLMhkubGYuYTJhLnYxLkFnZW50RXh0ZW5zaW9uUgpleHRlbnNpb25zEjMK",
+            "E2V4dGVuZGVkX2FnZW50X2NhcmQYBCABKAhIAlIRZXh0ZW5kZWRBZ2VudENh",
+            "cmSIAQFCDAoKX3N0cmVhbWluZ0IVChNfcHVzaF9ub3RpZmljYXRpb25zQhYK",
+            "FF9leHRlbmRlZF9hZ2VudF9jYXJkIpEBCg5BZ2VudEV4dGVuc2lvbhIQCgN1",
+            "cmkYASABKAlSA3VyaRIgCgtkZXNjcmlwdGlvbhgCIAEoCVILZGVzY3JpcHRp",
+            "b24SGgoIcmVxdWlyZWQYAyABKAhSCHJlcXVpcmVkEi8KBnBhcmFtcxgEIAEo",
+            "CzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBnBhcmFtcyKvAgoKQWdlbnRT",
+            "a2lsbBITCgJpZBgBIAEoCUID4EECUgJpZBIXCgRuYW1lGAIgASgJQgPgQQJS",
+            "BG5hbWUSJQoLZGVzY3JpcHRpb24YAyABKAlCA+BBAlILZGVzY3JpcHRpb24S",
+            "FwoEdGFncxgEIAMoCUID4EECUgR0YWdzEhoKCGV4YW1wbGVzGAUgAygJUghl",
+            "eGFtcGxlcxIfCgtpbnB1dF9tb2RlcxgGIAMoCVIKaW5wdXRNb2RlcxIhCgxv",
+            "dXRwdXRfbW9kZXMYByADKAlSC291dHB1dE1vZGVzElMKFXNlY3VyaXR5X3Jl",
+            "cXVpcmVtZW50cxgIIAMoCzIeLmxmLmEyYS52MS5TZWN1cml0eVJlcXVpcmVt",
+            "ZW50UhRzZWN1cml0eVJlcXVpcmVtZW50cyKLAQoSQWdlbnRDYXJkU2lnbmF0",
+            "dXJlEiEKCXByb3RlY3RlZBgBIAEoCUID4EECUglwcm90ZWN0ZWQSIQoJc2ln",
+            "bmF0dXJlGAIgASgJQgPgQQJSCXNpZ25hdHVyZRIvCgZoZWFkZXIYAyABKAsy",
+            "Fy5nb29nbGUucHJvdG9idWYuU3RydWN0UgZoZWFkZXIi0QEKGlRhc2tQdXNo",
+            "Tm90aWZpY2F0aW9uQ29uZmlnEhYKBnRlbmFudBgBIAEoCVIGdGVuYW50Eg4K",
+            "AmlkGAIgASgJUgJpZBIXCgd0YXNrX2lkGAMgASgJUgZ0YXNrSWQSFQoDdXJs",
+            "GAQgASgJQgPgQQJSA3VybBIUCgV0b2tlbhgFIAEoCVIFdG9rZW4SRQoOYXV0",
+            "aGVudGljYXRpb24YBiABKAsyHS5sZi5hMmEudjEuQXV0aGVudGljYXRpb25J",
+            "bmZvUg5hdXRoZW50aWNhdGlvbiIgCgpTdHJpbmdMaXN0EhIKBGxpc3QYASAD",
+            "KAlSBGxpc3QirwEKE1NlY3VyaXR5UmVxdWlyZW1lbnQSRQoHc2NoZW1lcxgB",
+            "IAMoCzIrLmxmLmEyYS52MS5TZWN1cml0eVJlcXVpcmVtZW50LlNjaGVtZXNF",
+            "bnRyeVIHc2NoZW1lcxpRCgxTY2hlbWVzRW50cnkSEAoDa2V5GAEgASgJUgNr",
+            "ZXkSKwoFdmFsdWUYAiABKAsyFS5sZi5hMmEudjEuU3RyaW5nTGlzdFIFdmFs",
+            "dWU6AjgBIvUDCg5TZWN1cml0eVNjaGVtZRJYChdhcGlfa2V5X3NlY3VyaXR5",
+            "X3NjaGVtZRgBIAEoCzIfLmxmLmEyYS52MS5BUElLZXlTZWN1cml0eVNjaGVt",
+            "ZUgAUhRhcGlLZXlTZWN1cml0eVNjaGVtZRJeChlodHRwX2F1dGhfc2VjdXJp",
+            "dHlfc2NoZW1lGAIgASgLMiEubGYuYTJhLnYxLkhUVFBBdXRoU2VjdXJpdHlT",
+            "Y2hlbWVIAFIWaHR0cEF1dGhTZWN1cml0eVNjaGVtZRJXChZvYXV0aDJfc2Vj",
+            "dXJpdHlfc2NoZW1lGAMgASgLMh8ubGYuYTJhLnYxLk9BdXRoMlNlY3VyaXR5",
+            "U2NoZW1lSABSFG9hdXRoMlNlY3VyaXR5U2NoZW1lEm4KH29wZW5faWRfY29u",
+            "bmVjdF9zZWN1cml0eV9zY2hlbWUYBCABKAsyJi5sZi5hMmEudjEuT3Blbklk",
+            "Q29ubmVjdFNlY3VyaXR5U2NoZW1lSABSG29wZW5JZENvbm5lY3RTZWN1cml0",
+            "eVNjaGVtZRJWChRtdGxzX3NlY3VyaXR5X3NjaGVtZRgFIAEoCzIiLmxmLmEy",
+            "YS52MS5NdXR1YWxUbHNTZWN1cml0eVNjaGVtZUgAUhJtdGxzU2VjdXJpdHlT",
+            "Y2hlbWVCCAoGc2NoZW1lInIKFEFQSUtleVNlY3VyaXR5U2NoZW1lEiAKC2Rl",
+            "c2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIfCghsb2NhdGlvbhgCIAEo",
+            "CUID4EECUghsb2NhdGlvbhIXCgRuYW1lGAMgASgJQgPgQQJSBG5hbWUifAoW",
+            "SFRUUEF1dGhTZWN1cml0eVNjaGVtZRIgCgtkZXNjcmlwdGlvbhgBIAEoCVIL",
+            "ZGVzY3JpcHRpb24SGwoGc2NoZW1lGAIgASgJQgPgQQJSBnNjaGVtZRIjCg1i",
+            "ZWFyZXJfZm9ybWF0GAMgASgJUgxiZWFyZXJGb3JtYXQimgEKFE9BdXRoMlNl",
+            "Y3VyaXR5U2NoZW1lEiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlv",
+            "bhIwCgVmbG93cxgCIAEoCzIVLmxmLmEyYS52MS5PQXV0aEZsb3dzQgPgQQJS",
+            "BWZsb3dzEi4KE29hdXRoMl9tZXRhZGF0YV91cmwYAyABKAlSEW9hdXRoMk1l",
+            "dGFkYXRhVXJsInMKG09wZW5JZENvbm5lY3RTZWN1cml0eVNjaGVtZRIgCgtk",
+            "ZXNjcmlwdGlvbhgBIAEoCVILZGVzY3JpcHRpb24SMgoTb3Blbl9pZF9jb25u",
+            "ZWN0X3VybBgCIAEoCUID4EECUhBvcGVuSWRDb25uZWN0VXJsIjsKF011dHVh",
+            "bFRsc1NlY3VyaXR5U2NoZW1lEiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNj",
+            "cmlwdGlvbiKHAwoKT0F1dGhGbG93cxJWChJhdXRob3JpemF0aW9uX2NvZGUY",
+            "ASABKAsyJS5sZi5hMmEudjEuQXV0aG9yaXphdGlvbkNvZGVPQXV0aEZsb3dI",
+            "AFIRYXV0aG9yaXphdGlvbkNvZGUSVgoSY2xpZW50X2NyZWRlbnRpYWxzGAIg",
+            "ASgLMiUubGYuYTJhLnYxLkNsaWVudENyZWRlbnRpYWxzT0F1dGhGbG93SABS",
+            "EWNsaWVudENyZWRlbnRpYWxzEj4KCGltcGxpY2l0GAMgASgLMhwubGYuYTJh",
+            "LnYxLkltcGxpY2l0T0F1dGhGbG93QgIYAUgAUghpbXBsaWNpdBI+CghwYXNz",
+            "d29yZBgEIAEoCzIcLmxmLmEyYS52MS5QYXNzd29yZE9BdXRoRmxvd0ICGAFI",
+            "AFIIcGFzc3dvcmQSQQoLZGV2aWNlX2NvZGUYBSABKAsyHi5sZi5hMmEudjEu",
+            "RGV2aWNlQ29kZU9BdXRoRmxvd0gAUgpkZXZpY2VDb2RlQgYKBGZsb3ciwQIK",
+            "GkF1dGhvcml6YXRpb25Db2RlT0F1dGhGbG93EjAKEWF1dGhvcml6YXRpb25f",
+            "dXJsGAEgASgJQgPgQQJSEGF1dGhvcml6YXRpb25VcmwSIAoJdG9rZW5fdXJs",
+            "GAIgASgJQgPgQQJSCHRva2VuVXJsEh8KC3JlZnJlc2hfdXJsGAMgASgJUgpy",
+            "ZWZyZXNoVXJsEk4KBnNjb3BlcxgEIAMoCzIxLmxmLmEyYS52MS5BdXRob3Jp",
+            "emF0aW9uQ29kZU9BdXRoRmxvdy5TY29wZXNFbnRyeUID4EECUgZzY29wZXMS",
+            "IwoNcGtjZV9yZXF1aXJlZBgFIAEoCFIMcGtjZVJlcXVpcmVkGjkKC1Njb3Bl",
             "c0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1",
-            "ZToCOAEiwQEKElNlbmRNZXNzYWdlUmVxdWVzdBIuCgdyZXF1ZXN0GAEgASgL",
-            "Mg8uYTJhLnYxLk1lc3NhZ2VCA+BBAlIHbWVzc2FnZRJGCg1jb25maWd1cmF0",
-            "aW9uGAIgASgLMiAuYTJhLnYxLlNlbmRNZXNzYWdlQ29uZmlndXJhdGlvblIN",
-            "Y29uZmlndXJhdGlvbhIzCghtZXRhZGF0YRgDIAEoCzIXLmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJ1Y3RSCG1ldGFkYXRhIlAKDkdldFRhc2tSZXF1ZXN0EhcKBG5h",
-            "bWUYASABKAlCA+BBAlIEbmFtZRIlCg5oaXN0b3J5X2xlbmd0aBgCIAEoBVIN",
-            "aGlzdG9yeUxlbmd0aCK0AgoQTGlzdFRhc2tzUmVxdWVzdBIdCgpjb250ZXh0",
-            "X2lkGAEgASgJUgljb250ZXh0SWQSKQoGc3RhdHVzGAIgASgOMhEuYTJhLnYx",
-            "LlRhc2tTdGF0ZVIGc3RhdHVzEhsKCXBhZ2Vfc2l6ZRgDIAEoBVIIcGFnZVNp",
-            "emUSHQoKcGFnZV90b2tlbhgEIAEoCVIJcGFnZVRva2VuEiUKDmhpc3Rvcnlf",
-            "bGVuZ3RoGAUgASgFUg1oaXN0b3J5TGVuZ3RoEkYKEWxhc3RfdXBkYXRlZF90",
-            "aW1lGAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIPbGFzdFVw",
-            "ZGF0ZWRUaW1lEisKEWluY2x1ZGVfYXJ0aWZhY3RzGAcgASgIUhBpbmNsdWRl",
-            "QXJ0aWZhY3RzIn4KEUxpc3RUYXNrc1Jlc3BvbnNlEiIKBXRhc2tzGAEgAygL",
-            "MgwuYTJhLnYxLlRhc2tSBXRhc2tzEiYKD25leHRfcGFnZV90b2tlbhgCIAEo",
-            "CVINbmV4dFBhZ2VUb2tlbhIdCgp0b3RhbF9zaXplGAMgASgFUgl0b3RhbFNp",
-            "emUiJwoRQ2FuY2VsVGFza1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZSI6",
-            "CiRHZXRUYXNrUHVzaE5vdGlmaWNhdGlvbkNvbmZpZ1JlcXVlc3QSEgoEbmFt",
-            "ZRgBIAEoCVIEbmFtZSI9CidEZWxldGVUYXNrUHVzaE5vdGlmaWNhdGlvbkNv",
-            "bmZpZ1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZSKpAQonQ3JlYXRlVGFz",
-            "a1B1c2hOb3RpZmljYXRpb25Db25maWdSZXF1ZXN0EhsKBnBhcmVudBgBIAEo",
-            "CUID4EECUgZwYXJlbnQSIAoJY29uZmlnX2lkGAIgASgJQgPgQQJSCGNvbmZp",
-            "Z0lkEj8KBmNvbmZpZxgDIAEoCzIiLmEyYS52MS5UYXNrUHVzaE5vdGlmaWNh",
-            "dGlvbkNvbmZpZ0ID4EECUgZjb25maWciLQoXVGFza1N1YnNjcmlwdGlvblJl",
-            "cXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZSJ7CiVMaXN0VGFza1B1c2hOb3Rp",
-            "ZmljYXRpb25Db25maWdSZXF1ZXN0EhYKBnBhcmVudBgBIAEoCVIGcGFyZW50",
-            "EhsKCXBhZ2Vfc2l6ZRgCIAEoBVIIcGFnZVNpemUSHQoKcGFnZV90b2tlbhgD",
-            "IAEoCVIJcGFnZVRva2VuIhUKE0dldEFnZW50Q2FyZFJlcXVlc3QibQoTU2Vu",
-            "ZE1lc3NhZ2VSZXNwb25zZRIiCgR0YXNrGAEgASgLMgwuYTJhLnYxLlRhc2tI",
-            "AFIEdGFzaxInCgNtc2cYAiABKAsyDy5hMmEudjEuTWVzc2FnZUgAUgdtZXNz",
-            "YWdlQgkKB3BheWxvYWQi+gEKDlN0cmVhbVJlc3BvbnNlEiIKBHRhc2sYASAB",
-            "KAsyDC5hMmEudjEuVGFza0gAUgR0YXNrEicKA21zZxgCIAEoCzIPLmEyYS52",
-            "MS5NZXNzYWdlSABSB21lc3NhZ2USRAoNc3RhdHVzX3VwZGF0ZRgDIAEoCzId",
-            "LmEyYS52MS5UYXNrU3RhdHVzVXBkYXRlRXZlbnRIAFIMc3RhdHVzVXBkYXRl",
-            "EkoKD2FydGlmYWN0X3VwZGF0ZRgEIAEoCzIfLmEyYS52MS5UYXNrQXJ0aWZh",
-            "Y3RVcGRhdGVFdmVudEgAUg5hcnRpZmFjdFVwZGF0ZUIJCgdwYXlsb2FkIo4B",
-            "CiZMaXN0VGFza1B1c2hOb3RpZmljYXRpb25Db25maWdSZXNwb25zZRI8Cgdj",
-            "b25maWdzGAEgAygLMiIuYTJhLnYxLlRhc2tQdXNoTm90aWZpY2F0aW9uQ29u",
-            "ZmlnUgdjb25maWdzEiYKD25leHRfcGFnZV90b2tlbhgCIAEoCVINbmV4dFBh",
-            "Z2VUb2tlbir6AQoJVGFza1N0YXRlEhoKFlRBU0tfU1RBVEVfVU5TUEVDSUZJ",
-            "RUQQABIYChRUQVNLX1NUQVRFX1NVQk1JVFRFRBABEhYKElRBU0tfU1RBVEVf",
-            "V09SS0lORxACEhgKFFRBU0tfU1RBVEVfQ09NUExFVEVEEAMSFQoRVEFTS19T",
-            "VEFURV9GQUlMRUQQBBIYChRUQVNLX1NUQVRFX0NBTkNFTExFRBAFEh0KGVRB",
-            "U0tfU1RBVEVfSU5QVVRfUkVRVUlSRUQQBhIXChNUQVNLX1NUQVRFX1JFSkVD",
-            "VEVEEAcSHAoYVEFTS19TVEFURV9BVVRIX1JFUVVJUkVEEAgqOwoEUm9sZRIU",
-            "ChBST0xFX1VOU1BFQ0lGSUVEEAASDQoJUk9MRV9VU0VSEAESDgoKUk9MRV9B",
-            "R0VOVBACMpALCgpBMkFTZXJ2aWNlEmMKC1NlbmRNZXNzYWdlEhouYTJhLnYx",
-            "LlNlbmRNZXNzYWdlUmVxdWVzdBobLmEyYS52MS5TZW5kTWVzc2FnZVJlc3Bv",
-            "bnNlIhuC0+STAhUiEC92MS9tZXNzYWdlOnNlbmQ6ASoSawoUU2VuZFN0cmVh",
-            "bWluZ01lc3NhZ2USGi5hMmEudjEuU2VuZE1lc3NhZ2VSZXF1ZXN0GhYuYTJh",
-            "LnYxLlN0cmVhbVJlc3BvbnNlIh2C0+STAhciEi92MS9tZXNzYWdlOnN0cmVh",
-            "bToBKjABElIKB0dldFRhc2sSFi5hMmEudjEuR2V0VGFza1JlcXVlc3QaDC5h",
-            "MmEudjEuVGFzayIh2kEEbmFtZYLT5JMCFBISL3YxL3tuYW1lPXRhc2tzLyp9",
-            "ElMKCUxpc3RUYXNrcxIYLmEyYS52MS5MaXN0VGFza3NSZXF1ZXN0GhkuYTJh",
-            "LnYxLkxpc3RUYXNrc1Jlc3BvbnNlIhGC0+STAgsSCS92MS90YXNrcxJbCgpD",
-            "YW5jZWxUYXNrEhkuYTJhLnYxLkNhbmNlbFRhc2tSZXF1ZXN0GgwuYTJhLnYx",
-            "LlRhc2siJILT5JMCHiIZL3YxL3tuYW1lPXRhc2tzLyp9OmNhbmNlbDoBKhJz",
-            "ChBUYXNrU3Vic2NyaXB0aW9uEh8uYTJhLnYxLlRhc2tTdWJzY3JpcHRpb25S",
-            "ZXF1ZXN0GhYuYTJhLnYxLlN0cmVhbVJlc3BvbnNlIiSC0+STAh4SHC92MS97",
-            "bmFtZT10YXNrcy8qfTpzdWJzY3JpYmUwARLFAQogQ3JlYXRlVGFza1B1c2hO",
-            "b3RpZmljYXRpb25Db25maWcSLy5hMmEudjEuQ3JlYXRlVGFza1B1c2hOb3Rp",
-            "ZmljYXRpb25Db25maWdSZXF1ZXN0GiIuYTJhLnYxLlRhc2tQdXNoTm90aWZp",
-            "Y2F0aW9uQ29uZmlnIkzaQQ1wYXJlbnQsY29uZmlngtPkkwI2IiwvdjEve3Bh",
-            "cmVudD10YXNrcy8qL3B1c2hOb3RpZmljYXRpb25Db25maWdzfToGY29uZmln",
-            "Eq4BCh1HZXRUYXNrUHVzaE5vdGlmaWNhdGlvbkNvbmZpZxIsLmEyYS52MS5H",
-            "ZXRUYXNrUHVzaE5vdGlmaWNhdGlvbkNvbmZpZ1JlcXVlc3QaIi5hMmEudjEu",
-            "VGFza1B1c2hOb3RpZmljYXRpb25Db25maWciO9pBBG5hbWWC0+STAi4SLC92",
-            "MS97bmFtZT10YXNrcy8qL3B1c2hOb3RpZmljYXRpb25Db25maWdzLyp9Er4B",
-            "Ch5MaXN0VGFza1B1c2hOb3RpZmljYXRpb25Db25maWcSLS5hMmEudjEuTGlz",
-            "dFRhc2tQdXNoTm90aWZpY2F0aW9uQ29uZmlnUmVxdWVzdBouLmEyYS52MS5M",
-            "aXN0VGFza1B1c2hOb3RpZmljYXRpb25Db25maWdSZXNwb25zZSI92kEGcGFy",
-            "ZW50gtPkkwIuEiwvdjEve3BhcmVudD10YXNrcy8qfS9wdXNoTm90aWZpY2F0",
-            "aW9uQ29uZmlncxJQCgxHZXRBZ2VudENhcmQSGy5hMmEudjEuR2V0QWdlbnRD",
-            "YXJkUmVxdWVzdBoRLmEyYS52MS5BZ2VudENhcmQiEILT5JMCChIIL3YxL2Nh",
-            "cmQSqAEKIERlbGV0ZVRhc2tQdXNoTm90aWZpY2F0aW9uQ29uZmlnEi8uYTJh",
-            "LnYxLkRlbGV0ZVRhc2tQdXNoTm90aWZpY2F0aW9uQ29uZmlnUmVxdWVzdBoW",
-            "Lmdvb2dsZS5wcm90b2J1Zi5FbXB0eSI72kEEbmFtZYLT5JMCLiosL3YxL3tu",
-            "YW1lPXRhc2tzLyovcHVzaE5vdGlmaWNhdGlvbkNvbmZpZ3MvKn1CaQoKY29t",
-            "LmEyYS52MUIIQTJhUHJvdG9QAVoYZ29vZ2xlLmdvbGFuZy5vcmcvYTJhL3Yx",
-            "ogIDQVhYqgIGQTJhLlYxygIGQTJhXFYx4gISQTJhXFYxXEdQQk1ldGFkYXRh",
-            "6gIHQTJhOjpWMWIGcHJvdG8z"));
+            "ZToCOAEi6gEKGkNsaWVudENyZWRlbnRpYWxzT0F1dGhGbG93EiAKCXRva2Vu",
+            "X3VybBgBIAEoCUID4EECUgh0b2tlblVybBIfCgtyZWZyZXNoX3VybBgCIAEo",
+            "CVIKcmVmcmVzaFVybBJOCgZzY29wZXMYAyADKAsyMS5sZi5hMmEudjEuQ2xp",
+            "ZW50Q3JlZGVudGlhbHNPQXV0aEZsb3cuU2NvcGVzRW50cnlCA+BBAlIGc2Nv",
+            "cGVzGjkKC1Njb3Blc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVl",
+            "GAIgASgJUgV2YWx1ZToCOAEi3gEKEUltcGxpY2l0T0F1dGhGbG93EisKEWF1",
+            "dGhvcml6YXRpb25fdXJsGAEgASgJUhBhdXRob3JpemF0aW9uVXJsEh8KC3Jl",
+            "ZnJlc2hfdXJsGAIgASgJUgpyZWZyZXNoVXJsEkAKBnNjb3BlcxgDIAMoCzIo",
+            "LmxmLmEyYS52MS5JbXBsaWNpdE9BdXRoRmxvdy5TY29wZXNFbnRyeVIGc2Nv",
+            "cGVzGjkKC1Njb3Blc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVl",
+            "GAIgASgJUgV2YWx1ZToCOAEizgEKEVBhc3N3b3JkT0F1dGhGbG93EhsKCXRv",
+            "a2VuX3VybBgBIAEoCVIIdG9rZW5VcmwSHwoLcmVmcmVzaF91cmwYAiABKAlS",
+            "CnJlZnJlc2hVcmwSQAoGc2NvcGVzGAMgAygLMigubGYuYTJhLnYxLlBhc3N3",
+            "b3JkT0F1dGhGbG93LlNjb3Blc0VudHJ5UgZzY29wZXMaOQoLU2NvcGVzRW50",
+            "cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4",
+            "ASKbAgoTRGV2aWNlQ29kZU9BdXRoRmxvdxI9ChhkZXZpY2VfYXV0aG9yaXph",
+            "dGlvbl91cmwYASABKAlCA+BBAlIWZGV2aWNlQXV0aG9yaXphdGlvblVybBIg",
+            "Cgl0b2tlbl91cmwYAiABKAlCA+BBAlIIdG9rZW5VcmwSHwoLcmVmcmVzaF91",
+            "cmwYAyABKAlSCnJlZnJlc2hVcmwSRwoGc2NvcGVzGAQgAygLMioubGYuYTJh",
+            "LnYxLkRldmljZUNvZGVPQXV0aEZsb3cuU2NvcGVzRW50cnlCA+BBAlIGc2Nv",
+            "cGVzGjkKC1Njb3Blc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVl",
+            "GAIgASgJUgV2YWx1ZToCOAEi3wEKElNlbmRNZXNzYWdlUmVxdWVzdBIWCgZ0",
+            "ZW5hbnQYASABKAlSBnRlbmFudBIxCgdtZXNzYWdlGAIgASgLMhIubGYuYTJh",
+            "LnYxLk1lc3NhZ2VCA+BBAlIHbWVzc2FnZRJJCg1jb25maWd1cmF0aW9uGAMg",
+            "ASgLMiMubGYuYTJhLnYxLlNlbmRNZXNzYWdlQ29uZmlndXJhdGlvblINY29u",
+            "ZmlndXJhdGlvbhIzCghtZXRhZGF0YRgEIAEoCzIXLmdvb2dsZS5wcm90b2J1",
+            "Zi5TdHJ1Y3RSCG1ldGFkYXRhInwKDkdldFRhc2tSZXF1ZXN0EhYKBnRlbmFu",
+            "dBgBIAEoCVIGdGVuYW50EhMKAmlkGAIgASgJQgPgQQJSAmlkEioKDmhpc3Rv",
+            "cnlfbGVuZ3RoGAMgASgFSABSDWhpc3RvcnlMZW5ndGiIAQFCEQoPX2hpc3Rv",
+            "cnlfbGVuZ3RoIp8DChBMaXN0VGFza3NSZXF1ZXN0EhYKBnRlbmFudBgBIAEo",
+            "CVIGdGVuYW50Eh0KCmNvbnRleHRfaWQYAiABKAlSCWNvbnRleHRJZBIsCgZz",
+            "dGF0dXMYAyABKA4yFC5sZi5hMmEudjEuVGFza1N0YXRlUgZzdGF0dXMSIAoJ",
+            "cGFnZV9zaXplGAQgASgFSABSCHBhZ2VTaXpliAEBEh0KCnBhZ2VfdG9rZW4Y",
+            "BSABKAlSCXBhZ2VUb2tlbhIqCg5oaXN0b3J5X2xlbmd0aBgGIAEoBUgBUg1o",
+            "aXN0b3J5TGVuZ3RoiAEBElAKFnN0YXR1c190aW1lc3RhbXBfYWZ0ZXIYByAB",
+            "KAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUhRzdGF0dXNUaW1lc3Rh",
+            "bXBBZnRlchIwChFpbmNsdWRlX2FydGlmYWN0cxgIIAEoCEgCUhBpbmNsdWRl",
+            "QXJ0aWZhY3RziAEBQgwKCl9wYWdlX3NpemVCEQoPX2hpc3RvcnlfbGVuZ3Ro",
+            "QhQKEl9pbmNsdWRlX2FydGlmYWN0cyKyAQoRTGlzdFRhc2tzUmVzcG9uc2US",
+            "KgoFdGFza3MYASADKAsyDy5sZi5hMmEudjEuVGFza0ID4EECUgV0YXNrcxIr",
+            "Cg9uZXh0X3BhZ2VfdG9rZW4YAiABKAlCA+BBAlINbmV4dFBhZ2VUb2tlbhIg",
+            "CglwYWdlX3NpemUYAyABKAVCA+BBAlIIcGFnZVNpemUSIgoKdG90YWxfc2l6",
+            "ZRgEIAEoBUID4EECUgl0b3RhbFNpemUidQoRQ2FuY2VsVGFza1JlcXVlc3QS",
+            "FgoGdGVuYW50GAEgASgJUgZ0ZW5hbnQSEwoCaWQYAiABKAlCA+BBAlICaWQS",
+            "MwoIbWV0YWRhdGEYAyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0Ught",
+            "ZXRhZGF0YSJxCiRHZXRUYXNrUHVzaE5vdGlmaWNhdGlvbkNvbmZpZ1JlcXVl",
+            "c3QSFgoGdGVuYW50GAEgASgJUgZ0ZW5hbnQSHAoHdGFza19pZBgCIAEoCUID",
+            "4EECUgZ0YXNrSWQSEwoCaWQYAyABKAlCA+BBAlICaWQidAonRGVsZXRlVGFz",
+            "a1B1c2hOb3RpZmljYXRpb25Db25maWdSZXF1ZXN0EhYKBnRlbmFudBgBIAEo",
+            "CVIGdGVuYW50EhwKB3Rhc2tfaWQYAiABKAlCA+BBAlIGdGFza0lkEhMKAmlk",
+            "GAMgASgJQgPgQQJSAmlkIkUKFlN1YnNjcmliZVRvVGFza1JlcXVlc3QSFgoG",
+            "dGVuYW50GAEgASgJUgZ0ZW5hbnQSEwoCaWQYAiABKAlCA+BBAlICaWQimgEK",
+            "Jkxpc3RUYXNrUHVzaE5vdGlmaWNhdGlvbkNvbmZpZ3NSZXF1ZXN0EhYKBnRl",
+            "bmFudBgEIAEoCVIGdGVuYW50EhwKB3Rhc2tfaWQYASABKAlCA+BBAlIGdGFz",
+            "a0lkEhsKCXBhZ2Vfc2l6ZRgCIAEoBVIIcGFnZVNpemUSHQoKcGFnZV90b2tl",
+            "bhgDIAEoCVIJcGFnZVRva2VuIjUKG0dldEV4dGVuZGVkQWdlbnRDYXJkUmVx",
+            "dWVzdBIWCgZ0ZW5hbnQYASABKAlSBnRlbmFudCJ3ChNTZW5kTWVzc2FnZVJl",
+            "c3BvbnNlEiUKBHRhc2sYASABKAsyDy5sZi5hMmEudjEuVGFza0gAUgR0YXNr",
+            "Ei4KB21lc3NhZ2UYAiABKAsyEi5sZi5hMmEudjEuTWVzc2FnZUgAUgdtZXNz",
+            "YWdlQgkKB3BheWxvYWQiigIKDlN0cmVhbVJlc3BvbnNlEiUKBHRhc2sYASAB",
+            "KAsyDy5sZi5hMmEudjEuVGFza0gAUgR0YXNrEi4KB21lc3NhZ2UYAiABKAsy",
+            "Ei5sZi5hMmEudjEuTWVzc2FnZUgAUgdtZXNzYWdlEkcKDXN0YXR1c191cGRh",
+            "dGUYAyABKAsyIC5sZi5hMmEudjEuVGFza1N0YXR1c1VwZGF0ZUV2ZW50SABS",
+            "DHN0YXR1c1VwZGF0ZRJNCg9hcnRpZmFjdF91cGRhdGUYBCABKAsyIi5sZi5h",
+            "MmEudjEuVGFza0FydGlmYWN0VXBkYXRlRXZlbnRIAFIOYXJ0aWZhY3RVcGRh",
+            "dGVCCQoHcGF5bG9hZCKSAQonTGlzdFRhc2tQdXNoTm90aWZpY2F0aW9uQ29u",
+            "Zmlnc1Jlc3BvbnNlEj8KB2NvbmZpZ3MYASADKAsyJS5sZi5hMmEudjEuVGFz",
+            "a1B1c2hOb3RpZmljYXRpb25Db25maWdSB2NvbmZpZ3MSJgoPbmV4dF9wYWdl",
+            "X3Rva2VuGAIgASgJUg1uZXh0UGFnZVRva2VuKvkBCglUYXNrU3RhdGUSGgoW",
+            "VEFTS19TVEFURV9VTlNQRUNJRklFRBAAEhgKFFRBU0tfU1RBVEVfU1VCTUlU",
+            "VEVEEAESFgoSVEFTS19TVEFURV9XT1JLSU5HEAISGAoUVEFTS19TVEFURV9D",
+            "T01QTEVURUQQAxIVChFUQVNLX1NUQVRFX0ZBSUxFRBAEEhcKE1RBU0tfU1RB",
+            "VEVfQ0FOQ0VMRUQQBRIdChlUQVNLX1NUQVRFX0lOUFVUX1JFUVVJUkVEEAYS",
+            "FwoTVEFTS19TVEFURV9SRUpFQ1RFRBAHEhwKGFRBU0tfU1RBVEVfQVVUSF9S",
+            "RVFVSVJFRBAIKjsKBFJvbGUSFAoQUk9MRV9VTlNQRUNJRklFRBAAEg0KCVJP",
+            "TEVfVVNFUhABEg4KClJPTEVfQUdFTlQQAjKXDwoKQTJBU2VydmljZRKDAQoL",
+            "U2VuZE1lc3NhZ2USHS5sZi5hMmEudjEuU2VuZE1lc3NhZ2VSZXF1ZXN0Gh4u",
+            "bGYuYTJhLnYxLlNlbmRNZXNzYWdlUmVzcG9uc2UiNYLT5JMCLyINL21lc3Nh",
+            "Z2U6c2VuZDoBKlobIhYve3RlbmFudH0vbWVzc2FnZTpzZW5kOgEqEo0BChRT",
+            "ZW5kU3RyZWFtaW5nTWVzc2FnZRIdLmxmLmEyYS52MS5TZW5kTWVzc2FnZVJl",
+            "cXVlc3QaGS5sZi5hMmEudjEuU3RyZWFtUmVzcG9uc2UiOYLT5JMCMyIPL21l",
+            "c3NhZ2U6c3RyZWFtOgEqWh0iGC97dGVuYW50fS9tZXNzYWdlOnN0cmVhbToB",
+            "KjABEmsKB0dldFRhc2sSGS5sZi5hMmEudjEuR2V0VGFza1JlcXVlc3QaDy5s",
+            "Zi5hMmEudjEuVGFzayI02kECaWSC0+STAikSDS90YXNrcy97aWQ9Kn1aGBIW",
+            "L3t0ZW5hbnR9L3Rhc2tzL3tpZD0qfRJpCglMaXN0VGFza3MSGy5sZi5hMmEu",
+            "djEuTGlzdFRhc2tzUmVxdWVzdBocLmxmLmEyYS52MS5MaXN0VGFza3NSZXNw",
+            "b25zZSIhgtPkkwIbEgYvdGFza3NaERIPL3t0ZW5hbnR9L3Rhc2tzEoABCgpD",
+            "YW5jZWxUYXNrEhwubGYuYTJhLnYxLkNhbmNlbFRhc2tSZXF1ZXN0Gg8ubGYu",
+            "YTJhLnYxLlRhc2siQ4LT5JMCPSIUL3Rhc2tzL3tpZD0qfTpjYW5jZWw6ASpa",
+            "IiIdL3t0ZW5hbnR9L3Rhc2tzL3tpZD0qfTpjYW5jZWw6ASoSlgEKD1N1YnNj",
+            "cmliZVRvVGFzaxIhLmxmLmEyYS52MS5TdWJzY3JpYmVUb1Rhc2tSZXF1ZXN0",
+            "GhkubGYuYTJhLnYxLlN0cmVhbVJlc3BvbnNlIkOC0+STAj0SFy90YXNrcy97",
+            "aWQ9Kn06c3Vic2NyaWJlWiISIC97dGVuYW50fS90YXNrcy97aWQ9Kn06c3Vi",
+            "c2NyaWJlMAES8wEKIENyZWF0ZVRhc2tQdXNoTm90aWZpY2F0aW9uQ29uZmln",
+            "EiUubGYuYTJhLnYxLlRhc2tQdXNoTm90aWZpY2F0aW9uQ29uZmlnGiUubGYu",
+            "YTJhLnYxLlRhc2tQdXNoTm90aWZpY2F0aW9uQ29uZmlnIoAB2kEOdGFza19p",
+            "ZCxjb25maWeC0+STAmkiKi90YXNrcy97dGFza19pZD0qfS9wdXNoTm90aWZp",
+            "Y2F0aW9uQ29uZmlnczoBKlo4IjMve3RlbmFudH0vdGFza3Mve3Rhc2tfaWQ9",
+            "Kn0vcHVzaE5vdGlmaWNhdGlvbkNvbmZpZ3M6ASoS/gEKHUdldFRhc2tQdXNo",
+            "Tm90aWZpY2F0aW9uQ29uZmlnEi8ubGYuYTJhLnYxLkdldFRhc2tQdXNoTm90",
+            "aWZpY2F0aW9uQ29uZmlnUmVxdWVzdBolLmxmLmEyYS52MS5UYXNrUHVzaE5v",
+            "dGlmaWNhdGlvbkNvbmZpZyKEAdpBCnRhc2tfaWQsaWSC0+STAnESMS90YXNr",
+            "cy97dGFza19pZD0qfS9wdXNoTm90aWZpY2F0aW9uQ29uZmlncy97aWQ9Kn1a",
+            "PBI6L3t0ZW5hbnR9L3Rhc2tzL3t0YXNrX2lkPSp9L3B1c2hOb3RpZmljYXRp",
+            "b25Db25maWdzL3tpZD0qfRL9AQofTGlzdFRhc2tQdXNoTm90aWZpY2F0aW9u",
+            "Q29uZmlncxIxLmxmLmEyYS52MS5MaXN0VGFza1B1c2hOb3RpZmljYXRpb25D",
+            "b25maWdzUmVxdWVzdBoyLmxmLmEyYS52MS5MaXN0VGFza1B1c2hOb3RpZmlj",
+            "YXRpb25Db25maWdzUmVzcG9uc2Uic9pBB3Rhc2tfaWSC0+STAmMSKi90YXNr",
+            "cy97dGFza19pZD0qfS9wdXNoTm90aWZpY2F0aW9uQ29uZmlnc1o1EjMve3Rl",
+            "bmFudH0vdGFza3Mve3Rhc2tfaWQ9Kn0vcHVzaE5vdGlmaWNhdGlvbkNvbmZp",
+            "Z3MSjwEKFEdldEV4dGVuZGVkQWdlbnRDYXJkEiYubGYuYTJhLnYxLkdldEV4",
+            "dGVuZGVkQWdlbnRDYXJkUmVxdWVzdBoULmxmLmEyYS52MS5BZ2VudENhcmQi",
+            "OYLT5JMCMxISL2V4dGVuZGVkQWdlbnRDYXJkWh0SGy97dGVuYW50fS9leHRl",
+            "bmRlZEFnZW50Q2FyZBL1AQogRGVsZXRlVGFza1B1c2hOb3RpZmljYXRpb25D",
+            "b25maWcSMi5sZi5hMmEudjEuRGVsZXRlVGFza1B1c2hOb3RpZmljYXRpb25D",
+            "b25maWdSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IoQB2kEKdGFz",
+            "a19pZCxpZILT5JMCcSoxL3Rhc2tzL3t0YXNrX2lkPSp9L3B1c2hOb3RpZmlj",
+            "YXRpb25Db25maWdzL3tpZD0qfVo8Kjove3RlbmFudH0vdGFza3Mve3Rhc2tf",
+            "aWQ9Kn0vcHVzaE5vdGlmaWNhdGlvbkNvbmZpZ3Mve2lkPSp9QnwKDWNvbS5s",
+            "Zi5hMmEudjFCCEEyYVByb3RvUAFaG2dvb2dsZS5nb2xhbmcub3JnL2xmL2Ey",
+            "YS92MaICA0xBWKoCCUxmLkEyYS5WMcoCCUxmXEEyYVxWMeICFUxmXEEyYVxW",
+            "MVxHUEJNZXRhZGF0YeoCC0xmOjpBMmE6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::A2a.V1.TaskState), typeof(global::A2a.V1.Role), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.SendMessageConfiguration), global::A2a.V1.SendMessageConfiguration.Parser, new[]{ "AcceptedOutputModes", "PushNotification", "HistoryLength", "Blocking" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.Task), global::A2a.V1.Task.Parser, new[]{ "Id", "ContextId", "Status", "Artifacts", "History", "Metadata" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.TaskStatus), global::A2a.V1.TaskStatus.Parser, new[]{ "State", "Update", "Timestamp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.Part), global::A2a.V1.Part.Parser, new[]{ "Text", "File", "Data", "Metadata" }, new[]{ "Part" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.FilePart), global::A2a.V1.FilePart.Parser, new[]{ "FileWithUri", "FileWithBytes", "MimeType", "Name" }, new[]{ "File" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.DataPart), global::A2a.V1.DataPart.Parser, new[]{ "Data" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.Message), global::A2a.V1.Message.Parser, new[]{ "MessageId", "ContextId", "TaskId", "Role", "Parts", "Metadata", "Extensions", "ReferenceTaskIds" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.Artifact), global::A2a.V1.Artifact.Parser, new[]{ "ArtifactId", "Name", "Description", "Parts", "Metadata", "Extensions" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.TaskStatusUpdateEvent), global::A2a.V1.TaskStatusUpdateEvent.Parser, new[]{ "TaskId", "ContextId", "Status", "Final", "Metadata" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.TaskArtifactUpdateEvent), global::A2a.V1.TaskArtifactUpdateEvent.Parser, new[]{ "TaskId", "ContextId", "Artifact", "Append", "LastChunk", "Metadata" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.PushNotificationConfig), global::A2a.V1.PushNotificationConfig.Parser, new[]{ "Id", "Url", "Token", "Authentication" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AuthenticationInfo), global::A2a.V1.AuthenticationInfo.Parser, new[]{ "Schemes", "Credentials" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentInterface), global::A2a.V1.AgentInterface.Parser, new[]{ "Url", "Transport" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentCard), global::A2a.V1.AgentCard.Parser, new[]{ "ProtocolVersion", "Name", "Description", "Url", "PreferredTransport", "AdditionalInterfaces", "Provider", "Version", "DocumentationUrl", "Capabilities", "SecuritySchemes", "Security", "DefaultInputModes", "DefaultOutputModes", "Skills", "SupportsAuthenticatedExtendedCard", "Signatures", "IconUrl" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentProvider), global::A2a.V1.AgentProvider.Parser, new[]{ "Url", "Organization" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentCapabilities), global::A2a.V1.AgentCapabilities.Parser, new[]{ "Streaming", "PushNotifications", "Extensions", "StateTransitionHistory" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentExtension), global::A2a.V1.AgentExtension.Parser, new[]{ "Uri", "Description", "Required", "Params" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentSkill), global::A2a.V1.AgentSkill.Parser, new[]{ "Id", "Name", "Description", "Tags", "Examples", "InputModes", "OutputModes", "Security" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AgentCardSignature), global::A2a.V1.AgentCardSignature.Parser, new[]{ "Protected", "Signature", "Header" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.TaskPushNotificationConfig), global::A2a.V1.TaskPushNotificationConfig.Parser, new[]{ "Name", "PushNotificationConfig" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.StringList), global::A2a.V1.StringList.Parser, new[]{ "List" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.Security), global::A2a.V1.Security.Parser, new[]{ "Schemes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.SecurityScheme), global::A2a.V1.SecurityScheme.Parser, new[]{ "ApiKeySecurityScheme", "HttpAuthSecurityScheme", "Oauth2SecurityScheme", "OpenIdConnectSecurityScheme", "MtlsSecurityScheme" }, new[]{ "Scheme" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.APIKeySecurityScheme), global::A2a.V1.APIKeySecurityScheme.Parser, new[]{ "Description", "Location", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.HTTPAuthSecurityScheme), global::A2a.V1.HTTPAuthSecurityScheme.Parser, new[]{ "Description", "Scheme", "BearerFormat" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.OAuth2SecurityScheme), global::A2a.V1.OAuth2SecurityScheme.Parser, new[]{ "Description", "Flows", "Oauth2MetadataUrl" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.OpenIdConnectSecurityScheme), global::A2a.V1.OpenIdConnectSecurityScheme.Parser, new[]{ "Description", "OpenIdConnectUrl" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.MutualTlsSecurityScheme), global::A2a.V1.MutualTlsSecurityScheme.Parser, new[]{ "Description" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.OAuthFlows), global::A2a.V1.OAuthFlows.Parser, new[]{ "AuthorizationCode", "ClientCredentials", "Implicit", "Password" }, new[]{ "Flow" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.AuthorizationCodeOAuthFlow), global::A2a.V1.AuthorizationCodeOAuthFlow.Parser, new[]{ "AuthorizationUrl", "TokenUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.ClientCredentialsOAuthFlow), global::A2a.V1.ClientCredentialsOAuthFlow.Parser, new[]{ "TokenUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.ImplicitOAuthFlow), global::A2a.V1.ImplicitOAuthFlow.Parser, new[]{ "AuthorizationUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.PasswordOAuthFlow), global::A2a.V1.PasswordOAuthFlow.Parser, new[]{ "TokenUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.SendMessageRequest), global::A2a.V1.SendMessageRequest.Parser, new[]{ "Request", "Configuration", "Metadata" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.GetTaskRequest), global::A2a.V1.GetTaskRequest.Parser, new[]{ "Name", "HistoryLength" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.ListTasksRequest), global::A2a.V1.ListTasksRequest.Parser, new[]{ "ContextId", "Status", "PageSize", "PageToken", "HistoryLength", "LastUpdatedTime", "IncludeArtifacts" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.ListTasksResponse), global::A2a.V1.ListTasksResponse.Parser, new[]{ "Tasks", "NextPageToken", "TotalSize" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.CancelTaskRequest), global::A2a.V1.CancelTaskRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.GetTaskPushNotificationConfigRequest), global::A2a.V1.GetTaskPushNotificationConfigRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.DeleteTaskPushNotificationConfigRequest), global::A2a.V1.DeleteTaskPushNotificationConfigRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.CreateTaskPushNotificationConfigRequest), global::A2a.V1.CreateTaskPushNotificationConfigRequest.Parser, new[]{ "Parent", "ConfigId", "Config" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.TaskSubscriptionRequest), global::A2a.V1.TaskSubscriptionRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.ListTaskPushNotificationConfigRequest), global::A2a.V1.ListTaskPushNotificationConfigRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.GetAgentCardRequest), global::A2a.V1.GetAgentCardRequest.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.SendMessageResponse), global::A2a.V1.SendMessageResponse.Parser, new[]{ "Task", "Msg" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.StreamResponse), global::A2a.V1.StreamResponse.Parser, new[]{ "Task", "Msg", "StatusUpdate", "ArtifactUpdate" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::A2a.V1.ListTaskPushNotificationConfigResponse), global::A2a.V1.ListTaskPushNotificationConfigResponse.Parser, new[]{ "Configs", "NextPageToken" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lf.A2a.V1.TaskState), typeof(global::Lf.A2a.V1.Role), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.SendMessageConfiguration), global::Lf.A2a.V1.SendMessageConfiguration.Parser, new[]{ "AcceptedOutputModes", "TaskPushNotificationConfig", "HistoryLength", "ReturnImmediately" }, new[]{ "HistoryLength" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.Task), global::Lf.A2a.V1.Task.Parser, new[]{ "Id", "ContextId", "Status", "Artifacts", "History", "Metadata" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.TaskStatus), global::Lf.A2a.V1.TaskStatus.Parser, new[]{ "State", "Message", "Timestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.Part), global::Lf.A2a.V1.Part.Parser, new[]{ "Text", "Raw", "Url", "Data", "Metadata", "Filename", "MediaType" }, new[]{ "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.Message), global::Lf.A2a.V1.Message.Parser, new[]{ "MessageId", "ContextId", "TaskId", "Role", "Parts", "Metadata", "Extensions", "ReferenceTaskIds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.Artifact), global::Lf.A2a.V1.Artifact.Parser, new[]{ "ArtifactId", "Name", "Description", "Parts", "Metadata", "Extensions" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.TaskStatusUpdateEvent), global::Lf.A2a.V1.TaskStatusUpdateEvent.Parser, new[]{ "TaskId", "ContextId", "Status", "Metadata" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.TaskArtifactUpdateEvent), global::Lf.A2a.V1.TaskArtifactUpdateEvent.Parser, new[]{ "TaskId", "ContextId", "Artifact", "Append", "LastChunk", "Metadata" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AuthenticationInfo), global::Lf.A2a.V1.AuthenticationInfo.Parser, new[]{ "Scheme", "Credentials" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentInterface), global::Lf.A2a.V1.AgentInterface.Parser, new[]{ "Url", "ProtocolBinding", "Tenant", "ProtocolVersion" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentCard), global::Lf.A2a.V1.AgentCard.Parser, new[]{ "Name", "Description", "SupportedInterfaces", "Provider", "Version", "DocumentationUrl", "Capabilities", "SecuritySchemes", "SecurityRequirements", "DefaultInputModes", "DefaultOutputModes", "Skills", "Signatures", "IconUrl" }, new[]{ "DocumentationUrl", "IconUrl" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentProvider), global::Lf.A2a.V1.AgentProvider.Parser, new[]{ "Url", "Organization" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentCapabilities), global::Lf.A2a.V1.AgentCapabilities.Parser, new[]{ "Streaming", "PushNotifications", "Extensions", "ExtendedAgentCard" }, new[]{ "Streaming", "PushNotifications", "ExtendedAgentCard" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentExtension), global::Lf.A2a.V1.AgentExtension.Parser, new[]{ "Uri", "Description", "Required", "Params" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentSkill), global::Lf.A2a.V1.AgentSkill.Parser, new[]{ "Id", "Name", "Description", "Tags", "Examples", "InputModes", "OutputModes", "SecurityRequirements" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AgentCardSignature), global::Lf.A2a.V1.AgentCardSignature.Parser, new[]{ "Protected", "Signature", "Header" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.TaskPushNotificationConfig), global::Lf.A2a.V1.TaskPushNotificationConfig.Parser, new[]{ "Tenant", "Id", "TaskId", "Url", "Token", "Authentication" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.StringList), global::Lf.A2a.V1.StringList.Parser, new[]{ "List" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.SecurityRequirement), global::Lf.A2a.V1.SecurityRequirement.Parser, new[]{ "Schemes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.SecurityScheme), global::Lf.A2a.V1.SecurityScheme.Parser, new[]{ "ApiKeySecurityScheme", "HttpAuthSecurityScheme", "Oauth2SecurityScheme", "OpenIdConnectSecurityScheme", "MtlsSecurityScheme" }, new[]{ "Scheme" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.APIKeySecurityScheme), global::Lf.A2a.V1.APIKeySecurityScheme.Parser, new[]{ "Description", "Location", "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.HTTPAuthSecurityScheme), global::Lf.A2a.V1.HTTPAuthSecurityScheme.Parser, new[]{ "Description", "Scheme", "BearerFormat" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.OAuth2SecurityScheme), global::Lf.A2a.V1.OAuth2SecurityScheme.Parser, new[]{ "Description", "Flows", "Oauth2MetadataUrl" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.OpenIdConnectSecurityScheme), global::Lf.A2a.V1.OpenIdConnectSecurityScheme.Parser, new[]{ "Description", "OpenIdConnectUrl" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.MutualTlsSecurityScheme), global::Lf.A2a.V1.MutualTlsSecurityScheme.Parser, new[]{ "Description" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.OAuthFlows), global::Lf.A2a.V1.OAuthFlows.Parser, new[]{ "AuthorizationCode", "ClientCredentials", "Implicit", "Password", "DeviceCode" }, new[]{ "Flow" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.AuthorizationCodeOAuthFlow), global::Lf.A2a.V1.AuthorizationCodeOAuthFlow.Parser, new[]{ "AuthorizationUrl", "TokenUrl", "RefreshUrl", "Scopes", "PkceRequired" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.ClientCredentialsOAuthFlow), global::Lf.A2a.V1.ClientCredentialsOAuthFlow.Parser, new[]{ "TokenUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.ImplicitOAuthFlow), global::Lf.A2a.V1.ImplicitOAuthFlow.Parser, new[]{ "AuthorizationUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.PasswordOAuthFlow), global::Lf.A2a.V1.PasswordOAuthFlow.Parser, new[]{ "TokenUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.DeviceCodeOAuthFlow), global::Lf.A2a.V1.DeviceCodeOAuthFlow.Parser, new[]{ "DeviceAuthorizationUrl", "TokenUrl", "RefreshUrl", "Scopes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.SendMessageRequest), global::Lf.A2a.V1.SendMessageRequest.Parser, new[]{ "Tenant", "Message", "Configuration", "Metadata" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.GetTaskRequest), global::Lf.A2a.V1.GetTaskRequest.Parser, new[]{ "Tenant", "Id", "HistoryLength" }, new[]{ "HistoryLength" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.ListTasksRequest), global::Lf.A2a.V1.ListTasksRequest.Parser, new[]{ "Tenant", "ContextId", "Status", "PageSize", "PageToken", "HistoryLength", "StatusTimestampAfter", "IncludeArtifacts" }, new[]{ "PageSize", "HistoryLength", "IncludeArtifacts" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.ListTasksResponse), global::Lf.A2a.V1.ListTasksResponse.Parser, new[]{ "Tasks", "NextPageToken", "PageSize", "TotalSize" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.CancelTaskRequest), global::Lf.A2a.V1.CancelTaskRequest.Parser, new[]{ "Tenant", "Id", "Metadata" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.GetTaskPushNotificationConfigRequest), global::Lf.A2a.V1.GetTaskPushNotificationConfigRequest.Parser, new[]{ "Tenant", "TaskId", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.DeleteTaskPushNotificationConfigRequest), global::Lf.A2a.V1.DeleteTaskPushNotificationConfigRequest.Parser, new[]{ "Tenant", "TaskId", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.SubscribeToTaskRequest), global::Lf.A2a.V1.SubscribeToTaskRequest.Parser, new[]{ "Tenant", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.ListTaskPushNotificationConfigsRequest), global::Lf.A2a.V1.ListTaskPushNotificationConfigsRequest.Parser, new[]{ "Tenant", "TaskId", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.GetExtendedAgentCardRequest), global::Lf.A2a.V1.GetExtendedAgentCardRequest.Parser, new[]{ "Tenant" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.SendMessageResponse), global::Lf.A2a.V1.SendMessageResponse.Parser, new[]{ "Task", "Message" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.StreamResponse), global::Lf.A2a.V1.StreamResponse.Parser, new[]{ "Task", "Message", "StatusUpdate", "ArtifactUpdate" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lf.A2a.V1.ListTaskPushNotificationConfigsResponse), global::Lf.A2a.V1.ListTaskPushNotificationConfigsResponse.Parser, new[]{ "Configs", "NextPageToken" }, null, null, null, null)
           }));
     }
     #endregion
@@ -314,59 +345,63 @@ namespace A2a.V1 {
   }
   #region Enums
   /// <summary>
-  /// --8&lt;-- [start:TaskState]
-  /// The set of states a Task can be in.
+  /// Defines the possible lifecycle states of a `Task`.
   /// </summary>
   public enum TaskState {
+    /// <summary>
+    /// The task is in an unknown or indeterminate state.
+    /// </summary>
     [pbr::OriginalName("TASK_STATE_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
-    /// Represents the status that acknowledges a task is created
+    /// Indicates that a task has been successfully submitted and acknowledged.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_SUBMITTED")] Submitted = 1,
     /// <summary>
-    /// Represents the status that a task is actively being processed
+    /// Indicates that a task is actively being processed by the agent.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_WORKING")] Working = 2,
     /// <summary>
-    /// Represents the status a task is finished. This is a terminal state
+    /// Indicates that a task has finished successfully. This is a terminal state.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_COMPLETED")] Completed = 3,
     /// <summary>
-    /// Represents the status a task is done but failed. This is a terminal state
+    /// Indicates that a task has finished with an error. This is a terminal state.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_FAILED")] Failed = 4,
     /// <summary>
-    /// Represents the status a task was cancelled before it finished.
-    /// This is a terminal state.
+    /// Indicates that a task was canceled before completion. This is a terminal state.
     /// </summary>
-    [pbr::OriginalName("TASK_STATE_CANCELLED")] Cancelled = 5,
+    [pbr::OriginalName("TASK_STATE_CANCELED")] Canceled = 5,
     /// <summary>
-    /// Represents the status that the task requires information to complete.
-    /// This is an interrupted state.
+    /// Indicates that the agent requires additional user input to proceed. This is an interrupted state.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_INPUT_REQUIRED")] InputRequired = 6,
     /// <summary>
-    /// Represents the status that the agent has decided to not perform the task.
+    /// Indicates that the agent has decided to not perform the task.
     /// This may be done during initial task creation or later once an agent
     /// has determined it can't or won't proceed. This is a terminal state.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_REJECTED")] Rejected = 7,
     /// <summary>
-    /// Represents the state that some authentication is needed from the upstream
-    /// client. Authentication is expected to come out-of-band thus this is not
-    /// an interrupted or terminal state.
+    /// Indicates that authentication is required to proceed. This is an interrupted state.
     /// </summary>
     [pbr::OriginalName("TASK_STATE_AUTH_REQUIRED")] AuthRequired = 8,
   }
 
+  /// <summary>
+  /// Defines the sender of a message in A2A protocol communication.
+  /// </summary>
   public enum Role {
+    /// <summary>
+    /// The role is unspecified.
+    /// </summary>
     [pbr::OriginalName("ROLE_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
-    /// USER role refers to communication from the client to the server.
+    /// The message is from the client to the server.
     /// </summary>
     [pbr::OriginalName("ROLE_USER")] User = 1,
     /// <summary>
-    /// AGENT role refers to communication from the server to the client.
+    /// The message is from the server to the client.
     /// </summary>
     [pbr::OriginalName("ROLE_AGENT")] Agent = 2,
   }
@@ -375,7 +410,6 @@ namespace A2a.V1 {
 
   #region Messages
   /// <summary>
-  /// --8&lt;-- [start:MessageSendConfiguration]
   /// Configuration of a send message request.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -386,6 +420,7 @@ namespace A2a.V1 {
   {
     private static readonly pb::MessageParser<SendMessageConfiguration> _parser = new pb::MessageParser<SendMessageConfiguration>(() => new SendMessageConfiguration());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<SendMessageConfiguration> Parser { get { return _parser; } }
@@ -393,7 +428,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -413,10 +448,11 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SendMessageConfiguration(SendMessageConfiguration other) : this() {
+      _hasBits0 = other._hasBits0;
       acceptedOutputModes_ = other.acceptedOutputModes_.Clone();
-      pushNotification_ = other.pushNotification_ != null ? other.pushNotification_.Clone() : null;
+      taskPushNotificationConfig_ = other.taskPushNotificationConfig_ != null ? other.taskPushNotificationConfig_.Clone() : null;
       historyLength_ = other.historyLength_;
-      blocking_ = other.blocking_;
+      returnImmediately_ = other.returnImmediately_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -432,7 +468,8 @@ namespace A2a.V1 {
         = pb::FieldCodec.ForString(10);
     private readonly pbc::RepeatedField<string> acceptedOutputModes_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// The output modes that the agent is expected to respond with.
+    /// A list of media types the client is prepared to accept for response parts.
+    /// Agents SHOULD use this to tailor their output.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -440,52 +477,71 @@ namespace A2a.V1 {
       get { return acceptedOutputModes_; }
     }
 
-    /// <summary>Field number for the "push_notification" field.</summary>
-    public const int PushNotificationFieldNumber = 2;
-    private global::A2a.V1.PushNotificationConfig pushNotification_;
+    /// <summary>Field number for the "task_push_notification_config" field.</summary>
+    public const int TaskPushNotificationConfigFieldNumber = 2;
+    private global::Lf.A2a.V1.TaskPushNotificationConfig taskPushNotificationConfig_;
     /// <summary>
-    /// A configuration of a webhook that can be used to receive updates
+    /// Configuration for the agent to send push notifications for task updates.
+    /// Task id should be empty when sending this configuration in a `SendMessage` request.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.PushNotificationConfig PushNotification {
-      get { return pushNotification_; }
+    public global::Lf.A2a.V1.TaskPushNotificationConfig TaskPushNotificationConfig {
+      get { return taskPushNotificationConfig_; }
       set {
-        pushNotification_ = value;
+        taskPushNotificationConfig_ = value;
       }
     }
 
     /// <summary>Field number for the "history_length" field.</summary>
     public const int HistoryLengthFieldNumber = 3;
+    private readonly static int HistoryLengthDefaultValue = 0;
+
     private int historyLength_;
     /// <summary>
-    /// The maximum number of messages to include in the history. if 0, the
-    /// history will be unlimited.
+    /// The maximum number of most recent messages from the task's history to retrieve in
+    /// the response. An unset value means the client does not impose any limit. A
+    /// value of zero is a request to not include any messages. The server MUST NOT
+    /// return more messages than the provided value, but MAY apply a lower limit.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int HistoryLength {
-      get { return historyLength_; }
+      get { if ((_hasBits0 & 1) != 0) { return historyLength_; } else { return HistoryLengthDefaultValue; } }
       set {
+        _hasBits0 |= 1;
         historyLength_ = value;
       }
     }
+    /// <summary>Gets whether the "history_length" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasHistoryLength {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "history_length" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearHistoryLength() {
+      _hasBits0 &= ~1;
+    }
 
-    /// <summary>Field number for the "blocking" field.</summary>
-    public const int BlockingFieldNumber = 4;
-    private bool blocking_;
+    /// <summary>Field number for the "return_immediately" field.</summary>
+    public const int ReturnImmediatelyFieldNumber = 4;
+    private bool returnImmediately_;
     /// <summary>
-    /// If true, the message will be blocking until the task is completed. If
-    /// false, the message will be non-blocking and the task will be returned
-    /// immediately. It is the caller's responsibility to check for any task
-    /// updates.
+    /// If `true`, the operation returns immediately after creating the task,
+    /// even if processing is still in progress.
+    /// If `false` (default), the operation MUST wait until the task reaches a
+    /// terminal (`COMPLETED`, `FAILED`, `CANCELED`, `REJECTED`) or interrupted
+    /// (`INPUT_REQUIRED`, `AUTH_REQUIRED`) state before returning.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Blocking {
-      get { return blocking_; }
+    public bool ReturnImmediately {
+      get { return returnImmediately_; }
       set {
-        blocking_ = value;
+        returnImmediately_ = value;
       }
     }
 
@@ -505,9 +561,9 @@ namespace A2a.V1 {
         return true;
       }
       if(!acceptedOutputModes_.Equals(other.acceptedOutputModes_)) return false;
-      if (!object.Equals(PushNotification, other.PushNotification)) return false;
+      if (!object.Equals(TaskPushNotificationConfig, other.TaskPushNotificationConfig)) return false;
       if (HistoryLength != other.HistoryLength) return false;
-      if (Blocking != other.Blocking) return false;
+      if (ReturnImmediately != other.ReturnImmediately) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -516,9 +572,9 @@ namespace A2a.V1 {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= acceptedOutputModes_.GetHashCode();
-      if (pushNotification_ != null) hash ^= PushNotification.GetHashCode();
-      if (HistoryLength != 0) hash ^= HistoryLength.GetHashCode();
-      if (Blocking != false) hash ^= Blocking.GetHashCode();
+      if (taskPushNotificationConfig_ != null) hash ^= TaskPushNotificationConfig.GetHashCode();
+      if (HasHistoryLength) hash ^= HistoryLength.GetHashCode();
+      if (ReturnImmediately != false) hash ^= ReturnImmediately.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -538,17 +594,17 @@ namespace A2a.V1 {
       output.WriteRawMessage(this);
     #else
       acceptedOutputModes_.WriteTo(output, _repeated_acceptedOutputModes_codec);
-      if (pushNotification_ != null) {
+      if (taskPushNotificationConfig_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(PushNotification);
+        output.WriteMessage(TaskPushNotificationConfig);
       }
-      if (HistoryLength != 0) {
+      if (HasHistoryLength) {
         output.WriteRawTag(24);
         output.WriteInt32(HistoryLength);
       }
-      if (Blocking != false) {
+      if (ReturnImmediately != false) {
         output.WriteRawTag(32);
-        output.WriteBool(Blocking);
+        output.WriteBool(ReturnImmediately);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -561,17 +617,17 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       acceptedOutputModes_.WriteTo(ref output, _repeated_acceptedOutputModes_codec);
-      if (pushNotification_ != null) {
+      if (taskPushNotificationConfig_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(PushNotification);
+        output.WriteMessage(TaskPushNotificationConfig);
       }
-      if (HistoryLength != 0) {
+      if (HasHistoryLength) {
         output.WriteRawTag(24);
         output.WriteInt32(HistoryLength);
       }
-      if (Blocking != false) {
+      if (ReturnImmediately != false) {
         output.WriteRawTag(32);
-        output.WriteBool(Blocking);
+        output.WriteBool(ReturnImmediately);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -584,13 +640,13 @@ namespace A2a.V1 {
     public int CalculateSize() {
       int size = 0;
       size += acceptedOutputModes_.CalculateSize(_repeated_acceptedOutputModes_codec);
-      if (pushNotification_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PushNotification);
+      if (taskPushNotificationConfig_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TaskPushNotificationConfig);
       }
-      if (HistoryLength != 0) {
+      if (HasHistoryLength) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(HistoryLength);
       }
-      if (Blocking != false) {
+      if (ReturnImmediately != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -606,17 +662,17 @@ namespace A2a.V1 {
         return;
       }
       acceptedOutputModes_.Add(other.acceptedOutputModes_);
-      if (other.pushNotification_ != null) {
-        if (pushNotification_ == null) {
-          PushNotification = new global::A2a.V1.PushNotificationConfig();
+      if (other.taskPushNotificationConfig_ != null) {
+        if (taskPushNotificationConfig_ == null) {
+          TaskPushNotificationConfig = new global::Lf.A2a.V1.TaskPushNotificationConfig();
         }
-        PushNotification.MergeFrom(other.PushNotification);
+        TaskPushNotificationConfig.MergeFrom(other.TaskPushNotificationConfig);
       }
-      if (other.HistoryLength != 0) {
+      if (other.HasHistoryLength) {
         HistoryLength = other.HistoryLength;
       }
-      if (other.Blocking != false) {
-        Blocking = other.Blocking;
+      if (other.ReturnImmediately != false) {
+        ReturnImmediately = other.ReturnImmediately;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -642,10 +698,10 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            if (pushNotification_ == null) {
-              PushNotification = new global::A2a.V1.PushNotificationConfig();
+            if (taskPushNotificationConfig_ == null) {
+              TaskPushNotificationConfig = new global::Lf.A2a.V1.TaskPushNotificationConfig();
             }
-            input.ReadMessage(PushNotification);
+            input.ReadMessage(TaskPushNotificationConfig);
             break;
           }
           case 24: {
@@ -653,7 +709,7 @@ namespace A2a.V1 {
             break;
           }
           case 32: {
-            Blocking = input.ReadBool();
+            ReturnImmediately = input.ReadBool();
             break;
           }
         }
@@ -680,10 +736,10 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            if (pushNotification_ == null) {
-              PushNotification = new global::A2a.V1.PushNotificationConfig();
+            if (taskPushNotificationConfig_ == null) {
+              TaskPushNotificationConfig = new global::Lf.A2a.V1.TaskPushNotificationConfig();
             }
-            input.ReadMessage(PushNotification);
+            input.ReadMessage(TaskPushNotificationConfig);
             break;
           }
           case 24: {
@@ -691,7 +747,7 @@ namespace A2a.V1 {
             break;
           }
           case 32: {
-            Blocking = input.ReadBool();
+            ReturnImmediately = input.ReadBool();
             break;
           }
         }
@@ -702,8 +758,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:Task]
-  /// Task is the core unit of action for A2A. It has a current status
+  /// `Task` is the core unit of action for A2A. It has a current status
   /// and when results are created for the task they are stored in the
   /// artifact. If there are multiple turns for a task, these are stored in
   /// history.
@@ -723,7 +778,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -779,7 +834,7 @@ namespace A2a.V1 {
     private string contextId_ = "";
     /// <summary>
     /// Unique identifier (e.g. UUID) for the contextual collection of interactions
-    /// (tasks and messages). Created by the A2A server.
+    /// (tasks and messages).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -792,13 +847,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 3;
-    private global::A2a.V1.TaskStatus status_;
+    private global::Lf.A2a.V1.TaskStatus status_;
     /// <summary>
-    /// The current status of a Task, including state and a message.
+    /// The current status of a `Task`, including `state` and a `message`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskStatus Status {
+    public global::Lf.A2a.V1.TaskStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -807,30 +862,30 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "artifacts" field.</summary>
     public const int ArtifactsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::A2a.V1.Artifact> _repeated_artifacts_codec
-        = pb::FieldCodec.ForMessage(34, global::A2a.V1.Artifact.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Artifact> artifacts_ = new pbc::RepeatedField<global::A2a.V1.Artifact>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.Artifact> _repeated_artifacts_codec
+        = pb::FieldCodec.ForMessage(34, global::Lf.A2a.V1.Artifact.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.Artifact> artifacts_ = new pbc::RepeatedField<global::Lf.A2a.V1.Artifact>();
     /// <summary>
-    /// A set of output artifacts for a Task.
+    /// A set of output artifacts for a `Task`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Artifact> Artifacts {
+    public pbc::RepeatedField<global::Lf.A2a.V1.Artifact> Artifacts {
       get { return artifacts_; }
     }
 
     /// <summary>Field number for the "history" field.</summary>
     public const int HistoryFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::A2a.V1.Message> _repeated_history_codec
-        = pb::FieldCodec.ForMessage(42, global::A2a.V1.Message.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Message> history_ = new pbc::RepeatedField<global::A2a.V1.Message>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.Message> _repeated_history_codec
+        = pb::FieldCodec.ForMessage(42, global::Lf.A2a.V1.Message.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.Message> history_ = new pbc::RepeatedField<global::Lf.A2a.V1.Message>();
     /// <summary>
     /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
-    /// The history of interactions from a task.
+    /// The history of interactions from a `Task`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Message> History {
+    public pbc::RepeatedField<global::Lf.A2a.V1.Message> History {
       get { return history_; }
     }
 
@@ -992,7 +1047,7 @@ namespace A2a.V1 {
       }
       if (other.status_ != null) {
         if (status_ == null) {
-          Status = new global::A2a.V1.TaskStatus();
+          Status = new global::Lf.A2a.V1.TaskStatus();
         }
         Status.MergeFrom(other.Status);
       }
@@ -1033,7 +1088,7 @@ namespace A2a.V1 {
           }
           case 26: {
             if (status_ == null) {
-              Status = new global::A2a.V1.TaskStatus();
+              Status = new global::Lf.A2a.V1.TaskStatus();
             }
             input.ReadMessage(Status);
             break;
@@ -1082,7 +1137,7 @@ namespace A2a.V1 {
           }
           case 26: {
             if (status_ == null) {
-              Status = new global::A2a.V1.TaskStatus();
+              Status = new global::Lf.A2a.V1.TaskStatus();
             }
             input.ReadMessage(Status);
             break;
@@ -1110,7 +1165,6 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:TaskStatus]
   /// A container for the status of a task
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -1128,7 +1182,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1149,7 +1203,7 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TaskStatus(TaskStatus other) : this() {
       state_ = other.state_;
-      update_ = other.update_ != null ? other.update_.Clone() : null;
+      message_ = other.message_ != null ? other.message_.Clone() : null;
       timestamp_ = other.timestamp_ != null ? other.timestamp_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1162,31 +1216,31 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 1;
-    private global::A2a.V1.TaskState state_ = global::A2a.V1.TaskState.Unspecified;
+    private global::Lf.A2a.V1.TaskState state_ = global::Lf.A2a.V1.TaskState.Unspecified;
     /// <summary>
-    /// The current state of this task
+    /// The current state of this task.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskState State {
+    public global::Lf.A2a.V1.TaskState State {
       get { return state_; }
       set {
         state_ = value;
       }
     }
 
-    /// <summary>Field number for the "update" field.</summary>
-    public const int UpdateFieldNumber = 2;
-    private global::A2a.V1.Message update_;
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private global::Lf.A2a.V1.Message message_;
     /// <summary>
     /// A message associated with the status.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Message Update {
-      get { return update_; }
+    public global::Lf.A2a.V1.Message Message {
+      get { return message_; }
       set {
-        update_ = value;
+        message_ = value;
       }
     }
 
@@ -1194,7 +1248,7 @@ namespace A2a.V1 {
     public const int TimestampFieldNumber = 3;
     private global::Google.Protobuf.WellKnownTypes.Timestamp timestamp_;
     /// <summary>
-    /// Timestamp when the status was recorded.
+    /// ISO 8601 Timestamp when the status was recorded.
     /// Example: "2023-10-27T10:00:00Z"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1222,7 +1276,7 @@ namespace A2a.V1 {
         return true;
       }
       if (State != other.State) return false;
-      if (!object.Equals(Update, other.Update)) return false;
+      if (!object.Equals(Message, other.Message)) return false;
       if (!object.Equals(Timestamp, other.Timestamp)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1231,8 +1285,8 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (State != global::A2a.V1.TaskState.Unspecified) hash ^= State.GetHashCode();
-      if (update_ != null) hash ^= Update.GetHashCode();
+      if (State != global::Lf.A2a.V1.TaskState.Unspecified) hash ^= State.GetHashCode();
+      if (message_ != null) hash ^= Message.GetHashCode();
       if (timestamp_ != null) hash ^= Timestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1252,13 +1306,13 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (State != global::A2a.V1.TaskState.Unspecified) {
+      if (State != global::Lf.A2a.V1.TaskState.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) State);
       }
-      if (update_ != null) {
+      if (message_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(Update);
+        output.WriteMessage(Message);
       }
       if (timestamp_ != null) {
         output.WriteRawTag(26);
@@ -1274,13 +1328,13 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (State != global::A2a.V1.TaskState.Unspecified) {
+      if (State != global::Lf.A2a.V1.TaskState.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) State);
       }
-      if (update_ != null) {
+      if (message_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(Update);
+        output.WriteMessage(Message);
       }
       if (timestamp_ != null) {
         output.WriteRawTag(26);
@@ -1296,11 +1350,11 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (State != global::A2a.V1.TaskState.Unspecified) {
+      if (State != global::Lf.A2a.V1.TaskState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
-      if (update_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Update);
+      if (message_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Message);
       }
       if (timestamp_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Timestamp);
@@ -1317,14 +1371,14 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.State != global::A2a.V1.TaskState.Unspecified) {
+      if (other.State != global::Lf.A2a.V1.TaskState.Unspecified) {
         State = other.State;
       }
-      if (other.update_ != null) {
-        if (update_ == null) {
-          Update = new global::A2a.V1.Message();
+      if (other.message_ != null) {
+        if (message_ == null) {
+          Message = new global::Lf.A2a.V1.Message();
         }
-        Update.MergeFrom(other.Update);
+        Message.MergeFrom(other.Message);
       }
       if (other.timestamp_ != null) {
         if (timestamp_ == null) {
@@ -1352,14 +1406,14 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            State = (global::A2a.V1.TaskState) input.ReadEnum();
+            State = (global::Lf.A2a.V1.TaskState) input.ReadEnum();
             break;
           }
           case 18: {
-            if (update_ == null) {
-              Update = new global::A2a.V1.Message();
+            if (message_ == null) {
+              Message = new global::Lf.A2a.V1.Message();
             }
-            input.ReadMessage(Update);
+            input.ReadMessage(Message);
             break;
           }
           case 26: {
@@ -1389,14 +1443,14 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            State = (global::A2a.V1.TaskState) input.ReadEnum();
+            State = (global::Lf.A2a.V1.TaskState) input.ReadEnum();
             break;
           }
           case 18: {
-            if (update_ == null) {
-              Update = new global::A2a.V1.Message();
+            if (message_ == null) {
+              Message = new global::Lf.A2a.V1.Message();
             }
-            input.ReadMessage(Update);
+            input.ReadMessage(Message);
             break;
           }
           case 26: {
@@ -1414,8 +1468,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:Part]
-  /// Part represents a container for a section of communication content.
+  /// `Part` represents a container for a section of communication content.
   /// Parts can be purely textual, some sort of file (image, video, etc) or
   /// a structured data blob (i.e. JSON).
   /// </summary>
@@ -1434,7 +1487,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1455,14 +1508,19 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Part(Part other) : this() {
       metadata_ = other.metadata_ != null ? other.metadata_.Clone() : null;
-      switch (other.PartCase) {
-        case PartOneofCase.Text:
+      filename_ = other.filename_;
+      mediaType_ = other.mediaType_;
+      switch (other.ContentCase) {
+        case ContentOneofCase.Text:
           Text = other.Text;
           break;
-        case PartOneofCase.File:
-          File = other.File.Clone();
+        case ContentOneofCase.Raw:
+          Raw = other.Raw;
           break;
-        case PartOneofCase.Data:
+        case ContentOneofCase.Url:
+          Url = other.Url;
+          break;
+        case ContentOneofCase.Data:
           Data = other.Data.Clone();
           break;
       }
@@ -1478,59 +1536,111 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "text" field.</summary>
     public const int TextFieldNumber = 1;
+    /// <summary>
+    /// The string content of the `text` part.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Text {
-      get { return HasText ? (string) part_ : ""; }
+      get { return HasText ? (string) content_ : ""; }
       set {
-        part_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        partCase_ = PartOneofCase.Text;
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        contentCase_ = ContentOneofCase.Text;
       }
     }
     /// <summary>Gets whether the "text" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasText {
-      get { return partCase_ == PartOneofCase.Text; }
+      get { return contentCase_ == ContentOneofCase.Text; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "text" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearText() {
       if (HasText) {
-        ClearPart();
+        ClearContent();
       }
     }
 
-    /// <summary>Field number for the "file" field.</summary>
-    public const int FileFieldNumber = 2;
+    /// <summary>Field number for the "raw" field.</summary>
+    public const int RawFieldNumber = 2;
+    /// <summary>
+    /// The `raw` byte content of a file. In JSON serialization, this is encoded as a base64 string.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.FilePart File {
-      get { return partCase_ == PartOneofCase.File ? (global::A2a.V1.FilePart) part_ : null; }
+    public pb::ByteString Raw {
+      get { return HasRaw ? (pb::ByteString) content_ : pb::ByteString.Empty; }
       set {
-        part_ = value;
-        partCase_ = value == null ? PartOneofCase.None : PartOneofCase.File;
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        contentCase_ = ContentOneofCase.Raw;
+      }
+    }
+    /// <summary>Gets whether the "raw" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasRaw {
+      get { return contentCase_ == ContentOneofCase.Raw; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "raw" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearRaw() {
+      if (HasRaw) {
+        ClearContent();
+      }
+    }
+
+    /// <summary>Field number for the "url" field.</summary>
+    public const int UrlFieldNumber = 3;
+    /// <summary>
+    /// A `url` pointing to the file's content.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Url {
+      get { return HasUrl ? (string) content_ : ""; }
+      set {
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        contentCase_ = ContentOneofCase.Url;
+      }
+    }
+    /// <summary>Gets whether the "url" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasUrl {
+      get { return contentCase_ == ContentOneofCase.Url; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "url" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearUrl() {
+      if (HasUrl) {
+        ClearContent();
       }
     }
 
     /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 3;
+    public const int DataFieldNumber = 4;
+    /// <summary>
+    /// Arbitrary structured `data` as a JSON value (object, array, string, number, boolean, or null).
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.DataPart Data {
-      get { return partCase_ == PartOneofCase.Data ? (global::A2a.V1.DataPart) part_ : null; }
+    public global::Google.Protobuf.WellKnownTypes.Value Data {
+      get { return contentCase_ == ContentOneofCase.Data ? (global::Google.Protobuf.WellKnownTypes.Value) content_ : null; }
       set {
-        part_ = value;
-        partCase_ = value == null ? PartOneofCase.None : PartOneofCase.Data;
+        content_ = value;
+        contentCase_ = value == null ? ContentOneofCase.None : ContentOneofCase.Data;
       }
     }
 
     /// <summary>Field number for the "metadata" field.</summary>
-    public const int MetadataFieldNumber = 4;
+    public const int MetadataFieldNumber = 5;
     private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
     /// <summary>
-    /// Optional metadata associated with this part.
+    /// Optional. metadata associated with this part.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1541,26 +1651,58 @@ namespace A2a.V1 {
       }
     }
 
-    private object part_;
-    /// <summary>Enum of possible cases for the "part" oneof.</summary>
-    public enum PartOneofCase {
-      None = 0,
-      Text = 1,
-      File = 2,
-      Data = 3,
-    }
-    private PartOneofCase partCase_ = PartOneofCase.None;
+    /// <summary>Field number for the "filename" field.</summary>
+    public const int FilenameFieldNumber = 6;
+    private string filename_ = "";
+    /// <summary>
+    /// An optional `filename` for the file (e.g., "document.pdf").
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public PartOneofCase PartCase {
-      get { return partCase_; }
+    public string Filename {
+      get { return filename_; }
+      set {
+        filename_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "media_type" field.</summary>
+    public const int MediaTypeFieldNumber = 7;
+    private string mediaType_ = "";
+    /// <summary>
+    /// The `media_type` (MIME type) of the part content (e.g., "text/plain", "application/json", "image/png").
+    /// This field is available for all part types.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string MediaType {
+      get { return mediaType_; }
+      set {
+        mediaType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private object content_;
+    /// <summary>Enum of possible cases for the "content" oneof.</summary>
+    public enum ContentOneofCase {
+      None = 0,
+      Text = 1,
+      Raw = 2,
+      Url = 3,
+      Data = 4,
+    }
+    private ContentOneofCase contentCase_ = ContentOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ContentOneofCase ContentCase {
+      get { return contentCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearPart() {
-      partCase_ = PartOneofCase.None;
-      part_ = null;
+    public void ClearContent() {
+      contentCase_ = ContentOneofCase.None;
+      content_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1579,10 +1721,13 @@ namespace A2a.V1 {
         return true;
       }
       if (Text != other.Text) return false;
-      if (!object.Equals(File, other.File)) return false;
+      if (Raw != other.Raw) return false;
+      if (Url != other.Url) return false;
       if (!object.Equals(Data, other.Data)) return false;
       if (!object.Equals(Metadata, other.Metadata)) return false;
-      if (PartCase != other.PartCase) return false;
+      if (Filename != other.Filename) return false;
+      if (MediaType != other.MediaType) return false;
+      if (ContentCase != other.ContentCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1591,10 +1736,13 @@ namespace A2a.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (HasText) hash ^= Text.GetHashCode();
-      if (partCase_ == PartOneofCase.File) hash ^= File.GetHashCode();
-      if (partCase_ == PartOneofCase.Data) hash ^= Data.GetHashCode();
+      if (HasRaw) hash ^= Raw.GetHashCode();
+      if (HasUrl) hash ^= Url.GetHashCode();
+      if (contentCase_ == ContentOneofCase.Data) hash ^= Data.GetHashCode();
       if (metadata_ != null) hash ^= Metadata.GetHashCode();
-      hash ^= (int) partCase_;
+      if (Filename.Length != 0) hash ^= Filename.GetHashCode();
+      if (MediaType.Length != 0) hash ^= MediaType.GetHashCode();
+      hash ^= (int) contentCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1617,17 +1765,29 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteString(Text);
       }
-      if (partCase_ == PartOneofCase.File) {
+      if (HasRaw) {
         output.WriteRawTag(18);
-        output.WriteMessage(File);
+        output.WriteBytes(Raw);
       }
-      if (partCase_ == PartOneofCase.Data) {
+      if (HasUrl) {
         output.WriteRawTag(26);
+        output.WriteString(Url);
+      }
+      if (contentCase_ == ContentOneofCase.Data) {
+        output.WriteRawTag(34);
         output.WriteMessage(Data);
       }
       if (metadata_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(Metadata);
+      }
+      if (Filename.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Filename);
+      }
+      if (MediaType.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(MediaType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1643,17 +1803,29 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteString(Text);
       }
-      if (partCase_ == PartOneofCase.File) {
+      if (HasRaw) {
         output.WriteRawTag(18);
-        output.WriteMessage(File);
+        output.WriteBytes(Raw);
       }
-      if (partCase_ == PartOneofCase.Data) {
+      if (HasUrl) {
         output.WriteRawTag(26);
+        output.WriteString(Url);
+      }
+      if (contentCase_ == ContentOneofCase.Data) {
+        output.WriteRawTag(34);
         output.WriteMessage(Data);
       }
       if (metadata_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(Metadata);
+      }
+      if (Filename.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Filename);
+      }
+      if (MediaType.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(MediaType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1668,14 +1840,23 @@ namespace A2a.V1 {
       if (HasText) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
       }
-      if (partCase_ == PartOneofCase.File) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(File);
+      if (HasRaw) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Raw);
       }
-      if (partCase_ == PartOneofCase.Data) {
+      if (HasUrl) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
+      }
+      if (contentCase_ == ContentOneofCase.Data) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
       }
       if (metadata_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Metadata);
+      }
+      if (Filename.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Filename);
+      }
+      if (MediaType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MediaType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1695,19 +1876,25 @@ namespace A2a.V1 {
         }
         Metadata.MergeFrom(other.Metadata);
       }
-      switch (other.PartCase) {
-        case PartOneofCase.Text:
+      if (other.Filename.Length != 0) {
+        Filename = other.Filename;
+      }
+      if (other.MediaType.Length != 0) {
+        MediaType = other.MediaType;
+      }
+      switch (other.ContentCase) {
+        case ContentOneofCase.Text:
           Text = other.Text;
           break;
-        case PartOneofCase.File:
-          if (File == null) {
-            File = new global::A2a.V1.FilePart();
-          }
-          File.MergeFrom(other.File);
+        case ContentOneofCase.Raw:
+          Raw = other.Raw;
           break;
-        case PartOneofCase.Data:
+        case ContentOneofCase.Url:
+          Url = other.Url;
+          break;
+        case ContentOneofCase.Data:
           if (Data == null) {
-            Data = new global::A2a.V1.DataPart();
+            Data = new global::Google.Protobuf.WellKnownTypes.Value();
           }
           Data.MergeFrom(other.Data);
           break;
@@ -1737,28 +1924,35 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.FilePart subBuilder = new global::A2a.V1.FilePart();
-            if (partCase_ == PartOneofCase.File) {
-              subBuilder.MergeFrom(File);
-            }
-            input.ReadMessage(subBuilder);
-            File = subBuilder;
+            Raw = input.ReadBytes();
             break;
           }
           case 26: {
-            global::A2a.V1.DataPart subBuilder = new global::A2a.V1.DataPart();
-            if (partCase_ == PartOneofCase.Data) {
+            Url = input.ReadString();
+            break;
+          }
+          case 34: {
+            global::Google.Protobuf.WellKnownTypes.Value subBuilder = new global::Google.Protobuf.WellKnownTypes.Value();
+            if (contentCase_ == ContentOneofCase.Data) {
               subBuilder.MergeFrom(Data);
             }
             input.ReadMessage(subBuilder);
             Data = subBuilder;
             break;
           }
-          case 34: {
+          case 42: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
             input.ReadMessage(Metadata);
+            break;
+          }
+          case 50: {
+            Filename = input.ReadString();
+            break;
+          }
+          case 58: {
+            MediaType = input.ReadString();
             break;
           }
         }
@@ -1785,405 +1979,35 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.FilePart subBuilder = new global::A2a.V1.FilePart();
-            if (partCase_ == PartOneofCase.File) {
-              subBuilder.MergeFrom(File);
-            }
-            input.ReadMessage(subBuilder);
-            File = subBuilder;
+            Raw = input.ReadBytes();
             break;
           }
           case 26: {
-            global::A2a.V1.DataPart subBuilder = new global::A2a.V1.DataPart();
-            if (partCase_ == PartOneofCase.Data) {
+            Url = input.ReadString();
+            break;
+          }
+          case 34: {
+            global::Google.Protobuf.WellKnownTypes.Value subBuilder = new global::Google.Protobuf.WellKnownTypes.Value();
+            if (contentCase_ == ContentOneofCase.Data) {
               subBuilder.MergeFrom(Data);
             }
             input.ReadMessage(subBuilder);
             Data = subBuilder;
             break;
           }
-          case 34: {
+          case 42: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
             input.ReadMessage(Metadata);
             break;
           }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
-  /// --8&lt;-- [start:FilePart]
-  /// FilePart represents the different ways files can be provided. If files are
-  /// small, directly feeding the bytes is supported via file_with_bytes. If the
-  /// file is large, the agent should read the content as appropriate directly
-  /// from the file_with_uri source.
-  /// </summary>
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class FilePart : pb::IMessage<FilePart>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<FilePart> _parser = new pb::MessageParser<FilePart>(() => new FilePart());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<FilePart> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FilePart() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FilePart(FilePart other) : this() {
-      mimeType_ = other.mimeType_;
-      name_ = other.name_;
-      switch (other.FileCase) {
-        case FileOneofCase.FileWithUri:
-          FileWithUri = other.FileWithUri;
-          break;
-        case FileOneofCase.FileWithBytes:
-          FileWithBytes = other.FileWithBytes;
-          break;
-      }
-
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FilePart Clone() {
-      return new FilePart(this);
-    }
-
-    /// <summary>Field number for the "file_with_uri" field.</summary>
-    public const int FileWithUriFieldNumber = 1;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string FileWithUri {
-      get { return HasFileWithUri ? (string) file_ : ""; }
-      set {
-        file_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        fileCase_ = FileOneofCase.FileWithUri;
-      }
-    }
-    /// <summary>Gets whether the "file_with_uri" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasFileWithUri {
-      get { return fileCase_ == FileOneofCase.FileWithUri; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "file_with_uri" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearFileWithUri() {
-      if (HasFileWithUri) {
-        ClearFile();
-      }
-    }
-
-    /// <summary>Field number for the "file_with_bytes" field.</summary>
-    public const int FileWithBytesFieldNumber = 2;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pb::ByteString FileWithBytes {
-      get { return HasFileWithBytes ? (pb::ByteString) file_ : pb::ByteString.Empty; }
-      set {
-        file_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        fileCase_ = FileOneofCase.FileWithBytes;
-      }
-    }
-    /// <summary>Gets whether the "file_with_bytes" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasFileWithBytes {
-      get { return fileCase_ == FileOneofCase.FileWithBytes; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "file_with_bytes" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearFileWithBytes() {
-      if (HasFileWithBytes) {
-        ClearFile();
-      }
-    }
-
-    /// <summary>Field number for the "mime_type" field.</summary>
-    public const int MimeTypeFieldNumber = 3;
-    private string mimeType_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string MimeType {
-      get { return mimeType_; }
-      set {
-        mimeType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 4;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    private object file_;
-    /// <summary>Enum of possible cases for the "file" oneof.</summary>
-    public enum FileOneofCase {
-      None = 0,
-      FileWithUri = 1,
-      FileWithBytes = 2,
-    }
-    private FileOneofCase fileCase_ = FileOneofCase.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FileOneofCase FileCase {
-      get { return fileCase_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearFile() {
-      fileCase_ = FileOneofCase.None;
-      file_ = null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as FilePart);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(FilePart other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (FileWithUri != other.FileWithUri) return false;
-      if (FileWithBytes != other.FileWithBytes) return false;
-      if (MimeType != other.MimeType) return false;
-      if (Name != other.Name) return false;
-      if (FileCase != other.FileCase) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (HasFileWithUri) hash ^= FileWithUri.GetHashCode();
-      if (HasFileWithBytes) hash ^= FileWithBytes.GetHashCode();
-      if (MimeType.Length != 0) hash ^= MimeType.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      hash ^= (int) fileCase_;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (HasFileWithUri) {
-        output.WriteRawTag(10);
-        output.WriteString(FileWithUri);
-      }
-      if (HasFileWithBytes) {
-        output.WriteRawTag(18);
-        output.WriteBytes(FileWithBytes);
-      }
-      if (MimeType.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(MimeType);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasFileWithUri) {
-        output.WriteRawTag(10);
-        output.WriteString(FileWithUri);
-      }
-      if (HasFileWithBytes) {
-        output.WriteRawTag(18);
-        output.WriteBytes(FileWithBytes);
-      }
-      if (MimeType.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(MimeType);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (HasFileWithUri) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(FileWithUri);
-      }
-      if (HasFileWithBytes) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(FileWithBytes);
-      }
-      if (MimeType.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MimeType);
-      }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(FilePart other) {
-      if (other == null) {
-        return;
-      }
-      if (other.MimeType.Length != 0) {
-        MimeType = other.MimeType;
-      }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      switch (other.FileCase) {
-        case FileOneofCase.FileWithUri:
-          FileWithUri = other.FileWithUri;
-          break;
-        case FileOneofCase.FileWithBytes:
-          FileWithBytes = other.FileWithBytes;
-          break;
-      }
-
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            FileWithUri = input.ReadString();
+          case 50: {
+            Filename = input.ReadString();
             break;
           }
-          case 18: {
-            FileWithBytes = input.ReadBytes();
-            break;
-          }
-          case 26: {
-            MimeType = input.ReadString();
-            break;
-          }
-          case 34: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            FileWithUri = input.ReadString();
-            break;
-          }
-          case 18: {
-            FileWithBytes = input.ReadBytes();
-            break;
-          }
-          case 26: {
-            MimeType = input.ReadString();
-            break;
-          }
-          case 34: {
-            Name = input.ReadString();
+          case 58: {
+            MediaType = input.ReadString();
             break;
           }
         }
@@ -2194,225 +2018,12 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:DataPart]
-  /// DataPart represents a structured blob. This is most commonly a JSON payload.
-  /// </summary>
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class DataPart : pb::IMessage<DataPart>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<DataPart> _parser = new pb::MessageParser<DataPart>(() => new DataPart());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<DataPart> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public DataPart() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public DataPart(DataPart other) : this() {
-      data_ = other.data_ != null ? other.data_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public DataPart Clone() {
-      return new DataPart(this);
-    }
-
-    /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 1;
-    private global::Google.Protobuf.WellKnownTypes.Struct data_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.WellKnownTypes.Struct Data {
-      get { return data_; }
-      set {
-        data_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as DataPart);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(DataPart other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Data, other.Data)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (data_ != null) hash ^= Data.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (data_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Data);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (data_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Data);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (data_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(DataPart other) {
-      if (other == null) {
-        return;
-      }
-      if (other.data_ != null) {
-        if (data_ == null) {
-          Data = new global::Google.Protobuf.WellKnownTypes.Struct();
-        }
-        Data.MergeFrom(other.Data);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            if (data_ == null) {
-              Data = new global::Google.Protobuf.WellKnownTypes.Struct();
-            }
-            input.ReadMessage(Data);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            if (data_ == null) {
-              Data = new global::Google.Protobuf.WellKnownTypes.Struct();
-            }
-            input.ReadMessage(Data);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
-  /// --8&lt;-- [start:Message]
-  /// Message is one unit of communication between client and server. It is
-  /// associated with a context and optionally a task. Since the server is
-  /// responsible for the context definition, it must always provide a context_id
-  /// in its messages. The client can optionally provide the context_id if it
-  /// knows the context to associate the message to. Similarly for task_id,
-  /// except the server decides if a task is created and whether to include the
-  /// task_id.
+  /// `Message` is one unit of communication between client and server. It can be
+  /// associated with a context and/or a task. For server messages, `context_id` must
+  /// be provided, and `task_id` only if a task was created. For client messages, both
+  /// fields are optional, with the caveat that if both are provided, they have to
+  /// match (the `context_id` has to be the one that is set on the task). If only
+  /// `task_id` is provided, the server will infer `context_id` from it.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Message : pb::IMessage<Message>
@@ -2429,7 +2040,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2470,8 +2081,7 @@ namespace A2a.V1 {
     public const int MessageIdFieldNumber = 1;
     private string messageId_ = "";
     /// <summary>
-    /// The unique identifier (e.g. UUID)of the message. This is required and
-    /// created by the message creator.
+    /// The unique identifier (e.g. UUID) of the message. This is created by the message creator.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2486,8 +2096,7 @@ namespace A2a.V1 {
     public const int ContextIdFieldNumber = 2;
     private string contextId_ = "";
     /// <summary>
-    /// The context id of the message. This is optional and if set, the message
-    /// will be associated with the given context.
+    /// Optional. The context id of the message. If set, the message will be associated with the given context.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2502,8 +2111,7 @@ namespace A2a.V1 {
     public const int TaskIdFieldNumber = 3;
     private string taskId_ = "";
     /// <summary>
-    /// The task id of the message. This is optional and if set, the message
-    /// will be associated with the given task.
+    /// Optional. The task id of the message. If set, the message will be associated with the given task.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2516,13 +2124,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "role" field.</summary>
     public const int RoleFieldNumber = 4;
-    private global::A2a.V1.Role role_ = global::A2a.V1.Role.Unspecified;
+    private global::Lf.A2a.V1.Role role_ = global::Lf.A2a.V1.Role.Unspecified;
     /// <summary>
-    /// A role for the message.
+    /// Identifies the sender of the message.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Role Role {
+    public global::Lf.A2a.V1.Role Role {
       get { return role_; }
       set {
         role_ = value;
@@ -2531,16 +2139,15 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "parts" field.</summary>
     public const int PartsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::A2a.V1.Part> _repeated_parts_codec
-        = pb::FieldCodec.ForMessage(42, global::A2a.V1.Part.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Part> parts_ = new pbc::RepeatedField<global::A2a.V1.Part>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.Part> _repeated_parts_codec
+        = pb::FieldCodec.ForMessage(42, global::Lf.A2a.V1.Part.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.Part> parts_ = new pbc::RepeatedField<global::Lf.A2a.V1.Part>();
     /// <summary>
-    /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
     /// Parts is the container of the message content.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Part> Parts {
+    public pbc::RepeatedField<global::Lf.A2a.V1.Part> Parts {
       get { return parts_; }
     }
 
@@ -2548,8 +2155,7 @@ namespace A2a.V1 {
     public const int MetadataFieldNumber = 6;
     private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
     /// <summary>
-    /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED
-    /// Any optional metadata to provide along with the message.
+    /// Optional. Any metadata to provide along with the message.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2621,7 +2227,7 @@ namespace A2a.V1 {
       if (MessageId.Length != 0) hash ^= MessageId.GetHashCode();
       if (ContextId.Length != 0) hash ^= ContextId.GetHashCode();
       if (TaskId.Length != 0) hash ^= TaskId.GetHashCode();
-      if (Role != global::A2a.V1.Role.Unspecified) hash ^= Role.GetHashCode();
+      if (Role != global::Lf.A2a.V1.Role.Unspecified) hash ^= Role.GetHashCode();
       hash ^= parts_.GetHashCode();
       if (metadata_ != null) hash ^= Metadata.GetHashCode();
       hash ^= extensions_.GetHashCode();
@@ -2656,7 +2262,7 @@ namespace A2a.V1 {
         output.WriteRawTag(26);
         output.WriteString(TaskId);
       }
-      if (Role != global::A2a.V1.Role.Unspecified) {
+      if (Role != global::Lf.A2a.V1.Role.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Role);
       }
@@ -2689,7 +2295,7 @@ namespace A2a.V1 {
         output.WriteRawTag(26);
         output.WriteString(TaskId);
       }
-      if (Role != global::A2a.V1.Role.Unspecified) {
+      if (Role != global::Lf.A2a.V1.Role.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Role);
       }
@@ -2719,7 +2325,7 @@ namespace A2a.V1 {
       if (TaskId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TaskId);
       }
-      if (Role != global::A2a.V1.Role.Unspecified) {
+      if (Role != global::Lf.A2a.V1.Role.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Role);
       }
       size += parts_.CalculateSize(_repeated_parts_codec);
@@ -2749,7 +2355,7 @@ namespace A2a.V1 {
       if (other.TaskId.Length != 0) {
         TaskId = other.TaskId;
       }
-      if (other.Role != global::A2a.V1.Role.Unspecified) {
+      if (other.Role != global::Lf.A2a.V1.Role.Unspecified) {
         Role = other.Role;
       }
       parts_.Add(other.parts_);
@@ -2793,7 +2399,7 @@ namespace A2a.V1 {
             break;
           }
           case 32: {
-            Role = (global::A2a.V1.Role) input.ReadEnum();
+            Role = (global::Lf.A2a.V1.Role) input.ReadEnum();
             break;
           }
           case 42: {
@@ -2847,7 +2453,7 @@ namespace A2a.V1 {
             break;
           }
           case 32: {
-            Role = (global::A2a.V1.Role) input.ReadEnum();
+            Role = (global::Lf.A2a.V1.Role) input.ReadEnum();
             break;
           }
           case 42: {
@@ -2877,10 +2483,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:Artifact]
-  /// Artifacts are the container for task completed results. These are similar
-  /// to Messages but are intended to be the product of a task, as opposed to
-  /// point-to-point communication.
+  /// Artifacts represent task outputs.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Artifact : pb::IMessage<Artifact>
@@ -2897,7 +2500,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2936,8 +2539,7 @@ namespace A2a.V1 {
     public const int ArtifactIdFieldNumber = 1;
     private string artifactId_ = "";
     /// <summary>
-    /// Unique identifier (e.g. UUID) for the artifact. It must be at least unique
-    /// within a task.
+    /// Unique identifier (e.g. UUID) for the artifact. It must be unique within a task.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2949,7 +2551,7 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 3;
+    public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
     /// A human readable name for the artifact.
@@ -2964,10 +2566,10 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "description" field.</summary>
-    public const int DescriptionFieldNumber = 4;
+    public const int DescriptionFieldNumber = 3;
     private string description_ = "";
     /// <summary>
-    /// A human readable description of the artifact, optional.
+    /// Optional. A human readable description of the artifact.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2979,24 +2581,24 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "parts" field.</summary>
-    public const int PartsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::A2a.V1.Part> _repeated_parts_codec
-        = pb::FieldCodec.ForMessage(42, global::A2a.V1.Part.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Part> parts_ = new pbc::RepeatedField<global::A2a.V1.Part>();
+    public const int PartsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.Part> _repeated_parts_codec
+        = pb::FieldCodec.ForMessage(34, global::Lf.A2a.V1.Part.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.Part> parts_ = new pbc::RepeatedField<global::Lf.A2a.V1.Part>();
     /// <summary>
-    /// The content of the artifact.
+    /// The content of the artifact. Must contain at least one part.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Part> Parts {
+    public pbc::RepeatedField<global::Lf.A2a.V1.Part> Parts {
       get { return parts_; }
     }
 
     /// <summary>Field number for the "metadata" field.</summary>
-    public const int MetadataFieldNumber = 6;
+    public const int MetadataFieldNumber = 5;
     private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
     /// <summary>
-    /// Optional metadata included with the artifact.
+    /// Optional. Metadata included with the artifact.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3008,9 +2610,9 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "extensions" field.</summary>
-    public const int ExtensionsFieldNumber = 7;
+    public const int ExtensionsFieldNumber = 6;
     private static readonly pb::FieldCodec<string> _repeated_extensions_codec
-        = pb::FieldCodec.ForString(58);
+        = pb::FieldCodec.ForString(50);
     private readonly pbc::RepeatedField<string> extensions_ = new pbc::RepeatedField<string>();
     /// <summary>
     /// The URIs of extensions that are present or contributed to this Artifact.
@@ -3078,16 +2680,16 @@ namespace A2a.V1 {
         output.WriteString(ArtifactId);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (Description.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteString(Description);
       }
       parts_.WriteTo(output, _repeated_parts_codec);
       if (metadata_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteMessage(Metadata);
       }
       extensions_.WriteTo(output, _repeated_extensions_codec);
@@ -3106,16 +2708,16 @@ namespace A2a.V1 {
         output.WriteString(ArtifactId);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (Description.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteString(Description);
       }
       parts_.WriteTo(ref output, _repeated_parts_codec);
       if (metadata_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteMessage(Metadata);
       }
       extensions_.WriteTo(ref output, _repeated_extensions_codec);
@@ -3195,26 +2797,26 @@ namespace A2a.V1 {
             ArtifactId = input.ReadString();
             break;
           }
-          case 26: {
+          case 18: {
             Name = input.ReadString();
             break;
           }
-          case 34: {
+          case 26: {
             Description = input.ReadString();
             break;
           }
-          case 42: {
+          case 34: {
             parts_.AddEntriesFrom(input, _repeated_parts_codec);
             break;
           }
-          case 50: {
+          case 42: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
             input.ReadMessage(Metadata);
             break;
           }
-          case 58: {
+          case 50: {
             extensions_.AddEntriesFrom(input, _repeated_extensions_codec);
             break;
           }
@@ -3241,26 +2843,26 @@ namespace A2a.V1 {
             ArtifactId = input.ReadString();
             break;
           }
-          case 26: {
+          case 18: {
             Name = input.ReadString();
             break;
           }
-          case 34: {
+          case 26: {
             Description = input.ReadString();
             break;
           }
-          case 42: {
+          case 34: {
             parts_.AddEntriesFrom(ref input, _repeated_parts_codec);
             break;
           }
-          case 50: {
+          case 42: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
             input.ReadMessage(Metadata);
             break;
           }
-          case 58: {
+          case 50: {
             extensions_.AddEntriesFrom(ref input, _repeated_extensions_codec);
             break;
           }
@@ -3272,9 +2874,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:TaskStatusUpdateEvent]
-  /// TaskStatusUpdateEvent is a delta even on a task indicating that a task
-  /// has changed.
+  /// An event sent by the agent to notify the client of a change in a task's status.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class TaskStatusUpdateEvent : pb::IMessage<TaskStatusUpdateEvent>
@@ -3291,7 +2891,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3314,7 +2914,6 @@ namespace A2a.V1 {
       taskId_ = other.taskId_;
       contextId_ = other.contextId_;
       status_ = other.status_ != null ? other.status_.Clone() : null;
-      final_ = other.final_;
       metadata_ = other.metadata_ != null ? other.metadata_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -3329,7 +2928,7 @@ namespace A2a.V1 {
     public const int TaskIdFieldNumber = 1;
     private string taskId_ = "";
     /// <summary>
-    /// The id of the task that is changed
+    /// The ID of the task that has changed.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3344,7 +2943,7 @@ namespace A2a.V1 {
     public const int ContextIdFieldNumber = 2;
     private string contextId_ = "";
     /// <summary>
-    /// The id of the context that the task belongs to
+    /// The ID of the context that the task belongs to.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3357,39 +2956,24 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 3;
-    private global::A2a.V1.TaskStatus status_;
+    private global::Lf.A2a.V1.TaskStatus status_;
     /// <summary>
     /// The new status of the task.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskStatus Status {
+    public global::Lf.A2a.V1.TaskStatus Status {
       get { return status_; }
       set {
         status_ = value;
       }
     }
 
-    /// <summary>Field number for the "final" field.</summary>
-    public const int FinalFieldNumber = 4;
-    private bool final_;
-    /// <summary>
-    /// Whether this is the last status update expected for this task.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Final {
-      get { return final_; }
-      set {
-        final_ = value;
-      }
-    }
-
     /// <summary>Field number for the "metadata" field.</summary>
-    public const int MetadataFieldNumber = 5;
+    public const int MetadataFieldNumber = 4;
     private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
     /// <summary>
-    /// Optional metadata to associate with the task update.
+    /// Optional. Metadata associated with the task update.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3418,7 +3002,6 @@ namespace A2a.V1 {
       if (TaskId != other.TaskId) return false;
       if (ContextId != other.ContextId) return false;
       if (!object.Equals(Status, other.Status)) return false;
-      if (Final != other.Final) return false;
       if (!object.Equals(Metadata, other.Metadata)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3430,7 +3013,6 @@ namespace A2a.V1 {
       if (TaskId.Length != 0) hash ^= TaskId.GetHashCode();
       if (ContextId.Length != 0) hash ^= ContextId.GetHashCode();
       if (status_ != null) hash ^= Status.GetHashCode();
-      if (Final != false) hash ^= Final.GetHashCode();
       if (metadata_ != null) hash ^= Metadata.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3462,12 +3044,8 @@ namespace A2a.V1 {
         output.WriteRawTag(26);
         output.WriteMessage(Status);
       }
-      if (Final != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(Final);
-      }
       if (metadata_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(Metadata);
       }
       if (_unknownFields != null) {
@@ -3492,12 +3070,8 @@ namespace A2a.V1 {
         output.WriteRawTag(26);
         output.WriteMessage(Status);
       }
-      if (Final != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(Final);
-      }
       if (metadata_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(Metadata);
       }
       if (_unknownFields != null) {
@@ -3518,9 +3092,6 @@ namespace A2a.V1 {
       }
       if (status_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Status);
-      }
-      if (Final != false) {
-        size += 1 + 1;
       }
       if (metadata_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Metadata);
@@ -3545,12 +3116,9 @@ namespace A2a.V1 {
       }
       if (other.status_ != null) {
         if (status_ == null) {
-          Status = new global::A2a.V1.TaskStatus();
+          Status = new global::Lf.A2a.V1.TaskStatus();
         }
         Status.MergeFrom(other.Status);
-      }
-      if (other.Final != false) {
-        Final = other.Final;
       }
       if (other.metadata_ != null) {
         if (metadata_ == null) {
@@ -3587,16 +3155,12 @@ namespace A2a.V1 {
           }
           case 26: {
             if (status_ == null) {
-              Status = new global::A2a.V1.TaskStatus();
+              Status = new global::Lf.A2a.V1.TaskStatus();
             }
             input.ReadMessage(Status);
             break;
           }
-          case 32: {
-            Final = input.ReadBool();
-            break;
-          }
-          case 42: {
+          case 34: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
@@ -3632,16 +3196,12 @@ namespace A2a.V1 {
           }
           case 26: {
             if (status_ == null) {
-              Status = new global::A2a.V1.TaskStatus();
+              Status = new global::Lf.A2a.V1.TaskStatus();
             }
             input.ReadMessage(Status);
             break;
           }
-          case 32: {
-            Final = input.ReadBool();
-            break;
-          }
-          case 42: {
+          case 34: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
@@ -3656,9 +3216,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:TaskArtifactUpdateEvent]
-  /// TaskArtifactUpdateEvent represents a task delta where an artifact has
-  /// been generated.
+  /// A task delta where an artifact has been generated.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class TaskArtifactUpdateEvent : pb::IMessage<TaskArtifactUpdateEvent>
@@ -3675,7 +3233,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3714,7 +3272,7 @@ namespace A2a.V1 {
     public const int TaskIdFieldNumber = 1;
     private string taskId_ = "";
     /// <summary>
-    /// The id of the task for this artifact
+    /// The ID of the task for this artifact.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3729,7 +3287,7 @@ namespace A2a.V1 {
     public const int ContextIdFieldNumber = 2;
     private string contextId_ = "";
     /// <summary>
-    /// The id of the context that this task belongs too
+    /// The ID of the context that this task belongs to.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3742,13 +3300,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "artifact" field.</summary>
     public const int ArtifactFieldNumber = 3;
-    private global::A2a.V1.Artifact artifact_;
+    private global::Lf.A2a.V1.Artifact artifact_;
     /// <summary>
-    /// The artifact itself
+    /// The artifact that was generated or updated.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Artifact Artifact {
+    public global::Lf.A2a.V1.Artifact Artifact {
       get { return artifact_; }
       set {
         artifact_ = value;
@@ -3759,7 +3317,8 @@ namespace A2a.V1 {
     public const int AppendFieldNumber = 4;
     private bool append_;
     /// <summary>
-    ///  Whether this should be appended to a prior one produced
+    /// If true, the content of this artifact should be appended to a previously
+    /// sent artifact with the same ID.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3774,7 +3333,7 @@ namespace A2a.V1 {
     public const int LastChunkFieldNumber = 5;
     private bool lastChunk_;
     /// <summary>
-    /// Whether this represents the last part of an artifact
+    /// If true, this is the final chunk of the artifact.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3789,7 +3348,7 @@ namespace A2a.V1 {
     public const int MetadataFieldNumber = 6;
     private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
     /// <summary>
-    /// Optional metadata associated with the artifact update.
+    /// Optional. Metadata associated with the artifact update.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3958,7 +3517,7 @@ namespace A2a.V1 {
       }
       if (other.artifact_ != null) {
         if (artifact_ == null) {
-          Artifact = new global::A2a.V1.Artifact();
+          Artifact = new global::Lf.A2a.V1.Artifact();
         }
         Artifact.MergeFrom(other.Artifact);
       }
@@ -4003,7 +3562,7 @@ namespace A2a.V1 {
           }
           case 26: {
             if (artifact_ == null) {
-              Artifact = new global::A2a.V1.Artifact();
+              Artifact = new global::Lf.A2a.V1.Artifact();
             }
             input.ReadMessage(Artifact);
             break;
@@ -4052,7 +3611,7 @@ namespace A2a.V1 {
           }
           case 26: {
             if (artifact_ == null) {
-              Artifact = new global::A2a.V1.Artifact();
+              Artifact = new global::Lf.A2a.V1.Artifact();
             }
             input.ReadMessage(Artifact);
             break;
@@ -4080,341 +3639,6 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:PushNotificationConfig]
-  /// Configuration for setting up push notifications for task updates.
-  /// </summary>
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class PushNotificationConfig : pb::IMessage<PushNotificationConfig>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<PushNotificationConfig> _parser = new pb::MessageParser<PushNotificationConfig>(() => new PushNotificationConfig());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<PushNotificationConfig> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[10]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public PushNotificationConfig() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public PushNotificationConfig(PushNotificationConfig other) : this() {
-      id_ = other.id_;
-      url_ = other.url_;
-      token_ = other.token_;
-      authentication_ = other.authentication_ != null ? other.authentication_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public PushNotificationConfig Clone() {
-      return new PushNotificationConfig(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string id_ = "";
-    /// <summary>
-    /// A unique identifier (e.g. UUID) for this push notification.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Id {
-      get { return id_; }
-      set {
-        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "url" field.</summary>
-    public const int UrlFieldNumber = 2;
-    private string url_ = "";
-    /// <summary>
-    /// Url to send the notification too
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Url {
-      get { return url_; }
-      set {
-        url_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 3;
-    private string token_ = "";
-    /// <summary>
-    /// Token unique for this task/session
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Token {
-      get { return token_; }
-      set {
-        token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "authentication" field.</summary>
-    public const int AuthenticationFieldNumber = 4;
-    private global::A2a.V1.AuthenticationInfo authentication_;
-    /// <summary>
-    /// Information about the authentication to sent with the notification
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.AuthenticationInfo Authentication {
-      get { return authentication_; }
-      set {
-        authentication_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as PushNotificationConfig);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(PushNotificationConfig other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Url != other.Url) return false;
-      if (Token != other.Token) return false;
-      if (!object.Equals(Authentication, other.Authentication)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (Url.Length != 0) hash ^= Url.GetHashCode();
-      if (Token.Length != 0) hash ^= Token.GetHashCode();
-      if (authentication_ != null) hash ^= Authentication.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (Url.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Url);
-      }
-      if (Token.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Token);
-      }
-      if (authentication_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Authentication);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (Url.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Url);
-      }
-      if (Token.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Token);
-      }
-      if (authentication_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Authentication);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
-      }
-      if (Url.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
-      }
-      if (Token.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
-      }
-      if (authentication_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Authentication);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(PushNotificationConfig other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
-      }
-      if (other.Url.Length != 0) {
-        Url = other.Url;
-      }
-      if (other.Token.Length != 0) {
-        Token = other.Token;
-      }
-      if (other.authentication_ != null) {
-        if (authentication_ == null) {
-          Authentication = new global::A2a.V1.AuthenticationInfo();
-        }
-        Authentication.MergeFrom(other.Authentication);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-          case 18: {
-            Url = input.ReadString();
-            break;
-          }
-          case 26: {
-            Token = input.ReadString();
-            break;
-          }
-          case 34: {
-            if (authentication_ == null) {
-              Authentication = new global::A2a.V1.AuthenticationInfo();
-            }
-            input.ReadMessage(Authentication);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-          case 18: {
-            Url = input.ReadString();
-            break;
-          }
-          case 26: {
-            Token = input.ReadString();
-            break;
-          }
-          case 34: {
-            if (authentication_ == null) {
-              Authentication = new global::A2a.V1.AuthenticationInfo();
-            }
-            input.ReadMessage(Authentication);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
-  /// --8&lt;-- [start:PushNotificationAuthenticationInfo]
   /// Defines authentication details, used for push notifications.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -4432,7 +3656,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4452,7 +3676,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AuthenticationInfo(AuthenticationInfo other) : this() {
-      schemes_ = other.schemes_.Clone();
+      scheme_ = other.scheme_;
       credentials_ = other.credentials_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -4463,25 +3687,28 @@ namespace A2a.V1 {
       return new AuthenticationInfo(this);
     }
 
-    /// <summary>Field number for the "schemes" field.</summary>
-    public const int SchemesFieldNumber = 1;
-    private static readonly pb::FieldCodec<string> _repeated_schemes_codec
-        = pb::FieldCodec.ForString(10);
-    private readonly pbc::RepeatedField<string> schemes_ = new pbc::RepeatedField<string>();
+    /// <summary>Field number for the "scheme" field.</summary>
+    public const int SchemeFieldNumber = 1;
+    private string scheme_ = "";
     /// <summary>
-    /// Supported authentication schemes - e.g. Basic, Bearer, etc
+    /// HTTP Authentication Scheme from the [IANA registry](https://www.iana.org/assignments/http-authschemes/).
+    /// Examples: `Bearer`, `Basic`, `Digest`.
+    /// Scheme names are case-insensitive per [RFC 9110 Section 11.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.1).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Schemes {
-      get { return schemes_; }
+    public string Scheme {
+      get { return scheme_; }
+      set {
+        scheme_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "credentials" field.</summary>
     public const int CredentialsFieldNumber = 2;
     private string credentials_ = "";
     /// <summary>
-    /// Optional credentials
+    /// Push Notification credentials. Format depends on the scheme (e.g., token for Bearer).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4507,7 +3734,7 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!schemes_.Equals(other.schemes_)) return false;
+      if (Scheme != other.Scheme) return false;
       if (Credentials != other.Credentials) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -4516,7 +3743,7 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= schemes_.GetHashCode();
+      if (Scheme.Length != 0) hash ^= Scheme.GetHashCode();
       if (Credentials.Length != 0) hash ^= Credentials.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -4536,7 +3763,10 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      schemes_.WriteTo(output, _repeated_schemes_codec);
+      if (Scheme.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Scheme);
+      }
       if (Credentials.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Credentials);
@@ -4551,7 +3781,10 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      schemes_.WriteTo(ref output, _repeated_schemes_codec);
+      if (Scheme.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Scheme);
+      }
       if (Credentials.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Credentials);
@@ -4566,7 +3799,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += schemes_.CalculateSize(_repeated_schemes_codec);
+      if (Scheme.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Scheme);
+      }
       if (Credentials.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Credentials);
       }
@@ -4582,7 +3817,9 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      schemes_.Add(other.schemes_);
+      if (other.Scheme.Length != 0) {
+        Scheme = other.Scheme;
+      }
       if (other.Credentials.Length != 0) {
         Credentials = other.Credentials;
       }
@@ -4606,7 +3843,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            schemes_.AddEntriesFrom(input, _repeated_schemes_codec);
+            Scheme = input.ReadString();
             break;
           }
           case 18: {
@@ -4633,7 +3870,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            schemes_.AddEntriesFrom(ref input, _repeated_schemes_codec);
+            Scheme = input.ReadString();
             break;
           }
           case 18: {
@@ -4648,8 +3885,8 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentInterface]
-  /// Defines additional transport information for the agent.
+  /// Declares a combination of a target URL, transport and protocol version for interacting with the agent.
+  /// This allows agents to expose the same functionality over multiple protocol binding mechanisms.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AgentInterface : pb::IMessage<AgentInterface>
@@ -4666,7 +3903,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4687,7 +3924,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AgentInterface(AgentInterface other) : this() {
       url_ = other.url_;
-      transport_ = other.transport_;
+      protocolBinding_ = other.protocolBinding_;
+      tenant_ = other.tenant_;
+      protocolVersion_ = other.protocolVersion_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4701,7 +3940,8 @@ namespace A2a.V1 {
     public const int UrlFieldNumber = 1;
     private string url_ = "";
     /// <summary>
-    /// The url this interface is found at.
+    /// The URL where this interface is available. Must be a valid absolute HTTPS URL in production.
+    /// Example: "https://api.example.com/a2a/v1", "https://grpc.example.com/a2a"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4712,20 +3952,52 @@ namespace A2a.V1 {
       }
     }
 
-    /// <summary>Field number for the "transport" field.</summary>
-    public const int TransportFieldNumber = 2;
-    private string transport_ = "";
+    /// <summary>Field number for the "protocol_binding" field.</summary>
+    public const int ProtocolBindingFieldNumber = 2;
+    private string protocolBinding_ = "";
     /// <summary>
-    /// The transport supported this url. This is an open form string, to be
-    /// easily extended for many transport protocols. The core ones officially
-    /// supported are JSONRPC, GRPC and HTTP+JSON.
+    /// The protocol binding supported at this URL. This is an open form string, to be
+    /// easily extended for other protocol bindings. The core ones officially
+    /// supported are `JSONRPC`, `GRPC` and `HTTP+JSON`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Transport {
-      get { return transport_; }
+    public string ProtocolBinding {
+      get { return protocolBinding_; }
       set {
-        transport_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        protocolBinding_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 3;
+    private string tenant_ = "";
+    /// <summary>
+    /// Tenant ID to be used in the request when calling the agent.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tenant {
+      get { return tenant_; }
+      set {
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "protocol_version" field.</summary>
+    public const int ProtocolVersionFieldNumber = 4;
+    private string protocolVersion_ = "";
+    /// <summary>
+    /// The version of the A2A protocol this interface exposes.
+    /// Use the latest supported minor version per major version.
+    /// Examples: "0.3", "1.0"
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ProtocolVersion {
+      get { return protocolVersion_; }
+      set {
+        protocolVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -4745,7 +4017,9 @@ namespace A2a.V1 {
         return true;
       }
       if (Url != other.Url) return false;
-      if (Transport != other.Transport) return false;
+      if (ProtocolBinding != other.ProtocolBinding) return false;
+      if (Tenant != other.Tenant) return false;
+      if (ProtocolVersion != other.ProtocolVersion) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4754,7 +4028,9 @@ namespace A2a.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Url.Length != 0) hash ^= Url.GetHashCode();
-      if (Transport.Length != 0) hash ^= Transport.GetHashCode();
+      if (ProtocolBinding.Length != 0) hash ^= ProtocolBinding.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (ProtocolVersion.Length != 0) hash ^= ProtocolVersion.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4777,9 +4053,17 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteString(Url);
       }
-      if (Transport.Length != 0) {
+      if (ProtocolBinding.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Transport);
+        output.WriteString(ProtocolBinding);
+      }
+      if (Tenant.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Tenant);
+      }
+      if (ProtocolVersion.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ProtocolVersion);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4795,9 +4079,17 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteString(Url);
       }
-      if (Transport.Length != 0) {
+      if (ProtocolBinding.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Transport);
+        output.WriteString(ProtocolBinding);
+      }
+      if (Tenant.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Tenant);
+      }
+      if (ProtocolVersion.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ProtocolVersion);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4812,8 +4104,14 @@ namespace A2a.V1 {
       if (Url.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
       }
-      if (Transport.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Transport);
+      if (ProtocolBinding.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProtocolBinding);
+      }
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
+      if (ProtocolVersion.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProtocolVersion);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4830,8 +4128,14 @@ namespace A2a.V1 {
       if (other.Url.Length != 0) {
         Url = other.Url;
       }
-      if (other.Transport.Length != 0) {
-        Transport = other.Transport;
+      if (other.ProtocolBinding.Length != 0) {
+        ProtocolBinding = other.ProtocolBinding;
+      }
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
+      if (other.ProtocolVersion.Length != 0) {
+        ProtocolVersion = other.ProtocolVersion;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4857,7 +4161,15 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            Transport = input.ReadString();
+            ProtocolBinding = input.ReadString();
+            break;
+          }
+          case 26: {
+            Tenant = input.ReadString();
+            break;
+          }
+          case 34: {
+            ProtocolVersion = input.ReadString();
             break;
           }
         }
@@ -4884,7 +4196,15 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            Transport = input.ReadString();
+            ProtocolBinding = input.ReadString();
+            break;
+          }
+          case 26: {
+            Tenant = input.ReadString();
+            break;
+          }
+          case 34: {
+            ProtocolVersion = input.ReadString();
             break;
           }
         }
@@ -4895,13 +4215,10 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentCard]
-  /// AgentCard conveys key information:
-  /// - Overall details (version, name, description, uses)
-  /// - Skills; a set of actions/solutions the agent can perform
-  /// - Default modalities/content types supported by the agent.
-  /// - Authentication requirements
-  /// Next ID: 19
+  /// A self-describing manifest for an agent. It provides essential
+  /// metadata including the agent's identity, capabilities, skills, supported
+  /// communication methods, and security requirements.
+  /// Next ID: 20
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AgentCard : pb::IMessage<AgentCard>
@@ -4918,7 +4235,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4938,22 +4255,18 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AgentCard(AgentCard other) : this() {
-      protocolVersion_ = other.protocolVersion_;
       name_ = other.name_;
       description_ = other.description_;
-      url_ = other.url_;
-      preferredTransport_ = other.preferredTransport_;
-      additionalInterfaces_ = other.additionalInterfaces_.Clone();
+      supportedInterfaces_ = other.supportedInterfaces_.Clone();
       provider_ = other.provider_ != null ? other.provider_.Clone() : null;
       version_ = other.version_;
       documentationUrl_ = other.documentationUrl_;
       capabilities_ = other.capabilities_ != null ? other.capabilities_.Clone() : null;
       securitySchemes_ = other.securitySchemes_.Clone();
-      security_ = other.security_.Clone();
+      securityRequirements_ = other.securityRequirements_.Clone();
       defaultInputModes_ = other.defaultInputModes_.Clone();
       defaultOutputModes_ = other.defaultOutputModes_.Clone();
       skills_ = other.skills_.Clone();
-      supportsAuthenticatedExtendedCard_ = other.supportsAuthenticatedExtendedCard_;
       signatures_ = other.signatures_.Clone();
       iconUrl_ = other.iconUrl_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -4963,21 +4276,6 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AgentCard Clone() {
       return new AgentCard(this);
-    }
-
-    /// <summary>Field number for the "protocol_version" field.</summary>
-    public const int ProtocolVersionFieldNumber = 16;
-    private string protocolVersion_ = "";
-    /// <summary>
-    /// The version of the A2A protocol this agent supports.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ProtocolVersion {
-      get { return protocolVersion_; }
-      set {
-        protocolVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
     }
 
     /// <summary>Field number for the "name" field.</summary>
@@ -5000,7 +4298,8 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 2;
     private string description_ = "";
     /// <summary>
-    /// A description of the agent's domain of action/solution space.
+    /// A human-readable description of the agent, assisting users and other agents
+    /// in understanding its purpose.
     /// Example: "Agent that helps users with recipes and cooking."
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5012,61 +4311,29 @@ namespace A2a.V1 {
       }
     }
 
-    /// <summary>Field number for the "url" field.</summary>
-    public const int UrlFieldNumber = 3;
-    private string url_ = "";
+    /// <summary>Field number for the "supported_interfaces" field.</summary>
+    public const int SupportedInterfacesFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.AgentInterface> _repeated_supportedInterfaces_codec
+        = pb::FieldCodec.ForMessage(26, global::Lf.A2a.V1.AgentInterface.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.AgentInterface> supportedInterfaces_ = new pbc::RepeatedField<global::Lf.A2a.V1.AgentInterface>();
     /// <summary>
-    /// A URL to the address the agent is hosted at. This represents the
-    /// preferred endpoint as declared by the agent.
+    /// Ordered list of supported interfaces. The first entry is preferred.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Url {
-      get { return url_; }
-      set {
-        url_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "preferred_transport" field.</summary>
-    public const int PreferredTransportFieldNumber = 14;
-    private string preferredTransport_ = "";
-    /// <summary>
-    /// The transport of the preferred endpoint. If empty, defaults to JSONRPC.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PreferredTransport {
-      get { return preferredTransport_; }
-      set {
-        preferredTransport_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "additional_interfaces" field.</summary>
-    public const int AdditionalInterfacesFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::A2a.V1.AgentInterface> _repeated_additionalInterfaces_codec
-        = pb::FieldCodec.ForMessage(122, global::A2a.V1.AgentInterface.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.AgentInterface> additionalInterfaces_ = new pbc::RepeatedField<global::A2a.V1.AgentInterface>();
-    /// <summary>
-    /// Announcement of additional supported transports. Client can use any of
-    /// the supported transports.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.AgentInterface> AdditionalInterfaces {
-      get { return additionalInterfaces_; }
+    public pbc::RepeatedField<global::Lf.A2a.V1.AgentInterface> SupportedInterfaces {
+      get { return supportedInterfaces_; }
     }
 
     /// <summary>Field number for the "provider" field.</summary>
     public const int ProviderFieldNumber = 4;
-    private global::A2a.V1.AgentProvider provider_;
+    private global::Lf.A2a.V1.AgentProvider provider_;
     /// <summary>
     /// The service provider of the agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.AgentProvider Provider {
+    public global::Lf.A2a.V1.AgentProvider Provider {
       get { return provider_; }
       set {
         provider_ = value;
@@ -5091,28 +4358,42 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "documentation_url" field.</summary>
     public const int DocumentationUrlFieldNumber = 6;
-    private string documentationUrl_ = "";
+    private readonly static string DocumentationUrlDefaultValue = "";
+
+    private string documentationUrl_;
     /// <summary>
-    /// A url to provide additional documentation about the agent.
+    /// A URL providing additional documentation about the agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string DocumentationUrl {
-      get { return documentationUrl_; }
+      get { return documentationUrl_ ?? DocumentationUrlDefaultValue; }
       set {
         documentationUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
+    /// <summary>Gets whether the "documentation_url" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasDocumentationUrl {
+      get { return documentationUrl_ != null; }
+    }
+    /// <summary>Clears the value of the "documentation_url" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearDocumentationUrl() {
+      documentationUrl_ = null;
+    }
 
     /// <summary>Field number for the "capabilities" field.</summary>
     public const int CapabilitiesFieldNumber = 7;
-    private global::A2a.V1.AgentCapabilities capabilities_;
+    private global::Lf.A2a.V1.AgentCapabilities capabilities_;
     /// <summary>
     /// A2A Capability set supported by the agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.AgentCapabilities Capabilities {
+    public global::Lf.A2a.V1.AgentCapabilities Capabilities {
       get { return capabilities_; }
       set {
         capabilities_ = value;
@@ -5121,43 +4402,30 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "security_schemes" field.</summary>
     public const int SecuritySchemesFieldNumber = 8;
-    private static readonly pbc::MapField<string, global::A2a.V1.SecurityScheme>.Codec _map_securitySchemes_codec
-        = new pbc::MapField<string, global::A2a.V1.SecurityScheme>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::A2a.V1.SecurityScheme.Parser), 66);
-    private readonly pbc::MapField<string, global::A2a.V1.SecurityScheme> securitySchemes_ = new pbc::MapField<string, global::A2a.V1.SecurityScheme>();
+    private static readonly pbc::MapField<string, global::Lf.A2a.V1.SecurityScheme>.Codec _map_securitySchemes_codec
+        = new pbc::MapField<string, global::Lf.A2a.V1.SecurityScheme>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Lf.A2a.V1.SecurityScheme.Parser), 66);
+    private readonly pbc::MapField<string, global::Lf.A2a.V1.SecurityScheme> securitySchemes_ = new pbc::MapField<string, global::Lf.A2a.V1.SecurityScheme>();
     /// <summary>
     /// The security scheme details used for authenticating with this agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::A2a.V1.SecurityScheme> SecuritySchemes {
+    public pbc::MapField<string, global::Lf.A2a.V1.SecurityScheme> SecuritySchemes {
       get { return securitySchemes_; }
     }
 
-    /// <summary>Field number for the "security" field.</summary>
-    public const int SecurityFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::A2a.V1.Security> _repeated_security_codec
-        = pb::FieldCodec.ForMessage(74, global::A2a.V1.Security.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Security> security_ = new pbc::RepeatedField<global::A2a.V1.Security>();
+    /// <summary>Field number for the "security_requirements" field.</summary>
+    public const int SecurityRequirementsFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.SecurityRequirement> _repeated_securityRequirements_codec
+        = pb::FieldCodec.ForMessage(74, global::Lf.A2a.V1.SecurityRequirement.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.SecurityRequirement> securityRequirements_ = new pbc::RepeatedField<global::Lf.A2a.V1.SecurityRequirement>();
     /// <summary>
-    /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
     /// Security requirements for contacting the agent.
-    /// This list can be seen as an OR of ANDs. Each object in the list describes
-    /// one possible set of security requirements that must be present on a
-    /// request. This allows specifying, for example, "callers must either use
-    /// OAuth OR an API Key AND mTLS."
-    /// Example:
-    /// security {
-    ///   schemes { key: "oauth" value { list: ["read"] } }
-    /// }
-    /// security {
-    ///   schemes { key: "api-key" }
-    ///   schemes { key: "mtls" }
-    /// }
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Security> Security {
-      get { return security_; }
+    public pbc::RepeatedField<global::Lf.A2a.V1.SecurityRequirement> SecurityRequirements {
+      get { return securityRequirements_; }
     }
 
     /// <summary>Field number for the "default_input_modes" field.</summary>
@@ -5168,7 +4436,7 @@ namespace A2a.V1 {
     /// <summary>
     /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED
     /// The set of interaction modes that the agent supports across all skills.
-    /// This can be overridden per skill. Defined as mime types.
+    /// This can be overridden per skill. Defined as media types.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5182,7 +4450,7 @@ namespace A2a.V1 {
         = pb::FieldCodec.ForString(90);
     private readonly pbc::RepeatedField<string> defaultOutputModes_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// The mime types supported as outputs from this agent.
+    /// The media types supported as outputs from this agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5192,64 +4460,61 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "skills" field.</summary>
     public const int SkillsFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::A2a.V1.AgentSkill> _repeated_skills_codec
-        = pb::FieldCodec.ForMessage(98, global::A2a.V1.AgentSkill.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.AgentSkill> skills_ = new pbc::RepeatedField<global::A2a.V1.AgentSkill>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.AgentSkill> _repeated_skills_codec
+        = pb::FieldCodec.ForMessage(98, global::Lf.A2a.V1.AgentSkill.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.AgentSkill> skills_ = new pbc::RepeatedField<global::Lf.A2a.V1.AgentSkill>();
     /// <summary>
-    /// Skills represent a unit of ability an agent can perform. This may
-    /// somewhat abstract but represents a more focused set of actions that the
-    /// agent is highly likely to succeed at.
+    /// Skills represent the abilities of an agent.
+    /// It is largely a descriptive concept but represents a more focused set of behaviors that the
+    /// agent is likely to succeed at.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.AgentSkill> Skills {
+    public pbc::RepeatedField<global::Lf.A2a.V1.AgentSkill> Skills {
       get { return skills_; }
     }
 
-    /// <summary>Field number for the "supports_authenticated_extended_card" field.</summary>
-    public const int SupportsAuthenticatedExtendedCardFieldNumber = 13;
-    private bool supportsAuthenticatedExtendedCard_;
-    /// <summary>
-    /// Whether the agent supports providing an extended agent card when
-    /// the user is authenticated, i.e. is the card from .well-known
-    /// different than the card from GetAgentCard.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool SupportsAuthenticatedExtendedCard {
-      get { return supportsAuthenticatedExtendedCard_; }
-      set {
-        supportsAuthenticatedExtendedCard_ = value;
-      }
-    }
-
     /// <summary>Field number for the "signatures" field.</summary>
-    public const int SignaturesFieldNumber = 17;
-    private static readonly pb::FieldCodec<global::A2a.V1.AgentCardSignature> _repeated_signatures_codec
-        = pb::FieldCodec.ForMessage(138, global::A2a.V1.AgentCardSignature.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.AgentCardSignature> signatures_ = new pbc::RepeatedField<global::A2a.V1.AgentCardSignature>();
+    public const int SignaturesFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.AgentCardSignature> _repeated_signatures_codec
+        = pb::FieldCodec.ForMessage(106, global::Lf.A2a.V1.AgentCardSignature.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.AgentCardSignature> signatures_ = new pbc::RepeatedField<global::Lf.A2a.V1.AgentCardSignature>();
     /// <summary>
-    /// JSON Web Signatures computed for this AgentCard.
+    /// JSON Web Signatures computed for this `AgentCard`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.AgentCardSignature> Signatures {
+    public pbc::RepeatedField<global::Lf.A2a.V1.AgentCardSignature> Signatures {
       get { return signatures_; }
     }
 
     /// <summary>Field number for the "icon_url" field.</summary>
-    public const int IconUrlFieldNumber = 18;
-    private string iconUrl_ = "";
+    public const int IconUrlFieldNumber = 14;
+    private readonly static string IconUrlDefaultValue = "";
+
+    private string iconUrl_;
     /// <summary>
-    /// An optional URL to an icon for the agent.
+    /// Optional. A URL to an icon for the agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string IconUrl {
-      get { return iconUrl_; }
+      get { return iconUrl_ ?? IconUrlDefaultValue; }
       set {
         iconUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
+    }
+    /// <summary>Gets whether the "icon_url" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasIconUrl {
+      get { return iconUrl_ != null; }
+    }
+    /// <summary>Clears the value of the "icon_url" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearIconUrl() {
+      iconUrl_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5267,22 +4532,18 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ProtocolVersion != other.ProtocolVersion) return false;
       if (Name != other.Name) return false;
       if (Description != other.Description) return false;
-      if (Url != other.Url) return false;
-      if (PreferredTransport != other.PreferredTransport) return false;
-      if(!additionalInterfaces_.Equals(other.additionalInterfaces_)) return false;
+      if(!supportedInterfaces_.Equals(other.supportedInterfaces_)) return false;
       if (!object.Equals(Provider, other.Provider)) return false;
       if (Version != other.Version) return false;
       if (DocumentationUrl != other.DocumentationUrl) return false;
       if (!object.Equals(Capabilities, other.Capabilities)) return false;
       if (!SecuritySchemes.Equals(other.SecuritySchemes)) return false;
-      if(!security_.Equals(other.security_)) return false;
+      if(!securityRequirements_.Equals(other.securityRequirements_)) return false;
       if(!defaultInputModes_.Equals(other.defaultInputModes_)) return false;
       if(!defaultOutputModes_.Equals(other.defaultOutputModes_)) return false;
       if(!skills_.Equals(other.skills_)) return false;
-      if (SupportsAuthenticatedExtendedCard != other.SupportsAuthenticatedExtendedCard) return false;
       if(!signatures_.Equals(other.signatures_)) return false;
       if (IconUrl != other.IconUrl) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -5292,24 +4553,20 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ProtocolVersion.Length != 0) hash ^= ProtocolVersion.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
-      if (Url.Length != 0) hash ^= Url.GetHashCode();
-      if (PreferredTransport.Length != 0) hash ^= PreferredTransport.GetHashCode();
-      hash ^= additionalInterfaces_.GetHashCode();
+      hash ^= supportedInterfaces_.GetHashCode();
       if (provider_ != null) hash ^= Provider.GetHashCode();
       if (Version.Length != 0) hash ^= Version.GetHashCode();
-      if (DocumentationUrl.Length != 0) hash ^= DocumentationUrl.GetHashCode();
+      if (HasDocumentationUrl) hash ^= DocumentationUrl.GetHashCode();
       if (capabilities_ != null) hash ^= Capabilities.GetHashCode();
       hash ^= SecuritySchemes.GetHashCode();
-      hash ^= security_.GetHashCode();
+      hash ^= securityRequirements_.GetHashCode();
       hash ^= defaultInputModes_.GetHashCode();
       hash ^= defaultOutputModes_.GetHashCode();
       hash ^= skills_.GetHashCode();
-      if (SupportsAuthenticatedExtendedCard != false) hash ^= SupportsAuthenticatedExtendedCard.GetHashCode();
       hash ^= signatures_.GetHashCode();
-      if (IconUrl.Length != 0) hash ^= IconUrl.GetHashCode();
+      if (HasIconUrl) hash ^= IconUrl.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5336,10 +4593,7 @@ namespace A2a.V1 {
         output.WriteRawTag(18);
         output.WriteString(Description);
       }
-      if (Url.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Url);
-      }
+      supportedInterfaces_.WriteTo(output, _repeated_supportedInterfaces_codec);
       if (provider_ != null) {
         output.WriteRawTag(34);
         output.WriteMessage(Provider);
@@ -5348,7 +4602,7 @@ namespace A2a.V1 {
         output.WriteRawTag(42);
         output.WriteString(Version);
       }
-      if (DocumentationUrl.Length != 0) {
+      if (HasDocumentationUrl) {
         output.WriteRawTag(50);
         output.WriteString(DocumentationUrl);
       }
@@ -5357,26 +4611,13 @@ namespace A2a.V1 {
         output.WriteMessage(Capabilities);
       }
       securitySchemes_.WriteTo(output, _map_securitySchemes_codec);
-      security_.WriteTo(output, _repeated_security_codec);
+      securityRequirements_.WriteTo(output, _repeated_securityRequirements_codec);
       defaultInputModes_.WriteTo(output, _repeated_defaultInputModes_codec);
       defaultOutputModes_.WriteTo(output, _repeated_defaultOutputModes_codec);
       skills_.WriteTo(output, _repeated_skills_codec);
-      if (SupportsAuthenticatedExtendedCard != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(SupportsAuthenticatedExtendedCard);
-      }
-      if (PreferredTransport.Length != 0) {
-        output.WriteRawTag(114);
-        output.WriteString(PreferredTransport);
-      }
-      additionalInterfaces_.WriteTo(output, _repeated_additionalInterfaces_codec);
-      if (ProtocolVersion.Length != 0) {
-        output.WriteRawTag(130, 1);
-        output.WriteString(ProtocolVersion);
-      }
       signatures_.WriteTo(output, _repeated_signatures_codec);
-      if (IconUrl.Length != 0) {
-        output.WriteRawTag(146, 1);
+      if (HasIconUrl) {
+        output.WriteRawTag(114);
         output.WriteString(IconUrl);
       }
       if (_unknownFields != null) {
@@ -5397,10 +4638,7 @@ namespace A2a.V1 {
         output.WriteRawTag(18);
         output.WriteString(Description);
       }
-      if (Url.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Url);
-      }
+      supportedInterfaces_.WriteTo(ref output, _repeated_supportedInterfaces_codec);
       if (provider_ != null) {
         output.WriteRawTag(34);
         output.WriteMessage(Provider);
@@ -5409,7 +4647,7 @@ namespace A2a.V1 {
         output.WriteRawTag(42);
         output.WriteString(Version);
       }
-      if (DocumentationUrl.Length != 0) {
+      if (HasDocumentationUrl) {
         output.WriteRawTag(50);
         output.WriteString(DocumentationUrl);
       }
@@ -5418,26 +4656,13 @@ namespace A2a.V1 {
         output.WriteMessage(Capabilities);
       }
       securitySchemes_.WriteTo(ref output, _map_securitySchemes_codec);
-      security_.WriteTo(ref output, _repeated_security_codec);
+      securityRequirements_.WriteTo(ref output, _repeated_securityRequirements_codec);
       defaultInputModes_.WriteTo(ref output, _repeated_defaultInputModes_codec);
       defaultOutputModes_.WriteTo(ref output, _repeated_defaultOutputModes_codec);
       skills_.WriteTo(ref output, _repeated_skills_codec);
-      if (SupportsAuthenticatedExtendedCard != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(SupportsAuthenticatedExtendedCard);
-      }
-      if (PreferredTransport.Length != 0) {
-        output.WriteRawTag(114);
-        output.WriteString(PreferredTransport);
-      }
-      additionalInterfaces_.WriteTo(ref output, _repeated_additionalInterfaces_codec);
-      if (ProtocolVersion.Length != 0) {
-        output.WriteRawTag(130, 1);
-        output.WriteString(ProtocolVersion);
-      }
       signatures_.WriteTo(ref output, _repeated_signatures_codec);
-      if (IconUrl.Length != 0) {
-        output.WriteRawTag(146, 1);
+      if (HasIconUrl) {
+        output.WriteRawTag(114);
         output.WriteString(IconUrl);
       }
       if (_unknownFields != null) {
@@ -5450,45 +4675,33 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ProtocolVersion.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(ProtocolVersion);
-      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (Description.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
       }
-      if (Url.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
-      }
-      if (PreferredTransport.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PreferredTransport);
-      }
-      size += additionalInterfaces_.CalculateSize(_repeated_additionalInterfaces_codec);
+      size += supportedInterfaces_.CalculateSize(_repeated_supportedInterfaces_codec);
       if (provider_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Provider);
       }
       if (Version.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
       }
-      if (DocumentationUrl.Length != 0) {
+      if (HasDocumentationUrl) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DocumentationUrl);
       }
       if (capabilities_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Capabilities);
       }
       size += securitySchemes_.CalculateSize(_map_securitySchemes_codec);
-      size += security_.CalculateSize(_repeated_security_codec);
+      size += securityRequirements_.CalculateSize(_repeated_securityRequirements_codec);
       size += defaultInputModes_.CalculateSize(_repeated_defaultInputModes_codec);
       size += defaultOutputModes_.CalculateSize(_repeated_defaultOutputModes_codec);
       size += skills_.CalculateSize(_repeated_skills_codec);
-      if (SupportsAuthenticatedExtendedCard != false) {
-        size += 1 + 1;
-      }
       size += signatures_.CalculateSize(_repeated_signatures_codec);
-      if (IconUrl.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(IconUrl);
+      if (HasIconUrl) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IconUrl);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5502,50 +4715,38 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.ProtocolVersion.Length != 0) {
-        ProtocolVersion = other.ProtocolVersion;
-      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
       if (other.Description.Length != 0) {
         Description = other.Description;
       }
-      if (other.Url.Length != 0) {
-        Url = other.Url;
-      }
-      if (other.PreferredTransport.Length != 0) {
-        PreferredTransport = other.PreferredTransport;
-      }
-      additionalInterfaces_.Add(other.additionalInterfaces_);
+      supportedInterfaces_.Add(other.supportedInterfaces_);
       if (other.provider_ != null) {
         if (provider_ == null) {
-          Provider = new global::A2a.V1.AgentProvider();
+          Provider = new global::Lf.A2a.V1.AgentProvider();
         }
         Provider.MergeFrom(other.Provider);
       }
       if (other.Version.Length != 0) {
         Version = other.Version;
       }
-      if (other.DocumentationUrl.Length != 0) {
+      if (other.HasDocumentationUrl) {
         DocumentationUrl = other.DocumentationUrl;
       }
       if (other.capabilities_ != null) {
         if (capabilities_ == null) {
-          Capabilities = new global::A2a.V1.AgentCapabilities();
+          Capabilities = new global::Lf.A2a.V1.AgentCapabilities();
         }
         Capabilities.MergeFrom(other.Capabilities);
       }
       securitySchemes_.MergeFrom(other.securitySchemes_);
-      security_.Add(other.security_);
+      securityRequirements_.Add(other.securityRequirements_);
       defaultInputModes_.Add(other.defaultInputModes_);
       defaultOutputModes_.Add(other.defaultOutputModes_);
       skills_.Add(other.skills_);
-      if (other.SupportsAuthenticatedExtendedCard != false) {
-        SupportsAuthenticatedExtendedCard = other.SupportsAuthenticatedExtendedCard;
-      }
       signatures_.Add(other.signatures_);
-      if (other.IconUrl.Length != 0) {
+      if (other.HasIconUrl) {
         IconUrl = other.IconUrl;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -5576,12 +4777,12 @@ namespace A2a.V1 {
             break;
           }
           case 26: {
-            Url = input.ReadString();
+            supportedInterfaces_.AddEntriesFrom(input, _repeated_supportedInterfaces_codec);
             break;
           }
           case 34: {
             if (provider_ == null) {
-              Provider = new global::A2a.V1.AgentProvider();
+              Provider = new global::Lf.A2a.V1.AgentProvider();
             }
             input.ReadMessage(Provider);
             break;
@@ -5596,7 +4797,7 @@ namespace A2a.V1 {
           }
           case 58: {
             if (capabilities_ == null) {
-              Capabilities = new global::A2a.V1.AgentCapabilities();
+              Capabilities = new global::Lf.A2a.V1.AgentCapabilities();
             }
             input.ReadMessage(Capabilities);
             break;
@@ -5606,7 +4807,7 @@ namespace A2a.V1 {
             break;
           }
           case 74: {
-            security_.AddEntriesFrom(input, _repeated_security_codec);
+            securityRequirements_.AddEntriesFrom(input, _repeated_securityRequirements_codec);
             break;
           }
           case 82: {
@@ -5621,27 +4822,11 @@ namespace A2a.V1 {
             skills_.AddEntriesFrom(input, _repeated_skills_codec);
             break;
           }
-          case 104: {
-            SupportsAuthenticatedExtendedCard = input.ReadBool();
-            break;
-          }
-          case 114: {
-            PreferredTransport = input.ReadString();
-            break;
-          }
-          case 122: {
-            additionalInterfaces_.AddEntriesFrom(input, _repeated_additionalInterfaces_codec);
-            break;
-          }
-          case 130: {
-            ProtocolVersion = input.ReadString();
-            break;
-          }
-          case 138: {
+          case 106: {
             signatures_.AddEntriesFrom(input, _repeated_signatures_codec);
             break;
           }
-          case 146: {
+          case 114: {
             IconUrl = input.ReadString();
             break;
           }
@@ -5673,12 +4858,12 @@ namespace A2a.V1 {
             break;
           }
           case 26: {
-            Url = input.ReadString();
+            supportedInterfaces_.AddEntriesFrom(ref input, _repeated_supportedInterfaces_codec);
             break;
           }
           case 34: {
             if (provider_ == null) {
-              Provider = new global::A2a.V1.AgentProvider();
+              Provider = new global::Lf.A2a.V1.AgentProvider();
             }
             input.ReadMessage(Provider);
             break;
@@ -5693,7 +4878,7 @@ namespace A2a.V1 {
           }
           case 58: {
             if (capabilities_ == null) {
-              Capabilities = new global::A2a.V1.AgentCapabilities();
+              Capabilities = new global::Lf.A2a.V1.AgentCapabilities();
             }
             input.ReadMessage(Capabilities);
             break;
@@ -5703,7 +4888,7 @@ namespace A2a.V1 {
             break;
           }
           case 74: {
-            security_.AddEntriesFrom(ref input, _repeated_security_codec);
+            securityRequirements_.AddEntriesFrom(ref input, _repeated_securityRequirements_codec);
             break;
           }
           case 82: {
@@ -5718,27 +4903,11 @@ namespace A2a.V1 {
             skills_.AddEntriesFrom(ref input, _repeated_skills_codec);
             break;
           }
-          case 104: {
-            SupportsAuthenticatedExtendedCard = input.ReadBool();
-            break;
-          }
-          case 114: {
-            PreferredTransport = input.ReadString();
-            break;
-          }
-          case 122: {
-            additionalInterfaces_.AddEntriesFrom(ref input, _repeated_additionalInterfaces_codec);
-            break;
-          }
-          case 130: {
-            ProtocolVersion = input.ReadString();
-            break;
-          }
-          case 138: {
+          case 106: {
             signatures_.AddEntriesFrom(ref input, _repeated_signatures_codec);
             break;
           }
-          case 146: {
+          case 114: {
             IconUrl = input.ReadString();
             break;
           }
@@ -5750,8 +4919,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentProvider]
-  /// Represents information about the service provider of an agent.
+  /// Represents the service provider of an agent.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AgentProvider : pb::IMessage<AgentProvider>
@@ -5768,7 +4936,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5803,7 +4971,7 @@ namespace A2a.V1 {
     public const int UrlFieldNumber = 1;
     private string url_ = "";
     /// <summary>
-    /// The providers reference url
+    /// A URL for the agent provider's website or relevant documentation.
     /// Example: "https://ai.google.dev"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5819,7 +4987,7 @@ namespace A2a.V1 {
     public const int OrganizationFieldNumber = 2;
     private string organization_ = "";
     /// <summary>
-    /// The providers organization name
+    /// The name of the agent provider's organization.
     /// Example: "Google"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5997,8 +5165,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentCapabilities]
-  /// Defines the A2A feature set supported by the agent
+  /// Defines optional capabilities supported by an agent.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AgentCapabilities : pb::IMessage<AgentCapabilities>
@@ -6008,6 +5175,7 @@ namespace A2a.V1 {
   {
     private static readonly pb::MessageParser<AgentCapabilities> _parser = new pb::MessageParser<AgentCapabilities>(() => new AgentCapabilities());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<AgentCapabilities> Parser { get { return _parser; } }
@@ -6015,7 +5183,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6035,10 +5203,11 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AgentCapabilities(AgentCapabilities other) : this() {
+      _hasBits0 = other._hasBits0;
       streaming_ = other.streaming_;
       pushNotifications_ = other.pushNotifications_;
       extensions_ = other.extensions_.Clone();
-      stateTransitionHistory_ = other.stateTransitionHistory_;
+      extendedAgentCard_ = other.extendedAgentCard_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6050,61 +5219,106 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "streaming" field.</summary>
     public const int StreamingFieldNumber = 1;
+    private readonly static bool StreamingDefaultValue = false;
+
     private bool streaming_;
     /// <summary>
-    /// If the agent will support streaming responses
+    /// Indicates if the agent supports streaming responses.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Streaming {
-      get { return streaming_; }
+      get { if ((_hasBits0 & 1) != 0) { return streaming_; } else { return StreamingDefaultValue; } }
       set {
+        _hasBits0 |= 1;
         streaming_ = value;
       }
+    }
+    /// <summary>Gets whether the "streaming" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasStreaming {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "streaming" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearStreaming() {
+      _hasBits0 &= ~1;
     }
 
     /// <summary>Field number for the "push_notifications" field.</summary>
     public const int PushNotificationsFieldNumber = 2;
+    private readonly static bool PushNotificationsDefaultValue = false;
+
     private bool pushNotifications_;
     /// <summary>
-    /// If the agent can send push notifications to the clients webhook
+    /// Indicates if the agent supports sending push notifications for asynchronous task updates.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool PushNotifications {
-      get { return pushNotifications_; }
+      get { if ((_hasBits0 & 2) != 0) { return pushNotifications_; } else { return PushNotificationsDefaultValue; } }
       set {
+        _hasBits0 |= 2;
         pushNotifications_ = value;
       }
+    }
+    /// <summary>Gets whether the "push_notifications" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasPushNotifications {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "push_notifications" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearPushNotifications() {
+      _hasBits0 &= ~2;
     }
 
     /// <summary>Field number for the "extensions" field.</summary>
     public const int ExtensionsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::A2a.V1.AgentExtension> _repeated_extensions_codec
-        = pb::FieldCodec.ForMessage(26, global::A2a.V1.AgentExtension.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.AgentExtension> extensions_ = new pbc::RepeatedField<global::A2a.V1.AgentExtension>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.AgentExtension> _repeated_extensions_codec
+        = pb::FieldCodec.ForMessage(26, global::Lf.A2a.V1.AgentExtension.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.AgentExtension> extensions_ = new pbc::RepeatedField<global::Lf.A2a.V1.AgentExtension>();
     /// <summary>
-    /// Extensions supported by this agent.
+    /// A list of protocol extensions supported by the agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.AgentExtension> Extensions {
+    public pbc::RepeatedField<global::Lf.A2a.V1.AgentExtension> Extensions {
       get { return extensions_; }
     }
 
-    /// <summary>Field number for the "state_transition_history" field.</summary>
-    public const int StateTransitionHistoryFieldNumber = 4;
-    private bool stateTransitionHistory_;
+    /// <summary>Field number for the "extended_agent_card" field.</summary>
+    public const int ExtendedAgentCardFieldNumber = 4;
+    private readonly static bool ExtendedAgentCardDefaultValue = false;
+
+    private bool extendedAgentCard_;
     /// <summary>
-    /// If the agent provides a history of state transitions for a task.
+    /// Indicates if the agent supports providing an extended agent card when authenticated.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool StateTransitionHistory {
-      get { return stateTransitionHistory_; }
+    public bool ExtendedAgentCard {
+      get { if ((_hasBits0 & 4) != 0) { return extendedAgentCard_; } else { return ExtendedAgentCardDefaultValue; } }
       set {
-        stateTransitionHistory_ = value;
+        _hasBits0 |= 4;
+        extendedAgentCard_ = value;
       }
+    }
+    /// <summary>Gets whether the "extended_agent_card" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasExtendedAgentCard {
+      get { return (_hasBits0 & 4) != 0; }
+    }
+    /// <summary>Clears the value of the "extended_agent_card" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearExtendedAgentCard() {
+      _hasBits0 &= ~4;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6125,7 +5339,7 @@ namespace A2a.V1 {
       if (Streaming != other.Streaming) return false;
       if (PushNotifications != other.PushNotifications) return false;
       if(!extensions_.Equals(other.extensions_)) return false;
-      if (StateTransitionHistory != other.StateTransitionHistory) return false;
+      if (ExtendedAgentCard != other.ExtendedAgentCard) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6133,10 +5347,10 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Streaming != false) hash ^= Streaming.GetHashCode();
-      if (PushNotifications != false) hash ^= PushNotifications.GetHashCode();
+      if (HasStreaming) hash ^= Streaming.GetHashCode();
+      if (HasPushNotifications) hash ^= PushNotifications.GetHashCode();
       hash ^= extensions_.GetHashCode();
-      if (StateTransitionHistory != false) hash ^= StateTransitionHistory.GetHashCode();
+      if (HasExtendedAgentCard) hash ^= ExtendedAgentCard.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6155,18 +5369,18 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Streaming != false) {
+      if (HasStreaming) {
         output.WriteRawTag(8);
         output.WriteBool(Streaming);
       }
-      if (PushNotifications != false) {
+      if (HasPushNotifications) {
         output.WriteRawTag(16);
         output.WriteBool(PushNotifications);
       }
       extensions_.WriteTo(output, _repeated_extensions_codec);
-      if (StateTransitionHistory != false) {
+      if (HasExtendedAgentCard) {
         output.WriteRawTag(32);
-        output.WriteBool(StateTransitionHistory);
+        output.WriteBool(ExtendedAgentCard);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -6178,18 +5392,18 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Streaming != false) {
+      if (HasStreaming) {
         output.WriteRawTag(8);
         output.WriteBool(Streaming);
       }
-      if (PushNotifications != false) {
+      if (HasPushNotifications) {
         output.WriteRawTag(16);
         output.WriteBool(PushNotifications);
       }
       extensions_.WriteTo(ref output, _repeated_extensions_codec);
-      if (StateTransitionHistory != false) {
+      if (HasExtendedAgentCard) {
         output.WriteRawTag(32);
-        output.WriteBool(StateTransitionHistory);
+        output.WriteBool(ExtendedAgentCard);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -6201,14 +5415,14 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Streaming != false) {
+      if (HasStreaming) {
         size += 1 + 1;
       }
-      if (PushNotifications != false) {
+      if (HasPushNotifications) {
         size += 1 + 1;
       }
       size += extensions_.CalculateSize(_repeated_extensions_codec);
-      if (StateTransitionHistory != false) {
+      if (HasExtendedAgentCard) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -6223,15 +5437,15 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.Streaming != false) {
+      if (other.HasStreaming) {
         Streaming = other.Streaming;
       }
-      if (other.PushNotifications != false) {
+      if (other.HasPushNotifications) {
         PushNotifications = other.PushNotifications;
       }
       extensions_.Add(other.extensions_);
-      if (other.StateTransitionHistory != false) {
-        StateTransitionHistory = other.StateTransitionHistory;
+      if (other.HasExtendedAgentCard) {
+        ExtendedAgentCard = other.ExtendedAgentCard;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6265,7 +5479,7 @@ namespace A2a.V1 {
             break;
           }
           case 32: {
-            StateTransitionHistory = input.ReadBool();
+            ExtendedAgentCard = input.ReadBool();
             break;
           }
         }
@@ -6300,7 +5514,7 @@ namespace A2a.V1 {
             break;
           }
           case 32: {
-            StateTransitionHistory = input.ReadBool();
+            ExtendedAgentCard = input.ReadBool();
             break;
           }
         }
@@ -6311,8 +5525,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentExtension]
-  /// A declaration of an extension supported by an Agent.
+  /// A declaration of a protocol extension supported by an Agent.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AgentExtension : pb::IMessage<AgentExtension>
@@ -6329,7 +5542,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6366,8 +5579,7 @@ namespace A2a.V1 {
     public const int UriFieldNumber = 1;
     private string uri_ = "";
     /// <summary>
-    /// The URI of the extension.
-    /// Example: "https://developers.google.com/identity/protocols/oauth2"
+    /// The unique URI identifying the extension.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6382,8 +5594,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 2;
     private string description_ = "";
     /// <summary>
-    /// A description of how this agent uses this extension.
-    /// Example: "Google OAuth 2.0 authentication"
+    /// A human-readable description of how this agent uses the extension.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6398,8 +5609,7 @@ namespace A2a.V1 {
     public const int RequiredFieldNumber = 3;
     private bool required_;
     /// <summary>
-    /// Whether the client must follow specific requirements of the extension.
-    /// Example: false
+    /// If true, the client must understand and comply with the extension's requirements.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6414,7 +5624,7 @@ namespace A2a.V1 {
     public const int ParamsFieldNumber = 4;
     private global::Google.Protobuf.WellKnownTypes.Struct params_;
     /// <summary>
-    /// Optional configuration for the extension.
+    /// Optional. Extension-specific configuration parameters.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6648,12 +5858,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentSkill]
-  /// AgentSkill represents a unit of action/solution that the agent can perform.
-  /// One can think of this as a type of highly reliable solution that an agent
-  /// can be tasked to provide. Agents have the autonomy to choose how and when
-  /// to use specific skills, but clients should have confidence that if the
-  /// skill is defined that unit of action can be reliably performed.
+  /// Represents a distinct capability or function that an agent can perform.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AgentSkill : pb::IMessage<AgentSkill>
@@ -6670,7 +5875,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6697,7 +5902,7 @@ namespace A2a.V1 {
       examples_ = other.examples_.Clone();
       inputModes_ = other.inputModes_.Clone();
       outputModes_ = other.outputModes_.Clone();
-      security_ = other.security_.Clone();
+      securityRequirements_ = other.securityRequirements_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6711,7 +5916,7 @@ namespace A2a.V1 {
     public const int IdFieldNumber = 1;
     private string id_ = "";
     /// <summary>
-    /// Unique identifier of the skill within this agent.
+    /// A unique identifier for the agent's skill.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6726,7 +5931,7 @@ namespace A2a.V1 {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
-    /// A human readable name for the skill.
+    /// A human-readable name for the skill.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6741,8 +5946,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 3;
     private string description_ = "";
     /// <summary>
-    /// A human (or llm) readable description of the skill
-    /// details and behaviors.
+    /// A detailed description of the skill.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6759,8 +5963,7 @@ namespace A2a.V1 {
         = pb::FieldCodec.ForString(34);
     private readonly pbc::RepeatedField<string> tags_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// A set of tags for the skill to enhance categorization/utilization.
-    /// Example: ["cooking", "customer support", "billing"]
+    /// A set of keywords describing the skill's capabilities.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6774,10 +5977,7 @@ namespace A2a.V1 {
         = pb::FieldCodec.ForString(42);
     private readonly pbc::RepeatedField<string> examples_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// A set of example queries that this skill is designed to address.
-    /// These examples should help the caller to understand how to craft requests
-    /// to the agent to achieve specific goals.
-    /// Example: ["I need a recipe for bread"]
+    /// Example prompts or scenarios that this skill can handle.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6791,7 +5991,7 @@ namespace A2a.V1 {
         = pb::FieldCodec.ForString(50);
     private readonly pbc::RepeatedField<string> inputModes_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// Possible input modalities supported.
+    /// The set of supported input media types for this skill, overriding the agent's defaults.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6805,7 +6005,7 @@ namespace A2a.V1 {
         = pb::FieldCodec.ForString(58);
     private readonly pbc::RepeatedField<string> outputModes_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// Possible output modalities produced
+    /// The set of supported output media types for this skill, overriding the agent's defaults.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6813,22 +6013,18 @@ namespace A2a.V1 {
       get { return outputModes_; }
     }
 
-    /// <summary>Field number for the "security" field.</summary>
-    public const int SecurityFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::A2a.V1.Security> _repeated_security_codec
-        = pb::FieldCodec.ForMessage(66, global::A2a.V1.Security.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Security> security_ = new pbc::RepeatedField<global::A2a.V1.Security>();
+    /// <summary>Field number for the "security_requirements" field.</summary>
+    public const int SecurityRequirementsFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.SecurityRequirement> _repeated_securityRequirements_codec
+        = pb::FieldCodec.ForMessage(66, global::Lf.A2a.V1.SecurityRequirement.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.SecurityRequirement> securityRequirements_ = new pbc::RepeatedField<global::Lf.A2a.V1.SecurityRequirement>();
     /// <summary>
-    /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
-    /// Security schemes necessary for the agent to leverage this skill.
-    /// As in the overall AgentCard.security, this list represents a logical OR of
-    /// security requirement objects. Each object is a set of security schemes
-    /// that must be used together (a logical AND).
+    /// Security schemes necessary for this skill.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Security> Security {
-      get { return security_; }
+    public pbc::RepeatedField<global::Lf.A2a.V1.SecurityRequirement> SecurityRequirements {
+      get { return securityRequirements_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6853,7 +6049,7 @@ namespace A2a.V1 {
       if(!examples_.Equals(other.examples_)) return false;
       if(!inputModes_.Equals(other.inputModes_)) return false;
       if(!outputModes_.Equals(other.outputModes_)) return false;
-      if(!security_.Equals(other.security_)) return false;
+      if(!securityRequirements_.Equals(other.securityRequirements_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6868,7 +6064,7 @@ namespace A2a.V1 {
       hash ^= examples_.GetHashCode();
       hash ^= inputModes_.GetHashCode();
       hash ^= outputModes_.GetHashCode();
-      hash ^= security_.GetHashCode();
+      hash ^= securityRequirements_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6903,7 +6099,7 @@ namespace A2a.V1 {
       examples_.WriteTo(output, _repeated_examples_codec);
       inputModes_.WriteTo(output, _repeated_inputModes_codec);
       outputModes_.WriteTo(output, _repeated_outputModes_codec);
-      security_.WriteTo(output, _repeated_security_codec);
+      securityRequirements_.WriteTo(output, _repeated_securityRequirements_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6930,7 +6126,7 @@ namespace A2a.V1 {
       examples_.WriteTo(ref output, _repeated_examples_codec);
       inputModes_.WriteTo(ref output, _repeated_inputModes_codec);
       outputModes_.WriteTo(ref output, _repeated_outputModes_codec);
-      security_.WriteTo(ref output, _repeated_security_codec);
+      securityRequirements_.WriteTo(ref output, _repeated_securityRequirements_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -6954,7 +6150,7 @@ namespace A2a.V1 {
       size += examples_.CalculateSize(_repeated_examples_codec);
       size += inputModes_.CalculateSize(_repeated_inputModes_codec);
       size += outputModes_.CalculateSize(_repeated_outputModes_codec);
-      size += security_.CalculateSize(_repeated_security_codec);
+      size += securityRequirements_.CalculateSize(_repeated_securityRequirements_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -6980,7 +6176,7 @@ namespace A2a.V1 {
       examples_.Add(other.examples_);
       inputModes_.Add(other.inputModes_);
       outputModes_.Add(other.outputModes_);
-      security_.Add(other.security_);
+      securityRequirements_.Add(other.securityRequirements_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -7029,7 +6225,7 @@ namespace A2a.V1 {
             break;
           }
           case 66: {
-            security_.AddEntriesFrom(input, _repeated_security_codec);
+            securityRequirements_.AddEntriesFrom(input, _repeated_securityRequirements_codec);
             break;
           }
         }
@@ -7080,7 +6276,7 @@ namespace A2a.V1 {
             break;
           }
           case 66: {
-            security_.AddEntriesFrom(ref input, _repeated_security_codec);
+            securityRequirements_.AddEntriesFrom(ref input, _repeated_securityRequirements_codec);
             break;
           }
         }
@@ -7091,7 +6287,6 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AgentCardSignature]
   /// AgentCardSignature represents a JWS signature of an AgentCard.
   /// This follows the JSON format of an RFC 7515 JSON Web Signature (JWS).
   /// </summary>
@@ -7110,7 +6305,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7146,8 +6341,10 @@ namespace A2a.V1 {
     public const int ProtectedFieldNumber = 1;
     private string protected_ = "";
     /// <summary>
-    /// The protected JWS header for the signature. This is always a
-    /// base64url-encoded JSON object. Required.
+    /// (-- api-linter: core::0140::reserved-words=disabled
+    ///     aip.dev/not-precedent: Backwards compatibility --)
+    /// Required. The protected JWS header for the signature. This is always a
+    /// base64url-encoded JSON object.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -7162,7 +6359,7 @@ namespace A2a.V1 {
     public const int SignatureFieldNumber = 2;
     private string signature_ = "";
     /// <summary>
-    /// The computed signature, base64url-encoded. Required.
+    /// Required. The computed signature, base64url-encoded.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -7387,7 +6584,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:TaskPushNotificationConfig]
+  /// A container associating a push notification configuration with a specific task.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class TaskPushNotificationConfig : pb::IMessage<TaskPushNotificationConfig>
@@ -7404,7 +6601,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7424,8 +6621,12 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TaskPushNotificationConfig(TaskPushNotificationConfig other) : this() {
-      name_ = other.name_;
-      pushNotificationConfig_ = other.pushNotificationConfig_ != null ? other.pushNotificationConfig_.Clone() : null;
+      tenant_ = other.tenant_;
+      id_ = other.id_;
+      taskId_ = other.taskId_;
+      url_ = other.url_;
+      token_ = other.token_;
+      authentication_ = other.authentication_ != null ? other.authentication_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -7435,34 +6636,94 @@ namespace A2a.V1 {
       return new TaskPushNotificationConfig(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
     /// <summary>
-    /// The resource name of the config.
-    /// Format: tasks/{task_id}/pushNotificationConfigs/{config_id}
+    /// Optional. Tenant ID.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "push_notification_config" field.</summary>
-    public const int PushNotificationConfigFieldNumber = 2;
-    private global::A2a.V1.PushNotificationConfig pushNotificationConfig_;
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 2;
+    private string id_ = "";
     /// <summary>
     /// The push notification configuration details.
+    /// A unique identifier (e.g. UUID) for this push notification configuration.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.PushNotificationConfig PushNotificationConfig {
-      get { return pushNotificationConfig_; }
+    public string Id {
+      get { return id_; }
       set {
-        pushNotificationConfig_ = value;
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "task_id" field.</summary>
+    public const int TaskIdFieldNumber = 3;
+    private string taskId_ = "";
+    /// <summary>
+    /// The ID of the task this configuration is associated with.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TaskId {
+      get { return taskId_; }
+      set {
+        taskId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "url" field.</summary>
+    public const int UrlFieldNumber = 4;
+    private string url_ = "";
+    /// <summary>
+    /// The URL where the notification should be sent.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Url {
+      get { return url_; }
+      set {
+        url_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "token" field.</summary>
+    public const int TokenFieldNumber = 5;
+    private string token_ = "";
+    /// <summary>
+    /// A token unique for this task or session.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Token {
+      get { return token_; }
+      set {
+        token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "authentication" field.</summary>
+    public const int AuthenticationFieldNumber = 6;
+    private global::Lf.A2a.V1.AuthenticationInfo authentication_;
+    /// <summary>
+    /// Authentication information required to send the notification.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lf.A2a.V1.AuthenticationInfo Authentication {
+      get { return authentication_; }
+      set {
+        authentication_ = value;
       }
     }
 
@@ -7481,8 +6742,12 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
-      if (!object.Equals(PushNotificationConfig, other.PushNotificationConfig)) return false;
+      if (Tenant != other.Tenant) return false;
+      if (Id != other.Id) return false;
+      if (TaskId != other.TaskId) return false;
+      if (Url != other.Url) return false;
+      if (Token != other.Token) return false;
+      if (!object.Equals(Authentication, other.Authentication)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -7490,8 +6755,12 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (pushNotificationConfig_ != null) hash ^= PushNotificationConfig.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (TaskId.Length != 0) hash ^= TaskId.GetHashCode();
+      if (Url.Length != 0) hash ^= Url.GetHashCode();
+      if (Token.Length != 0) hash ^= Token.GetHashCode();
+      if (authentication_ != null) hash ^= Authentication.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -7510,13 +6779,29 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
       }
-      if (pushNotificationConfig_ != null) {
+      if (Id.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteMessage(PushNotificationConfig);
+        output.WriteString(Id);
+      }
+      if (TaskId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(TaskId);
+      }
+      if (Url.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Url);
+      }
+      if (Token.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Token);
+      }
+      if (authentication_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Authentication);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -7528,13 +6813,29 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
       }
-      if (pushNotificationConfig_ != null) {
+      if (Id.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteMessage(PushNotificationConfig);
+        output.WriteString(Id);
+      }
+      if (TaskId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(TaskId);
+      }
+      if (Url.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Url);
+      }
+      if (Token.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Token);
+      }
+      if (authentication_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Authentication);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -7546,11 +6847,23 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
       }
-      if (pushNotificationConfig_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PushNotificationConfig);
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (TaskId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TaskId);
+      }
+      if (Url.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
+      }
+      if (Token.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
+      }
+      if (authentication_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Authentication);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -7564,14 +6877,26 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
       }
-      if (other.pushNotificationConfig_ != null) {
-        if (pushNotificationConfig_ == null) {
-          PushNotificationConfig = new global::A2a.V1.PushNotificationConfig();
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.TaskId.Length != 0) {
+        TaskId = other.TaskId;
+      }
+      if (other.Url.Length != 0) {
+        Url = other.Url;
+      }
+      if (other.Token.Length != 0) {
+        Token = other.Token;
+      }
+      if (other.authentication_ != null) {
+        if (authentication_ == null) {
+          Authentication = new global::Lf.A2a.V1.AuthenticationInfo();
         }
-        PushNotificationConfig.MergeFrom(other.PushNotificationConfig);
+        Authentication.MergeFrom(other.Authentication);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -7593,14 +6918,30 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
             break;
           }
           case 18: {
-            if (pushNotificationConfig_ == null) {
-              PushNotificationConfig = new global::A2a.V1.PushNotificationConfig();
+            Id = input.ReadString();
+            break;
+          }
+          case 26: {
+            TaskId = input.ReadString();
+            break;
+          }
+          case 34: {
+            Url = input.ReadString();
+            break;
+          }
+          case 42: {
+            Token = input.ReadString();
+            break;
+          }
+          case 50: {
+            if (authentication_ == null) {
+              Authentication = new global::Lf.A2a.V1.AuthenticationInfo();
             }
-            input.ReadMessage(PushNotificationConfig);
+            input.ReadMessage(Authentication);
             break;
           }
         }
@@ -7623,14 +6964,30 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
             break;
           }
           case 18: {
-            if (pushNotificationConfig_ == null) {
-              PushNotificationConfig = new global::A2a.V1.PushNotificationConfig();
+            Id = input.ReadString();
+            break;
+          }
+          case 26: {
+            TaskId = input.ReadString();
+            break;
+          }
+          case 34: {
+            Url = input.ReadString();
+            break;
+          }
+          case 42: {
+            Token = input.ReadString();
+            break;
+          }
+          case 50: {
+            if (authentication_ == null) {
+              Authentication = new global::Lf.A2a.V1.AuthenticationInfo();
             }
-            input.ReadMessage(PushNotificationConfig);
+            input.ReadMessage(Authentication);
             break;
           }
         }
@@ -7642,6 +6999,7 @@ namespace A2a.V1 {
 
   /// <summary>
   /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
+  /// A list of strings.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class StringList : pb::IMessage<StringList>
@@ -7658,7 +7016,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7693,6 +7051,9 @@ namespace A2a.V1 {
     private static readonly pb::FieldCodec<string> _repeated_list_codec
         = pb::FieldCodec.ForString(10);
     private readonly pbc::RepeatedField<string> list_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// The individual string values.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<string> List {
@@ -7830,22 +7191,25 @@ namespace A2a.V1 {
 
   }
 
+  /// <summary>
+  /// Defines the security requirements for an agent.
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class Security : pb::IMessage<Security>
+  public sealed partial class SecurityRequirement : pb::IMessage<SecurityRequirement>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Security> _parser = new pb::MessageParser<Security>(() => new Security());
+    private static readonly pb::MessageParser<SecurityRequirement> _parser = new pb::MessageParser<SecurityRequirement>(() => new SecurityRequirement());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Security> Parser { get { return _parser; } }
+    public static pb::MessageParser<SecurityRequirement> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7856,7 +7220,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Security() {
+    public SecurityRequirement() {
       OnConstruction();
     }
 
@@ -7864,37 +7228,40 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Security(Security other) : this() {
+    public SecurityRequirement(SecurityRequirement other) : this() {
       schemes_ = other.schemes_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Security Clone() {
-      return new Security(this);
+    public SecurityRequirement Clone() {
+      return new SecurityRequirement(this);
     }
 
     /// <summary>Field number for the "schemes" field.</summary>
     public const int SchemesFieldNumber = 1;
-    private static readonly pbc::MapField<string, global::A2a.V1.StringList>.Codec _map_schemes_codec
-        = new pbc::MapField<string, global::A2a.V1.StringList>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::A2a.V1.StringList.Parser), 10);
-    private readonly pbc::MapField<string, global::A2a.V1.StringList> schemes_ = new pbc::MapField<string, global::A2a.V1.StringList>();
+    private static readonly pbc::MapField<string, global::Lf.A2a.V1.StringList>.Codec _map_schemes_codec
+        = new pbc::MapField<string, global::Lf.A2a.V1.StringList>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Lf.A2a.V1.StringList.Parser), 10);
+    private readonly pbc::MapField<string, global::Lf.A2a.V1.StringList> schemes_ = new pbc::MapField<string, global::Lf.A2a.V1.StringList>();
+    /// <summary>
+    /// A map of security schemes to the required scopes.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::A2a.V1.StringList> Schemes {
+    public pbc::MapField<string, global::Lf.A2a.V1.StringList> Schemes {
       get { return schemes_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Security);
+      return Equals(other as SecurityRequirement);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Security other) {
+    public bool Equals(SecurityRequirement other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -7959,7 +7326,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Security other) {
+    public void MergeFrom(SecurityRequirement other) {
       if (other == null) {
         return;
       }
@@ -8018,7 +7385,9 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:SecurityScheme]
+  /// Defines a security scheme that can be used to secure an agent's endpoints.
+  /// This is a discriminated union type based on the OpenAPI 3.2 Security Scheme Object.
+  /// See: https://spec.openapis.org/oas/v3.2.0.html#security-scheme-object
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class SecurityScheme : pb::IMessage<SecurityScheme>
@@ -8035,7 +7404,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8084,10 +7453,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "api_key_security_scheme" field.</summary>
     public const int ApiKeySecuritySchemeFieldNumber = 1;
+    /// <summary>
+    /// API key-based authentication.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.APIKeySecurityScheme ApiKeySecurityScheme {
-      get { return schemeCase_ == SchemeOneofCase.ApiKeySecurityScheme ? (global::A2a.V1.APIKeySecurityScheme) scheme_ : null; }
+    public global::Lf.A2a.V1.APIKeySecurityScheme ApiKeySecurityScheme {
+      get { return schemeCase_ == SchemeOneofCase.ApiKeySecurityScheme ? (global::Lf.A2a.V1.APIKeySecurityScheme) scheme_ : null; }
       set {
         scheme_ = value;
         schemeCase_ = value == null ? SchemeOneofCase.None : SchemeOneofCase.ApiKeySecurityScheme;
@@ -8096,10 +7468,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "http_auth_security_scheme" field.</summary>
     public const int HttpAuthSecuritySchemeFieldNumber = 2;
+    /// <summary>
+    /// HTTP authentication (Basic, Bearer, etc.).
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.HTTPAuthSecurityScheme HttpAuthSecurityScheme {
-      get { return schemeCase_ == SchemeOneofCase.HttpAuthSecurityScheme ? (global::A2a.V1.HTTPAuthSecurityScheme) scheme_ : null; }
+    public global::Lf.A2a.V1.HTTPAuthSecurityScheme HttpAuthSecurityScheme {
+      get { return schemeCase_ == SchemeOneofCase.HttpAuthSecurityScheme ? (global::Lf.A2a.V1.HTTPAuthSecurityScheme) scheme_ : null; }
       set {
         scheme_ = value;
         schemeCase_ = value == null ? SchemeOneofCase.None : SchemeOneofCase.HttpAuthSecurityScheme;
@@ -8108,10 +7483,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "oauth2_security_scheme" field.</summary>
     public const int Oauth2SecuritySchemeFieldNumber = 3;
+    /// <summary>
+    /// OAuth 2.0 authentication.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.OAuth2SecurityScheme Oauth2SecurityScheme {
-      get { return schemeCase_ == SchemeOneofCase.Oauth2SecurityScheme ? (global::A2a.V1.OAuth2SecurityScheme) scheme_ : null; }
+    public global::Lf.A2a.V1.OAuth2SecurityScheme Oauth2SecurityScheme {
+      get { return schemeCase_ == SchemeOneofCase.Oauth2SecurityScheme ? (global::Lf.A2a.V1.OAuth2SecurityScheme) scheme_ : null; }
       set {
         scheme_ = value;
         schemeCase_ = value == null ? SchemeOneofCase.None : SchemeOneofCase.Oauth2SecurityScheme;
@@ -8120,10 +7498,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "open_id_connect_security_scheme" field.</summary>
     public const int OpenIdConnectSecuritySchemeFieldNumber = 4;
+    /// <summary>
+    /// OpenID Connect authentication.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.OpenIdConnectSecurityScheme OpenIdConnectSecurityScheme {
-      get { return schemeCase_ == SchemeOneofCase.OpenIdConnectSecurityScheme ? (global::A2a.V1.OpenIdConnectSecurityScheme) scheme_ : null; }
+    public global::Lf.A2a.V1.OpenIdConnectSecurityScheme OpenIdConnectSecurityScheme {
+      get { return schemeCase_ == SchemeOneofCase.OpenIdConnectSecurityScheme ? (global::Lf.A2a.V1.OpenIdConnectSecurityScheme) scheme_ : null; }
       set {
         scheme_ = value;
         schemeCase_ = value == null ? SchemeOneofCase.None : SchemeOneofCase.OpenIdConnectSecurityScheme;
@@ -8132,10 +7513,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "mtls_security_scheme" field.</summary>
     public const int MtlsSecuritySchemeFieldNumber = 5;
+    /// <summary>
+    /// Mutual TLS authentication.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.MutualTlsSecurityScheme MtlsSecurityScheme {
-      get { return schemeCase_ == SchemeOneofCase.MtlsSecurityScheme ? (global::A2a.V1.MutualTlsSecurityScheme) scheme_ : null; }
+    public global::Lf.A2a.V1.MutualTlsSecurityScheme MtlsSecurityScheme {
+      get { return schemeCase_ == SchemeOneofCase.MtlsSecurityScheme ? (global::Lf.A2a.V1.MutualTlsSecurityScheme) scheme_ : null; }
       set {
         scheme_ = value;
         schemeCase_ = value == null ? SchemeOneofCase.None : SchemeOneofCase.MtlsSecurityScheme;
@@ -8308,31 +7692,31 @@ namespace A2a.V1 {
       switch (other.SchemeCase) {
         case SchemeOneofCase.ApiKeySecurityScheme:
           if (ApiKeySecurityScheme == null) {
-            ApiKeySecurityScheme = new global::A2a.V1.APIKeySecurityScheme();
+            ApiKeySecurityScheme = new global::Lf.A2a.V1.APIKeySecurityScheme();
           }
           ApiKeySecurityScheme.MergeFrom(other.ApiKeySecurityScheme);
           break;
         case SchemeOneofCase.HttpAuthSecurityScheme:
           if (HttpAuthSecurityScheme == null) {
-            HttpAuthSecurityScheme = new global::A2a.V1.HTTPAuthSecurityScheme();
+            HttpAuthSecurityScheme = new global::Lf.A2a.V1.HTTPAuthSecurityScheme();
           }
           HttpAuthSecurityScheme.MergeFrom(other.HttpAuthSecurityScheme);
           break;
         case SchemeOneofCase.Oauth2SecurityScheme:
           if (Oauth2SecurityScheme == null) {
-            Oauth2SecurityScheme = new global::A2a.V1.OAuth2SecurityScheme();
+            Oauth2SecurityScheme = new global::Lf.A2a.V1.OAuth2SecurityScheme();
           }
           Oauth2SecurityScheme.MergeFrom(other.Oauth2SecurityScheme);
           break;
         case SchemeOneofCase.OpenIdConnectSecurityScheme:
           if (OpenIdConnectSecurityScheme == null) {
-            OpenIdConnectSecurityScheme = new global::A2a.V1.OpenIdConnectSecurityScheme();
+            OpenIdConnectSecurityScheme = new global::Lf.A2a.V1.OpenIdConnectSecurityScheme();
           }
           OpenIdConnectSecurityScheme.MergeFrom(other.OpenIdConnectSecurityScheme);
           break;
         case SchemeOneofCase.MtlsSecurityScheme:
           if (MtlsSecurityScheme == null) {
-            MtlsSecurityScheme = new global::A2a.V1.MutualTlsSecurityScheme();
+            MtlsSecurityScheme = new global::Lf.A2a.V1.MutualTlsSecurityScheme();
           }
           MtlsSecurityScheme.MergeFrom(other.MtlsSecurityScheme);
           break;
@@ -8358,7 +7742,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::A2a.V1.APIKeySecurityScheme subBuilder = new global::A2a.V1.APIKeySecurityScheme();
+            global::Lf.A2a.V1.APIKeySecurityScheme subBuilder = new global::Lf.A2a.V1.APIKeySecurityScheme();
             if (schemeCase_ == SchemeOneofCase.ApiKeySecurityScheme) {
               subBuilder.MergeFrom(ApiKeySecurityScheme);
             }
@@ -8367,7 +7751,7 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.HTTPAuthSecurityScheme subBuilder = new global::A2a.V1.HTTPAuthSecurityScheme();
+            global::Lf.A2a.V1.HTTPAuthSecurityScheme subBuilder = new global::Lf.A2a.V1.HTTPAuthSecurityScheme();
             if (schemeCase_ == SchemeOneofCase.HttpAuthSecurityScheme) {
               subBuilder.MergeFrom(HttpAuthSecurityScheme);
             }
@@ -8376,7 +7760,7 @@ namespace A2a.V1 {
             break;
           }
           case 26: {
-            global::A2a.V1.OAuth2SecurityScheme subBuilder = new global::A2a.V1.OAuth2SecurityScheme();
+            global::Lf.A2a.V1.OAuth2SecurityScheme subBuilder = new global::Lf.A2a.V1.OAuth2SecurityScheme();
             if (schemeCase_ == SchemeOneofCase.Oauth2SecurityScheme) {
               subBuilder.MergeFrom(Oauth2SecurityScheme);
             }
@@ -8385,7 +7769,7 @@ namespace A2a.V1 {
             break;
           }
           case 34: {
-            global::A2a.V1.OpenIdConnectSecurityScheme subBuilder = new global::A2a.V1.OpenIdConnectSecurityScheme();
+            global::Lf.A2a.V1.OpenIdConnectSecurityScheme subBuilder = new global::Lf.A2a.V1.OpenIdConnectSecurityScheme();
             if (schemeCase_ == SchemeOneofCase.OpenIdConnectSecurityScheme) {
               subBuilder.MergeFrom(OpenIdConnectSecurityScheme);
             }
@@ -8394,7 +7778,7 @@ namespace A2a.V1 {
             break;
           }
           case 42: {
-            global::A2a.V1.MutualTlsSecurityScheme subBuilder = new global::A2a.V1.MutualTlsSecurityScheme();
+            global::Lf.A2a.V1.MutualTlsSecurityScheme subBuilder = new global::Lf.A2a.V1.MutualTlsSecurityScheme();
             if (schemeCase_ == SchemeOneofCase.MtlsSecurityScheme) {
               subBuilder.MergeFrom(MtlsSecurityScheme);
             }
@@ -8422,7 +7806,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::A2a.V1.APIKeySecurityScheme subBuilder = new global::A2a.V1.APIKeySecurityScheme();
+            global::Lf.A2a.V1.APIKeySecurityScheme subBuilder = new global::Lf.A2a.V1.APIKeySecurityScheme();
             if (schemeCase_ == SchemeOneofCase.ApiKeySecurityScheme) {
               subBuilder.MergeFrom(ApiKeySecurityScheme);
             }
@@ -8431,7 +7815,7 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.HTTPAuthSecurityScheme subBuilder = new global::A2a.V1.HTTPAuthSecurityScheme();
+            global::Lf.A2a.V1.HTTPAuthSecurityScheme subBuilder = new global::Lf.A2a.V1.HTTPAuthSecurityScheme();
             if (schemeCase_ == SchemeOneofCase.HttpAuthSecurityScheme) {
               subBuilder.MergeFrom(HttpAuthSecurityScheme);
             }
@@ -8440,7 +7824,7 @@ namespace A2a.V1 {
             break;
           }
           case 26: {
-            global::A2a.V1.OAuth2SecurityScheme subBuilder = new global::A2a.V1.OAuth2SecurityScheme();
+            global::Lf.A2a.V1.OAuth2SecurityScheme subBuilder = new global::Lf.A2a.V1.OAuth2SecurityScheme();
             if (schemeCase_ == SchemeOneofCase.Oauth2SecurityScheme) {
               subBuilder.MergeFrom(Oauth2SecurityScheme);
             }
@@ -8449,7 +7833,7 @@ namespace A2a.V1 {
             break;
           }
           case 34: {
-            global::A2a.V1.OpenIdConnectSecurityScheme subBuilder = new global::A2a.V1.OpenIdConnectSecurityScheme();
+            global::Lf.A2a.V1.OpenIdConnectSecurityScheme subBuilder = new global::Lf.A2a.V1.OpenIdConnectSecurityScheme();
             if (schemeCase_ == SchemeOneofCase.OpenIdConnectSecurityScheme) {
               subBuilder.MergeFrom(OpenIdConnectSecurityScheme);
             }
@@ -8458,7 +7842,7 @@ namespace A2a.V1 {
             break;
           }
           case 42: {
-            global::A2a.V1.MutualTlsSecurityScheme subBuilder = new global::A2a.V1.MutualTlsSecurityScheme();
+            global::Lf.A2a.V1.MutualTlsSecurityScheme subBuilder = new global::Lf.A2a.V1.MutualTlsSecurityScheme();
             if (schemeCase_ == SchemeOneofCase.MtlsSecurityScheme) {
               subBuilder.MergeFrom(MtlsSecurityScheme);
             }
@@ -8474,7 +7858,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:APIKeySecurityScheme]
+  /// Defines a security scheme using an API key.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class APIKeySecurityScheme : pb::IMessage<APIKeySecurityScheme>
@@ -8491,7 +7875,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8527,7 +7911,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 1;
     private string description_ = "";
     /// <summary>
-    /// Description of this security scheme.
+    /// An optional description for the security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -8542,7 +7926,7 @@ namespace A2a.V1 {
     public const int LocationFieldNumber = 2;
     private string location_ = "";
     /// <summary>
-    /// Location of the API key, valid values are "query", "header", or "cookie"
+    /// The location of the API key. Valid values are "query", "header", or "cookie".
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -8557,7 +7941,7 @@ namespace A2a.V1 {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// Name of the header, query or cookie parameter to be used.
+    /// The name of the header, query, or cookie parameter to be used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -8758,7 +8142,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:HTTPAuthSecurityScheme]
+  /// Defines a security scheme using HTTP authentication.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class HTTPAuthSecurityScheme : pb::IMessage<HTTPAuthSecurityScheme>
@@ -8775,7 +8159,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[24]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8811,7 +8195,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 1;
     private string description_ = "";
     /// <summary>
-    /// Description of this security scheme.
+    /// An optional description for the security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -8826,10 +8210,9 @@ namespace A2a.V1 {
     public const int SchemeFieldNumber = 2;
     private string scheme_ = "";
     /// <summary>
-    /// The name of the HTTP Authentication scheme to be used in the
-    /// Authorization header as defined in RFC7235. The values used SHOULD be
-    /// registered in the IANA Authentication Scheme registry.
-    /// The value is case-insensitive, as defined in RFC7235.
+    /// The name of the HTTP Authentication scheme to be used in the Authorization header,
+    /// as defined in RFC7235 (e.g., "Bearer").
+    /// This value should be registered in the IANA Authentication Scheme registry.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -8844,9 +8227,8 @@ namespace A2a.V1 {
     public const int BearerFormatFieldNumber = 3;
     private string bearerFormat_ = "";
     /// <summary>
-    /// A hint to the client to identify how the bearer token is formatted.
-    /// Bearer tokens are usually generated by an authorization server, so
-    /// this information is primarily for documentation purposes.
+    /// A hint to the client to identify how the bearer token is formatted (e.g., "JWT").
+    /// Primarily for documentation purposes.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9047,7 +8429,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:OAuth2SecurityScheme]
+  /// Defines a security scheme using OAuth 2.0.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OAuth2SecurityScheme : pb::IMessage<OAuth2SecurityScheme>
@@ -9064,7 +8446,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[25]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9100,7 +8482,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 1;
     private string description_ = "";
     /// <summary>
-    /// Description of this security scheme.
+    /// An optional description for the security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9113,13 +8495,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "flows" field.</summary>
     public const int FlowsFieldNumber = 2;
-    private global::A2a.V1.OAuthFlows flows_;
+    private global::Lf.A2a.V1.OAuthFlows flows_;
     /// <summary>
-    /// An object containing configuration information for the flow types supported
+    /// An object containing configuration information for the supported OAuth 2.0 flows.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.OAuthFlows Flows {
+    public global::Lf.A2a.V1.OAuthFlows Flows {
       get { return flows_; }
       set {
         flows_ = value;
@@ -9130,8 +8512,8 @@ namespace A2a.V1 {
     public const int Oauth2MetadataUrlFieldNumber = 3;
     private string oauth2MetadataUrl_ = "";
     /// <summary>
-    /// URL to the oauth2 authorization server metadata
-    /// [RFC8414](https://datatracker.ietf.org/doc/html/rfc8414). TLS is required.
+    /// URL to the OAuth2 authorization server metadata [RFC 8414](https://datatracker.ietf.org/doc/html/rfc8414).
+    /// TLS is required.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9258,7 +8640,7 @@ namespace A2a.V1 {
       }
       if (other.flows_ != null) {
         if (flows_ == null) {
-          Flows = new global::A2a.V1.OAuthFlows();
+          Flows = new global::Lf.A2a.V1.OAuthFlows();
         }
         Flows.MergeFrom(other.Flows);
       }
@@ -9290,7 +8672,7 @@ namespace A2a.V1 {
           }
           case 18: {
             if (flows_ == null) {
-              Flows = new global::A2a.V1.OAuthFlows();
+              Flows = new global::Lf.A2a.V1.OAuthFlows();
             }
             input.ReadMessage(Flows);
             break;
@@ -9324,7 +8706,7 @@ namespace A2a.V1 {
           }
           case 18: {
             if (flows_ == null) {
-              Flows = new global::A2a.V1.OAuthFlows();
+              Flows = new global::Lf.A2a.V1.OAuthFlows();
             }
             input.ReadMessage(Flows);
             break;
@@ -9341,7 +8723,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:OpenIdConnectSecurityScheme]
+  /// Defines a security scheme using OpenID Connect.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OpenIdConnectSecurityScheme : pb::IMessage<OpenIdConnectSecurityScheme>
@@ -9358,7 +8740,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9393,7 +8775,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 1;
     private string description_ = "";
     /// <summary>
-    /// Description of this security scheme.
+    /// An optional description for the security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9408,8 +8790,7 @@ namespace A2a.V1 {
     public const int OpenIdConnectUrlFieldNumber = 2;
     private string openIdConnectUrl_ = "";
     /// <summary>
-    /// Well-known URL to discover the [[OpenID-Connect-Discovery]] provider
-    /// metadata.
+    /// The [OpenID Connect Discovery URL](https://openid.net/specs/openid-connect-discovery-1_0.html) for the OIDC provider's metadata.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9586,7 +8967,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:MutualTLSSecurityScheme]
+  /// Defines a security scheme using mTLS authentication.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class MutualTlsSecurityScheme : pb::IMessage<MutualTlsSecurityScheme>
@@ -9603,7 +8984,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9637,7 +9018,7 @@ namespace A2a.V1 {
     public const int DescriptionFieldNumber = 1;
     private string description_ = "";
     /// <summary>
-    /// Description of this security scheme.
+    /// An optional description for the security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9790,7 +9171,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:OAuthFlows]
+  /// Defines the configuration for the supported OAuth 2.0 flows.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OAuthFlows : pb::IMessage<OAuthFlows>
@@ -9807,7 +9188,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[28]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9840,6 +9221,9 @@ namespace A2a.V1 {
         case FlowOneofCase.Password:
           Password = other.Password.Clone();
           break;
+        case FlowOneofCase.DeviceCode:
+          DeviceCode = other.DeviceCode.Clone();
+          break;
       }
 
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -9853,10 +9237,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "authorization_code" field.</summary>
     public const int AuthorizationCodeFieldNumber = 1;
+    /// <summary>
+    /// Configuration for the OAuth Authorization Code flow.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.AuthorizationCodeOAuthFlow AuthorizationCode {
-      get { return flowCase_ == FlowOneofCase.AuthorizationCode ? (global::A2a.V1.AuthorizationCodeOAuthFlow) flow_ : null; }
+    public global::Lf.A2a.V1.AuthorizationCodeOAuthFlow AuthorizationCode {
+      get { return flowCase_ == FlowOneofCase.AuthorizationCode ? (global::Lf.A2a.V1.AuthorizationCodeOAuthFlow) flow_ : null; }
       set {
         flow_ = value;
         flowCase_ = value == null ? FlowOneofCase.None : FlowOneofCase.AuthorizationCode;
@@ -9865,10 +9252,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "client_credentials" field.</summary>
     public const int ClientCredentialsFieldNumber = 2;
+    /// <summary>
+    /// Configuration for the OAuth Client Credentials flow.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.ClientCredentialsOAuthFlow ClientCredentials {
-      get { return flowCase_ == FlowOneofCase.ClientCredentials ? (global::A2a.V1.ClientCredentialsOAuthFlow) flow_ : null; }
+    public global::Lf.A2a.V1.ClientCredentialsOAuthFlow ClientCredentials {
+      get { return flowCase_ == FlowOneofCase.ClientCredentials ? (global::Lf.A2a.V1.ClientCredentialsOAuthFlow) flow_ : null; }
       set {
         flow_ = value;
         flowCase_ = value == null ? FlowOneofCase.None : FlowOneofCase.ClientCredentials;
@@ -9877,10 +9267,14 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "implicit" field.</summary>
     public const int ImplicitFieldNumber = 3;
+    /// <summary>
+    /// Deprecated: Use Authorization Code + PKCE instead.
+    /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.ImplicitOAuthFlow Implicit {
-      get { return flowCase_ == FlowOneofCase.Implicit ? (global::A2a.V1.ImplicitOAuthFlow) flow_ : null; }
+    public global::Lf.A2a.V1.ImplicitOAuthFlow Implicit {
+      get { return flowCase_ == FlowOneofCase.Implicit ? (global::Lf.A2a.V1.ImplicitOAuthFlow) flow_ : null; }
       set {
         flow_ = value;
         flowCase_ = value == null ? FlowOneofCase.None : FlowOneofCase.Implicit;
@@ -9889,13 +9283,32 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "password" field.</summary>
     public const int PasswordFieldNumber = 4;
+    /// <summary>
+    /// Deprecated: Use Authorization Code + PKCE or Device Code.
+    /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.PasswordOAuthFlow Password {
-      get { return flowCase_ == FlowOneofCase.Password ? (global::A2a.V1.PasswordOAuthFlow) flow_ : null; }
+    public global::Lf.A2a.V1.PasswordOAuthFlow Password {
+      get { return flowCase_ == FlowOneofCase.Password ? (global::Lf.A2a.V1.PasswordOAuthFlow) flow_ : null; }
       set {
         flow_ = value;
         flowCase_ = value == null ? FlowOneofCase.None : FlowOneofCase.Password;
+      }
+    }
+
+    /// <summary>Field number for the "device_code" field.</summary>
+    public const int DeviceCodeFieldNumber = 5;
+    /// <summary>
+    /// Configuration for the OAuth Device Code flow.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lf.A2a.V1.DeviceCodeOAuthFlow DeviceCode {
+      get { return flowCase_ == FlowOneofCase.DeviceCode ? (global::Lf.A2a.V1.DeviceCodeOAuthFlow) flow_ : null; }
+      set {
+        flow_ = value;
+        flowCase_ = value == null ? FlowOneofCase.None : FlowOneofCase.DeviceCode;
       }
     }
 
@@ -9907,6 +9320,7 @@ namespace A2a.V1 {
       ClientCredentials = 2,
       Implicit = 3,
       Password = 4,
+      DeviceCode = 5,
     }
     private FlowOneofCase flowCase_ = FlowOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9941,6 +9355,7 @@ namespace A2a.V1 {
       if (!object.Equals(ClientCredentials, other.ClientCredentials)) return false;
       if (!object.Equals(Implicit, other.Implicit)) return false;
       if (!object.Equals(Password, other.Password)) return false;
+      if (!object.Equals(DeviceCode, other.DeviceCode)) return false;
       if (FlowCase != other.FlowCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -9953,6 +9368,7 @@ namespace A2a.V1 {
       if (flowCase_ == FlowOneofCase.ClientCredentials) hash ^= ClientCredentials.GetHashCode();
       if (flowCase_ == FlowOneofCase.Implicit) hash ^= Implicit.GetHashCode();
       if (flowCase_ == FlowOneofCase.Password) hash ^= Password.GetHashCode();
+      if (flowCase_ == FlowOneofCase.DeviceCode) hash ^= DeviceCode.GetHashCode();
       hash ^= (int) flowCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -9988,6 +9404,10 @@ namespace A2a.V1 {
         output.WriteRawTag(34);
         output.WriteMessage(Password);
       }
+      if (flowCase_ == FlowOneofCase.DeviceCode) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DeviceCode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -10014,6 +9434,10 @@ namespace A2a.V1 {
         output.WriteRawTag(34);
         output.WriteMessage(Password);
       }
+      if (flowCase_ == FlowOneofCase.DeviceCode) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DeviceCode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -10036,6 +9460,9 @@ namespace A2a.V1 {
       if (flowCase_ == FlowOneofCase.Password) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Password);
       }
+      if (flowCase_ == FlowOneofCase.DeviceCode) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DeviceCode);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -10051,27 +9478,33 @@ namespace A2a.V1 {
       switch (other.FlowCase) {
         case FlowOneofCase.AuthorizationCode:
           if (AuthorizationCode == null) {
-            AuthorizationCode = new global::A2a.V1.AuthorizationCodeOAuthFlow();
+            AuthorizationCode = new global::Lf.A2a.V1.AuthorizationCodeOAuthFlow();
           }
           AuthorizationCode.MergeFrom(other.AuthorizationCode);
           break;
         case FlowOneofCase.ClientCredentials:
           if (ClientCredentials == null) {
-            ClientCredentials = new global::A2a.V1.ClientCredentialsOAuthFlow();
+            ClientCredentials = new global::Lf.A2a.V1.ClientCredentialsOAuthFlow();
           }
           ClientCredentials.MergeFrom(other.ClientCredentials);
           break;
         case FlowOneofCase.Implicit:
           if (Implicit == null) {
-            Implicit = new global::A2a.V1.ImplicitOAuthFlow();
+            Implicit = new global::Lf.A2a.V1.ImplicitOAuthFlow();
           }
           Implicit.MergeFrom(other.Implicit);
           break;
         case FlowOneofCase.Password:
           if (Password == null) {
-            Password = new global::A2a.V1.PasswordOAuthFlow();
+            Password = new global::Lf.A2a.V1.PasswordOAuthFlow();
           }
           Password.MergeFrom(other.Password);
+          break;
+        case FlowOneofCase.DeviceCode:
+          if (DeviceCode == null) {
+            DeviceCode = new global::Lf.A2a.V1.DeviceCodeOAuthFlow();
+          }
+          DeviceCode.MergeFrom(other.DeviceCode);
           break;
       }
 
@@ -10095,7 +9528,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::A2a.V1.AuthorizationCodeOAuthFlow subBuilder = new global::A2a.V1.AuthorizationCodeOAuthFlow();
+            global::Lf.A2a.V1.AuthorizationCodeOAuthFlow subBuilder = new global::Lf.A2a.V1.AuthorizationCodeOAuthFlow();
             if (flowCase_ == FlowOneofCase.AuthorizationCode) {
               subBuilder.MergeFrom(AuthorizationCode);
             }
@@ -10104,7 +9537,7 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.ClientCredentialsOAuthFlow subBuilder = new global::A2a.V1.ClientCredentialsOAuthFlow();
+            global::Lf.A2a.V1.ClientCredentialsOAuthFlow subBuilder = new global::Lf.A2a.V1.ClientCredentialsOAuthFlow();
             if (flowCase_ == FlowOneofCase.ClientCredentials) {
               subBuilder.MergeFrom(ClientCredentials);
             }
@@ -10113,7 +9546,7 @@ namespace A2a.V1 {
             break;
           }
           case 26: {
-            global::A2a.V1.ImplicitOAuthFlow subBuilder = new global::A2a.V1.ImplicitOAuthFlow();
+            global::Lf.A2a.V1.ImplicitOAuthFlow subBuilder = new global::Lf.A2a.V1.ImplicitOAuthFlow();
             if (flowCase_ == FlowOneofCase.Implicit) {
               subBuilder.MergeFrom(Implicit);
             }
@@ -10122,12 +9555,21 @@ namespace A2a.V1 {
             break;
           }
           case 34: {
-            global::A2a.V1.PasswordOAuthFlow subBuilder = new global::A2a.V1.PasswordOAuthFlow();
+            global::Lf.A2a.V1.PasswordOAuthFlow subBuilder = new global::Lf.A2a.V1.PasswordOAuthFlow();
             if (flowCase_ == FlowOneofCase.Password) {
               subBuilder.MergeFrom(Password);
             }
             input.ReadMessage(subBuilder);
             Password = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Lf.A2a.V1.DeviceCodeOAuthFlow subBuilder = new global::Lf.A2a.V1.DeviceCodeOAuthFlow();
+            if (flowCase_ == FlowOneofCase.DeviceCode) {
+              subBuilder.MergeFrom(DeviceCode);
+            }
+            input.ReadMessage(subBuilder);
+            DeviceCode = subBuilder;
             break;
           }
         }
@@ -10150,7 +9592,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::A2a.V1.AuthorizationCodeOAuthFlow subBuilder = new global::A2a.V1.AuthorizationCodeOAuthFlow();
+            global::Lf.A2a.V1.AuthorizationCodeOAuthFlow subBuilder = new global::Lf.A2a.V1.AuthorizationCodeOAuthFlow();
             if (flowCase_ == FlowOneofCase.AuthorizationCode) {
               subBuilder.MergeFrom(AuthorizationCode);
             }
@@ -10159,7 +9601,7 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.ClientCredentialsOAuthFlow subBuilder = new global::A2a.V1.ClientCredentialsOAuthFlow();
+            global::Lf.A2a.V1.ClientCredentialsOAuthFlow subBuilder = new global::Lf.A2a.V1.ClientCredentialsOAuthFlow();
             if (flowCase_ == FlowOneofCase.ClientCredentials) {
               subBuilder.MergeFrom(ClientCredentials);
             }
@@ -10168,7 +9610,7 @@ namespace A2a.V1 {
             break;
           }
           case 26: {
-            global::A2a.V1.ImplicitOAuthFlow subBuilder = new global::A2a.V1.ImplicitOAuthFlow();
+            global::Lf.A2a.V1.ImplicitOAuthFlow subBuilder = new global::Lf.A2a.V1.ImplicitOAuthFlow();
             if (flowCase_ == FlowOneofCase.Implicit) {
               subBuilder.MergeFrom(Implicit);
             }
@@ -10177,12 +9619,21 @@ namespace A2a.V1 {
             break;
           }
           case 34: {
-            global::A2a.V1.PasswordOAuthFlow subBuilder = new global::A2a.V1.PasswordOAuthFlow();
+            global::Lf.A2a.V1.PasswordOAuthFlow subBuilder = new global::Lf.A2a.V1.PasswordOAuthFlow();
             if (flowCase_ == FlowOneofCase.Password) {
               subBuilder.MergeFrom(Password);
             }
             input.ReadMessage(subBuilder);
             Password = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Lf.A2a.V1.DeviceCodeOAuthFlow subBuilder = new global::Lf.A2a.V1.DeviceCodeOAuthFlow();
+            if (flowCase_ == FlowOneofCase.DeviceCode) {
+              subBuilder.MergeFrom(DeviceCode);
+            }
+            input.ReadMessage(subBuilder);
+            DeviceCode = subBuilder;
             break;
           }
         }
@@ -10193,7 +9644,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:AuthorizationCodeOAuthFlow]
+  /// Defines configuration details for the OAuth 2.0 Authorization Code flow.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AuthorizationCodeOAuthFlow : pb::IMessage<AuthorizationCodeOAuthFlow>
@@ -10210,7 +9661,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[29]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10234,6 +9685,7 @@ namespace A2a.V1 {
       tokenUrl_ = other.tokenUrl_;
       refreshUrl_ = other.refreshUrl_;
       scopes_ = other.scopes_.Clone();
+      pkceRequired_ = other.pkceRequired_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -10247,8 +9699,7 @@ namespace A2a.V1 {
     public const int AuthorizationUrlFieldNumber = 1;
     private string authorizationUrl_ = "";
     /// <summary>
-    /// The authorization URL to be used for this flow. This MUST be in the
-    /// form of a URL. The OAuth2 standard requires the use of TLS
+    /// The authorization URL to be used for this flow.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10263,8 +9714,7 @@ namespace A2a.V1 {
     public const int TokenUrlFieldNumber = 2;
     private string tokenUrl_ = "";
     /// <summary>
-    /// The token URL to be used for this flow. This MUST be in the form of a URL.
-    /// The OAuth2 standard requires the use of TLS.
+    /// The token URL to be used for this flow.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10279,8 +9729,7 @@ namespace A2a.V1 {
     public const int RefreshUrlFieldNumber = 3;
     private string refreshUrl_ = "";
     /// <summary>
-    /// The URL to be used for obtaining refresh tokens. This MUST be in the
-    /// form of a URL. The OAuth2 standard requires the use of TLS.
+    /// The URL to be used for obtaining refresh tokens.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10297,13 +9746,28 @@ namespace A2a.V1 {
         = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
     private readonly pbc::MapField<string, string> scopes_ = new pbc::MapField<string, string>();
     /// <summary>
-    /// The available scopes for the OAuth2 security scheme. A map between the
-    /// scope name and a short description for it. The map MAY be empty.
+    /// The available scopes for the OAuth2 security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::MapField<string, string> Scopes {
       get { return scopes_; }
+    }
+
+    /// <summary>Field number for the "pkce_required" field.</summary>
+    public const int PkceRequiredFieldNumber = 5;
+    private bool pkceRequired_;
+    /// <summary>
+    /// Indicates if PKCE (RFC 7636) is required for this flow.
+    /// PKCE should always be used for public clients and is recommended for all clients.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool PkceRequired {
+      get { return pkceRequired_; }
+      set {
+        pkceRequired_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10325,6 +9789,7 @@ namespace A2a.V1 {
       if (TokenUrl != other.TokenUrl) return false;
       if (RefreshUrl != other.RefreshUrl) return false;
       if (!Scopes.Equals(other.Scopes)) return false;
+      if (PkceRequired != other.PkceRequired) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -10336,6 +9801,7 @@ namespace A2a.V1 {
       if (TokenUrl.Length != 0) hash ^= TokenUrl.GetHashCode();
       if (RefreshUrl.Length != 0) hash ^= RefreshUrl.GetHashCode();
       hash ^= Scopes.GetHashCode();
+      if (PkceRequired != false) hash ^= PkceRequired.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -10367,6 +9833,10 @@ namespace A2a.V1 {
         output.WriteString(RefreshUrl);
       }
       scopes_.WriteTo(output, _map_scopes_codec);
+      if (PkceRequired != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(PkceRequired);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -10390,6 +9860,10 @@ namespace A2a.V1 {
         output.WriteString(RefreshUrl);
       }
       scopes_.WriteTo(ref output, _map_scopes_codec);
+      if (PkceRequired != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(PkceRequired);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -10410,6 +9884,9 @@ namespace A2a.V1 {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RefreshUrl);
       }
       size += scopes_.CalculateSize(_map_scopes_codec);
+      if (PkceRequired != false) {
+        size += 1 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -10432,6 +9909,9 @@ namespace A2a.V1 {
         RefreshUrl = other.RefreshUrl;
       }
       scopes_.MergeFrom(other.scopes_);
+      if (other.PkceRequired != false) {
+        PkceRequired = other.PkceRequired;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -10465,6 +9945,10 @@ namespace A2a.V1 {
           }
           case 34: {
             scopes_.AddEntriesFrom(input, _map_scopes_codec);
+            break;
+          }
+          case 40: {
+            PkceRequired = input.ReadBool();
             break;
           }
         }
@@ -10502,6 +9986,10 @@ namespace A2a.V1 {
             scopes_.AddEntriesFrom(ref input, _map_scopes_codec);
             break;
           }
+          case 40: {
+            PkceRequired = input.ReadBool();
+            break;
+          }
         }
       }
     }
@@ -10510,7 +9998,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:ClientCredentialsOAuthFlow]
+  /// Defines configuration details for the OAuth 2.0 Client Credentials flow.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ClientCredentialsOAuthFlow : pb::IMessage<ClientCredentialsOAuthFlow>
@@ -10527,7 +10015,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[30]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10563,8 +10051,7 @@ namespace A2a.V1 {
     public const int TokenUrlFieldNumber = 1;
     private string tokenUrl_ = "";
     /// <summary>
-    /// The token URL to be used for this flow. This MUST be in the form of a URL.
-    /// The OAuth2 standard requires the use of TLS.
+    /// The token URL to be used for this flow.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10579,8 +10066,7 @@ namespace A2a.V1 {
     public const int RefreshUrlFieldNumber = 2;
     private string refreshUrl_ = "";
     /// <summary>
-    /// The URL to be used for obtaining refresh tokens. This MUST be in the
-    /// form of a URL. The OAuth2 standard requires the use of TLS.
+    /// The URL to be used for obtaining refresh tokens.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10597,8 +10083,7 @@ namespace A2a.V1 {
         = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 26);
     private readonly pbc::MapField<string, string> scopes_ = new pbc::MapField<string, string>();
     /// <summary>
-    /// The available scopes for the OAuth2 security scheme. A map between the
-    /// scope name and a short description for it. The map MAY be empty.
+    /// The available scopes for the OAuth2 security scheme.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10786,7 +10271,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:ImplicitOAuthFlow]
+  /// Deprecated: Use Authorization Code + PKCE instead.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ImplicitOAuthFlow : pb::IMessage<ImplicitOAuthFlow>
@@ -10803,7 +10288,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[31]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11062,7 +10547,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:PasswordOAuthFlow]
+  /// Deprecated: Use Authorization Code + PKCE or Device Code.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class PasswordOAuthFlow : pb::IMessage<PasswordOAuthFlow>
@@ -11079,7 +10564,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[32]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11338,8 +10823,322 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  ///&#x2F;////////// Request Messages ///////////
-  /// --8&lt;-- [start:MessageSendParams]
+  /// Defines configuration details for the OAuth 2.0 Device Code flow (RFC 8628).
+  /// This flow is designed for input-constrained devices such as IoT devices,
+  /// and CLI tools where the user authenticates on a separate device.
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class DeviceCodeOAuthFlow : pb::IMessage<DeviceCodeOAuthFlow>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DeviceCodeOAuthFlow> _parser = new pb::MessageParser<DeviceCodeOAuthFlow>(() => new DeviceCodeOAuthFlow());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DeviceCodeOAuthFlow> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[30]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DeviceCodeOAuthFlow() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DeviceCodeOAuthFlow(DeviceCodeOAuthFlow other) : this() {
+      deviceAuthorizationUrl_ = other.deviceAuthorizationUrl_;
+      tokenUrl_ = other.tokenUrl_;
+      refreshUrl_ = other.refreshUrl_;
+      scopes_ = other.scopes_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DeviceCodeOAuthFlow Clone() {
+      return new DeviceCodeOAuthFlow(this);
+    }
+
+    /// <summary>Field number for the "device_authorization_url" field.</summary>
+    public const int DeviceAuthorizationUrlFieldNumber = 1;
+    private string deviceAuthorizationUrl_ = "";
+    /// <summary>
+    /// The device authorization endpoint URL.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DeviceAuthorizationUrl {
+      get { return deviceAuthorizationUrl_; }
+      set {
+        deviceAuthorizationUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "token_url" field.</summary>
+    public const int TokenUrlFieldNumber = 2;
+    private string tokenUrl_ = "";
+    /// <summary>
+    /// The token URL to be used for this flow.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TokenUrl {
+      get { return tokenUrl_; }
+      set {
+        tokenUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "refresh_url" field.</summary>
+    public const int RefreshUrlFieldNumber = 3;
+    private string refreshUrl_ = "";
+    /// <summary>
+    /// The URL to be used for obtaining refresh tokens.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RefreshUrl {
+      get { return refreshUrl_; }
+      set {
+        refreshUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "scopes" field.</summary>
+    public const int ScopesFieldNumber = 4;
+    private static readonly pbc::MapField<string, string>.Codec _map_scopes_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
+    private readonly pbc::MapField<string, string> scopes_ = new pbc::MapField<string, string>();
+    /// <summary>
+    /// The available scopes for the OAuth2 security scheme.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, string> Scopes {
+      get { return scopes_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DeviceCodeOAuthFlow);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DeviceCodeOAuthFlow other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DeviceAuthorizationUrl != other.DeviceAuthorizationUrl) return false;
+      if (TokenUrl != other.TokenUrl) return false;
+      if (RefreshUrl != other.RefreshUrl) return false;
+      if (!Scopes.Equals(other.Scopes)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DeviceAuthorizationUrl.Length != 0) hash ^= DeviceAuthorizationUrl.GetHashCode();
+      if (TokenUrl.Length != 0) hash ^= TokenUrl.GetHashCode();
+      if (RefreshUrl.Length != 0) hash ^= RefreshUrl.GetHashCode();
+      hash ^= Scopes.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (DeviceAuthorizationUrl.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceAuthorizationUrl);
+      }
+      if (TokenUrl.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TokenUrl);
+      }
+      if (RefreshUrl.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RefreshUrl);
+      }
+      scopes_.WriteTo(output, _map_scopes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (DeviceAuthorizationUrl.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceAuthorizationUrl);
+      }
+      if (TokenUrl.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TokenUrl);
+      }
+      if (RefreshUrl.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RefreshUrl);
+      }
+      scopes_.WriteTo(ref output, _map_scopes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (DeviceAuthorizationUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceAuthorizationUrl);
+      }
+      if (TokenUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TokenUrl);
+      }
+      if (RefreshUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RefreshUrl);
+      }
+      size += scopes_.CalculateSize(_map_scopes_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DeviceCodeOAuthFlow other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DeviceAuthorizationUrl.Length != 0) {
+        DeviceAuthorizationUrl = other.DeviceAuthorizationUrl;
+      }
+      if (other.TokenUrl.Length != 0) {
+        TokenUrl = other.TokenUrl;
+      }
+      if (other.RefreshUrl.Length != 0) {
+        RefreshUrl = other.RefreshUrl;
+      }
+      scopes_.MergeFrom(other.scopes_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            DeviceAuthorizationUrl = input.ReadString();
+            break;
+          }
+          case 18: {
+            TokenUrl = input.ReadString();
+            break;
+          }
+          case 26: {
+            RefreshUrl = input.ReadString();
+            break;
+          }
+          case 34: {
+            scopes_.AddEntriesFrom(input, _map_scopes_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            DeviceAuthorizationUrl = input.ReadString();
+            break;
+          }
+          case 18: {
+            TokenUrl = input.ReadString();
+            break;
+          }
+          case 26: {
+            RefreshUrl = input.ReadString();
+            break;
+          }
+          case 34: {
+            scopes_.AddEntriesFrom(ref input, _map_scopes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Represents a request for the `SendMessage` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class SendMessageRequest : pb::IMessage<SendMessageRequest>
@@ -11356,7 +11155,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[33]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[31]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11376,7 +11175,8 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SendMessageRequest(SendMessageRequest other) : this() {
-      request_ = other.request_ != null ? other.request_.Clone() : null;
+      tenant_ = other.tenant_;
+      message_ = other.message_ != null ? other.message_.Clone() : null;
       configuration_ = other.configuration_ != null ? other.configuration_.Clone() : null;
       metadata_ = other.metadata_ != null ? other.metadata_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -11388,30 +11188,45 @@ namespace A2a.V1 {
       return new SendMessageRequest(this);
     }
 
-    /// <summary>Field number for the "request" field.</summary>
-    public const int RequestFieldNumber = 1;
-    private global::A2a.V1.Message request_;
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
+    /// <summary>
+    /// Optional. Tenant ID, provided as a path parameter.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tenant {
+      get { return tenant_; }
+      set {
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private global::Lf.A2a.V1.Message message_;
     /// <summary>
     /// The message to send to the agent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Message Request {
-      get { return request_; }
+    public global::Lf.A2a.V1.Message Message {
+      get { return message_; }
       set {
-        request_ = value;
+        message_ = value;
       }
     }
 
     /// <summary>Field number for the "configuration" field.</summary>
-    public const int ConfigurationFieldNumber = 2;
-    private global::A2a.V1.SendMessageConfiguration configuration_;
+    public const int ConfigurationFieldNumber = 3;
+    private global::Lf.A2a.V1.SendMessageConfiguration configuration_;
     /// <summary>
     /// Configuration for the send request.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.SendMessageConfiguration Configuration {
+    public global::Lf.A2a.V1.SendMessageConfiguration Configuration {
       get { return configuration_; }
       set {
         configuration_ = value;
@@ -11419,10 +11234,10 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "metadata" field.</summary>
-    public const int MetadataFieldNumber = 3;
+    public const int MetadataFieldNumber = 4;
     private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
     /// <summary>
-    /// Optional metadata for the request.
+    /// A flexible key-value map for passing additional context or parameters.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -11448,7 +11263,8 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Request, other.Request)) return false;
+      if (Tenant != other.Tenant) return false;
+      if (!object.Equals(Message, other.Message)) return false;
       if (!object.Equals(Configuration, other.Configuration)) return false;
       if (!object.Equals(Metadata, other.Metadata)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -11458,7 +11274,8 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (request_ != null) hash ^= Request.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (message_ != null) hash ^= Message.GetHashCode();
       if (configuration_ != null) hash ^= Configuration.GetHashCode();
       if (metadata_ != null) hash ^= Metadata.GetHashCode();
       if (_unknownFields != null) {
@@ -11479,16 +11296,20 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (request_ != null) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteMessage(Request);
+        output.WriteString(Tenant);
+      }
+      if (message_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Message);
       }
       if (configuration_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(Configuration);
       }
       if (metadata_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(Metadata);
       }
       if (_unknownFields != null) {
@@ -11501,16 +11322,20 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (request_ != null) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteMessage(Request);
+        output.WriteString(Tenant);
+      }
+      if (message_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Message);
       }
       if (configuration_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(Configuration);
       }
       if (metadata_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(Metadata);
       }
       if (_unknownFields != null) {
@@ -11523,8 +11348,11 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (request_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Request);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
+      if (message_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Message);
       }
       if (configuration_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Configuration);
@@ -11544,15 +11372,18 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.request_ != null) {
-        if (request_ == null) {
-          Request = new global::A2a.V1.Message();
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
+      if (other.message_ != null) {
+        if (message_ == null) {
+          Message = new global::Lf.A2a.V1.Message();
         }
-        Request.MergeFrom(other.Request);
+        Message.MergeFrom(other.Message);
       }
       if (other.configuration_ != null) {
         if (configuration_ == null) {
-          Configuration = new global::A2a.V1.SendMessageConfiguration();
+          Configuration = new global::Lf.A2a.V1.SendMessageConfiguration();
         }
         Configuration.MergeFrom(other.Configuration);
       }
@@ -11582,20 +11413,24 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (request_ == null) {
-              Request = new global::A2a.V1.Message();
-            }
-            input.ReadMessage(Request);
+            Tenant = input.ReadString();
             break;
           }
           case 18: {
+            if (message_ == null) {
+              Message = new global::Lf.A2a.V1.Message();
+            }
+            input.ReadMessage(Message);
+            break;
+          }
+          case 26: {
             if (configuration_ == null) {
-              Configuration = new global::A2a.V1.SendMessageConfiguration();
+              Configuration = new global::Lf.A2a.V1.SendMessageConfiguration();
             }
             input.ReadMessage(Configuration);
             break;
           }
-          case 26: {
+          case 34: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
@@ -11622,20 +11457,24 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (request_ == null) {
-              Request = new global::A2a.V1.Message();
-            }
-            input.ReadMessage(Request);
+            Tenant = input.ReadString();
             break;
           }
           case 18: {
+            if (message_ == null) {
+              Message = new global::Lf.A2a.V1.Message();
+            }
+            input.ReadMessage(Message);
+            break;
+          }
+          case 26: {
             if (configuration_ == null) {
-              Configuration = new global::A2a.V1.SendMessageConfiguration();
+              Configuration = new global::Lf.A2a.V1.SendMessageConfiguration();
             }
             input.ReadMessage(Configuration);
             break;
           }
-          case 26: {
+          case 34: {
             if (metadata_ == null) {
               Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
@@ -11650,7 +11489,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:GetTaskRequest]
+  /// Represents a request for the `GetTask` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class GetTaskRequest : pb::IMessage<GetTaskRequest>
@@ -11660,6 +11499,7 @@ namespace A2a.V1 {
   {
     private static readonly pb::MessageParser<GetTaskRequest> _parser = new pb::MessageParser<GetTaskRequest>(() => new GetTaskRequest());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<GetTaskRequest> Parser { get { return _parser; } }
@@ -11667,7 +11507,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[34]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11687,7 +11527,9 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetTaskRequest(GetTaskRequest other) : this() {
-      name_ = other.name_;
+      _hasBits0 = other._hasBits0;
+      tenant_ = other.tenant_;
+      id_ = other.id_;
       historyLength_ = other.historyLength_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -11698,35 +11540,67 @@ namespace A2a.V1 {
       return new GetTaskRequest(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
     /// <summary>
-    /// The resource name of the task.
-    /// Format: tasks/{task_id}
+    /// Optional. Tenant ID, provided as a path parameter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 2;
+    private string id_ = "";
+    /// <summary>
+    /// The resource ID of the task to retrieve.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "history_length" field.</summary>
-    public const int HistoryLengthFieldNumber = 2;
+    public const int HistoryLengthFieldNumber = 3;
+    private readonly static int HistoryLengthDefaultValue = 0;
+
     private int historyLength_;
     /// <summary>
-    /// The number of most recent messages from the task's history to retrieve.
+    /// The maximum number of most recent messages from the task's history to retrieve. An
+    /// unset value means the client does not impose any limit. A value of zero is
+    /// a request to not include any messages. The server MUST NOT return more
+    /// messages than the provided value, but MAY apply a lower limit.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int HistoryLength {
-      get { return historyLength_; }
+      get { if ((_hasBits0 & 1) != 0) { return historyLength_; } else { return HistoryLengthDefaultValue; } }
       set {
+        _hasBits0 |= 1;
         historyLength_ = value;
       }
+    }
+    /// <summary>Gets whether the "history_length" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasHistoryLength {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "history_length" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearHistoryLength() {
+      _hasBits0 &= ~1;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11744,7 +11618,8 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
+      if (Tenant != other.Tenant) return false;
+      if (Id != other.Id) return false;
       if (HistoryLength != other.HistoryLength) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -11753,8 +11628,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (HistoryLength != 0) hash ^= HistoryLength.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (HasHistoryLength) hash ^= HistoryLength.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -11773,12 +11649,16 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
       }
-      if (HistoryLength != 0) {
-        output.WriteRawTag(16);
+      if (Id.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Id);
+      }
+      if (HasHistoryLength) {
+        output.WriteRawTag(24);
         output.WriteInt32(HistoryLength);
       }
       if (_unknownFields != null) {
@@ -11791,12 +11671,16 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
       }
-      if (HistoryLength != 0) {
-        output.WriteRawTag(16);
+      if (Id.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Id);
+      }
+      if (HasHistoryLength) {
+        output.WriteRawTag(24);
         output.WriteInt32(HistoryLength);
       }
       if (_unknownFields != null) {
@@ -11809,10 +11693,13 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
       }
-      if (HistoryLength != 0) {
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (HasHistoryLength) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(HistoryLength);
       }
       if (_unknownFields != null) {
@@ -11827,10 +11714,13 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
       }
-      if (other.HistoryLength != 0) {
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.HasHistoryLength) {
         HistoryLength = other.HistoryLength;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -11853,10 +11743,14 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
             break;
           }
-          case 16: {
+          case 18: {
+            Id = input.ReadString();
+            break;
+          }
+          case 24: {
             HistoryLength = input.ReadInt32();
             break;
           }
@@ -11880,10 +11774,14 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
             break;
           }
-          case 16: {
+          case 18: {
+            Id = input.ReadString();
+            break;
+          }
+          case 24: {
             HistoryLength = input.ReadInt32();
             break;
           }
@@ -11895,7 +11793,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:ListTasksRequest]
+  /// Parameters for listing tasks with optional filtering criteria.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ListTasksRequest : pb::IMessage<ListTasksRequest>
@@ -11905,6 +11803,7 @@ namespace A2a.V1 {
   {
     private static readonly pb::MessageParser<ListTasksRequest> _parser = new pb::MessageParser<ListTasksRequest>(() => new ListTasksRequest());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ListTasksRequest> Parser { get { return _parser; } }
@@ -11912,7 +11811,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[35]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[33]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -11932,12 +11831,14 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ListTasksRequest(ListTasksRequest other) : this() {
+      _hasBits0 = other._hasBits0;
+      tenant_ = other.tenant_;
       contextId_ = other.contextId_;
       status_ = other.status_;
       pageSize_ = other.pageSize_;
       pageToken_ = other.pageToken_;
       historyLength_ = other.historyLength_;
-      lastUpdatedTime_ = other.lastUpdatedTime_ != null ? other.lastUpdatedTime_.Clone() : null;
+      statusTimestampAfter_ = other.statusTimestampAfter_ != null ? other.statusTimestampAfter_.Clone() : null;
       includeArtifacts_ = other.includeArtifacts_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -11948,12 +11849,26 @@ namespace A2a.V1 {
       return new ListTasksRequest(this);
     }
 
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
+    /// <summary>
+    /// Tenant ID, provided as a path parameter.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tenant {
+      get { return tenant_; }
+      set {
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "context_id" field.</summary>
-    public const int ContextIdFieldNumber = 1;
+    public const int ContextIdFieldNumber = 2;
     private string contextId_ = "";
     /// <summary>
-    /// Filter tasks by context ID to get tasks from a specific conversation
-    /// or session.
+    /// Filter tasks by context ID to get tasks from a specific conversation or session.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -11965,14 +11880,14 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 2;
-    private global::A2a.V1.TaskState status_ = global::A2a.V1.TaskState.Unspecified;
+    public const int StatusFieldNumber = 3;
+    private global::Lf.A2a.V1.TaskState status_ = global::Lf.A2a.V1.TaskState.Unspecified;
     /// <summary>
     /// Filter tasks by their current status state.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskState Status {
+    public global::Lf.A2a.V1.TaskState Status {
       get { return status_; }
       set {
         status_ = value;
@@ -11980,27 +11895,45 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "page_size" field.</summary>
-    public const int PageSizeFieldNumber = 3;
+    public const int PageSizeFieldNumber = 4;
+    private readonly static int PageSizeDefaultValue = 0;
+
     private int pageSize_;
     /// <summary>
-    /// Maximum number of tasks to return. Must be between 1 and 100.
-    /// Defaults to 50 if not specified.
+    /// The maximum number of tasks to return. The service may return fewer than this value.
+    /// If unspecified, at most 50 tasks will be returned.
+    /// The minimum value is 1.
+    /// The maximum value is 100.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int PageSize {
-      get { return pageSize_; }
+      get { if ((_hasBits0 & 1) != 0) { return pageSize_; } else { return PageSizeDefaultValue; } }
       set {
+        _hasBits0 |= 1;
         pageSize_ = value;
       }
     }
+    /// <summary>Gets whether the "page_size" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasPageSize {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "page_size" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearPageSize() {
+      _hasBits0 &= ~1;
+    }
 
     /// <summary>Field number for the "page_token" field.</summary>
-    public const int PageTokenFieldNumber = 4;
+    public const int PageTokenFieldNumber = 5;
     private string pageToken_ = "";
     /// <summary>
-    /// Token for pagination. Use the next_page_token from a previous
-    /// ListTasksResponse.
+    /// A page token, received from a previous `ListTasks` call.
+    /// `ListTasksResponse.next_page_token`.
+    /// Provide this to retrieve the subsequent page.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -12012,39 +11945,55 @@ namespace A2a.V1 {
     }
 
     /// <summary>Field number for the "history_length" field.</summary>
-    public const int HistoryLengthFieldNumber = 5;
+    public const int HistoryLengthFieldNumber = 6;
+    private readonly static int HistoryLengthDefaultValue = 0;
+
     private int historyLength_;
     /// <summary>
-    /// Number of recent messages to include in each task's history.
-    /// Must be non-negative. Defaults to 0 if not specified.
+    /// The maximum number of messages to include in each task's history.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int HistoryLength {
-      get { return historyLength_; }
+      get { if ((_hasBits0 & 2) != 0) { return historyLength_; } else { return HistoryLengthDefaultValue; } }
       set {
+        _hasBits0 |= 2;
         historyLength_ = value;
       }
     }
+    /// <summary>Gets whether the "history_length" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasHistoryLength {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "history_length" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearHistoryLength() {
+      _hasBits0 &= ~2;
+    }
 
-    /// <summary>Field number for the "last_updated_time" field.</summary>
-    public const int LastUpdatedTimeFieldNumber = 6;
-    private global::Google.Protobuf.WellKnownTypes.Timestamp lastUpdatedTime_;
+    /// <summary>Field number for the "status_timestamp_after" field.</summary>
+    public const int StatusTimestampAfterFieldNumber = 7;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp statusTimestampAfter_;
     /// <summary>
-    /// Filter tasks updated after this timestamp. Only tasks with a last
-    /// updated time greater than or equal to this value will be returned.
+    /// Filter tasks which have a status updated after the provided timestamp in ISO 8601 format (e.g., "2023-10-27T10:00:00Z").
+    /// Only tasks with a status timestamp time greater than or equal to this value will be returned.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.WellKnownTypes.Timestamp LastUpdatedTime {
-      get { return lastUpdatedTime_; }
+    public global::Google.Protobuf.WellKnownTypes.Timestamp StatusTimestampAfter {
+      get { return statusTimestampAfter_; }
       set {
-        lastUpdatedTime_ = value;
+        statusTimestampAfter_ = value;
       }
     }
 
     /// <summary>Field number for the "include_artifacts" field.</summary>
-    public const int IncludeArtifactsFieldNumber = 7;
+    public const int IncludeArtifactsFieldNumber = 8;
+    private readonly static bool IncludeArtifactsDefaultValue = false;
+
     private bool includeArtifacts_;
     /// <summary>
     /// Whether to include artifacts in the returned tasks.
@@ -12053,10 +12002,23 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IncludeArtifacts {
-      get { return includeArtifacts_; }
+      get { if ((_hasBits0 & 4) != 0) { return includeArtifacts_; } else { return IncludeArtifactsDefaultValue; } }
       set {
+        _hasBits0 |= 4;
         includeArtifacts_ = value;
       }
+    }
+    /// <summary>Gets whether the "include_artifacts" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasIncludeArtifacts {
+      get { return (_hasBits0 & 4) != 0; }
+    }
+    /// <summary>Clears the value of the "include_artifacts" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearIncludeArtifacts() {
+      _hasBits0 &= ~4;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -12074,12 +12036,13 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Tenant != other.Tenant) return false;
       if (ContextId != other.ContextId) return false;
       if (Status != other.Status) return false;
       if (PageSize != other.PageSize) return false;
       if (PageToken != other.PageToken) return false;
       if (HistoryLength != other.HistoryLength) return false;
-      if (!object.Equals(LastUpdatedTime, other.LastUpdatedTime)) return false;
+      if (!object.Equals(StatusTimestampAfter, other.StatusTimestampAfter)) return false;
       if (IncludeArtifacts != other.IncludeArtifacts) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -12088,13 +12051,14 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
       if (ContextId.Length != 0) hash ^= ContextId.GetHashCode();
-      if (Status != global::A2a.V1.TaskState.Unspecified) hash ^= Status.GetHashCode();
-      if (PageSize != 0) hash ^= PageSize.GetHashCode();
+      if (Status != global::Lf.A2a.V1.TaskState.Unspecified) hash ^= Status.GetHashCode();
+      if (HasPageSize) hash ^= PageSize.GetHashCode();
       if (PageToken.Length != 0) hash ^= PageToken.GetHashCode();
-      if (HistoryLength != 0) hash ^= HistoryLength.GetHashCode();
-      if (lastUpdatedTime_ != null) hash ^= LastUpdatedTime.GetHashCode();
-      if (IncludeArtifacts != false) hash ^= IncludeArtifacts.GetHashCode();
+      if (HasHistoryLength) hash ^= HistoryLength.GetHashCode();
+      if (statusTimestampAfter_ != null) hash ^= StatusTimestampAfter.GetHashCode();
+      if (HasIncludeArtifacts) hash ^= IncludeArtifacts.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -12113,32 +12077,36 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ContextId.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(Tenant);
+      }
+      if (ContextId.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(ContextId);
       }
-      if (Status != global::A2a.V1.TaskState.Unspecified) {
-        output.WriteRawTag(16);
+      if (Status != global::Lf.A2a.V1.TaskState.Unspecified) {
+        output.WriteRawTag(24);
         output.WriteEnum((int) Status);
       }
-      if (PageSize != 0) {
-        output.WriteRawTag(24);
+      if (HasPageSize) {
+        output.WriteRawTag(32);
         output.WriteInt32(PageSize);
       }
       if (PageToken.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteString(PageToken);
       }
-      if (HistoryLength != 0) {
-        output.WriteRawTag(40);
+      if (HasHistoryLength) {
+        output.WriteRawTag(48);
         output.WriteInt32(HistoryLength);
       }
-      if (lastUpdatedTime_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(LastUpdatedTime);
+      if (statusTimestampAfter_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(StatusTimestampAfter);
       }
-      if (IncludeArtifacts != false) {
-        output.WriteRawTag(56);
+      if (HasIncludeArtifacts) {
+        output.WriteRawTag(64);
         output.WriteBool(IncludeArtifacts);
       }
       if (_unknownFields != null) {
@@ -12151,32 +12119,36 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ContextId.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(Tenant);
+      }
+      if (ContextId.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(ContextId);
       }
-      if (Status != global::A2a.V1.TaskState.Unspecified) {
-        output.WriteRawTag(16);
+      if (Status != global::Lf.A2a.V1.TaskState.Unspecified) {
+        output.WriteRawTag(24);
         output.WriteEnum((int) Status);
       }
-      if (PageSize != 0) {
-        output.WriteRawTag(24);
+      if (HasPageSize) {
+        output.WriteRawTag(32);
         output.WriteInt32(PageSize);
       }
       if (PageToken.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteString(PageToken);
       }
-      if (HistoryLength != 0) {
-        output.WriteRawTag(40);
+      if (HasHistoryLength) {
+        output.WriteRawTag(48);
         output.WriteInt32(HistoryLength);
       }
-      if (lastUpdatedTime_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(LastUpdatedTime);
+      if (statusTimestampAfter_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(StatusTimestampAfter);
       }
-      if (IncludeArtifacts != false) {
-        output.WriteRawTag(56);
+      if (HasIncludeArtifacts) {
+        output.WriteRawTag(64);
         output.WriteBool(IncludeArtifacts);
       }
       if (_unknownFields != null) {
@@ -12189,25 +12161,28 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
       if (ContextId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ContextId);
       }
-      if (Status != global::A2a.V1.TaskState.Unspecified) {
+      if (Status != global::Lf.A2a.V1.TaskState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
-      if (PageSize != 0) {
+      if (HasPageSize) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
       }
       if (PageToken.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PageToken);
       }
-      if (HistoryLength != 0) {
+      if (HasHistoryLength) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(HistoryLength);
       }
-      if (lastUpdatedTime_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LastUpdatedTime);
+      if (statusTimestampAfter_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StatusTimestampAfter);
       }
-      if (IncludeArtifacts != false) {
+      if (HasIncludeArtifacts) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -12222,28 +12197,31 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
       if (other.ContextId.Length != 0) {
         ContextId = other.ContextId;
       }
-      if (other.Status != global::A2a.V1.TaskState.Unspecified) {
+      if (other.Status != global::Lf.A2a.V1.TaskState.Unspecified) {
         Status = other.Status;
       }
-      if (other.PageSize != 0) {
+      if (other.HasPageSize) {
         PageSize = other.PageSize;
       }
       if (other.PageToken.Length != 0) {
         PageToken = other.PageToken;
       }
-      if (other.HistoryLength != 0) {
+      if (other.HasHistoryLength) {
         HistoryLength = other.HistoryLength;
       }
-      if (other.lastUpdatedTime_ != null) {
-        if (lastUpdatedTime_ == null) {
-          LastUpdatedTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      if (other.statusTimestampAfter_ != null) {
+        if (statusTimestampAfter_ == null) {
+          StatusTimestampAfter = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
-        LastUpdatedTime.MergeFrom(other.LastUpdatedTime);
+        StatusTimestampAfter.MergeFrom(other.StatusTimestampAfter);
       }
-      if (other.IncludeArtifacts != false) {
+      if (other.HasIncludeArtifacts) {
         IncludeArtifacts = other.IncludeArtifacts;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -12266,33 +12244,37 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
             ContextId = input.ReadString();
             break;
           }
-          case 16: {
-            Status = (global::A2a.V1.TaskState) input.ReadEnum();
+          case 24: {
+            Status = (global::Lf.A2a.V1.TaskState) input.ReadEnum();
             break;
           }
-          case 24: {
+          case 32: {
             PageSize = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 42: {
             PageToken = input.ReadString();
             break;
           }
-          case 40: {
+          case 48: {
             HistoryLength = input.ReadInt32();
             break;
           }
-          case 50: {
-            if (lastUpdatedTime_ == null) {
-              LastUpdatedTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          case 58: {
+            if (statusTimestampAfter_ == null) {
+              StatusTimestampAfter = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(LastUpdatedTime);
+            input.ReadMessage(StatusTimestampAfter);
             break;
           }
-          case 56: {
+          case 64: {
             IncludeArtifacts = input.ReadBool();
             break;
           }
@@ -12316,33 +12298,37 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
             ContextId = input.ReadString();
             break;
           }
-          case 16: {
-            Status = (global::A2a.V1.TaskState) input.ReadEnum();
+          case 24: {
+            Status = (global::Lf.A2a.V1.TaskState) input.ReadEnum();
             break;
           }
-          case 24: {
+          case 32: {
             PageSize = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 42: {
             PageToken = input.ReadString();
             break;
           }
-          case 40: {
+          case 48: {
             HistoryLength = input.ReadInt32();
             break;
           }
-          case 50: {
-            if (lastUpdatedTime_ == null) {
-              LastUpdatedTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          case 58: {
+            if (statusTimestampAfter_ == null) {
+              StatusTimestampAfter = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(LastUpdatedTime);
+            input.ReadMessage(StatusTimestampAfter);
             break;
           }
-          case 56: {
+          case 64: {
             IncludeArtifacts = input.ReadBool();
             break;
           }
@@ -12354,7 +12340,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:ListTasksResponse]
+  /// Result object for `ListTasks` method containing an array of tasks and pagination information.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ListTasksResponse : pb::IMessage<ListTasksResponse>
@@ -12371,7 +12357,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[36]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[34]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -12393,6 +12379,7 @@ namespace A2a.V1 {
     public ListTasksResponse(ListTasksResponse other) : this() {
       tasks_ = other.tasks_.Clone();
       nextPageToken_ = other.nextPageToken_;
+      pageSize_ = other.pageSize_;
       totalSize_ = other.totalSize_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -12405,15 +12392,15 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "tasks" field.</summary>
     public const int TasksFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::A2a.V1.Task> _repeated_tasks_codec
-        = pb::FieldCodec.ForMessage(10, global::A2a.V1.Task.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.Task> tasks_ = new pbc::RepeatedField<global::A2a.V1.Task>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.Task> _repeated_tasks_codec
+        = pb::FieldCodec.ForMessage(10, global::Lf.A2a.V1.Task.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.Task> tasks_ = new pbc::RepeatedField<global::Lf.A2a.V1.Task>();
     /// <summary>
     /// Array of tasks matching the specified criteria.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.Task> Tasks {
+    public pbc::RepeatedField<global::Lf.A2a.V1.Task> Tasks {
       get { return tasks_; }
     }
 
@@ -12421,8 +12408,7 @@ namespace A2a.V1 {
     public const int NextPageTokenFieldNumber = 2;
     private string nextPageToken_ = "";
     /// <summary>
-    /// Token for retrieving the next page of results.
-    /// Empty string if no more results.
+    /// A token to retrieve the next page of results, or empty if there are no more results in the list.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -12433,8 +12419,23 @@ namespace A2a.V1 {
       }
     }
 
+    /// <summary>Field number for the "page_size" field.</summary>
+    public const int PageSizeFieldNumber = 3;
+    private int pageSize_;
+    /// <summary>
+    /// The page size used for this response.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PageSize {
+      get { return pageSize_; }
+      set {
+        pageSize_ = value;
+      }
+    }
+
     /// <summary>Field number for the "total_size" field.</summary>
-    public const int TotalSizeFieldNumber = 3;
+    public const int TotalSizeFieldNumber = 4;
     private int totalSize_;
     /// <summary>
     /// Total number of tasks available (before pagination).
@@ -12465,6 +12466,7 @@ namespace A2a.V1 {
       }
       if(!tasks_.Equals(other.tasks_)) return false;
       if (NextPageToken != other.NextPageToken) return false;
+      if (PageSize != other.PageSize) return false;
       if (TotalSize != other.TotalSize) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -12475,6 +12477,7 @@ namespace A2a.V1 {
       int hash = 1;
       hash ^= tasks_.GetHashCode();
       if (NextPageToken.Length != 0) hash ^= NextPageToken.GetHashCode();
+      if (PageSize != 0) hash ^= PageSize.GetHashCode();
       if (TotalSize != 0) hash ^= TotalSize.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -12499,8 +12502,12 @@ namespace A2a.V1 {
         output.WriteRawTag(18);
         output.WriteString(NextPageToken);
       }
-      if (TotalSize != 0) {
+      if (PageSize != 0) {
         output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (TotalSize != 0) {
+        output.WriteRawTag(32);
         output.WriteInt32(TotalSize);
       }
       if (_unknownFields != null) {
@@ -12518,8 +12525,12 @@ namespace A2a.V1 {
         output.WriteRawTag(18);
         output.WriteString(NextPageToken);
       }
-      if (TotalSize != 0) {
+      if (PageSize != 0) {
         output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (TotalSize != 0) {
+        output.WriteRawTag(32);
         output.WriteInt32(TotalSize);
       }
       if (_unknownFields != null) {
@@ -12535,6 +12546,9 @@ namespace A2a.V1 {
       size += tasks_.CalculateSize(_repeated_tasks_codec);
       if (NextPageToken.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(NextPageToken);
+      }
+      if (PageSize != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
       }
       if (TotalSize != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalSize);
@@ -12554,6 +12568,9 @@ namespace A2a.V1 {
       tasks_.Add(other.tasks_);
       if (other.NextPageToken.Length != 0) {
         NextPageToken = other.NextPageToken;
+      }
+      if (other.PageSize != 0) {
+        PageSize = other.PageSize;
       }
       if (other.TotalSize != 0) {
         TotalSize = other.TotalSize;
@@ -12586,6 +12603,10 @@ namespace A2a.V1 {
             break;
           }
           case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 32: {
             TotalSize = input.ReadInt32();
             break;
           }
@@ -12617,6 +12638,10 @@ namespace A2a.V1 {
             break;
           }
           case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 32: {
             TotalSize = input.ReadInt32();
             break;
           }
@@ -12628,7 +12653,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:CancelTaskRequest]
+  /// Represents a request for the `CancelTask` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class CancelTaskRequest : pb::IMessage<CancelTaskRequest>
@@ -12645,7 +12670,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -12665,7 +12690,9 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CancelTaskRequest(CancelTaskRequest other) : this() {
-      name_ = other.name_;
+      tenant_ = other.tenant_;
+      id_ = other.id_;
+      metadata_ = other.metadata_ != null ? other.metadata_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -12675,19 +12702,48 @@ namespace A2a.V1 {
       return new CancelTaskRequest(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
     /// <summary>
-    /// The resource name of the task to cancel.
-    /// Format: tasks/{task_id}
+    /// Optional. Tenant ID, provided as a path parameter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 2;
+    private string id_ = "";
+    /// <summary>
+    /// The resource ID of the task to cancel.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "metadata" field.</summary>
+    public const int MetadataFieldNumber = 3;
+    private global::Google.Protobuf.WellKnownTypes.Struct metadata_;
+    /// <summary>
+    /// A flexible key-value map for passing additional context or parameters.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct Metadata {
+      get { return metadata_; }
+      set {
+        metadata_ = value;
       }
     }
 
@@ -12706,7 +12762,9 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
+      if (Tenant != other.Tenant) return false;
+      if (Id != other.Id) return false;
+      if (!object.Equals(Metadata, other.Metadata)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -12714,7 +12772,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (metadata_ != null) hash ^= Metadata.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -12733,9 +12793,17 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Id);
+      }
+      if (metadata_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Metadata);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -12747,9 +12815,17 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Id);
+      }
+      if (metadata_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Metadata);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -12761,8 +12837,14 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (metadata_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Metadata);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -12776,8 +12858,17 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.metadata_ != null) {
+        if (metadata_ == null) {
+          Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        Metadata.MergeFrom(other.Metadata);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -12799,7 +12890,18 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
+            Id = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (metadata_ == null) {
+              Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Metadata);
             break;
           }
         }
@@ -12822,7 +12924,18 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
+            Id = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (metadata_ == null) {
+              Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Metadata);
             break;
           }
         }
@@ -12833,7 +12946,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:GetTaskPushNotificationConfigRequest]
+  /// Represents a request for the `GetTaskPushNotificationConfig` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class GetTaskPushNotificationConfigRequest : pb::IMessage<GetTaskPushNotificationConfigRequest>
@@ -12850,7 +12963,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -12870,7 +12983,9 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetTaskPushNotificationConfigRequest(GetTaskPushNotificationConfigRequest other) : this() {
-      name_ = other.name_;
+      tenant_ = other.tenant_;
+      taskId_ = other.taskId_;
+      id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -12880,19 +12995,48 @@ namespace A2a.V1 {
       return new GetTaskPushNotificationConfigRequest(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
     /// <summary>
-    /// The resource name of the config to retrieve.
-    /// Format: tasks/{task_id}/pushNotificationConfigs/{config_id}
+    /// Optional. Tenant ID, provided as a path parameter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "task_id" field.</summary>
+    public const int TaskIdFieldNumber = 2;
+    private string taskId_ = "";
+    /// <summary>
+    /// The parent task resource ID.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TaskId {
+      get { return taskId_; }
+      set {
+        taskId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 3;
+    private string id_ = "";
+    /// <summary>
+    /// The resource ID of the configuration to retrieve.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -12911,7 +13055,9 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
+      if (Tenant != other.Tenant) return false;
+      if (TaskId != other.TaskId) return false;
+      if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -12919,7 +13065,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (TaskId.Length != 0) hash ^= TaskId.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -12938,9 +13086,17 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TaskId);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -12952,9 +13108,17 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TaskId);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -12966,8 +13130,14 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TaskId);
+      }
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -12981,8 +13151,14 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
+      if (other.TaskId.Length != 0) {
+        TaskId = other.TaskId;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -13004,7 +13180,15 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
+            TaskId = input.ReadString();
+            break;
+          }
+          case 26: {
+            Id = input.ReadString();
             break;
           }
         }
@@ -13027,7 +13211,15 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
+            TaskId = input.ReadString();
+            break;
+          }
+          case 26: {
+            Id = input.ReadString();
             break;
           }
         }
@@ -13038,7 +13230,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:DeleteTaskPushNotificationConfigRequest]
+  /// Represents a request for the `DeleteTaskPushNotificationConfig` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class DeleteTaskPushNotificationConfigRequest : pb::IMessage<DeleteTaskPushNotificationConfigRequest>
@@ -13055,7 +13247,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[37]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -13075,7 +13267,9 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DeleteTaskPushNotificationConfigRequest(DeleteTaskPushNotificationConfigRequest other) : this() {
-      name_ = other.name_;
+      tenant_ = other.tenant_;
+      taskId_ = other.taskId_;
+      id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -13085,19 +13279,48 @@ namespace A2a.V1 {
       return new DeleteTaskPushNotificationConfigRequest(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
     /// <summary>
-    /// The resource name of the config to delete.
-    /// Format: tasks/{task_id}/pushNotificationConfigs/{config_id}
+    /// Optional. Tenant ID, provided as a path parameter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "task_id" field.</summary>
+    public const int TaskIdFieldNumber = 2;
+    private string taskId_ = "";
+    /// <summary>
+    /// The parent task resource ID.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TaskId {
+      get { return taskId_; }
+      set {
+        taskId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 3;
+    private string id_ = "";
+    /// <summary>
+    /// The resource ID of the configuration to delete.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -13116,7 +13339,9 @@ namespace A2a.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
+      if (Tenant != other.Tenant) return false;
+      if (TaskId != other.TaskId) return false;
+      if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -13124,7 +13349,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (TaskId.Length != 0) hash ^= TaskId.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -13143,9 +13370,17 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TaskId);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -13157,9 +13392,17 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TaskId);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -13171,8 +13414,14 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TaskId);
+      }
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -13186,8 +13435,14 @@ namespace A2a.V1 {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
+      if (other.TaskId.Length != 0) {
+        TaskId = other.TaskId;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -13209,7 +13464,15 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
+            TaskId = input.ReadString();
+            break;
+          }
+          case 26: {
+            Id = input.ReadString();
             break;
           }
         }
@@ -13232,7 +13495,15 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Name = input.ReadString();
+            Tenant = input.ReadString();
+            break;
+          }
+          case 18: {
+            TaskId = input.ReadString();
+            break;
+          }
+          case 26: {
+            Id = input.ReadString();
             break;
           }
         }
@@ -13243,24 +13514,24 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:SetTaskPushNotificationConfigRequest]
+  /// Represents a request for the `SubscribeToTask` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class CreateTaskPushNotificationConfigRequest : pb::IMessage<CreateTaskPushNotificationConfigRequest>
+  public sealed partial class SubscribeToTaskRequest : pb::IMessage<SubscribeToTaskRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<CreateTaskPushNotificationConfigRequest> _parser = new pb::MessageParser<CreateTaskPushNotificationConfigRequest>(() => new CreateTaskPushNotificationConfigRequest());
+    private static readonly pb::MessageParser<SubscribeToTaskRequest> _parser = new pb::MessageParser<SubscribeToTaskRequest>(() => new SubscribeToTaskRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<CreateTaskPushNotificationConfigRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<SubscribeToTaskRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[40]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -13271,7 +13542,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public CreateTaskPushNotificationConfigRequest() {
+    public SubscribeToTaskRequest() {
       OnConstruction();
     }
 
@@ -13279,83 +13550,65 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public CreateTaskPushNotificationConfigRequest(CreateTaskPushNotificationConfigRequest other) : this() {
-      parent_ = other.parent_;
-      configId_ = other.configId_;
-      config_ = other.config_ != null ? other.config_.Clone() : null;
+    public SubscribeToTaskRequest(SubscribeToTaskRequest other) : this() {
+      tenant_ = other.tenant_;
+      id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public CreateTaskPushNotificationConfigRequest Clone() {
-      return new CreateTaskPushNotificationConfigRequest(this);
+    public SubscribeToTaskRequest Clone() {
+      return new SubscribeToTaskRequest(this);
     }
 
-    /// <summary>Field number for the "parent" field.</summary>
-    public const int ParentFieldNumber = 1;
-    private string parent_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
     /// <summary>
-    /// The parent task resource for this config.
-    /// Format: tasks/{task_id}
+    /// Optional. Tenant ID, provided as a path parameter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Parent {
-      get { return parent_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        parent_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 2;
-    private string configId_ = "";
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 2;
+    private string id_ = "";
     /// <summary>
-    /// The ID for the new config.
+    /// The resource ID of the task to subscribe to.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ConfigId {
-      get { return configId_; }
+    public string Id {
+      get { return id_; }
       set {
-        configId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "config" field.</summary>
-    public const int ConfigFieldNumber = 3;
-    private global::A2a.V1.TaskPushNotificationConfig config_;
-    /// <summary>
-    /// The configuration to create.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskPushNotificationConfig Config {
-      get { return config_; }
-      set {
-        config_ = value;
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as CreateTaskPushNotificationConfigRequest);
+      return Equals(other as SubscribeToTaskRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(CreateTaskPushNotificationConfigRequest other) {
+    public bool Equals(SubscribeToTaskRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Parent != other.Parent) return false;
-      if (ConfigId != other.ConfigId) return false;
-      if (!object.Equals(Config, other.Config)) return false;
+      if (Tenant != other.Tenant) return false;
+      if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -13363,9 +13616,8 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Parent.Length != 0) hash ^= Parent.GetHashCode();
-      if (ConfigId.Length != 0) hash ^= ConfigId.GetHashCode();
-      if (config_ != null) hash ^= Config.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -13384,17 +13636,13 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Parent.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Parent);
+        output.WriteString(Tenant);
       }
-      if (ConfigId.Length != 0) {
+      if (Id.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(ConfigId);
-      }
-      if (config_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(Config);
+        output.WriteString(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -13406,17 +13654,13 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Parent.Length != 0) {
+      if (Tenant.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Parent);
+        output.WriteString(Tenant);
       }
-      if (ConfigId.Length != 0) {
+      if (Id.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(ConfigId);
-      }
-      if (config_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(Config);
+        output.WriteString(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -13428,14 +13672,11 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Parent.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Parent);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
       }
-      if (ConfigId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ConfigId);
-      }
-      if (config_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Config);
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -13445,21 +13686,15 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(CreateTaskPushNotificationConfigRequest other) {
+    public void MergeFrom(SubscribeToTaskRequest other) {
       if (other == null) {
         return;
       }
-      if (other.Parent.Length != 0) {
-        Parent = other.Parent;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
       }
-      if (other.ConfigId.Length != 0) {
-        ConfigId = other.ConfigId;
-      }
-      if (other.config_ != null) {
-        if (config_ == null) {
-          Config = new global::A2a.V1.TaskPushNotificationConfig();
-        }
-        Config.MergeFrom(other.Config);
+      if (other.Id.Length != 0) {
+        Id = other.Id;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -13481,18 +13716,11 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Parent = input.ReadString();
+            Tenant = input.ReadString();
             break;
           }
           case 18: {
-            ConfigId = input.ReadString();
-            break;
-          }
-          case 26: {
-            if (config_ == null) {
-              Config = new global::A2a.V1.TaskPushNotificationConfig();
-            }
-            input.ReadMessage(Config);
+            Id = input.ReadString();
             break;
           }
         }
@@ -13515,18 +13743,11 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Parent = input.ReadString();
+            Tenant = input.ReadString();
             break;
           }
           case 18: {
-            ConfigId = input.ReadString();
-            break;
-          }
-          case 26: {
-            if (config_ == null) {
-              Config = new global::A2a.V1.TaskPushNotificationConfig();
-            }
-            input.ReadMessage(Config);
+            Id = input.ReadString();
             break;
           }
         }
@@ -13537,24 +13758,24 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:TaskResubscriptionRequest]
+  /// Represents a request for the `ListTaskPushNotificationConfigs` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class TaskSubscriptionRequest : pb::IMessage<TaskSubscriptionRequest>
+  public sealed partial class ListTaskPushNotificationConfigsRequest : pb::IMessage<ListTaskPushNotificationConfigsRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<TaskSubscriptionRequest> _parser = new pb::MessageParser<TaskSubscriptionRequest>(() => new TaskSubscriptionRequest());
+    private static readonly pb::MessageParser<ListTaskPushNotificationConfigsRequest> _parser = new pb::MessageParser<ListTaskPushNotificationConfigsRequest>(() => new ListTaskPushNotificationConfigsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<TaskSubscriptionRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<ListTaskPushNotificationConfigsRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[41]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -13565,7 +13786,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public TaskSubscriptionRequest() {
+    public ListTaskPushNotificationConfigsRequest() {
       OnConstruction();
     }
 
@@ -13573,213 +13794,9 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public TaskSubscriptionRequest(TaskSubscriptionRequest other) : this() {
-      name_ = other.name_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public TaskSubscriptionRequest Clone() {
-      return new TaskSubscriptionRequest(this);
-    }
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
-    /// <summary>
-    /// The resource name of the task to subscribe to.
-    /// Format: tasks/{task_id}
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as TaskSubscriptionRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(TaskSubscriptionRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Name != other.Name) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Name.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(TaskSubscriptionRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
-  /// --8&lt;-- [start:ListTaskPushNotificationConfigRequest]
-  /// </summary>
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class ListTaskPushNotificationConfigRequest : pb::IMessage<ListTaskPushNotificationConfigRequest>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<ListTaskPushNotificationConfigRequest> _parser = new pb::MessageParser<ListTaskPushNotificationConfigRequest>(() => new ListTaskPushNotificationConfigRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ListTaskPushNotificationConfigRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[42]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ListTaskPushNotificationConfigRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ListTaskPushNotificationConfigRequest(ListTaskPushNotificationConfigRequest other) : this() {
-      parent_ = other.parent_;
+    public ListTaskPushNotificationConfigsRequest(ListTaskPushNotificationConfigsRequest other) : this() {
+      tenant_ = other.tenant_;
+      taskId_ = other.taskId_;
       pageSize_ = other.pageSize_;
       pageToken_ = other.pageToken_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -13787,23 +13804,37 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ListTaskPushNotificationConfigRequest Clone() {
-      return new ListTaskPushNotificationConfigRequest(this);
+    public ListTaskPushNotificationConfigsRequest Clone() {
+      return new ListTaskPushNotificationConfigsRequest(this);
     }
 
-    /// <summary>Field number for the "parent" field.</summary>
-    public const int ParentFieldNumber = 1;
-    private string parent_ = "";
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 4;
+    private string tenant_ = "";
     /// <summary>
-    /// The parent task resource.
-    /// Format: tasks/{task_id}
+    /// Optional. Tenant ID, provided as a path parameter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Parent {
-      get { return parent_; }
+    public string Tenant {
+      get { return tenant_; }
       set {
-        parent_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "task_id" field.</summary>
+    public const int TaskIdFieldNumber = 1;
+    private string taskId_ = "";
+    /// <summary>
+    /// The parent task resource ID.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TaskId {
+      get { return taskId_; }
+      set {
+        taskId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -13811,9 +13842,7 @@ namespace A2a.V1 {
     public const int PageSizeFieldNumber = 2;
     private int pageSize_;
     /// <summary>
-    /// For AIP-158 these fields are present. Usually not used/needed.
     /// The maximum number of configurations to return.
-    /// If unspecified, all configs will be returned.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -13828,12 +13857,7 @@ namespace A2a.V1 {
     public const int PageTokenFieldNumber = 3;
     private string pageToken_ = "";
     /// <summary>
-    /// A page token received from a previous
-    /// ListTaskPushNotificationConfigRequest call.
-    /// Provide this to retrieve the subsequent page.
-    /// When paginating, all other parameters provided to
-    /// `ListTaskPushNotificationConfigRequest` must match the call that provided
-    /// the page token.
+    /// A page token received from a previous `ListTaskPushNotificationConfigsRequest` call.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -13847,19 +13871,20 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ListTaskPushNotificationConfigRequest);
+      return Equals(other as ListTaskPushNotificationConfigsRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ListTaskPushNotificationConfigRequest other) {
+    public bool Equals(ListTaskPushNotificationConfigsRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Parent != other.Parent) return false;
+      if (Tenant != other.Tenant) return false;
+      if (TaskId != other.TaskId) return false;
       if (PageSize != other.PageSize) return false;
       if (PageToken != other.PageToken) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -13869,7 +13894,8 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Parent.Length != 0) hash ^= Parent.GetHashCode();
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
+      if (TaskId.Length != 0) hash ^= TaskId.GetHashCode();
       if (PageSize != 0) hash ^= PageSize.GetHashCode();
       if (PageToken.Length != 0) hash ^= PageToken.GetHashCode();
       if (_unknownFields != null) {
@@ -13890,9 +13916,9 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Parent.Length != 0) {
+      if (TaskId.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Parent);
+        output.WriteString(TaskId);
       }
       if (PageSize != 0) {
         output.WriteRawTag(16);
@@ -13901,6 +13927,10 @@ namespace A2a.V1 {
       if (PageToken.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(PageToken);
+      }
+      if (Tenant.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Tenant);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -13912,9 +13942,9 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Parent.Length != 0) {
+      if (TaskId.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Parent);
+        output.WriteString(TaskId);
       }
       if (PageSize != 0) {
         output.WriteRawTag(16);
@@ -13923,6 +13953,10 @@ namespace A2a.V1 {
       if (PageToken.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(PageToken);
+      }
+      if (Tenant.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Tenant);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -13934,8 +13968,11 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Parent.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Parent);
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
+      if (TaskId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TaskId);
       }
       if (PageSize != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
@@ -13951,12 +13988,15 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ListTaskPushNotificationConfigRequest other) {
+    public void MergeFrom(ListTaskPushNotificationConfigsRequest other) {
       if (other == null) {
         return;
       }
-      if (other.Parent.Length != 0) {
-        Parent = other.Parent;
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
+      }
+      if (other.TaskId.Length != 0) {
+        TaskId = other.TaskId;
       }
       if (other.PageSize != 0) {
         PageSize = other.PageSize;
@@ -13984,7 +14024,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Parent = input.ReadString();
+            TaskId = input.ReadString();
             break;
           }
           case 16: {
@@ -13993,6 +14033,10 @@ namespace A2a.V1 {
           }
           case 26: {
             PageToken = input.ReadString();
+            break;
+          }
+          case 34: {
+            Tenant = input.ReadString();
             break;
           }
         }
@@ -14015,7 +14059,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Parent = input.ReadString();
+            TaskId = input.ReadString();
             break;
           }
           case 16: {
@@ -14026,6 +14070,10 @@ namespace A2a.V1 {
             PageToken = input.ReadString();
             break;
           }
+          case 34: {
+            Tenant = input.ReadString();
+            break;
+          }
         }
       }
     }
@@ -14034,24 +14082,24 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:GetAuthenticatedExtendedCardRequest]
+  /// Represents a request for the `GetExtendedAgentCard` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class GetAgentCardRequest : pb::IMessage<GetAgentCardRequest>
+  public sealed partial class GetExtendedAgentCardRequest : pb::IMessage<GetExtendedAgentCardRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<GetAgentCardRequest> _parser = new pb::MessageParser<GetAgentCardRequest>(() => new GetAgentCardRequest());
+    private static readonly pb::MessageParser<GetExtendedAgentCardRequest> _parser = new pb::MessageParser<GetExtendedAgentCardRequest>(() => new GetExtendedAgentCardRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<GetAgentCardRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<GetExtendedAgentCardRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[43]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -14062,7 +14110,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentCardRequest() {
+    public GetExtendedAgentCardRequest() {
       OnConstruction();
     }
 
@@ -14070,31 +14118,48 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentCardRequest(GetAgentCardRequest other) : this() {
+    public GetExtendedAgentCardRequest(GetExtendedAgentCardRequest other) : this() {
+      tenant_ = other.tenant_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentCardRequest Clone() {
-      return new GetAgentCardRequest(this);
+    public GetExtendedAgentCardRequest Clone() {
+      return new GetExtendedAgentCardRequest(this);
+    }
+
+    /// <summary>Field number for the "tenant" field.</summary>
+    public const int TenantFieldNumber = 1;
+    private string tenant_ = "";
+    /// <summary>
+    /// Optional. Tenant ID, provided as a path parameter.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tenant {
+      get { return tenant_; }
+      set {
+        tenant_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as GetAgentCardRequest);
+      return Equals(other as GetExtendedAgentCardRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(GetAgentCardRequest other) {
+    public bool Equals(GetExtendedAgentCardRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Tenant != other.Tenant) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -14102,6 +14167,7 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Tenant.Length != 0) hash ^= Tenant.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -14120,6 +14186,10 @@ namespace A2a.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Tenant.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Tenant);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -14130,6 +14200,10 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tenant.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Tenant);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -14140,6 +14214,9 @@ namespace A2a.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Tenant.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tenant);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -14148,9 +14225,12 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(GetAgentCardRequest other) {
+    public void MergeFrom(GetExtendedAgentCardRequest other) {
       if (other == null) {
         return;
+      }
+      if (other.Tenant.Length != 0) {
+        Tenant = other.Tenant;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -14171,6 +14251,10 @@ namespace A2a.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10: {
+            Tenant = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -14190,6 +14274,10 @@ namespace A2a.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 10: {
+            Tenant = input.ReadString();
+            break;
+          }
         }
       }
     }
@@ -14198,8 +14286,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  ///&#x2F;///// Response Messages ///////////
-  /// --8&lt;-- [start:SendMessageSuccessResponse]
+  /// Represents the response for the `SendMessage` method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class SendMessageResponse : pb::IMessage<SendMessageResponse>
@@ -14216,7 +14303,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[44]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -14240,8 +14327,8 @@ namespace A2a.V1 {
         case PayloadOneofCase.Task:
           Task = other.Task.Clone();
           break;
-        case PayloadOneofCase.Msg:
-          Msg = other.Msg.Clone();
+        case PayloadOneofCase.Message:
+          Message = other.Message.Clone();
           break;
       }
 
@@ -14256,25 +14343,31 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "task" field.</summary>
     public const int TaskFieldNumber = 1;
+    /// <summary>
+    /// The task created or updated by the message.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Task Task {
-      get { return payloadCase_ == PayloadOneofCase.Task ? (global::A2a.V1.Task) payload_ : null; }
+    public global::Lf.A2a.V1.Task Task {
+      get { return payloadCase_ == PayloadOneofCase.Task ? (global::Lf.A2a.V1.Task) payload_ : null; }
       set {
         payload_ = value;
         payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Task;
       }
     }
 
-    /// <summary>Field number for the "msg" field.</summary>
-    public const int MsgFieldNumber = 2;
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    /// <summary>
+    /// A message from the agent.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Message Msg {
-      get { return payloadCase_ == PayloadOneofCase.Msg ? (global::A2a.V1.Message) payload_ : null; }
+    public global::Lf.A2a.V1.Message Message {
+      get { return payloadCase_ == PayloadOneofCase.Message ? (global::Lf.A2a.V1.Message) payload_ : null; }
       set {
         payload_ = value;
-        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Msg;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Message;
       }
     }
 
@@ -14283,7 +14376,7 @@ namespace A2a.V1 {
     public enum PayloadOneofCase {
       None = 0,
       Task = 1,
-      Msg = 2,
+      Message = 2,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -14315,7 +14408,7 @@ namespace A2a.V1 {
         return true;
       }
       if (!object.Equals(Task, other.Task)) return false;
-      if (!object.Equals(Msg, other.Msg)) return false;
+      if (!object.Equals(Message, other.Message)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -14325,7 +14418,7 @@ namespace A2a.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.Task) hash ^= Task.GetHashCode();
-      if (payloadCase_ == PayloadOneofCase.Msg) hash ^= Msg.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Message) hash ^= Message.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -14349,9 +14442,9 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Task);
       }
-      if (payloadCase_ == PayloadOneofCase.Msg) {
+      if (payloadCase_ == PayloadOneofCase.Message) {
         output.WriteRawTag(18);
-        output.WriteMessage(Msg);
+        output.WriteMessage(Message);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -14367,9 +14460,9 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Task);
       }
-      if (payloadCase_ == PayloadOneofCase.Msg) {
+      if (payloadCase_ == PayloadOneofCase.Message) {
         output.WriteRawTag(18);
-        output.WriteMessage(Msg);
+        output.WriteMessage(Message);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -14384,8 +14477,8 @@ namespace A2a.V1 {
       if (payloadCase_ == PayloadOneofCase.Task) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Task);
       }
-      if (payloadCase_ == PayloadOneofCase.Msg) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Msg);
+      if (payloadCase_ == PayloadOneofCase.Message) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Message);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -14402,15 +14495,15 @@ namespace A2a.V1 {
       switch (other.PayloadCase) {
         case PayloadOneofCase.Task:
           if (Task == null) {
-            Task = new global::A2a.V1.Task();
+            Task = new global::Lf.A2a.V1.Task();
           }
           Task.MergeFrom(other.Task);
           break;
-        case PayloadOneofCase.Msg:
-          if (Msg == null) {
-            Msg = new global::A2a.V1.Message();
+        case PayloadOneofCase.Message:
+          if (Message == null) {
+            Message = new global::Lf.A2a.V1.Message();
           }
-          Msg.MergeFrom(other.Msg);
+          Message.MergeFrom(other.Message);
           break;
       }
 
@@ -14434,7 +14527,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::A2a.V1.Task subBuilder = new global::A2a.V1.Task();
+            global::Lf.A2a.V1.Task subBuilder = new global::Lf.A2a.V1.Task();
             if (payloadCase_ == PayloadOneofCase.Task) {
               subBuilder.MergeFrom(Task);
             }
@@ -14443,12 +14536,12 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.Message subBuilder = new global::A2a.V1.Message();
-            if (payloadCase_ == PayloadOneofCase.Msg) {
-              subBuilder.MergeFrom(Msg);
+            global::Lf.A2a.V1.Message subBuilder = new global::Lf.A2a.V1.Message();
+            if (payloadCase_ == PayloadOneofCase.Message) {
+              subBuilder.MergeFrom(Message);
             }
             input.ReadMessage(subBuilder);
-            Msg = subBuilder;
+            Message = subBuilder;
             break;
           }
         }
@@ -14471,7 +14564,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::A2a.V1.Task subBuilder = new global::A2a.V1.Task();
+            global::Lf.A2a.V1.Task subBuilder = new global::Lf.A2a.V1.Task();
             if (payloadCase_ == PayloadOneofCase.Task) {
               subBuilder.MergeFrom(Task);
             }
@@ -14480,12 +14573,12 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.Message subBuilder = new global::A2a.V1.Message();
-            if (payloadCase_ == PayloadOneofCase.Msg) {
-              subBuilder.MergeFrom(Msg);
+            global::Lf.A2a.V1.Message subBuilder = new global::Lf.A2a.V1.Message();
+            if (payloadCase_ == PayloadOneofCase.Message) {
+              subBuilder.MergeFrom(Message);
             }
             input.ReadMessage(subBuilder);
-            Msg = subBuilder;
+            Message = subBuilder;
             break;
           }
         }
@@ -14496,16 +14589,7 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:SendStreamingMessageSuccessResponse]
-  /// The stream response for a message. The stream should be one of the following
-  /// sequences:
-  /// If the response is a message, the stream should contain one, and only one,
-  /// message and then close
-  /// If the response is a task lifecycle, the first response should be a Task
-  /// object followed by zero or more TaskStatusUpdateEvents and
-  /// TaskArtifactUpdateEvents. The stream should complete when the Task
-  /// if in an interrupted or terminal state. A stream that ends before these
-  /// conditions are met are
+  /// A wrapper object used in streaming operations to encapsulate different types of response data.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class StreamResponse : pb::IMessage<StreamResponse>
@@ -14522,7 +14606,7 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[45]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -14546,8 +14630,8 @@ namespace A2a.V1 {
         case PayloadOneofCase.Task:
           Task = other.Task.Clone();
           break;
-        case PayloadOneofCase.Msg:
-          Msg = other.Msg.Clone();
+        case PayloadOneofCase.Message:
+          Message = other.Message.Clone();
           break;
         case PayloadOneofCase.StatusUpdate:
           StatusUpdate = other.StatusUpdate.Clone();
@@ -14568,34 +14652,43 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "task" field.</summary>
     public const int TaskFieldNumber = 1;
+    /// <summary>
+    /// A Task object containing the current state of the task.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Task Task {
-      get { return payloadCase_ == PayloadOneofCase.Task ? (global::A2a.V1.Task) payload_ : null; }
+    public global::Lf.A2a.V1.Task Task {
+      get { return payloadCase_ == PayloadOneofCase.Task ? (global::Lf.A2a.V1.Task) payload_ : null; }
       set {
         payload_ = value;
         payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Task;
       }
     }
 
-    /// <summary>Field number for the "msg" field.</summary>
-    public const int MsgFieldNumber = 2;
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    /// <summary>
+    /// A Message object containing a message from the agent.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.Message Msg {
-      get { return payloadCase_ == PayloadOneofCase.Msg ? (global::A2a.V1.Message) payload_ : null; }
+    public global::Lf.A2a.V1.Message Message {
+      get { return payloadCase_ == PayloadOneofCase.Message ? (global::Lf.A2a.V1.Message) payload_ : null; }
       set {
         payload_ = value;
-        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Msg;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Message;
       }
     }
 
     /// <summary>Field number for the "status_update" field.</summary>
     public const int StatusUpdateFieldNumber = 3;
+    /// <summary>
+    /// An event indicating a task status update.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskStatusUpdateEvent StatusUpdate {
-      get { return payloadCase_ == PayloadOneofCase.StatusUpdate ? (global::A2a.V1.TaskStatusUpdateEvent) payload_ : null; }
+    public global::Lf.A2a.V1.TaskStatusUpdateEvent StatusUpdate {
+      get { return payloadCase_ == PayloadOneofCase.StatusUpdate ? (global::Lf.A2a.V1.TaskStatusUpdateEvent) payload_ : null; }
       set {
         payload_ = value;
         payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.StatusUpdate;
@@ -14604,10 +14697,13 @@ namespace A2a.V1 {
 
     /// <summary>Field number for the "artifact_update" field.</summary>
     public const int ArtifactUpdateFieldNumber = 4;
+    /// <summary>
+    /// An event indicating a task artifact update.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::A2a.V1.TaskArtifactUpdateEvent ArtifactUpdate {
-      get { return payloadCase_ == PayloadOneofCase.ArtifactUpdate ? (global::A2a.V1.TaskArtifactUpdateEvent) payload_ : null; }
+    public global::Lf.A2a.V1.TaskArtifactUpdateEvent ArtifactUpdate {
+      get { return payloadCase_ == PayloadOneofCase.ArtifactUpdate ? (global::Lf.A2a.V1.TaskArtifactUpdateEvent) payload_ : null; }
       set {
         payload_ = value;
         payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.ArtifactUpdate;
@@ -14619,7 +14715,7 @@ namespace A2a.V1 {
     public enum PayloadOneofCase {
       None = 0,
       Task = 1,
-      Msg = 2,
+      Message = 2,
       StatusUpdate = 3,
       ArtifactUpdate = 4,
     }
@@ -14653,7 +14749,7 @@ namespace A2a.V1 {
         return true;
       }
       if (!object.Equals(Task, other.Task)) return false;
-      if (!object.Equals(Msg, other.Msg)) return false;
+      if (!object.Equals(Message, other.Message)) return false;
       if (!object.Equals(StatusUpdate, other.StatusUpdate)) return false;
       if (!object.Equals(ArtifactUpdate, other.ArtifactUpdate)) return false;
       if (PayloadCase != other.PayloadCase) return false;
@@ -14665,7 +14761,7 @@ namespace A2a.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.Task) hash ^= Task.GetHashCode();
-      if (payloadCase_ == PayloadOneofCase.Msg) hash ^= Msg.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Message) hash ^= Message.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.StatusUpdate) hash ^= StatusUpdate.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ArtifactUpdate) hash ^= ArtifactUpdate.GetHashCode();
       hash ^= (int) payloadCase_;
@@ -14691,9 +14787,9 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Task);
       }
-      if (payloadCase_ == PayloadOneofCase.Msg) {
+      if (payloadCase_ == PayloadOneofCase.Message) {
         output.WriteRawTag(18);
-        output.WriteMessage(Msg);
+        output.WriteMessage(Message);
       }
       if (payloadCase_ == PayloadOneofCase.StatusUpdate) {
         output.WriteRawTag(26);
@@ -14717,9 +14813,9 @@ namespace A2a.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Task);
       }
-      if (payloadCase_ == PayloadOneofCase.Msg) {
+      if (payloadCase_ == PayloadOneofCase.Message) {
         output.WriteRawTag(18);
-        output.WriteMessage(Msg);
+        output.WriteMessage(Message);
       }
       if (payloadCase_ == PayloadOneofCase.StatusUpdate) {
         output.WriteRawTag(26);
@@ -14742,8 +14838,8 @@ namespace A2a.V1 {
       if (payloadCase_ == PayloadOneofCase.Task) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Task);
       }
-      if (payloadCase_ == PayloadOneofCase.Msg) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Msg);
+      if (payloadCase_ == PayloadOneofCase.Message) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Message);
       }
       if (payloadCase_ == PayloadOneofCase.StatusUpdate) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StatusUpdate);
@@ -14766,25 +14862,25 @@ namespace A2a.V1 {
       switch (other.PayloadCase) {
         case PayloadOneofCase.Task:
           if (Task == null) {
-            Task = new global::A2a.V1.Task();
+            Task = new global::Lf.A2a.V1.Task();
           }
           Task.MergeFrom(other.Task);
           break;
-        case PayloadOneofCase.Msg:
-          if (Msg == null) {
-            Msg = new global::A2a.V1.Message();
+        case PayloadOneofCase.Message:
+          if (Message == null) {
+            Message = new global::Lf.A2a.V1.Message();
           }
-          Msg.MergeFrom(other.Msg);
+          Message.MergeFrom(other.Message);
           break;
         case PayloadOneofCase.StatusUpdate:
           if (StatusUpdate == null) {
-            StatusUpdate = new global::A2a.V1.TaskStatusUpdateEvent();
+            StatusUpdate = new global::Lf.A2a.V1.TaskStatusUpdateEvent();
           }
           StatusUpdate.MergeFrom(other.StatusUpdate);
           break;
         case PayloadOneofCase.ArtifactUpdate:
           if (ArtifactUpdate == null) {
-            ArtifactUpdate = new global::A2a.V1.TaskArtifactUpdateEvent();
+            ArtifactUpdate = new global::Lf.A2a.V1.TaskArtifactUpdateEvent();
           }
           ArtifactUpdate.MergeFrom(other.ArtifactUpdate);
           break;
@@ -14810,7 +14906,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::A2a.V1.Task subBuilder = new global::A2a.V1.Task();
+            global::Lf.A2a.V1.Task subBuilder = new global::Lf.A2a.V1.Task();
             if (payloadCase_ == PayloadOneofCase.Task) {
               subBuilder.MergeFrom(Task);
             }
@@ -14819,16 +14915,16 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.Message subBuilder = new global::A2a.V1.Message();
-            if (payloadCase_ == PayloadOneofCase.Msg) {
-              subBuilder.MergeFrom(Msg);
+            global::Lf.A2a.V1.Message subBuilder = new global::Lf.A2a.V1.Message();
+            if (payloadCase_ == PayloadOneofCase.Message) {
+              subBuilder.MergeFrom(Message);
             }
             input.ReadMessage(subBuilder);
-            Msg = subBuilder;
+            Message = subBuilder;
             break;
           }
           case 26: {
-            global::A2a.V1.TaskStatusUpdateEvent subBuilder = new global::A2a.V1.TaskStatusUpdateEvent();
+            global::Lf.A2a.V1.TaskStatusUpdateEvent subBuilder = new global::Lf.A2a.V1.TaskStatusUpdateEvent();
             if (payloadCase_ == PayloadOneofCase.StatusUpdate) {
               subBuilder.MergeFrom(StatusUpdate);
             }
@@ -14837,7 +14933,7 @@ namespace A2a.V1 {
             break;
           }
           case 34: {
-            global::A2a.V1.TaskArtifactUpdateEvent subBuilder = new global::A2a.V1.TaskArtifactUpdateEvent();
+            global::Lf.A2a.V1.TaskArtifactUpdateEvent subBuilder = new global::Lf.A2a.V1.TaskArtifactUpdateEvent();
             if (payloadCase_ == PayloadOneofCase.ArtifactUpdate) {
               subBuilder.MergeFrom(ArtifactUpdate);
             }
@@ -14865,7 +14961,7 @@ namespace A2a.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::A2a.V1.Task subBuilder = new global::A2a.V1.Task();
+            global::Lf.A2a.V1.Task subBuilder = new global::Lf.A2a.V1.Task();
             if (payloadCase_ == PayloadOneofCase.Task) {
               subBuilder.MergeFrom(Task);
             }
@@ -14874,16 +14970,16 @@ namespace A2a.V1 {
             break;
           }
           case 18: {
-            global::A2a.V1.Message subBuilder = new global::A2a.V1.Message();
-            if (payloadCase_ == PayloadOneofCase.Msg) {
-              subBuilder.MergeFrom(Msg);
+            global::Lf.A2a.V1.Message subBuilder = new global::Lf.A2a.V1.Message();
+            if (payloadCase_ == PayloadOneofCase.Message) {
+              subBuilder.MergeFrom(Message);
             }
             input.ReadMessage(subBuilder);
-            Msg = subBuilder;
+            Message = subBuilder;
             break;
           }
           case 26: {
-            global::A2a.V1.TaskStatusUpdateEvent subBuilder = new global::A2a.V1.TaskStatusUpdateEvent();
+            global::Lf.A2a.V1.TaskStatusUpdateEvent subBuilder = new global::Lf.A2a.V1.TaskStatusUpdateEvent();
             if (payloadCase_ == PayloadOneofCase.StatusUpdate) {
               subBuilder.MergeFrom(StatusUpdate);
             }
@@ -14892,7 +14988,7 @@ namespace A2a.V1 {
             break;
           }
           case 34: {
-            global::A2a.V1.TaskArtifactUpdateEvent subBuilder = new global::A2a.V1.TaskArtifactUpdateEvent();
+            global::Lf.A2a.V1.TaskArtifactUpdateEvent subBuilder = new global::Lf.A2a.V1.TaskArtifactUpdateEvent();
             if (payloadCase_ == PayloadOneofCase.ArtifactUpdate) {
               subBuilder.MergeFrom(ArtifactUpdate);
             }
@@ -14908,24 +15004,25 @@ namespace A2a.V1 {
   }
 
   /// <summary>
-  /// --8&lt;-- [start:ListTaskPushNotificationConfigSuccessResponse]
+  /// Represents a successful response for the `ListTaskPushNotificationConfigs`
+  /// method.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class ListTaskPushNotificationConfigResponse : pb::IMessage<ListTaskPushNotificationConfigResponse>
+  public sealed partial class ListTaskPushNotificationConfigsResponse : pb::IMessage<ListTaskPushNotificationConfigsResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ListTaskPushNotificationConfigResponse> _parser = new pb::MessageParser<ListTaskPushNotificationConfigResponse>(() => new ListTaskPushNotificationConfigResponse());
+    private static readonly pb::MessageParser<ListTaskPushNotificationConfigsResponse> _parser = new pb::MessageParser<ListTaskPushNotificationConfigsResponse>(() => new ListTaskPushNotificationConfigsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ListTaskPushNotificationConfigResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<ListTaskPushNotificationConfigsResponse> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::A2a.V1.A2AReflection.Descriptor.MessageTypes[46]; }
+      get { return global::Lf.A2a.V1.A2AReflection.Descriptor.MessageTypes[43]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -14936,7 +15033,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ListTaskPushNotificationConfigResponse() {
+    public ListTaskPushNotificationConfigsResponse() {
       OnConstruction();
     }
 
@@ -14944,7 +15041,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ListTaskPushNotificationConfigResponse(ListTaskPushNotificationConfigResponse other) : this() {
+    public ListTaskPushNotificationConfigsResponse(ListTaskPushNotificationConfigsResponse other) : this() {
       configs_ = other.configs_.Clone();
       nextPageToken_ = other.nextPageToken_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -14952,21 +15049,21 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ListTaskPushNotificationConfigResponse Clone() {
-      return new ListTaskPushNotificationConfigResponse(this);
+    public ListTaskPushNotificationConfigsResponse Clone() {
+      return new ListTaskPushNotificationConfigsResponse(this);
     }
 
     /// <summary>Field number for the "configs" field.</summary>
     public const int ConfigsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::A2a.V1.TaskPushNotificationConfig> _repeated_configs_codec
-        = pb::FieldCodec.ForMessage(10, global::A2a.V1.TaskPushNotificationConfig.Parser);
-    private readonly pbc::RepeatedField<global::A2a.V1.TaskPushNotificationConfig> configs_ = new pbc::RepeatedField<global::A2a.V1.TaskPushNotificationConfig>();
+    private static readonly pb::FieldCodec<global::Lf.A2a.V1.TaskPushNotificationConfig> _repeated_configs_codec
+        = pb::FieldCodec.ForMessage(10, global::Lf.A2a.V1.TaskPushNotificationConfig.Parser);
+    private readonly pbc::RepeatedField<global::Lf.A2a.V1.TaskPushNotificationConfig> configs_ = new pbc::RepeatedField<global::Lf.A2a.V1.TaskPushNotificationConfig>();
     /// <summary>
     /// The list of push notification configurations.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::A2a.V1.TaskPushNotificationConfig> Configs {
+    public pbc::RepeatedField<global::Lf.A2a.V1.TaskPushNotificationConfig> Configs {
       get { return configs_; }
     }
 
@@ -14974,8 +15071,7 @@ namespace A2a.V1 {
     public const int NextPageTokenFieldNumber = 2;
     private string nextPageToken_ = "";
     /// <summary>
-    /// A token, which can be sent as `page_token` to retrieve the next page.
-    /// If this field is omitted, there are no subsequent pages.
+    /// A token to retrieve the next page of results, or empty if there are no more results in the list.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -14989,12 +15085,12 @@ namespace A2a.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ListTaskPushNotificationConfigResponse);
+      return Equals(other as ListTaskPushNotificationConfigsResponse);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ListTaskPushNotificationConfigResponse other) {
+    public bool Equals(ListTaskPushNotificationConfigsResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -15072,7 +15168,7 @@ namespace A2a.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ListTaskPushNotificationConfigResponse other) {
+    public void MergeFrom(ListTaskPushNotificationConfigsResponse other) {
       if (other == null) {
         return;
       }

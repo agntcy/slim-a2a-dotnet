@@ -3,17 +3,17 @@ using uniffi.slim_bindings;
 
 namespace SlimA2A;
 
-/// <summary><see cref="IA2AClient"/> over SLIMRPC (generated <see cref="A2a.V1.A2AServiceClient"/>).</summary>
+/// <summary><see cref="IA2AClient"/> over SLIMRPC (generated <see cref="Lf.A2a.V1.A2AServiceClient"/>).</summary>
 public sealed class SlimA2AClient : IA2AClient
 {
-    private readonly A2a.V1.A2AServiceClient _client;
+    private readonly Lf.A2a.V1.A2AServiceClient _client;
     private readonly TimeSpan? _defaultTimeout;
     private AgentCard? _cachedExtendedCard;
 
     public SlimA2AClient(uniffi.slim_bindings.Channel channel, TimeSpan? defaultTimeout = null)
     {
         ArgumentNullException.ThrowIfNull(channel);
-        _client = new A2a.V1.A2AServiceClient(channel);
+        _client = new Lf.A2a.V1.A2AServiceClient(channel);
         _defaultTimeout = defaultTimeout;
     }
 
@@ -31,7 +31,7 @@ public sealed class SlimA2AClient : IA2AClient
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
-        IAsyncEnumerable<A2a.V1.StreamResponse> stream;
+        IAsyncEnumerable<Lf.A2a.V1.StreamResponse> stream;
         try
         {
             stream = _client.SendStreamingMessageAsync(proto, _defaultTimeout, null, cancellationToken);
@@ -66,7 +66,7 @@ public sealed class SlimA2AClient : IA2AClient
 
     public async Task<AgentTask> CancelTaskAsync(CancelTaskRequest request, CancellationToken cancellationToken = default)
     {
-        var proto = new A2a.V1.CancelTaskRequest { Name = TaskResourceNames.ToResourceName(request.Id) };
+        var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
             () => _client.CancelTaskAsync(proto, _defaultTimeout, null, cancellationToken),
             cancellationToken).ConfigureAwait(false);
@@ -78,10 +78,10 @@ public sealed class SlimA2AClient : IA2AClient
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
-        IAsyncEnumerable<A2a.V1.StreamResponse> stream;
+        IAsyncEnumerable<Lf.A2a.V1.StreamResponse> stream;
         try
         {
-            stream = _client.TaskSubscriptionAsync(proto, _defaultTimeout, null, cancellationToken);
+            stream = _client.SubscribeToTaskAsync(proto, _defaultTimeout, null, cancellationToken);
         }
         catch (RpcException.Rpc ex)
         {
@@ -118,7 +118,7 @@ public sealed class SlimA2AClient : IA2AClient
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.ListTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.ListTaskPushNotificationConfigsAsync(proto, _defaultTimeout, null, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -138,7 +138,7 @@ public sealed class SlimA2AClient : IA2AClient
         if (_cachedExtendedCard is not null)
             return _cachedExtendedCard;
         var resp = await InvokeAsync(
-            () => _client.GetAgentCardAsync(new A2a.V1.GetAgentCardRequest(), _defaultTimeout, null, cancellationToken),
+            () => _client.GetExtendedAgentCardAsync(new Lf.A2a.V1.GetExtendedAgentCardRequest(), _defaultTimeout, null, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         _cachedExtendedCard = ProtoConverter.FromProto(resp);
         return _cachedExtendedCard;

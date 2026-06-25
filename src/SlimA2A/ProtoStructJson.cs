@@ -37,4 +37,17 @@ internal static class ProtoStructJson
         using var doc = JsonDocument.Parse(json);
         return doc.RootElement.Clone();
     }
+
+    public static Value JsonElementToValue(JsonElement element)
+    {
+        var json = element.GetRawText();
+        return Parser.Parse<Value>(json);
+    }
+
+    public static JsonElement ValueToJsonElement(Value v)
+    {
+        var json = Formatter.Format(v);
+        using var doc = JsonDocument.Parse(json);
+        return doc.RootElement.Clone();
+    }
 }
