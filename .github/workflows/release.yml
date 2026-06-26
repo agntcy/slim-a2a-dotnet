@@ -1,0 +1,66 @@
+# Copyright AGNTCY Contributors (https://github.com/agntcy)
+# SPDX-License-Identifier: Apache-2.0
+
+name: Release NuGet
+
+# Publish the Agntcy.SlimA2A package when a version tag is pushed (e.g. v0.1.0, v1.2.3-preview.1).
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Pack & publish to NuGet.org
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      # Tag v1.2.3 -> package version 1.2.3 (generated code is committed, so no buf/cargo needed).
+      - name: Derive version from tag
+        id: version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          if [ -z "$VERSION" ]; then
+            echo "::error::Could not derive a version from tag '$GITHUB_REF_NAME'"; exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Publishing version $VERSION"
+
+      - name: Restore
+        run: dotnet restore SlimA2A.sln
+
+      # Guard: never publish a package that fails the build/tests.
+      - name: Test
+        run: dotnet test SlimA2A.sln -c Release
+
+      - name: Pack
+        run: >-
+          dotnet pack src/SlimA2A/SlimA2A.csproj
+          -c Release
+          -p:Version=${{ steps.version.outputs.version }}
+          -o nupkg
+
+      - name: Publish to NuGet.org
+        env:
+          NUGET_API_TOKEN: ${{ secrets.NUGET_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for PACKAGE in ./nupkg/*.nupkg ./nupkg/*.snupkg; do
+            echo "Publishing: $PACKAGE"
+            dotnet nuget push "$PACKAGE" \
+              --api-key "$NUGET_API_TOKEN" \
+              --source https://api.nuget.org/v3/index.json \
+              --skip-duplicate
+          done
+          echo "Successfully published all packages to NuGet.org"

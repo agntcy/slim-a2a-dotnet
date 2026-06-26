@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SlimA2A\SlimA2A.csproj" />
+    <!-- SlimA2A references Protos privately (it is bundled into the package), so the generated
+         Lf.A2a.V1 types are not transitive — reference Protos directly for the round-trip tests. -->
+    <ProjectReference Include="..\..\src\SlimA2A.Protos\SlimA2A.Protos.csproj" />
   </ItemGroup>
 
 </Project>

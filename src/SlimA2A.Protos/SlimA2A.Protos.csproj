@@ -7,6 +7,8 @@
     <RootNamespace>SlimA2A.Protos</RootNamespace>
     <AssemblyName>SlimA2A.Protos</AssemblyName>
     <NoWarn>$(NoWarn);CS8981</NoWarn>
+    <!-- Bundled into the Agntcy.SlimA2A package (see ..\SlimA2A\SlimA2A.csproj); not published standalone. -->
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
