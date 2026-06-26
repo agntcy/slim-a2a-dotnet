@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
@@ -18,6 +19,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SlimA2A\SlimA2A.csproj" />
+    <!-- SlimA2A references Protos privately (it is bundled into the package), so the generated
+         Lf.A2a.V1 types are not transitive — reference Protos directly for the round-trip tests. -->
+    <ProjectReference Include="..\..\src\SlimA2A.Protos\SlimA2A.Protos.csproj" />
   </ItemGroup>
 
 </Project>

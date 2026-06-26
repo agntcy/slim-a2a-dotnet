@@ -8,9 +8,48 @@
     <AssemblyName>SlimA2A</AssemblyName>
   </PropertyGroup>
 
+  <!-- NuGet packaging: a single package that bundles SlimA2A + SlimA2A.Protos.
+       Version is supplied at pack time (e.g. -p:Version=1.2.3 from the git tag).
+       Adjust the descriptive metadata below as needed. -->
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Agntcy.SlimA2A</PackageId>
+    <Authors>AGNTCY Contributors</Authors>
+    <Company>AGNTCY</Company>
+    <Description>SLIMRPC transport for the A2A (Agent2Agent) .NET SDK — interoperable with slim-a2a-go and slim-a2a-python (lf.a2a.v1).</Description>
+    <PackageTags>a2a;slim;slimrpc;agntcy;grpc;agent2agent</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/agntcy/slim-a2a-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/agntcy/slim-a2a-dotnet.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- Bundle the SlimA2A.Protos assembly into this package (it is not published on its own). -->
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeProtosAssemblyInPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\SlimA2A.Protos\SlimA2A.Protos.csproj" />
-    <PackageReference Include="A2A" Version="1.0.0-preview" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <!-- PrivateAssets=all: bundle the Protos DLL (below) instead of emitting a package dependency on it. -->
+    <ProjectReference Include="..\SlimA2A.Protos\SlimA2A.Protos.csproj" PrivateAssets="all" />
+
+    <!-- Runtime dependencies. The Google.* / Agntcy.Slim.SlimRpc entries mirror SlimA2A.Protos:
+         because that project reference is private, its transitive package deps must be declared here
+         so they flow to consumers of the bundled package. -->
+    <PackageReference Include="A2A" Version="1.0.0-preview" />
+    <PackageReference Include="Agntcy.Slim.SlimRpc" Version="1.3.0" />
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.15.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.28.0" />
+  </ItemGroup>
+
+  <Target Name="IncludeProtosAssemblyInPackage">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)SlimA2A.Protos.dll" />
+    </ItemGroup>
+  </Target>
 
 </Project>

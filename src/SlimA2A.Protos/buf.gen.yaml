@@ -4,12 +4,14 @@ managed:
   enabled: true
 inputs:
   - git_repo: https://github.com/a2aproject/A2A.git
-    ref: e7cf203ecdd7003c0f1740bb712248d2b5252bf1
-    subdir: specification/grpc
+    # Pinned to the same A2A commit a2a-go v2.1.0 generated from (package lf.a2a.v1),
+    # ensuring SLIMRPC service-name + wire compatibility with slim-a2a-go / slim-a2a-python.
+    ref: 7df7685561b19c841c5a1349653df347db8d3314
+    subdir: specification
 plugins:
   - remote: buf.build/protocolbuffers/csharp
     out: Generated
   # Same pattern as slim-a2a-go / slim-a2a-python: executable on PATH (see README codegen).
   - local: protoc-gen-slimrpc-csharp
     out: Generated
-    opt: base_namespace=A2a.V1,types_namespace=A2a.V1
+    opt: base_namespace=Lf.A2a.V1,types_namespace=Lf.A2a.V1

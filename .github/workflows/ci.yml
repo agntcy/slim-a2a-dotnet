@@ -29,6 +29,11 @@ jobs:
         run: buf generate
         working-directory: src/SlimA2A.Protos
 
+      - name: Verify generated code is up to date
+        run: |
+          git diff --exit-code -- src/SlimA2A.Protos/Generated \
+            || { echo "::error::Generated code is stale. Run 'buf generate' in src/SlimA2A.Protos and commit the result."; exit 1; }
+
       - name: dotnet build and test
         run: |
           dotnet build SlimA2A.sln -c Release
