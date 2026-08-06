@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)).
+**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **2.0.0**. In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
 
 **A2A** is consumed from NuGet (`A2A` preview) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
 
@@ -13,7 +13,7 @@
 1. Install the SlimRPC `protoc` plugin so `protoc-gen-slimrpc-csharp` is on your `PATH` (published as [agntcy-protoc-slimrpc-plugin](https://crates.io/crates/agntcy-protoc-slimrpc-plugin) on crates.io):
 
    ```bash
-   cargo install agntcy-protoc-slimrpc-plugin --version 1.3.0
+   cargo install agntcy-protoc-slimrpc-plugin --version 2.0.0
    ```
 
 2. From `src/SlimA2A.Protos`:

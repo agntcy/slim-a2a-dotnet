@@ -19,7 +19,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install protoc-gen-slimrpc-csharp
-        run: cargo install agntcy-protoc-slimrpc-plugin --version 1.3.0 --locked
+        run: cargo install agntcy-protoc-slimrpc-plugin --version 2.0.0 --locked
 
       - uses: bufbuild/buf-setup-action@v1
         with:
