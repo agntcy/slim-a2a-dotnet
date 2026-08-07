@@ -1,5 +1,5 @@
 using A2A;
-using uniffi.slim_bindings;
+using uniffi.slim_rpc;
 
 namespace SlimA2A;
 

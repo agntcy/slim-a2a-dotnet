@@ -1,8 +1,8 @@
 namespace SlimA2A;
 
-/// <summary>Registers the generated A2A SLIMRPC service on a SLIM <see cref="uniffi.slim_bindings.Server"/>.</summary>
+/// <summary>Registers the generated A2A SLIMRPC service on a SLIM <see cref="uniffi.slim_rpc.Server"/>.</summary>
 public static class SlimA2AServerRegistration
 {
-    public static void RegisterA2AService(uniffi.slim_bindings.Server server, Lf.A2a.V1.IA2AServiceServer implementation) =>
+    public static void RegisterA2AService(uniffi.slim_rpc.Server server, Lf.A2a.V1.IA2AServiceServer implementation) =>
         Lf.A2a.V1.A2AServiceServerRegistration.RegisterA2AServiceServer(server, implementation);
 }

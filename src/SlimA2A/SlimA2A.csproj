@@ -41,7 +41,7 @@
          because that project reference is private, its transitive package deps must be declared here
          so they flow to consumers of the bundled package. -->
     <PackageReference Include="A2A" Version="1.0.0-preview" />
-    <PackageReference Include="Agntcy.Slim.SlimRpc" Version="1.3.0" />
+    <PackageReference Include="Agntcy.Slim.SlimRpc" Version="2.0.0" />
     <PackageReference Include="Google.Api.CommonProtos" Version="2.15.0" />
     <PackageReference Include="Google.Protobuf" Version="3.28.0" />
   </ItemGroup>

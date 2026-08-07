@@ -1,5 +1,5 @@
 using A2A;
-using uniffi.slim_bindings;
+using uniffi.slim_rpc;
 
 namespace SlimA2A;
 
@@ -10,7 +10,7 @@ public sealed class SlimA2AClient : IA2AClient
     private readonly TimeSpan? _defaultTimeout;
     private AgentCard? _cachedExtendedCard;
 
-    public SlimA2AClient(uniffi.slim_bindings.Channel channel, TimeSpan? defaultTimeout = null)
+    public SlimA2AClient(uniffi.slim_rpc.Channel channel, TimeSpan? defaultTimeout = null)
     {
         ArgumentNullException.ThrowIfNull(channel);
         _client = new Lf.A2a.V1.A2AServiceClient(channel);
