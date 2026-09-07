@@ -1,5 +1,7 @@
 # slim-a2a-dotnet
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/agntcy/slim-a2a-dotnet/badge)](https://scorecard.dev/viewer/?uri=github.com/agntcy/slim-a2a-dotnet)
+
 .NET library that maps the [A2A](https://github.com/a2aproject/A2A) gRPC contract to [a2a-dotnet](https://github.com/a2aproject/a2a-dotnet) (`IA2AClient` / `IA2ARequestHandler`) over **SLIMRPC**, similar to slim-a2a-go / slim-a2a-python.
 
 ## Dependencies
