@@ -40,4 +40,4 @@ jobs:
       - name: dotnet build and test
         run: |
           dotnet build SlimA2A.sln -c Release
-          dotnet test SlimA2A.sln -c Release --no-build
+          dotnet test --solution SlimA2A.sln -c Release --no-build

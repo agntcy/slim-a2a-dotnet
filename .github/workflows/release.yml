@@ -41,7 +41,7 @@ jobs:
 
       # Guard: never publish a package that fails the build/tests.
       - name: Test
-        run: dotnet test SlimA2A.sln -c Release
+        run: dotnet test --solution SlimA2A.sln -c Release
 
       - name: Pack
         run: >-
