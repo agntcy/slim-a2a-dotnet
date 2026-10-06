@@ -16,13 +16,18 @@ internal sealed class RpcCallScope : IDisposable
 
     /// <param name="remaining">Time left until the caller's deadline, or null when there is none.</param>
     /// <param name="serverStopping">Cancelled when the server stops.</param>
-    public RpcCallScope(TimeSpan? remaining, CancellationToken serverStopping)
+    /// <param name="metadata">The metadata the client sent with the call.</param>
+    public RpcCallScope(TimeSpan? remaining, CancellationToken serverStopping, IReadOnlyDictionary<string, string>? metadata = null)
     {
         _serverStopping = serverStopping;
+        Context = new SlimA2ACallContext(metadata);
         _cts = CancellationTokenSource.CreateLinkedTokenSource(serverStopping);
         if (remaining is { } r && r < MaxTimer)
             _cts.CancelAfter(r);
     }
+
+    /// <summary>Exposed as <see cref="SlimA2ACallContext.Current"/> while the request is handled.</summary>
+    public SlimA2ACallContext Context { get; }
 
     /// <summary>Passed to the request handler.</summary>
     public CancellationToken Token => _cts.Token;

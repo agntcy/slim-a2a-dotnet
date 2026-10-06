@@ -7,7 +7,8 @@ namespace SlimA2A;
 /// <summary>Adapts <see cref="IA2ARequestHandler"/> to the generated <see cref="Lf.A2a.V1.IA2AServiceServer"/> contract.</summary>
 /// <remarks>
 /// Each RPC runs with a token cancelled when the caller's deadline passes or the server stops (<see cref="RpcCallScope"/>),
-/// and A2A errors and those cancellations reach the client with their RPC codes.
+/// with <see cref="SlimA2ACallContext.Current"/> set to the call, and A2A errors and those cancellations reach the client with
+/// their RPC codes.
 /// </remarks>
 internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
 {
@@ -87,6 +88,7 @@ internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
         SlimRpcContext? context, Func<CancellationToken, System.Threading.Tasks.Task<T>> handle)
     {
         using var call = NewCall(context);
+        SlimA2ACallContext.Current = call.Context;
         try
         {
             return await handle(call.Token).ConfigureAwait(false);
@@ -110,8 +112,8 @@ internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
             yield return ProtoConverter.ToProtoStream(item);
     }
 
-    // The generated stubs always pass a context; in-process callers (tests) may not, and then there is no deadline.
-    private RpcCallScope NewCall(SlimRpcContext? context) => new(context?.RemainingTime, _serverStopping);
+    // The generated stubs always pass a context; in-process callers (tests) may not, and then there is no deadline or metadata.
+    private RpcCallScope NewCall(SlimRpcContext? context) => new(context?.RemainingTime, _serverStopping, context?.Metadata);
 
     private static Lf.A2a.V1.ListTasksResponse ToProtoListTasks(A2A.ListTasksResponse r)
     {

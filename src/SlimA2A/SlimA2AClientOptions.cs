@@ -20,6 +20,12 @@ public sealed class SlimA2AClientOptions
     /// <summary>Deadline for each RPC. When null, the SLIM runtime's default applies.</summary>
     public TimeSpan? DefaultTimeout { get; init; }
 
+    /// <summary>
+    /// Metadata sent with every RPC, read on the server through <see cref="SlimA2ACallContext.Metadata"/>; for example the
+    /// requested extensions under <see cref="SlimA2AMetadata.Extensions"/>. Captured when the client is created.
+    /// </summary>
+    public IDictionary<string, string> Metadata { get; init; } = new Dictionary<string, string>();
+
     /// <summary>The SLIM name in <paramref name="remote"/>, without a <c>slim://</c> scheme.</summary>
     internal static string ToSlimName(string remote) =>
         remote is not null && remote.StartsWith(SlimScheme, StringComparison.OrdinalIgnoreCase)

@@ -15,6 +15,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     private readonly Channel _channel;
     private readonly Lf.A2a.V1.A2AServiceClient _client;
     private readonly TimeSpan? _defaultTimeout;
+    private readonly IReadOnlyDictionary<string, string>? _metadata;
     private readonly ConcurrentDictionary<string, AgentCard> _extendedCards = new();
     private int _disposed;
 
@@ -25,6 +26,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
         _channel = channel;
         _client = new Lf.A2a.V1.A2AServiceClient(channel);
         _defaultTimeout = options.DefaultTimeout;
+        _metadata = options.Metadata is { Count: > 0 } metadata ? new Dictionary<string, string>(metadata) : null;
         Identity = options.Identity;
         Remote = SlimA2AClientOptions.ToSlimName(options.Remote);
     }
@@ -62,7 +64,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.SendMessageAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.SendMessageAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -75,7 +77,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
         ThrowIfDisposed();
         var proto = ProtoConverter.ToProto(request);
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            _client.SendStreamingMessageAsync(proto, _defaultTimeout, null, cancellationToken), cancellationToken);
+            _client.SendStreamingMessageAsync(proto, _defaultTimeout, _metadata, cancellationToken), cancellationToken);
         await foreach (var p in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.FromProtoStream(p);
@@ -87,7 +89,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetTaskAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.GetTaskAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -97,7 +99,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.ListTasksAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.ListTasksAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -107,7 +109,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.CancelTaskAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.CancelTaskAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -120,7 +122,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
         ThrowIfDisposed();
         var proto = ProtoConverter.ToProto(request);
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            _client.SubscribeToTaskAsync(proto, _defaultTimeout, null, cancellationToken), cancellationToken);
+            _client.SubscribeToTaskAsync(proto, _defaultTimeout, _metadata, cancellationToken), cancellationToken);
         await foreach (var p in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.FromProtoStream(p);
@@ -133,7 +135,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.CreateTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.CreateTaskPushNotificationConfigAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -144,7 +146,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.GetTaskPushNotificationConfigAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -155,7 +157,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.ListTaskPushNotificationConfigsAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.ListTaskPushNotificationConfigsAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
@@ -166,7 +168,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     {
         var proto = ProtoConverter.ToProto(request);
         await InvokeAsync(
-            () => _client.DeleteTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.DeleteTaskPushNotificationConfigAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
     }
 
@@ -180,7 +182,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
             return cached;
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetExtendedAgentCardAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.GetExtendedAgentCardAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return _extendedCards.GetOrAdd(tenant, ProtoConverter.FromProto(resp));
     }

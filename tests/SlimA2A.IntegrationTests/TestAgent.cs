@@ -1,3 +1,4 @@
+using System.Text.Json;
 using A2A;
 
 namespace SlimA2A.IntegrationTests;
@@ -31,6 +32,12 @@ internal sealed class TestAgent : IAgentHandler
     public const string FailAfterSubmit = "it:fail-after-submit";
 
     public const string FailureMessage = "rejected by test agent";
+
+    /// <summary>
+    /// Replies with what <see cref="SlimA2ACallContext.Current"/> held while the agent ran, as JSON
+    /// (<c>{"metadata": {...}, "extensions": [...]}</c>), in every streamed event for streaming requests.
+    /// </summary>
+    public const string CallContext = "it:call-context";
 
     /// <summary>Works for <see cref="SleepDuration"/>, honouring cancellation; <see cref="LastSleep"/> reports how it ended.</summary>
     public const string Sleep = "it:sleep";
@@ -86,6 +93,22 @@ internal sealed class TestAgent : IAgentHandler
                 await updater.CompleteAsync(null, cancellationToken).ConfigureAwait(false);
                 break;
 
+            case CallContext:
+                // Read before and after an await: the context must survive the agent's own asynchronous work.
+                var before = Describe(SlimA2ACallContext.Current);
+                await Task.Yield();
+                var after = Describe(SlimA2ACallContext.Current);
+                await queue.EnqueueMessageAsync(
+                    new Message
+                    {
+                        Role = Role.Agent,
+                        MessageId = Guid.NewGuid().ToString("N"),
+                        ContextId = context.ContextId,
+                        Parts = [Part.FromText(before), Part.FromText(after)],
+                    },
+                    cancellationToken).ConfigureAwait(false);
+                break;
+
             case Sleep:
                 var outcome = LastSleep = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
                 try
@@ -124,4 +147,7 @@ internal sealed class TestAgent : IAgentHandler
         var updater = new TaskUpdater(queue, context.TaskId, context.ContextId);
         await updater.CancelAsync(cancellationToken).ConfigureAwait(false);
     }
+
+    private static string Describe(SlimA2ACallContext? call) =>
+        call is null ? "null" : JsonSerializer.Serialize(new { metadata = call.Metadata, extensions = call.RequestedExtensions });
 }

@@ -44,6 +44,17 @@ var response = await client.SendMessageAsync(request);
 - **One connection per node endpoint**: the SLIM runtime allows only one per process, so share it. Disposing the connection also stops its servers and disposes its clients.
 - **Identities** are SLIM names (`org/namespace/app`); give each server and client its own. Every identity that talks to an agent must use the same shared secret (at least 32 characters).
 - **Tenant**: the `Tenant` of every A2A request reaches the server. To serve a card per tenant, set `SlimA2AServerOptions.ResolveExtendedAgentCard`.
+- **Metadata**: `SlimA2AClientOptions.Metadata` is sent with every call. On the server, agent and request-handler code reads it from `SlimA2ACallContext.Current` while it handles the request. The A2A extensions a client requests go under `SlimA2AMetadata.Extensions` (`A2A-Extensions`, the key the other A2A SLIMRPC SDKs use) as a comma-separated list, and the server parses them into `RequestedExtensions`:
+
+  ```csharp
+  // client
+  Metadata = { [SlimA2AMetadata.Extensions] = "https://example.com/ext/v1" },
+
+  // server, inside IAgentHandler.ExecuteAsync
+  var extensions = SlimA2ACallContext.Current?.RequestedExtensions ?? [];
+  ```
+
+  Keys SLIMRPC uses for routing (`service`, `method`, `rpc-id`, `slimrpc-*`) are not available to send, and are left out on the server.
 
 ## Codegen
 

@@ -115,12 +115,14 @@ public sealed class SlimA2AConnection : IAsyncDisposable
     /// <param name="options">The client's own identity and shared secret, and the agent to call.</param>
     /// <returns>The client. Dispose it, or the connection, when done.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="options"/> is null.</exception>
-    /// <exception cref="ArgumentException">An identity is not a valid <c>org/namespace/app</c> name, or the shared secret is empty.</exception>
+    /// <exception cref="ArgumentException">An identity is not a valid <c>org/namespace/app</c> name, the shared secret is empty, or <see cref="SlimA2AClientOptions.Metadata"/> uses a key SLIMRPC reserves for routing.</exception>
     /// <exception cref="ObjectDisposedException">The connection is disposed.</exception>
     public SlimA2AClient CreateClient(SlimA2AClientOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentException.ThrowIfNullOrEmpty(options.SharedSecret, nameof(options));
+        if (options.Metadata?.Keys.FirstOrDefault(SlimA2AMetadata.Reserved.Contains) is { } reserved)
+            throw new ArgumentException($"Metadata key '{reserved}' is reserved by SLIMRPC.", nameof(options));
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
 
         using var name = SlimName.Parse(options.Identity);

@@ -63,6 +63,7 @@ internal static class A2ARpcErrorMapping
         IAsyncEnumerator<T> e;
         try
         {
+            SetCallContext(call);
             e = open().GetAsyncEnumerator();
         }
         catch (A2AException ex)
@@ -118,6 +119,7 @@ internal static class A2ARpcErrorMapping
     {
         try
         {
+            SetCallContext(call);
             return await e.MoveNextAsync().ConfigureAwait(false);
         }
         catch (A2AException ex)
@@ -140,6 +142,14 @@ internal static class A2ARpcErrorMapping
         {
             throw ToClientException(ex);
         }
+    }
+
+    // Each read of an async iterator runs with its caller's execution context, so an AsyncLocal set in one read is gone by
+    // the next: set the call context before every read for the code producing the stream.
+    private static void SetCallContext(RpcCallScope? call)
+    {
+        if (call is not null)
+            SlimA2ACallContext.Current = call.Context;
     }
 
     /// <summary>Releases a stream whose last read the caller stopped waiting for, once that read finishes.</summary>
