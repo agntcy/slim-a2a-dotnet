@@ -5,14 +5,16 @@ using Google.Protobuf.WellKnownTypes;
 namespace SlimA2A;
 
 /// <summary>Adapts <see cref="IA2ARequestHandler"/> to the generated <see cref="Lf.A2a.V1.IA2AServiceServer"/> contract.</summary>
-public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
+internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
 {
     private readonly IA2ARequestHandler _inner;
-    private readonly Func<CancellationToken, System.Threading.Tasks.Task<AgentCard>>? _resolveAgentCard;
+    private readonly Func<GetExtendedAgentCardRequest, CancellationToken, System.Threading.Tasks.Task<AgentCard>>? _resolveAgentCard;
 
     /// <param name="inner">Task manager / agent pipeline (e.g. <see cref="A2AServer"/>).</param>
     /// <param name="resolveAgentCard">When set, <c>GetExtendedAgentCard</c> uses this instead of <see cref="IA2ARequestHandler.GetExtendedAgentCardAsync"/> (needed when the inner handler does not implement extended card).</param>
-    public SlimA2AHandler(IA2ARequestHandler inner, Func<CancellationToken, System.Threading.Tasks.Task<AgentCard>>? resolveAgentCard = null)
+    public SlimA2AHandler(
+        IA2ARequestHandler inner,
+        Func<GetExtendedAgentCardRequest, CancellationToken, System.Threading.Tasks.Task<AgentCard>>? resolveAgentCard = null)
     {
         _inner = inner ?? throw new ArgumentNullException(nameof(inner));
         _resolveAgentCard = resolveAgentCard;
@@ -139,9 +141,10 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
     {
         try
         {
+            var cardRequest = ProtoConverter.FromProto(request);
             var card = _resolveAgentCard is not null
-                ? await _resolveAgentCard(CancellationToken.None).ConfigureAwait(false)
-                : await _inner.GetExtendedAgentCardAsync(ProtoConverter.FromProto(request), CancellationToken.None).ConfigureAwait(false);
+                ? await _resolveAgentCard(cardRequest, CancellationToken.None).ConfigureAwait(false)
+                : await _inner.GetExtendedAgentCardAsync(cardRequest, CancellationToken.None).ConfigureAwait(false);
             return ProtoConverter.ToProto(card);
         }
         catch (A2AException ex)

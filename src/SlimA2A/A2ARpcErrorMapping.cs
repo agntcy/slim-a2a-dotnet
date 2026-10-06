@@ -8,7 +8,7 @@ namespace SlimA2A;
 /// Maps <see cref="A2AException"/> to SLIM RPC error codes (gRPC-style).
 /// Invalid params → InvalidArgument; task not found → NotFound; unsupported / push / extended card → FailedPrecondition; default → Internal.
 /// </summary>
-public static class A2ARpcErrorMapping
+internal static class A2ARpcErrorMapping
 {
     public static RpcException.Rpc ToRpc(A2AException ex) =>
         new(ToRpcCode(ex.ErrorCode), ex.Message, null);

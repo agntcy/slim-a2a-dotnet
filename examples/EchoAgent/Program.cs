@@ -1,5 +1,3 @@
-using Agntcy.Slim;
-using Agntcy.Slim.SlimRpc;
 using A2A;
 using Microsoft.Extensions.Logging.Abstractions;
 using SlimA2A;
@@ -68,95 +66,87 @@ var clientName = Environment.GetEnvironmentVariable("SLIM_A2A_CLIENT_NAME") ?? "
 if (mode == "server")
 {
     var card = BuildCard(serverName);
-    var store = new InMemoryTaskStore();
-    var notifier = new ChannelEventNotifier();
-    var a2a = new A2AServer(new EchoAgent.EchoHandler(), store, notifier, NullLogger<A2AServer>.Instance);
-    var slimHandler = new SlimA2AHandler(a2a, _ => Task.FromResult(card));
+    var a2a = new A2AServer(new EchoAgent.EchoHandler(), new InMemoryTaskStore(), new ChannelEventNotifier(), NullLogger<A2AServer>.Instance);
 
-    var (app, connId) = await SlimHelper.ConnectAndSubscribeAsync(serverName, secret, endpoint).ConfigureAwait(false);
-    using (app)
+    await using var slim = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectionOptions { Endpoint = endpoint }).ConfigureAwait(false);
+    await using var server = await slim.StartServerAsync(
+        new SlimA2AServerOptions
+        {
+            Identity = serverName,
+            SharedSecret = secret,
+            ResolveExtendedAgentCard = (_, _) => Task.FromResult(card),
+        },
+        a2a).ConfigureAwait(false);
+
+    Console.WriteLine($"[EchoAgent] server: SLIM endpoint {endpoint}, identity '{serverName}'. Ctrl+C to stop.");
+    Console.CancelKeyPress += (_, e) =>
     {
-        using var localName = SlimName.Parse(serverName);
-        using var slimServer = SlimRpcServerFactory.CreateServer(app, localName, connId);
-        SlimA2AServerRegistration.RegisterA2AService(slimServer, slimHandler);
+        e.Cancel = true;
+        _ = server.StopAsync();
+    };
 
-        Console.WriteLine($"[EchoAgent] server: SLIM endpoint {endpoint}, identity '{serverName}'. Ctrl+C to stop.");
-        Console.CancelKeyPress += (_, e) =>
-        {
-            e.Cancel = true;
-            _ = slimServer.ShutdownAsync();
-        };
-
-        try
-        {
-            await slimServer.ServeAsync().ConfigureAwait(false);
-        }
-        catch (OperationCanceledException)
-        {
-            Console.WriteLine("Server stopped.");
-        }
-    }
-
+    await server.Completion.ConfigureAwait(false);
+    Console.WriteLine("Server stopped.");
     return;
 }
 
 if (mode == "client")
 {
-    var (app, connId) = await SlimHelper.ConnectAndSubscribeAsync(clientName, secret, endpoint).ConfigureAwait(false);
-    using (app)
+    await using var slim = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectionOptions { Endpoint = endpoint }).ConfigureAwait(false);
+    await using var client = slim.CreateClient(new SlimA2AClientOptions
     {
-        using var remote = SlimName.Parse(serverName);
-        using var channel = SlimRpcChannelFactory.CreateChannel(app, remote, connId);
-        var client = new SlimA2AClient(channel);
+        Identity = clientName,
+        SharedSecret = secret,
+        Remote = serverName,
+    });
 
-        Console.WriteLine($"[EchoAgent] client: connected to {endpoint}, calling remote '{serverName}'.");
+    Console.WriteLine($"[EchoAgent] client: connected to {endpoint}, calling remote '{serverName}'.");
 
-        var outboundText = "Hello there!";
-        var msg = new Message
+    var outboundText = "Hello there!";
+    var msg = new Message
+    {
+        Role = Role.User,
+        MessageId = Guid.NewGuid().ToString("N"),
+        Parts = [Part.FromText(outboundText)],
+    };
+    var sendReq = new SendMessageRequest { Message = msg };
+
+    Console.WriteLine();
+    Console.WriteLine("=== 1) A2A unary-unary (SendMessage → single SendMessageResponse) ===");
+    Console.WriteLine($"[EchoAgent] client: SendMessage messageId={msg.MessageId} text={outboundText}");
+    var unaryResp = await client.SendMessageAsync(sendReq).ConfigureAwait(false);
+    var uText = unaryResp.Message?.Parts?.FirstOrDefault()?.Text
+        ?? unaryResp.Task?.Status?.Message?.Parts?.FirstOrDefault()?.Text;
+    Console.WriteLine($"[EchoAgent] client: unary-unary response text: {uText ?? "(no text)"}");
+
+    Console.WriteLine();
+    Console.WriteLine("=== 2) A2A unary-stream (SendStreamingMessage → stream of StreamResponse) ===");
+    var stream = client.SendStreamingMessageAsync(sendReq);
+    var i = 0;
+    await foreach (var ev in stream.ConfigureAwait(false))
+    {
+        i++;
+        switch (ev)
         {
-            Role = Role.User,
-            MessageId = Guid.NewGuid().ToString("N"),
-            Parts = [Part.FromText(outboundText)],
-        };
-        var sendReq = new SendMessageRequest { Message = msg };
-
-        Console.WriteLine();
-        Console.WriteLine("=== 1) A2A unary-unary (SendMessage → single SendMessageResponse) ===");
-        Console.WriteLine($"[EchoAgent] client: SendMessage messageId={msg.MessageId} text={outboundText}");
-        var unaryResp = await client.SendMessageAsync(sendReq).ConfigureAwait(false);
-        var uText = unaryResp.Message?.Parts?.FirstOrDefault()?.Text
-            ?? unaryResp.Task?.Status?.Message?.Parts?.FirstOrDefault()?.Text;
-        Console.WriteLine($"[EchoAgent] client: unary-unary response text: {uText ?? "(no text)"}");
-
-        Console.WriteLine();
-        Console.WriteLine("=== 2) A2A unary-stream (SendStreamingMessage → stream of StreamResponse) ===");
-        var stream = client.SendStreamingMessageAsync(sendReq);
-        var i = 0;
-        await foreach (var ev in stream.ConfigureAwait(false))
-        {
-            i++;
-            switch (ev)
+            case { Message: { } m }:
             {
-                case { Message: { } m }:
-                {
-                    var text = m.Parts?.FirstOrDefault()?.Text;
-                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} message: {text ?? "(no text)"}");
-                    break;
-                }
-                case { Task: { } t }:
-                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} task id={t.Id} state={t.Status?.State}");
-                    break;
-                case { StatusUpdate: not null }:
-                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} statusUpdate");
-                    break;
-                default:
-                    Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} (other payload)");
-                    break;
+                var text = m.Parts?.FirstOrDefault()?.Text;
+                Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} message: {text ?? "(no text)"}");
+                break;
             }
+            case { Task: { } t }:
+                Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} task id={t.Id} state={t.Status?.State}");
+                break;
+            case { StatusUpdate: not null }:
+                Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} statusUpdate");
+                break;
+            default:
+                Console.WriteLine($"[EchoAgent] client: unary-stream event #{i} (other payload)");
+                break;
         }
-
-        Console.WriteLine($"[EchoAgent] client: unary-stream finished ({i} events).");
     }
+
+    Console.WriteLine($"[EchoAgent] client: unary-stream finished ({i} events).");
 
     return;
 }

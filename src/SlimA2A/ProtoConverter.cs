@@ -6,7 +6,7 @@ using PTask = Lf.A2a.V1.Task;
 namespace SlimA2A;
 
 /// <summary>Converts between a2a-dotnet models and generated <c>Lf.A2a.V1</c> protobuf messages.</summary>
-public static class ProtoConverter
+internal static class ProtoConverter
 {
     public static Lf.A2a.V1.SendMessageRequest ToProto(SendMessageRequest r)
     {

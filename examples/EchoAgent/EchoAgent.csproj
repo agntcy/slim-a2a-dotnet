@@ -15,8 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SlimA2A\SlimA2A.csproj" />
-    <!-- SlimA2A references Protos privately (it is bundled into the package), so the generated
-         Lf.A2a.V1 types it exposes are not transitive — reference Protos directly. -->
+    <!-- SlimA2A references Protos privately (the NuGet package bundles it), so a project reference must add it to get
+         SlimA2A.Protos.dll at run time. -->
     <ProjectReference Include="..\..\src\SlimA2A.Protos\SlimA2A.Protos.csproj" />
   </ItemGroup>
 

@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <RootNamespace>SlimA2A</RootNamespace>
     <AssemblyName>SlimA2A</AssemblyName>
+    <!-- Ships XML docs in the package; any undocumented public member is a build warning (CS1591). -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- NuGet packaging: a single package that bundles SlimA2A + SlimA2A.Protos.
