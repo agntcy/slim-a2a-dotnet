@@ -31,15 +31,8 @@ public sealed class SlimA2AClient : IA2AClient
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
-        IAsyncEnumerable<Lf.A2a.V1.StreamResponse> stream;
-        try
-        {
-            stream = _client.SendStreamingMessageAsync(proto, _defaultTimeout, null, cancellationToken);
-        }
-        catch (RpcException.Rpc ex)
-        {
-            throw A2ARpcErrorMapping.FromRpc(ex);
-        }
+        var stream = A2ARpcErrorMapping.WithA2AErrors(
+            _client.SendStreamingMessageAsync(proto, _defaultTimeout, null, cancellationToken), cancellationToken);
         await foreach (var p in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.FromProtoStream(p);
@@ -78,15 +71,8 @@ public sealed class SlimA2AClient : IA2AClient
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
-        IAsyncEnumerable<Lf.A2a.V1.StreamResponse> stream;
-        try
-        {
-            stream = _client.SubscribeToTaskAsync(proto, _defaultTimeout, null, cancellationToken);
-        }
-        catch (RpcException.Rpc ex)
-        {
-            throw A2ARpcErrorMapping.FromRpc(ex);
-        }
+        var stream = A2ARpcErrorMapping.WithA2AErrors(
+            _client.SubscribeToTaskAsync(proto, _defaultTimeout, null, cancellationToken), cancellationToken);
         await foreach (var p in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.FromProtoStream(p);

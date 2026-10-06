@@ -33,15 +33,8 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
 
     public async IAsyncEnumerable<Lf.A2a.V1.StreamResponse> SendStreamingMessage(Lf.A2a.V1.SendMessageRequest request, SlimRpcContext context)
     {
-        IAsyncEnumerable<A2A.StreamResponse> stream;
-        try
-        {
-            stream = _inner.SendStreamingMessageAsync(ProtoConverter.FromProto(request), CancellationToken.None);
-        }
-        catch (A2AException ex)
-        {
-            throw A2ARpcErrorMapping.ToRpc(ex);
-        }
+        var stream = A2ARpcErrorMapping.WithRpcErrors(
+            () => _inner.SendStreamingMessageAsync(ProtoConverter.FromProto(request), CancellationToken.None));
         await foreach (var item in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.ToProtoStream(item);
@@ -89,16 +82,8 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
 
     public async IAsyncEnumerable<Lf.A2a.V1.StreamResponse> SubscribeToTask(Lf.A2a.V1.SubscribeToTaskRequest request, SlimRpcContext context)
     {
-        var sub = ProtoConverter.FromProto(request);
-        IAsyncEnumerable<A2A.StreamResponse> stream;
-        try
-        {
-            stream = _inner.SubscribeToTaskAsync(sub, CancellationToken.None);
-        }
-        catch (A2AException ex)
-        {
-            throw A2ARpcErrorMapping.ToRpc(ex);
-        }
+        var stream = A2ARpcErrorMapping.WithRpcErrors(
+            () => _inner.SubscribeToTaskAsync(ProtoConverter.FromProto(request), CancellationToken.None));
         await foreach (var item in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.ToProtoStream(item);
