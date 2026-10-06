@@ -32,6 +32,13 @@ internal sealed class TestAgent : IAgentHandler
 
     public const string FailureMessage = "rejected by test agent";
 
+    /// <summary>Works for <see cref="SleepDuration"/>, honouring cancellation; <see cref="LastSleep"/> reports how it ended.</summary>
+    public const string Sleep = "it:sleep";
+    public static readonly TimeSpan SleepDuration = TimeSpan.FromSeconds(10);
+
+    /// <summary>Completes with true when the last <see cref="Sleep"/> request was cancelled, false when it ran to the end.</summary>
+    public TaskCompletionSource<bool> LastSleep { get; private set; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+
     public async Task ExecuteAsync(RequestContext context, AgentEventQueue queue, CancellationToken cancellationToken)
     {
         var updater = new TaskUpdater(queue, context.TaskId, context.ContextId);
@@ -77,6 +84,23 @@ internal sealed class TestAgent : IAgentHandler
                 foreach (var chunk in StreamingChunks)
                     await updater.AddArtifactAsync([Part.FromText(chunk)], cancellationToken: cancellationToken).ConfigureAwait(false);
                 await updater.CompleteAsync(null, cancellationToken).ConfigureAwait(false);
+                break;
+
+            case Sleep:
+                var outcome = LastSleep = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+                try
+                {
+                    await Task.Delay(SleepDuration, cancellationToken).ConfigureAwait(false);
+                }
+                catch (OperationCanceledException)
+                {
+                    outcome.TrySetResult(true);
+                    throw;
+                }
+                outcome.TrySetResult(false);
+                await queue.EnqueueMessageAsync(
+                    new Message { Role = Role.Agent, MessageId = Guid.NewGuid().ToString("N"), Parts = [Part.FromText("slept")] },
+                    cancellationToken).ConfigureAwait(false);
                 break;
 
             case FailInvalidParams:

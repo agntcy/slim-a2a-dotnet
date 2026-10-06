@@ -13,7 +13,7 @@ public sealed class ConnectionTests(SlimNodeFixture node)
     public async Task ConnectAsync_to_an_unreachable_node_fails_within_the_connect_timeout()
     {
         var ct = TestContext.Current.CancellationToken;
-        var timeout = TimeSpan.FromSeconds(3);
+        var timeout = TimeSpan.FromSeconds(1);
         var watch = Stopwatch.StartNew();
 
         // Nothing listens on port 1: before the connect timeout existed, this retried forever.

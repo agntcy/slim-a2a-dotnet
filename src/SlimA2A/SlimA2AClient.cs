@@ -185,33 +185,44 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
         return _extendedCards.GetOrAdd(tenant, ProtoConverter.FromProto(resp));
     }
 
+    /// <summary>
+    /// Runs one unary RPC: stops waiting as soon as <paramref name="cancellationToken"/> is cancelled (SLIM can't cancel the
+    /// call itself, which then ends at its deadline), and reports RPC errors as <see cref="A2ARpcErrorMapping.ToClientException"/> does.
+    /// </summary>
     private async Task<T> InvokeAsync<T>(Func<Task<T>> call, CancellationToken cancellationToken)
     {
         ThrowIfDisposed();
         cancellationToken.ThrowIfCancellationRequested();
+        var pending = call();
         try
         {
-            return await call().ConfigureAwait(false);
+            return await pending.WaitAsync(cancellationToken).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested && !pending.IsCompleted)
+        {
+            ObserveAbandoned(pending);
+            throw;
         }
         catch (RpcException.Rpc ex)
         {
-            throw A2ARpcErrorMapping.FromRpc(ex);
+            throw A2ARpcErrorMapping.ToClientException(ex);
         }
     }
 
-    private async Task InvokeAsync(Func<Task> call, CancellationToken cancellationToken)
-    {
-        ThrowIfDisposed();
-        cancellationToken.ThrowIfCancellationRequested();
-        try
+    private async Task InvokeAsync(Func<Task> call, CancellationToken cancellationToken) =>
+        await InvokeAsync(async () =>
         {
             await call().ConfigureAwait(false);
-        }
-        catch (RpcException.Rpc ex)
-        {
-            throw A2ARpcErrorMapping.FromRpc(ex);
-        }
-    }
+            return true;
+        }, cancellationToken).ConfigureAwait(false);
+
+    /// <summary>The caller stopped waiting for <paramref name="pending"/>; observe its outcome so a late failure isn't reported as unobserved.</summary>
+    private static void ObserveAbandoned(Task pending) =>
+        _ = pending.ContinueWith(
+            t => _ = t.Exception,
+            CancellationToken.None,
+            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+            TaskScheduler.Default);
 
     private void ThrowIfDisposed() => ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
 }

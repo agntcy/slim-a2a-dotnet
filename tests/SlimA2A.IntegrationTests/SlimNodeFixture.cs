@@ -25,6 +25,7 @@ public sealed class SlimNodeFixture : IAsyncLifetime
     private SlimA2AConnection? _connection;
     private SlimA2AClient? _client;
     private TestRequestHandler? _handler;
+    private readonly TestAgent _agent = new();
 
     /// <summary>Why the node is unusable, or null when tests can run.</summary>
     public string? UnavailableReason { get; private set; }
@@ -60,6 +61,9 @@ public sealed class SlimNodeFixture : IAsyncLifetime
             return _connection!;
         }
     }
+
+    /// <summary>The test server's agent, for asserting on how a request ended on the server.</summary>
+    internal TestAgent Agent => _agent;
 
     /// <summary>The server-side request handler, for asserting on what reached the server.</summary>
     internal TestRequestHandler Handler => _handler!;
@@ -98,7 +102,7 @@ public sealed class SlimNodeFixture : IAsyncLifetime
 
         _connection = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectionOptions { Endpoint = Endpoint }).ConfigureAwait(false);
 
-        var a2a = new A2AServer(new TestAgent(), new InMemoryTaskStore(), new ChannelEventNotifier(), NullLogger<A2AServer>.Instance);
+        var a2a = new A2AServer(_agent, new InMemoryTaskStore(), new ChannelEventNotifier(), NullLogger<A2AServer>.Instance);
         _handler = new TestRequestHandler(a2a, Card);
         await _connection.StartServerAsync(
             new SlimA2AServerOptions { Identity = ServerIdentity, SharedSecret = SharedSecret }, _handler).ConfigureAwait(false);

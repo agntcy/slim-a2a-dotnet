@@ -92,18 +92,20 @@ public sealed class SlimA2AConnection : IAsyncDisposable
 
         using var name = SlimName.Parse(options.Identity);
         var app = _service.CreateApp(name, options.SharedSecret);
+        var stopping = new CancellationTokenSource();
         try
         {
             app.Subscribe(name, _connectionId);
             var rpcServer = SlimRpcServerFactory.CreateServer(app, name, _connectionId);
             Lf.A2a.V1.A2AServiceServerRegistration.RegisterA2AServiceServer(
-                rpcServer, new SlimA2AHandler(handler, options.ResolveExtendedAgentCard));
-            var server = new SlimA2AServer(this, options.Identity, app, rpcServer);
+                rpcServer, new SlimA2AHandler(handler, options.ResolveExtendedAgentCard, stopping.Token));
+            var server = new SlimA2AServer(this, options.Identity, app, rpcServer, stopping);
             _owned.TryAdd(server, 0);
             return Task.FromResult(server);
         }
         catch
         {
+            stopping.Dispose();
             app.Dispose();
             throw;
         }

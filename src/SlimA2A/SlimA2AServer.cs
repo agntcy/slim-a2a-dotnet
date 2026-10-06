@@ -10,14 +10,17 @@ public sealed class SlimA2AServer : IAsyncDisposable
     private readonly SlimA2AConnection _connection;
     private readonly SlimApp _app;
     private readonly uniffi.slim_rpc.Server _server;
+    private readonly CancellationTokenSource _stoppingCts;
     private int _stopping;
     private int _disposed;
 
-    internal SlimA2AServer(SlimA2AConnection connection, string identity, SlimApp app, uniffi.slim_rpc.Server server)
+    internal SlimA2AServer(
+        SlimA2AConnection connection, string identity, SlimApp app, uniffi.slim_rpc.Server server, CancellationTokenSource stopping)
     {
         _connection = connection;
         _app = app;
         _server = server;
+        _stoppingCts = stopping;
         Identity = identity;
         Completion = ServeAsync();
     }
@@ -28,12 +31,19 @@ public sealed class SlimA2AServer : IAsyncDisposable
     /// <summary>Completes when the server stops serving: after <see cref="StopAsync"/>, or with an exception if serving fails.</summary>
     public Task Completion { get; }
 
-    /// <summary>Stops accepting requests and waits, for up to 15 seconds, for in-flight requests to finish.</summary>
+    /// <summary>
+    /// Stops accepting requests, cancels the ones in flight (their callers get an <c>Unavailable</c> error), and waits up to
+    /// 15 seconds for them to finish.
+    /// </summary>
     /// <returns>A task that completes when the server has stopped.</returns>
     public async Task StopAsync()
     {
         if (Interlocked.Exchange(ref _stopping, 1) == 0)
+        {
+            // Cancel first: a long-lived stream such as SubscribeToTask would otherwise hold up the drain until its deadline.
+            await _stoppingCts.CancelAsync().ConfigureAwait(false);
             await _server.ShutdownAsync().ConfigureAwait(false);
+        }
         try
         {
             await Completion.WaitAsync(ShutdownTimeout).ConfigureAwait(false);
@@ -58,6 +68,7 @@ public sealed class SlimA2AServer : IAsyncDisposable
         {
             _server.Dispose();
             _app.Dispose();
+            _stoppingCts.Dispose();
             _connection.Release(this);
         }
     }

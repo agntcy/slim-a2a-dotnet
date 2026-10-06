@@ -39,6 +39,8 @@ var response = await client.SendMessageAsync(request);
 
 - **Transport security** follows the endpoint by default: `http` connects without TLS, `https` with TLS against the system's root CAs. Set `Tls` to choose explicitly: `SlimA2ATls.Insecure`, `SystemRoots`, `TrustedCa(caFile)`, or `InsecureSkipVerify` (development only), and add mutual TLS with `.WithClientCertificate(certFile, keyFile)`. For settings not covered here, such as OIDC authentication to the node, use `ConfigureClient`.
 - **Connect timeout**: `ConnectAsync` fails with `TimeoutException` after `ConnectTimeout` (default 30 s) instead of retrying forever.
+- **Deadlines**: `DefaultTimeout` is each call's deadline. When it passes, the call fails with `TimeoutException` and the server cancels the agent's work (the request handler's `CancellationToken`). Without it SLIM's deadline is 10 hours, so set one; a `SubscribeToTask` stream also ends at the deadline.
+- **Cancellation**: cancelling the token passed to a client call stops waiting immediately. SLIM can't cancel an RPC that is already in flight, so the server keeps going until the deadline. Stopping or disposing a server cancels the requests it is handling.
 - **One connection per node endpoint**: the SLIM runtime allows only one per process, so share it. Disposing the connection also stops its servers and disposes its clients.
 - **Identities** are SLIM names (`org/namespace/app`); give each server and client its own. Every identity that talks to an agent must use the same shared secret (at least 32 characters).
 - **Tenant**: the `Tenant` of every A2A request reaches the server. To serve a card per tenant, set `SlimA2AServerOptions.ResolveExtendedAgentCard`.
@@ -115,6 +117,7 @@ Also in 0.3:
 
 - **A2A 1.0.0-preview2**: `SendMessageConfiguration.Blocking` became `ReturnImmediately`, with the **opposite meaning**: replace `Blocking = false` with `ReturnImmediately = true`.
 - **Agntcy.Slim 2.2.0**; projects that reference the SLIM packages themselves need the same version.
+- **Timeouts** surface as `TimeoutException`, no longer as `A2AException` with `InternalError`; cancelling a call's token now takes effect.
 - Projects no longer need a reference to the generated `Lf.A2a.V1` types.
 
 ## Security note
