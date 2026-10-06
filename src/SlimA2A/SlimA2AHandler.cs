@@ -71,7 +71,7 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
     {
         try
         {
-            var t = await _inner.CancelTaskAsync(new CancelTaskRequest { Id = request.Id }, CancellationToken.None).ConfigureAwait(false);
+            var t = await _inner.CancelTaskAsync(ProtoConverter.FromProto(request), CancellationToken.None).ConfigureAwait(false);
             return ProtoConverter.ToProto(t);
         }
         catch (A2AException ex)
@@ -95,16 +95,8 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
     {
         try
         {
-            // a2a v1.0 flattened the create request into TaskPushNotificationConfig itself.
-            var push = ProtoConverter.FromProto(request);
             var r = await _inner.CreateTaskPushNotificationConfigAsync(
-                new CreateTaskPushNotificationConfigRequest
-                {
-                    TaskId = request.TaskId,
-                    ConfigId = request.Id,
-                    Config = push.PushNotificationConfig,
-                },
-                CancellationToken.None).ConfigureAwait(false);
+                ProtoConverter.FromProtoCreateRequest(request), CancellationToken.None).ConfigureAwait(false);
             return ProtoConverter.ToProtoResource(r);
         }
         catch (A2AException ex)
@@ -119,8 +111,7 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
         try
         {
             var r = await _inner.GetTaskPushNotificationConfigAsync(
-                new GetTaskPushNotificationConfigRequest { TaskId = request.TaskId, Id = request.Id },
-                CancellationToken.None).ConfigureAwait(false);
+                ProtoConverter.FromProto(request), CancellationToken.None).ConfigureAwait(false);
             return ProtoConverter.ToProtoResource(r);
         }
         catch (A2AException ex)
@@ -135,13 +126,7 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
         try
         {
             var r = await _inner.ListTaskPushNotificationConfigAsync(
-                new ListTaskPushNotificationConfigRequest
-                {
-                    TaskId = request.TaskId,
-                    PageSize = request.PageSize == 0 ? null : request.PageSize,
-                    PageToken = string.IsNullOrEmpty(request.PageToken) ? null : request.PageToken,
-                },
-                CancellationToken.None).ConfigureAwait(false);
+                ProtoConverter.FromProto(request), CancellationToken.None).ConfigureAwait(false);
             return ToProtoListPush(r);
         }
         catch (A2AException ex)
@@ -156,7 +141,7 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
         {
             var card = _resolveAgentCard is not null
                 ? await _resolveAgentCard(CancellationToken.None).ConfigureAwait(false)
-                : await _inner.GetExtendedAgentCardAsync(new GetExtendedAgentCardRequest(), CancellationToken.None).ConfigureAwait(false);
+                : await _inner.GetExtendedAgentCardAsync(ProtoConverter.FromProto(request), CancellationToken.None).ConfigureAwait(false);
             return ProtoConverter.ToProto(card);
         }
         catch (A2AException ex)
@@ -170,8 +155,7 @@ public sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
         try
         {
             await _inner.DeleteTaskPushNotificationConfigAsync(
-                new DeleteTaskPushNotificationConfigRequest { TaskId = request.TaskId, Id = request.Id },
-                CancellationToken.None).ConfigureAwait(false);
+                ProtoConverter.FromProto(request), CancellationToken.None).ConfigureAwait(false);
             return new Empty();
         }
         catch (A2AException ex)

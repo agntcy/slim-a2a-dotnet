@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using A2A;
 using uniffi.slim_rpc;
 
@@ -8,7 +9,7 @@ public sealed class SlimA2AClient : IA2AClient
 {
     private readonly Lf.A2a.V1.A2AServiceClient _client;
     private readonly TimeSpan? _defaultTimeout;
-    private AgentCard? _cachedExtendedCard;
+    private readonly ConcurrentDictionary<string, AgentCard> _extendedCards = new();
 
     public SlimA2AClient(uniffi.slim_rpc.Channel channel, TimeSpan? defaultTimeout = null)
     {
@@ -121,13 +122,15 @@ public sealed class SlimA2AClient : IA2AClient
     public async Task<AgentCard> GetExtendedAgentCardAsync(
         GetExtendedAgentCardRequest request, CancellationToken cancellationToken = default)
     {
-        if (_cachedExtendedCard is not null)
-            return _cachedExtendedCard;
+        // Cached per tenant: a multi-tenant agent serves a different card to each.
+        var tenant = request.Tenant ?? string.Empty;
+        if (_extendedCards.TryGetValue(tenant, out var cached))
+            return cached;
+        var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetExtendedAgentCardAsync(new Lf.A2a.V1.GetExtendedAgentCardRequest(), _defaultTimeout, null, cancellationToken),
+            () => _client.GetExtendedAgentCardAsync(proto, _defaultTimeout, null, cancellationToken),
             cancellationToken).ConfigureAwait(false);
-        _cachedExtendedCard = ProtoConverter.FromProto(resp);
-        return _cachedExtendedCard;
+        return _extendedCards.GetOrAdd(tenant, ProtoConverter.FromProto(resp));
     }
 
     private async Task<T> InvokeAsync<T>(Func<Task<T>> call, CancellationToken cancellationToken)

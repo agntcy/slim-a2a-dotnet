@@ -33,6 +33,7 @@ public sealed class SlimNodeFixture : IAsyncLifetime
     private uniffi.slim_rpc.Channel? _channel;
     private Task? _serveTask;
     private SlimA2AClient? _client;
+    private TestRequestHandler? _handler;
 
     /// <summary>Why the node is unusable, or null when tests can run.</summary>
     public string? UnavailableReason { get; private set; }
@@ -48,6 +49,9 @@ public sealed class SlimNodeFixture : IAsyncLifetime
         }
     }
 
+    /// <summary>The server-side request handler, for asserting on what reached the server.</summary>
+    internal TestRequestHandler Handler => _handler!;
+
     /// <summary>Card served by <c>GetExtendedAgentCard</c>.</summary>
     public static AgentCard Card { get; } = new()
     {
@@ -56,7 +60,7 @@ public sealed class SlimNodeFixture : IAsyncLifetime
         Version = "1.2.3",
         SupportedInterfaces =
         [
-            new AgentInterface { Url = "slim://agntcy/slima2a_it/server", ProtocolBinding = "SLIMRPC", ProtocolVersion = "1.0" },
+            new AgentInterface { Url = "slim://agntcy/slima2a_it/server", ProtocolBinding = "SLIMRPC", ProtocolVersion = "1.0", Tenant = "slima2a_it" },
         ],
         DefaultInputModes = ["text/plain"],
         DefaultOutputModes = ["text/plain", "application/json"],
@@ -101,7 +105,8 @@ public sealed class SlimNodeFixture : IAsyncLifetime
         var a2a = new A2AServer(new TestAgent(), new InMemoryTaskStore(), new ChannelEventNotifier(), NullLogger<A2AServer>.Instance);
         _serverName = SlimName.Parse(serverIdentity);
         _server = SlimRpcServerFactory.CreateServer(_serverApp, _serverName, connId);
-        SlimA2AServerRegistration.RegisterA2AService(_server, new SlimA2AHandler(new PushConfigHandler(a2a), _ => Task.FromResult(Card)));
+        _handler = new TestRequestHandler(a2a, Card);
+        SlimA2AServerRegistration.RegisterA2AService(_server, new SlimA2AHandler(_handler));
         _serveTask = _server.ServeAsync();
 
         _channel = SlimRpcChannelFactory.CreateChannel(_clientApp, _serverName, connId);
