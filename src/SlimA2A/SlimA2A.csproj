@@ -34,6 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="SlimA2A.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <!-- PrivateAssets=all: bundle the Protos DLL (below) instead of emitting a package dependency on it. -->
     <ProjectReference Include="..\SlimA2A.Protos\SlimA2A.Protos.csproj" PrivateAssets="all" />
 
