@@ -6,7 +6,7 @@
 
 ## Dependencies
 
-**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **2.0.0**. In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
+**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **2.1.2** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
 
 **A2A** is consumed from NuGet (`A2A` preview) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
 
@@ -32,6 +32,21 @@ The A2A proto git ref is pinned in `buf.gen.yaml`; re-verify when bumping **a2a-
 dotnet build SlimA2A.sln
 dotnet test SlimA2A.sln
 ```
+
+### Integration tests
+
+`tests/SlimA2A.IntegrationTests` drives every A2A RPC, including error paths, between a `SlimA2AHandler`-backed server and a `SlimA2AClient` over a real SLIM node. Without a reachable node these tests are skipped, so `dotnet test` stays green offline. CI runs them against the node pinned in `.github/workflows/ci.yml`. To run them locally, start that node:
+
+```bash
+docker run -d --name slim-node -p 127.0.0.1:46357:46357 \
+  -v "$PWD/tests/SlimA2A.IntegrationTests/slim-node-config.yaml:/config.yaml:ro" \
+  ghcr.io/agntcy/slim:2.1.1 /slim --config /config.yaml
+dotnet test tests/SlimA2A.IntegrationTests
+```
+
+`SLIM_SERVER` overrides the node endpoint (default `http://127.0.0.1:46357`). Set `SLIM_A2A_INTEGRATION=required` to fail instead of skipping when the node is unreachable.
+
+Cross-language interop with the Go, Python, Java and Node SDKs is covered separately by the [csit A2A SLIMRPC matrix](https://agntcy.github.io/csit/a2a-slimrpc/).
 
 ## Echo sample
 

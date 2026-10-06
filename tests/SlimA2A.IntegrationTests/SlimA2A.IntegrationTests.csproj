@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- End-to-end tests over a real SLIM node: a SlimA2AHandler-backed A2AServer and a SlimA2AClient
+       talking SLIMRPC through the node. Tests skip when no node is reachable; set
+       SLIM_A2A_INTEGRATION=required to fail instead (CI does). -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit.v3" Version="4.0.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="4.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SlimA2A\SlimA2A.csproj" />
+    <!-- SlimA2A references Protos privately (it is bundled into the package), so reference it directly. -->
+    <ProjectReference Include="..\..\src\SlimA2A.Protos\SlimA2A.Protos.csproj" />
+  </ItemGroup>
+
+</Project>
