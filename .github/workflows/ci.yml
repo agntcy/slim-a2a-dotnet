@@ -41,3 +41,41 @@ jobs:
         run: |
           dotnet build SlimA2A.sln -c Release
           dotnet test --solution SlimA2A.sln -c Release --no-build
+
+  integration:
+    name: Integration tests (SLIM node)
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # The released node csit's A2A SLIMRPC interop matrix pins; the digest is the multi-arch index.
+      SLIM_IMAGE: ghcr.io/agntcy/slim:2.1.1@sha256:4930858c9ca022e5efe42bd4baca075d328f0cbb04d00e8dba696c3f1b8c2dd3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Start SLIM node
+        run: |
+          docker run -d --name slim-node -p 127.0.0.1:46357:46357 \
+            -v "$GITHUB_WORKSPACE/tests/SlimA2A.IntegrationTests/slim-node-config.yaml:/config.yaml:ro" \
+            "$SLIM_IMAGE" /slim --config /config.yaml
+          for _ in $(seq 1 30); do
+            docker logs slim-node 2>&1 | grep -q "dataplane server started" && exit 0
+            sleep 1
+          done
+          echo "::error::SLIM node did not start"
+          docker logs slim-node
+          exit 1
+
+      - name: Integration tests
+        env:
+          # Fail instead of skipping if the node is unreachable.
+          SLIM_A2A_INTEGRATION: required
+        run: dotnet test --project tests/SlimA2A.IntegrationTests/SlimA2A.IntegrationTests.csproj -c Release
+
+      - name: SLIM node logs
+        if: failure()
+        run: docker logs slim-node

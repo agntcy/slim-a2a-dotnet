@@ -134,7 +134,8 @@ public sealed class StreamingErrorMappingTests
     {
         var received = new List<int>();
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            YieldThenThrow(2, new RpcException.Rpc(RpcCode.NotFound, "Task 'x' not found.", null)));
+            YieldThenThrow(2, new RpcException.Rpc(RpcCode.NotFound, "Task 'x' not found.", null)),
+            TestContext.Current.CancellationToken);
 
         var ex = await Assert.ThrowsAsync<A2AException>(async () =>
         {
@@ -151,7 +152,8 @@ public sealed class StreamingErrorMappingTests
     public async Task WithA2AErrors_maps_rpc_error_before_first_item()
     {
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            YieldThenThrow(0, new RpcException.Rpc(RpcCode.InvalidArgument, "bad", null)));
+            YieldThenThrow(0, new RpcException.Rpc(RpcCode.InvalidArgument, "bad", null)),
+            TestContext.Current.CancellationToken);
 
         var ex = await Assert.ThrowsAsync<A2AException>(async () =>
         {
@@ -167,7 +169,8 @@ public sealed class StreamingErrorMappingTests
         // The in-process equivalent of SendStreamingMessage over SLIMRPC: handler → generated wire handling → client wrapper.
         var received = 0;
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            AcrossTheWire(NewHandler().SendStreamingMessage(BuildProtoRequest(), null!)));
+            AcrossTheWire(NewHandler().SendStreamingMessage(BuildProtoRequest(), null!)),
+            TestContext.Current.CancellationToken);
 
         var ex = await Assert.ThrowsAsync<A2AException>(async () =>
         {
