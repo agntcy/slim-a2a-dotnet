@@ -10,7 +10,8 @@ public sealed class MessagingTests(SlimNodeFixture node)
     [Fact]
     public async Task SendMessage_returns_a_bare_message_reply()
     {
-        var response = await node.Client.SendMessageAsync(TestRequests.Text(TestAgent.MessageOnly));
+        var ct = TestContext.Current.CancellationToken;
+        var response = await node.Client.SendMessageAsync(TestRequests.Text(TestAgent.MessageOnly), ct);
 
         Assert.Equal(SendMessageResponseCase.Message, response.PayloadCase);
         Assert.Equal(Role.Agent, response.Message!.Role);
@@ -20,7 +21,8 @@ public sealed class MessagingTests(SlimNodeFixture node)
     [Fact]
     public async Task SendMessage_returns_a_completed_task_with_the_echoed_artifact()
     {
-        var task = await node.Client.CreateTaskAsync("hello over slim");
+        var ct = TestContext.Current.CancellationToken;
+        var task = await node.Client.CreateTaskAsync("hello over slim", cancellationToken: ct);
 
         Assert.Equal(TaskState.Completed, task.Status.State);
         Assert.Equal("hello over slim", Assert.Single(Assert.Single(task.Artifacts!).Parts).Text);
@@ -29,6 +31,7 @@ public sealed class MessagingTests(SlimNodeFixture node)
     [Fact]
     public async Task SendMessage_round_trips_raw_url_and_data_parts_with_metadata()
     {
+        var ct = TestContext.Current.CancellationToken;
         byte[] raw = [0x00, 0x01, 0x7F, 0xFE, 0xFF];
         var data = JsonDocument.Parse("""{"name":"slim","count":3,"nested":{"ok":true},"list":["a","b"]}""").RootElement;
         var text = Part.FromText("text part");
@@ -40,7 +43,7 @@ public sealed class MessagingTests(SlimNodeFixture node)
             Part.FromRaw(raw, "application/octet-stream", "blob.bin"),
             Part.FromUrl("https://example.com/report.pdf", "application/pdf", "report.pdf"),
             Part.FromData(data),
-        ]));
+        ]), ct);
 
         var parts = Assert.Single(response.Task!.Artifacts!).Parts;
         Assert.Equal(4, parts.Count);
@@ -66,7 +69,8 @@ public sealed class MessagingTests(SlimNodeFixture node)
     [Fact]
     public async Task SendStreamingMessage_streams_artifact_chunks_then_completes()
     {
-        var events = await node.Client.SendStreamingMessageAsync(TestRequests.Text(TestAgent.Streaming)).ToListAsync();
+        var ct = TestContext.Current.CancellationToken;
+        var events = await node.Client.SendStreamingMessageAsync(TestRequests.Text(TestAgent.Streaming), ct).ToListAsync();
 
         var chunks = events
             .Where(e => e.PayloadCase == StreamResponseCase.ArtifactUpdate)

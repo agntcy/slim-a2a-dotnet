@@ -24,9 +24,10 @@ internal static class TestRequests
     public static string NewId() => Guid.NewGuid().ToString("N");
 
     /// <summary>Sends a request the agent answers with a task, and returns that task.</summary>
-    public static async Task<AgentTask> CreateTaskAsync(this SlimA2AClient client, string text, string? contextId = null)
+    public static async Task<AgentTask> CreateTaskAsync(
+        this SlimA2AClient client, string text, string? contextId = null, CancellationToken cancellationToken = default)
     {
-        var response = await client.SendMessageAsync(Text(text, contextId)).ConfigureAwait(false);
+        var response = await client.SendMessageAsync(Text(text, contextId), cancellationToken).ConfigureAwait(false);
         Assert.Equal(SendMessageResponseCase.Task, response.PayloadCase);
         return response.Task!;
     }

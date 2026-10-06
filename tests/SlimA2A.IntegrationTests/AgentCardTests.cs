@@ -9,9 +9,10 @@ public sealed class AgentCardTests(SlimNodeFixture node)
     [Fact]
     public async Task GetExtendedAgentCard_returns_the_served_card()
     {
+        var ct = TestContext.Current.CancellationToken;
         var expected = SlimNodeFixture.Card;
 
-        var card = await node.Client.GetExtendedAgentCardAsync(new GetExtendedAgentCardRequest());
+        var card = await node.Client.GetExtendedAgentCardAsync(new GetExtendedAgentCardRequest(), ct);
 
         Assert.Equal(expected.Name, card.Name);
         Assert.Equal(expected.Description, card.Description);

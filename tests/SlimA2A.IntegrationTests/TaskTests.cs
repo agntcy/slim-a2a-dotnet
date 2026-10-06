@@ -9,9 +9,10 @@ public sealed class TaskTests(SlimNodeFixture node)
     [Fact]
     public async Task GetTask_returns_the_task_with_its_artifacts()
     {
-        var created = await node.Client.CreateTaskAsync("fetch me");
+        var ct = TestContext.Current.CancellationToken;
+        var created = await node.Client.CreateTaskAsync("fetch me", cancellationToken: ct);
 
-        var fetched = await node.Client.GetTaskAsync(new GetTaskRequest { Id = created.Id });
+        var fetched = await node.Client.GetTaskAsync(new GetTaskRequest { Id = created.Id }, ct);
 
         Assert.Equal(created.Id, fetched.Id);
         Assert.Equal(created.ContextId, fetched.ContextId);
@@ -22,39 +23,41 @@ public sealed class TaskTests(SlimNodeFixture node)
     [Fact]
     public async Task Continuing_a_task_completes_it_and_GetTask_returns_its_history()
     {
-        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired);
+        var ct = TestContext.Current.CancellationToken;
+        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired, cancellationToken: ct);
         Assert.Equal(TaskState.InputRequired, task.Status.State);
 
-        var continued = await node.Client.SendMessageAsync(TestRequests.Text(TestAgent.Continue, task.ContextId, task.Id));
+        var continued = await node.Client.SendMessageAsync(TestRequests.Text(TestAgent.Continue, task.ContextId, task.Id), ct);
 
         Assert.Equal(task.Id, continued.Task!.Id);
         Assert.Equal(TaskState.Completed, continued.Task.Status.State);
         Assert.Equal(TestAgent.ContinueReply, Assert.Single(Assert.Single(continued.Task.Artifacts!).Parts).Text);
 
         // A2AServer records the turn's input-required prompt in history once the task moves on.
-        var fetched = await node.Client.GetTaskAsync(new GetTaskRequest { Id = task.Id });
+        var fetched = await node.Client.GetTaskAsync(new GetTaskRequest { Id = task.Id }, ct);
         Assert.Contains(fetched.History!, m => m.Role == Role.Agent && m.Parts?.FirstOrDefault()?.Text == TestAgent.InputPrompt);
     }
 
     [Fact]
     public async Task ListTasks_filters_by_context_and_pages_with_a_token()
     {
+        var ct = TestContext.Current.CancellationToken;
         var contextId = TestRequests.NewId();
-        var first = await node.Client.CreateTaskAsync("list a", contextId);
-        var second = await node.Client.CreateTaskAsync("list b", contextId);
-        await node.Client.CreateTaskAsync("other context", TestRequests.NewId());
+        var first = await node.Client.CreateTaskAsync("list a", contextId, ct);
+        var second = await node.Client.CreateTaskAsync("list b", contextId, ct);
+        await node.Client.CreateTaskAsync("other context", TestRequests.NewId(), ct);
 
-        var all = await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = contextId });
+        var all = await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = contextId }, ct);
         Assert.Equal(
             new[] { first.Id, second.Id }.Order(),
             all.Tasks.Select(t => t.Id).Order());
 
-        var page1 = await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = contextId, PageSize = 1 });
+        var page1 = await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = contextId, PageSize = 1 }, ct);
         Assert.Single(page1.Tasks);
         Assert.False(string.IsNullOrEmpty(page1.NextPageToken));
 
         var page2 = await node.Client.ListTasksAsync(
-            new ListTasksRequest { ContextId = contextId, PageSize = 1, PageToken = page1.NextPageToken });
+            new ListTasksRequest { ContextId = contextId, PageSize = 1, PageToken = page1.NextPageToken }, ct);
         Assert.Equal(
             new[] { first.Id, second.Id }.Order(),
             page1.Tasks.Concat(page2.Tasks).Select(t => t.Id).Order());
@@ -63,23 +66,25 @@ public sealed class TaskTests(SlimNodeFixture node)
     [Fact]
     public async Task CancelTask_cancels_an_input_required_task()
     {
-        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired);
+        var ct = TestContext.Current.CancellationToken;
+        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired, cancellationToken: ct);
         Assert.Equal(TaskState.InputRequired, task.Status.State);
 
-        var canceled = await node.Client.CancelTaskAsync(new CancelTaskRequest { Id = task.Id });
+        var canceled = await node.Client.CancelTaskAsync(new CancelTaskRequest { Id = task.Id }, ct);
 
         Assert.Equal(task.Id, canceled.Id);
         Assert.Equal(TaskState.Canceled, canceled.Status.State);
-        Assert.Equal(TaskState.Canceled, (await node.Client.GetTaskAsync(new GetTaskRequest { Id = task.Id })).Status.State);
+        Assert.Equal(TaskState.Canceled, (await node.Client.GetTaskAsync(new GetTaskRequest { Id = task.Id }, ct)).Status.State);
     }
 
     [Fact]
     public async Task SubscribeToTask_streams_live_updates_until_the_task_is_canceled()
     {
-        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired);
+        var ct = TestContext.Current.CancellationToken;
+        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired, cancellationToken: ct);
 
         var events = new List<StreamResponse>();
-        await using var subscription = node.Client.SubscribeToTaskAsync(new SubscribeToTaskRequest { Id = task.Id }).GetAsyncEnumerator();
+        await using var subscription = node.Client.SubscribeToTaskAsync(new SubscribeToTaskRequest { Id = task.Id }, ct).GetAsyncEnumerator(ct);
 
         // The subscription opens with the task's current state...
         Assert.True(await subscription.MoveNextAsync());
@@ -87,7 +92,7 @@ public sealed class TaskTests(SlimNodeFixture node)
         Assert.Equal(task.Id, MessagingTests.TaskIdOf(subscription.Current));
 
         // ...then delivers live updates: canceling ends the stream with a canceled status.
-        await node.Client.CancelTaskAsync(new CancelTaskRequest { Id = task.Id });
+        await node.Client.CancelTaskAsync(new CancelTaskRequest { Id = task.Id }, ct);
         while (await subscription.MoveNextAsync())
             events.Add(subscription.Current);
 

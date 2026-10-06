@@ -14,7 +14,8 @@ public sealed class EmptyResponseTests(SlimNodeFixture node)
     [Fact]
     public async Task ListTasks_for_a_context_without_tasks_returns_an_empty_list()
     {
-        var response = await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = TestRequests.NewId() });
+        var ct = TestContext.Current.CancellationToken;
+        var response = await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = TestRequests.NewId() }, ct);
 
         Assert.Empty(response.Tasks);
     }
@@ -22,9 +23,10 @@ public sealed class EmptyResponseTests(SlimNodeFixture node)
     [Fact]
     public async Task ListTaskPushNotificationConfig_for_a_task_without_configs_returns_an_empty_list()
     {
-        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired);
+        var ct = TestContext.Current.CancellationToken;
+        var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired, cancellationToken: ct);
 
-        var response = await node.Client.ListTaskPushNotificationConfigAsync(new ListTaskPushNotificationConfigRequest { TaskId = task.Id });
+        var response = await node.Client.ListTaskPushNotificationConfigAsync(new ListTaskPushNotificationConfigRequest { TaskId = task.Id }, ct);
 
         Assert.Empty(response.Configs ?? []);
     }
