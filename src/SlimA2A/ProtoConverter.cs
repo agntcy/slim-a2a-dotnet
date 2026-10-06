@@ -28,8 +28,7 @@ public static class ProtoConverter
 
     public static Lf.A2a.V1.SendMessageConfiguration ToProto(SendMessageConfiguration c)
     {
-        // proto `return_immediately` is the inverse of the model's `Blocking` (default: wait).
-        var p = new Lf.A2a.V1.SendMessageConfiguration { ReturnImmediately = !c.Blocking };
+        var p = new Lf.A2a.V1.SendMessageConfiguration { ReturnImmediately = c.ReturnImmediately };
         if (c.HistoryLength is { } hl)
             p.HistoryLength = hl;
         p.AcceptedOutputModes.AddRange(c.AcceptedOutputModes ?? []);
@@ -43,7 +42,7 @@ public static class ProtoConverter
         {
             AcceptedOutputModes = [.. p.AcceptedOutputModes],
             HistoryLength = p.HasHistoryLength ? p.HistoryLength : null,
-            Blocking = !p.ReturnImmediately,
+            ReturnImmediately = p.ReturnImmediately,
             PushNotificationConfig = p.TaskPushNotificationConfig is null
                 ? null
                 : FromProtoPushConfig(p.TaskPushNotificationConfig),
