@@ -6,9 +6,55 @@
 
 ## Dependencies
 
-**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **2.1.2** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
+**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **2.2.0** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
 
-**A2A** is consumed from NuGet (`A2A` preview) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
+**A2A** is consumed from NuGet (`A2A` 1.0.0-preview2) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
+
+## Usage
+
+One `SlimA2AConnection` per SLIM node serves agents and calls them. Servers and clients created from it share the connection, so one process can both serve an agent and call others.
+
+```csharp
+await using var slim = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectionOptions
+{
+    Endpoint = "https://slim.example.com:46357",
+});
+
+// Serve an agent: any IA2ARequestHandler, typically an A2AServer.
+var a2a = new A2AServer(agent, new InMemoryTaskStore(), new ChannelEventNotifier(), logger);
+await using var server = await slim.StartServerAsync(
+    new SlimA2AServerOptions { Identity = "agntcy/a2a/echo", SharedSecret = secret },
+    a2a);
+
+// Call an agent: an IA2AClient.
+await using var client = slim.CreateClient(new SlimA2AClientOptions
+{
+    Identity = "agntcy/a2a/client",
+    SharedSecret = secret,
+    Remote = "agntcy/a2a/echo",            // or the slim:// URL from the agent's card
+    DefaultTimeout = TimeSpan.FromSeconds(30),
+});
+var response = await client.SendMessageAsync(request);
+```
+
+- **Transport security** follows the endpoint by default: `http` connects without TLS, `https` with TLS against the system's root CAs. Set `Tls` to choose explicitly: `SlimA2ATls.Insecure`, `SystemRoots`, `TrustedCa(caFile)`, or `InsecureSkipVerify` (development only), and add mutual TLS with `.WithClientCertificate(certFile, keyFile)`. For settings not covered here, such as OIDC authentication to the node, use `ConfigureClient`.
+- **Connect timeout**: `ConnectAsync` fails with `TimeoutException` after `ConnectTimeout` (default 30 s) instead of retrying forever.
+- **Deadlines**: `DefaultTimeout` is each call's deadline. When it passes, the call fails with `TimeoutException` and the server cancels the agent's work (the request handler's `CancellationToken`). Without it SLIM's deadline is 10 hours, so set one; a `SubscribeToTask` stream also ends at the deadline.
+- **Cancellation**: cancelling the token passed to a client call stops waiting immediately. SLIM can't cancel an RPC that is already in flight, so the server keeps going until the deadline. Stopping or disposing a server cancels the requests it is handling.
+- **One connection per node endpoint**: the SLIM runtime allows only one per process, so share it. Disposing the connection also stops its servers and disposes its clients.
+- **Identities** are SLIM names (`org/namespace/app`); give each server and client its own. Every identity that talks to an agent must use the same shared secret (at least 32 characters).
+- **Tenant**: the `Tenant` of every A2A request reaches the server. To serve a card per tenant, set `SlimA2AServerOptions.ResolveExtendedAgentCard`.
+- **Metadata**: `SlimA2AClientOptions.Metadata` is sent with every call. On the server, agent and request-handler code reads it from `SlimA2ACallContext.Current` while it handles the request. The A2A extensions a client requests go under `SlimA2AMetadata.Extensions` (`A2A-Extensions`, the key the other A2A SLIMRPC SDKs use) as a comma-separated list, and the server parses them into `RequestedExtensions`:
+
+  ```csharp
+  // client
+  Metadata = { [SlimA2AMetadata.Extensions] = "https://example.com/ext/v1" },
+
+  // server, inside IAgentHandler.ExecuteAsync
+  var extensions = SlimA2ACallContext.Current?.RequestedExtensions ?? [];
+  ```
+
+  Keys SLIMRPC uses for routing (`service`, `method`, `rpc-id`, `slimrpc-*`) are not available to send, and are left out on the server.
 
 ## Codegen
 
@@ -35,7 +81,7 @@ dotnet test SlimA2A.sln
 
 ### Integration tests
 
-`tests/SlimA2A.IntegrationTests` drives every A2A RPC, including error paths, between a `SlimA2AHandler`-backed server and a `SlimA2AClient` over a real SLIM node. Without a reachable node these tests are skipped, so `dotnet test` stays green offline. CI runs them against the node pinned in `.github/workflows/ci.yml`. To run them locally, start that node:
+`tests/SlimA2A.IntegrationTests` drives every A2A RPC, including error paths, between a server and a client sharing one `SlimA2AConnection` to a real SLIM node. Without a reachable node these tests are skipped, so `dotnet test` stays green offline. CI runs them against the node pinned in `.github/workflows/ci.yml`. To run them locally, start that node:
 
 ```bash
 docker run -d --name slim-node -p 127.0.0.1:46357:46357 \
@@ -50,7 +96,7 @@ Cross-language interop with the Go, Python, Java and Node SDKs is covered separa
 
 ## Echo sample
 
-`examples/EchoAgent` hosts an **A2AServer** + **InMemoryTaskStore** + **ChannelEventNotifier** behind **SlimA2AHandler** (same stack idea as the HTTP JSON-RPC samples, but transport is SLIMRPC).
+`examples/EchoAgent` serves an **A2AServer** + **InMemoryTaskStore** + **ChannelEventNotifier** with `SlimA2AConnection.StartServerAsync`, and calls it with a `SlimA2AClient` (same stack idea as the HTTP JSON-RPC samples, but transport is SLIMRPC).
 
 Requires a running SLIM server and compatible shared secret (see slim .NET examples). Demo default secret matches slim samples; override with **`SLIM_SHARED_SECRET`** (min 32 characters). **`SLIM_SERVER`** defaults to `http://localhost:46357`.
 
@@ -66,6 +112,25 @@ Optional env: **`SLIM_A2A_SERVER_NAME`**, **`SLIM_A2A_CLIENT_NAME`** (SLIM ident
 
 CLI overrides env for endpoint and secret: `--server`, `--shared-secret` (server and client must use the same secret as the SLIM server).
 
+## Migrating from 0.2
+
+0.3 replaces the low-level setup with `SlimA2AConnection`, and no public API exposes SLIM FFI (`uniffi.*`) or generated (`Lf.A2a.V1`) types any more.
+
+| 0.2 | 0.3 |
+|---|---|
+| `SlimHelper.ConnectAndSubscribeAsync(identity, secret, endpoint)` | `SlimA2AConnection.ConnectAsync(new() { Endpoint = endpoint })`; identities move to the server and client options |
+| `SlimRpcServerFactory.CreateServer` + `SlimA2AServerRegistration.RegisterA2AService(server, new SlimA2AHandler(a2a, resolveCard))` + `ServeAsync()` | `await connection.StartServerAsync(new() { Identity, SharedSecret, ResolveExtendedAgentCard }, a2a)`; await `server.Completion`, stop with `StopAsync()` or dispose |
+| `SlimRpcChannelFactory.CreateChannel` + `new SlimA2AClient(channel, timeout)` | `connection.CreateClient(new() { Identity, SharedSecret, Remote, DefaultTimeout })` |
+| resolve-card callback `Func<CancellationToken, Task<AgentCard>>` | `ResolveExtendedAgentCard`: `Func<GetExtendedAgentCardRequest, CancellationToken, Task<AgentCard>>`, which sees the tenant |
+| `SlimA2AHandler`, `ProtoConverter`, `A2ARpcErrorMapping` | internal; no replacement needed |
+
+Also in 0.3:
+
+- **A2A 1.0.0-preview2**: `SendMessageConfiguration.Blocking` became `ReturnImmediately`, with the **opposite meaning**: replace `Blocking = false` with `ReturnImmediately = true`.
+- **Agntcy.Slim 2.2.0**; projects that reference the SLIM packages themselves need the same version.
+- **Timeouts** surface as `TimeoutException`, no longer as `A2AException` with `InternalError`; cancelling a call's token now takes effect.
+- Projects no longer need a reference to the generated `Lf.A2a.V1` types.
+
 ## Security note
 
-The sample insecure client config and demo shared secret are for local development only, not for production.
+The sample's plaintext connection (`http://` endpoint) and demo shared secret are for local development only. In production, connect over `https://` (or set `Tls`), and use a strong secret from configuration.

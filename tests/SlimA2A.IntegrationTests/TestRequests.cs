@@ -5,12 +5,13 @@ namespace SlimA2A.IntegrationTests;
 
 internal static class TestRequests
 {
-    public static SendMessageRequest Text(string text, string? contextId = null, string? taskId = null) =>
-        Parts([Part.FromText(text)], contextId, taskId);
+    public static SendMessageRequest Text(string text, string? contextId = null, string? taskId = null, string? tenant = null) =>
+        Parts([Part.FromText(text)], contextId, taskId, tenant);
 
-    public static SendMessageRequest Parts(List<Part> parts, string? contextId = null, string? taskId = null) =>
+    public static SendMessageRequest Parts(List<Part> parts, string? contextId = null, string? taskId = null, string? tenant = null) =>
         new()
         {
+            Tenant = tenant,
             Message = new Message
             {
                 Role = Role.User,

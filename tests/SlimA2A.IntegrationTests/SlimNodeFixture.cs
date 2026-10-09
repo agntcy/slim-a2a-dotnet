@@ -1,7 +1,5 @@
 using System.Net.Sockets;
 using A2A;
-using Agntcy.Slim;
-using Agntcy.Slim.SlimRpc;
 using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
 
@@ -11,9 +9,9 @@ using Xunit;
 namespace SlimA2A.IntegrationTests;
 
 /// <summary>
-/// Hosts an A2A server (<see cref="TestAgent"/> behind <see cref="SlimA2AHandler"/>) and a <see cref="SlimA2AClient"/>
-/// on a real SLIM node for the whole test run. Configured through the same variables as the EchoAgent example:
-/// <c>SLIM_SERVER</c> (default <c>http://127.0.0.1:46357</c>) and <c>SLIM_SHARED_SECRET</c>.
+/// Hosts an A2A server (<see cref="TestAgent"/> behind <see cref="TestRequestHandler"/>) and a <see cref="SlimA2AClient"/>
+/// on one <see cref="SlimA2AConnection"/> to a real SLIM node, for the whole test run. Configured through the same
+/// variables as the EchoAgent example: <c>SLIM_SERVER</c> (default <c>http://127.0.0.1:46357</c>) and <c>SLIM_SHARED_SECRET</c>.
 /// </summary>
 public sealed class SlimNodeFixture : IAsyncLifetime
 {
@@ -22,31 +20,53 @@ public sealed class SlimNodeFixture : IAsyncLifetime
 
     private const string DefaultEndpoint = "http://127.0.0.1:46357";
     private const string DefaultSecret = "integration-test-shared-secret-32+chars";
-    private static readonly TimeSpan ConnectTimeout = TimeSpan.FromSeconds(30);
     private static readonly TimeSpan ReadyTimeout = TimeSpan.FromSeconds(30);
-    private static readonly TimeSpan ShutdownTimeout = TimeSpan.FromSeconds(15);
 
-    private SlimApp? _serverApp;
-    private SlimApp? _clientApp;
-    private SlimName? _serverName;
-    private uniffi.slim_rpc.Server? _server;
-    private uniffi.slim_rpc.Channel? _channel;
-    private Task? _serveTask;
+    private SlimA2AConnection? _connection;
     private SlimA2AClient? _client;
+    private TestRequestHandler? _handler;
+    private readonly TestAgent _agent = new();
 
     /// <summary>Why the node is unusable, or null when tests can run.</summary>
     public string? UnavailableReason { get; private set; }
+
+    /// <summary>The node's endpoint.</summary>
+    public string Endpoint { get; } = Environment.GetEnvironmentVariable("SLIM_SERVER") ?? DefaultEndpoint;
+
+    /// <summary>The shared secret of every identity in the test run.</summary>
+    public string SharedSecret { get; } = Environment.GetEnvironmentVariable("SLIM_SHARED_SECRET") ?? DefaultSecret;
+
+    /// <summary>Unique per run, so a lingering server from an earlier run can't answer for this one.</summary>
+    public string RunId { get; } = Guid.NewGuid().ToString("N")[..12];
+
+    /// <summary>The test server's SLIM identity.</summary>
+    public string ServerIdentity => $"agntcy/slima2a_it/server_{RunId}";
 
     /// <summary>Client bound to the test server; skips the calling test when no node is reachable.</summary>
     public SlimA2AClient Client
     {
         get
         {
-            if (UnavailableReason is not null)
-                Assert.Skip(UnavailableReason);
+            SkipIfUnavailable();
             return _client!;
         }
     }
+
+    /// <summary>The connection the test server and client share; skips the calling test when no node is reachable.</summary>
+    public SlimA2AConnection Connection
+    {
+        get
+        {
+            SkipIfUnavailable();
+            return _connection!;
+        }
+    }
+
+    /// <summary>The test server's agent, for asserting on how a request ended on the server.</summary>
+    internal TestAgent Agent => _agent;
+
+    /// <summary>The server-side request handler, for asserting on what reached the server.</summary>
+    internal TestRequestHandler Handler => _handler!;
 
     /// <summary>Card served by <c>GetExtendedAgentCard</c>.</summary>
     public static AgentCard Card { get; } = new()
@@ -56,7 +76,7 @@ public sealed class SlimNodeFixture : IAsyncLifetime
         Version = "1.2.3",
         SupportedInterfaces =
         [
-            new AgentInterface { Url = "slim://agntcy/slima2a_it/server", ProtocolBinding = "SLIMRPC", ProtocolVersion = "1.0" },
+            new AgentInterface { Url = "slim://agntcy/slima2a_it/server", ProtocolBinding = "SLIMRPC", ProtocolVersion = "1.0", Tenant = "slima2a_it" },
         ],
         DefaultInputModes = ["text/plain"],
         DefaultOutputModes = ["text/plain", "application/json"],
@@ -69,70 +89,51 @@ public sealed class SlimNodeFixture : IAsyncLifetime
 
     public async ValueTask InitializeAsync()
     {
-        var endpoint = Environment.GetEnvironmentVariable("SLIM_SERVER") ?? DefaultEndpoint;
-        var secret = Environment.GetEnvironmentVariable("SLIM_SHARED_SECRET") ?? DefaultSecret;
         var required = string.Equals(Environment.GetEnvironmentVariable(RequiredVariable), "required", StringComparison.OrdinalIgnoreCase);
 
-        // Probe first: connecting to an unreachable node retries forever instead of failing.
-        if (!await IsReachableAsync(endpoint).ConfigureAwait(false))
+        // Fail fast with a clear reason instead of waiting out the connect timeout.
+        if (!await IsReachableAsync(Endpoint).ConfigureAwait(false))
         {
-            UnavailableReason = $"No SLIM node reachable at {endpoint} (set SLIM_SERVER, or start one as described in README.md).";
+            UnavailableReason = $"No SLIM node reachable at {Endpoint} (set SLIM_SERVER, or start one as described in README.md).";
             if (required)
                 throw new InvalidOperationException($"{UnavailableReason} {RequiredVariable}=required.");
             return;
         }
 
-        // Unique names per run, so a lingering server from an earlier run can't answer for this one.
-        var runId = Guid.NewGuid().ToString("N")[..12];
-        var serverIdentity = $"agntcy/slima2a_it/server_{runId}";
-        var (serverApp, connId) = await SlimHelper.ConnectAndSubscribeAsync(serverIdentity, secret, endpoint)
-            .WaitAsync(ConnectTimeout).ConfigureAwait(false);
-        _serverApp = serverApp;
+        _connection = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectionOptions { Endpoint = Endpoint }).ConfigureAwait(false);
 
-        // SlimHelper opens a new connection on every call and the global service allows only one per endpoint,
-        // so the client app reuses the server's connection.
-        using (var clientName = SlimName.Parse($"agntcy/slima2a_it/client_{runId}"))
-        using (var service = Slim.GetGlobalService())
-        {
-            _clientApp = service.CreateApp(clientName, secret);
-        }
-        _clientApp.Subscribe(_clientApp.Name, connId);
+        var a2a = new A2AServer(_agent, new InMemoryTaskStore(), new ChannelEventNotifier(), NullLogger<A2AServer>.Instance);
+        _handler = new TestRequestHandler(a2a, Card);
+        await _connection.StartServerAsync(
+            new SlimA2AServerOptions { Identity = ServerIdentity, SharedSecret = SharedSecret }, _handler).ConfigureAwait(false);
 
-        var a2a = new A2AServer(new TestAgent(), new InMemoryTaskStore(), new ChannelEventNotifier(), NullLogger<A2AServer>.Instance);
-        _serverName = SlimName.Parse(serverIdentity);
-        _server = SlimRpcServerFactory.CreateServer(_serverApp, _serverName, connId);
-        SlimA2AServerRegistration.RegisterA2AService(_server, new SlimA2AHandler(new PushConfigHandler(a2a), _ => Task.FromResult(Card)));
-        _serveTask = _server.ServeAsync();
-
-        _channel = SlimRpcChannelFactory.CreateChannel(_clientApp, _serverName, connId);
         // A default timeout bounds every RPC, so a broken call fails the test instead of hanging the run.
-        _client = new SlimA2AClient(_channel, TimeSpan.FromSeconds(15));
+        _client = CreateClient($"client_{RunId}", TimeSpan.FromSeconds(15));
 
-        await WaitUntilServingAsync(_channel).ConfigureAwait(false);
+        await WaitUntilServingAsync().ConfigureAwait(false);
     }
 
+    /// <summary>Disconnects, which also stops the test server and disposes every client created from the connection.</summary>
     public async ValueTask DisposeAsync()
     {
-        if (_server is not null)
+        if (_connection is not null)
+            await _connection.DisposeAsync().ConfigureAwait(false);
+    }
+
+    /// <summary>A client of the test server with its own identity; dispose it after use.</summary>
+    public SlimA2AClient CreateClient(string name, TimeSpan? timeout = null, string? remote = null) =>
+        Connection.CreateClient(new SlimA2AClientOptions
         {
-            await _server.ShutdownAsync().ConfigureAwait(false);
-            if (_serveTask is not null)
-            {
-                try
-                {
-                    await _serveTask.WaitAsync(ShutdownTimeout).ConfigureAwait(false);
-                }
-                catch (Exception ex) when (ex is TimeoutException or OperationCanceledException)
-                {
-                    // Draining is best effort; the process is about to exit anyway.
-                }
-            }
-            _server.Dispose();
-        }
-        _channel?.Dispose();
-        _serverName?.Dispose();
-        _clientApp?.Dispose();
-        _serverApp?.Dispose();
+            Identity = $"agntcy/slima2a_it/{name}",
+            SharedSecret = SharedSecret,
+            Remote = remote ?? ServerIdentity,
+            DefaultTimeout = timeout ?? TimeSpan.FromSeconds(15),
+        });
+
+    private void SkipIfUnavailable()
+    {
+        if (UnavailableReason is not null)
+            Assert.Skip(UnavailableReason);
     }
 
     private static async Task<bool> IsReachableAsync(string endpoint)
@@ -152,9 +153,9 @@ public sealed class SlimNodeFixture : IAsyncLifetime
     }
 
     /// <summary>The server is ready once an RPC reaches the agent: a lookup of an unknown task answers TaskNotFound.</summary>
-    private static async Task WaitUntilServingAsync(uniffi.slim_rpc.Channel channel)
+    private async Task WaitUntilServingAsync()
     {
-        var probe = new SlimA2AClient(channel, TimeSpan.FromSeconds(2));
+        await using var probe = CreateClient($"probe_{RunId}", TimeSpan.FromSeconds(2));
         var deadline = DateTime.UtcNow + ReadyTimeout;
         Exception? last = null;
         while (DateTime.UtcNow < deadline)

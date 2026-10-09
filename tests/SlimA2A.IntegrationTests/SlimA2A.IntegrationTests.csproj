@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="xunit.v3" Version="4.0.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="4.0.0">
@@ -27,7 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SlimA2A\SlimA2A.csproj" />
-    <!-- SlimA2A references Protos privately (it is bundled into the package), so reference it directly. -->
+    <!-- SlimA2A references Protos privately (the NuGet package bundles it), so a project reference must add it to get
+         SlimA2A.Protos.dll at run time. -->
     <ProjectReference Include="..\..\src\SlimA2A.Protos\SlimA2A.Protos.csproj" />
   </ItemGroup>
 

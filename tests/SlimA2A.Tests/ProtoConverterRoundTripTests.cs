@@ -88,7 +88,7 @@ public sealed class ProtoConverterRoundTripTests
             Message = msg,
             Configuration = new SendMessageConfiguration
             {
-                Blocking = true,
+                ReturnImmediately = true,
                 HistoryLength = 3,
                 AcceptedOutputModes = ["text/plain"],
             },
@@ -97,8 +97,10 @@ public sealed class ProtoConverterRoundTripTests
         var proto = ProtoConverter.ToProto(original);
         var back = ProtoConverter.FromProto(proto);
 
+        // Checked on the wire too: a round trip alone would not catch a mapping inverted in both directions.
+        Assert.True(proto.Configuration.ReturnImmediately);
         Assert.Equal(msg.MessageId, back.Message.MessageId);
-        Assert.True(back.Configuration!.Blocking);
+        Assert.True(back.Configuration!.ReturnImmediately);
         Assert.Equal(3, back.Configuration.HistoryLength);
         Assert.Equal("text/plain", back.Configuration.AcceptedOutputModes![0]);
     }

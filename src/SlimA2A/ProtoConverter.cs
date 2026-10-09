@@ -6,7 +6,7 @@ using PTask = Lf.A2a.V1.Task;
 namespace SlimA2A;
 
 /// <summary>Converts between a2a-dotnet models and generated <c>Lf.A2a.V1</c> protobuf messages.</summary>
-public static class ProtoConverter
+internal static class ProtoConverter
 {
     public static Lf.A2a.V1.SendMessageRequest ToProto(SendMessageRequest r)
     {
@@ -15,6 +15,8 @@ public static class ProtoConverter
             p.Configuration = ToProto(cfg);
         if (ProtoStructJson.ToStruct(r.Metadata) is { } m)
             p.Metadata = m;
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
         return p;
     }
 
@@ -24,12 +26,12 @@ public static class ProtoConverter
             Message = FromProto(p.Message),
             Configuration = p.Configuration is null ? null : FromProto(p.Configuration),
             Metadata = ProtoStructJson.FromStruct(p.Metadata),
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
         };
 
     public static Lf.A2a.V1.SendMessageConfiguration ToProto(SendMessageConfiguration c)
     {
-        // proto `return_immediately` is the inverse of the model's `Blocking` (default: wait).
-        var p = new Lf.A2a.V1.SendMessageConfiguration { ReturnImmediately = !c.Blocking };
+        var p = new Lf.A2a.V1.SendMessageConfiguration { ReturnImmediately = c.ReturnImmediately };
         if (c.HistoryLength is { } hl)
             p.HistoryLength = hl;
         p.AcceptedOutputModes.AddRange(c.AcceptedOutputModes ?? []);
@@ -43,7 +45,7 @@ public static class ProtoConverter
         {
             AcceptedOutputModes = [.. p.AcceptedOutputModes],
             HistoryLength = p.HasHistoryLength ? p.HistoryLength : null,
-            Blocking = !p.ReturnImmediately,
+            ReturnImmediately = p.ReturnImmediately,
             PushNotificationConfig = p.TaskPushNotificationConfig is null
                 ? null
                 : FromProtoPushConfig(p.TaskPushNotificationConfig),
@@ -304,6 +306,8 @@ public static class ProtoConverter
         var p = new Lf.A2a.V1.GetTaskRequest { Id = r.Id };
         if (r.HistoryLength is { } hl)
             p.HistoryLength = hl;
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
         return p;
     }
 
@@ -312,6 +316,7 @@ public static class ProtoConverter
         {
             Id = p.Id,
             HistoryLength = p.HasHistoryLength ? p.HistoryLength : null,
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
         };
 
     public static Lf.A2a.V1.ListTasksRequest ToProto(ListTasksRequest r)
@@ -331,6 +336,8 @@ public static class ProtoConverter
             p.StatusTimestampAfter = Timestamp.FromDateTime(DateTime.SpecifyKind(a.UtcDateTime, DateTimeKind.Utc));
         if (r.IncludeArtifacts is { } ia)
             p.IncludeArtifacts = ia;
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
         return p;
     }
 
@@ -344,6 +351,7 @@ public static class ProtoConverter
             HistoryLength = p.HasHistoryLength ? p.HistoryLength : null,
             StatusTimestampAfter = p.StatusTimestampAfter is null ? null : p.StatusTimestampAfter.ToDateTimeOffset(),
             IncludeArtifacts = p.HasIncludeArtifacts ? p.IncludeArtifacts : null,
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
         };
 
     public static ListTasksResponse FromProto(Lf.A2a.V1.ListTasksResponse p)
@@ -358,14 +366,34 @@ public static class ProtoConverter
         };
     }
 
-    public static Lf.A2a.V1.CancelTaskRequest ToProto(CancelTaskRequest r) =>
-        new() { Id = r.Id };
+    public static Lf.A2a.V1.CancelTaskRequest ToProto(CancelTaskRequest r)
+    {
+        var p = new Lf.A2a.V1.CancelTaskRequest { Id = r.Id };
+        if (ProtoStructJson.ToStruct(r.Metadata) is { } m)
+            p.Metadata = m;
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
+        return p;
+    }
 
-    public static Lf.A2a.V1.SubscribeToTaskRequest ToProto(SubscribeToTaskRequest r) =>
-        new() { Id = r.Id };
+    public static CancelTaskRequest FromProto(Lf.A2a.V1.CancelTaskRequest p) =>
+        new()
+        {
+            Id = p.Id,
+            Metadata = ProtoStructJson.FromStruct(p.Metadata),
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
+        };
+
+    public static Lf.A2a.V1.SubscribeToTaskRequest ToProto(SubscribeToTaskRequest r)
+    {
+        var p = new Lf.A2a.V1.SubscribeToTaskRequest { Id = r.Id };
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
+        return p;
+    }
 
     public static SubscribeToTaskRequest FromProto(Lf.A2a.V1.SubscribeToTaskRequest p) =>
-        new() { Id = p.Id };
+        new() { Id = p.Id, Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
     // a2a v1.0 merged PushNotificationConfig into the flattened TaskPushNotificationConfig message.
     private static Lf.A2a.V1.TaskPushNotificationConfig ToProtoPushConfig(PushNotificationConfig c)
@@ -408,11 +436,31 @@ public static class ProtoConverter
         var p = ToProtoPushConfig(r.Config);
         p.TaskId = r.TaskId;
         p.Id = r.ConfigId;
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
         return p;
     }
 
-    public static Lf.A2a.V1.GetTaskPushNotificationConfigRequest ToProto(GetTaskPushNotificationConfigRequest r) =>
-        new() { TaskId = r.TaskId, Id = r.Id };
+    /// <summary>a2a v1.0 flattened the create request into <c>TaskPushNotificationConfig</c> itself.</summary>
+    public static CreateTaskPushNotificationConfigRequest FromProtoCreateRequest(Lf.A2a.V1.TaskPushNotificationConfig p) =>
+        new()
+        {
+            TaskId = p.TaskId,
+            ConfigId = p.Id,
+            Config = FromProtoPushConfig(p),
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
+        };
+
+    public static Lf.A2a.V1.GetTaskPushNotificationConfigRequest ToProto(GetTaskPushNotificationConfigRequest r)
+    {
+        var p = new Lf.A2a.V1.GetTaskPushNotificationConfigRequest { TaskId = r.TaskId, Id = r.Id };
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
+        return p;
+    }
+
+    public static GetTaskPushNotificationConfigRequest FromProto(Lf.A2a.V1.GetTaskPushNotificationConfigRequest p) =>
+        new() { TaskId = p.TaskId, Id = p.Id, Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
     public static Lf.A2a.V1.ListTaskPushNotificationConfigsRequest ToProto(ListTaskPushNotificationConfigRequest r)
     {
@@ -421,11 +469,30 @@ public static class ProtoConverter
             p.PageSize = ps;
         if (r.PageToken is { } pt)
             p.PageToken = pt;
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
         return p;
     }
 
-    public static Lf.A2a.V1.DeleteTaskPushNotificationConfigRequest ToProto(DeleteTaskPushNotificationConfigRequest r) =>
-        new() { TaskId = r.TaskId, Id = r.Id };
+    public static ListTaskPushNotificationConfigRequest FromProto(Lf.A2a.V1.ListTaskPushNotificationConfigsRequest p) =>
+        new()
+        {
+            TaskId = p.TaskId,
+            PageSize = p.PageSize == 0 ? null : p.PageSize,
+            PageToken = string.IsNullOrEmpty(p.PageToken) ? null : p.PageToken,
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
+        };
+
+    public static Lf.A2a.V1.DeleteTaskPushNotificationConfigRequest ToProto(DeleteTaskPushNotificationConfigRequest r)
+    {
+        var p = new Lf.A2a.V1.DeleteTaskPushNotificationConfigRequest { TaskId = r.TaskId, Id = r.Id };
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
+        return p;
+    }
+
+    public static DeleteTaskPushNotificationConfigRequest FromProto(Lf.A2a.V1.DeleteTaskPushNotificationConfigRequest p) =>
+        new() { TaskId = p.TaskId, Id = p.Id, Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
     public static TaskPushNotificationConfig FromProto(Lf.A2a.V1.TaskPushNotificationConfig p) =>
         new()
@@ -433,6 +500,7 @@ public static class ProtoConverter
             Id = p.Id,
             TaskId = p.TaskId,
             PushNotificationConfig = FromProtoPushConfig(p),
+            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
         };
 
     public static Lf.A2a.V1.TaskPushNotificationConfig ToProtoResource(TaskPushNotificationConfig c)
@@ -440,8 +508,21 @@ public static class ProtoConverter
         var p = ToProtoPushConfig(c.PushNotificationConfig);
         p.TaskId = c.TaskId;
         p.Id = c.Id;
+        if (c.Tenant is { } tenant)
+            p.Tenant = tenant;
         return p;
     }
+
+    public static Lf.A2a.V1.GetExtendedAgentCardRequest ToProto(GetExtendedAgentCardRequest r)
+    {
+        var p = new Lf.A2a.V1.GetExtendedAgentCardRequest();
+        if (r.Tenant is { } tenant)
+            p.Tenant = tenant;
+        return p;
+    }
+
+    public static GetExtendedAgentCardRequest FromProto(Lf.A2a.V1.GetExtendedAgentCardRequest p) =>
+        new() { Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
     public static ListTaskPushNotificationConfigResponse FromProto(Lf.A2a.V1.ListTaskPushNotificationConfigsResponse p) =>
         new()
@@ -480,12 +561,15 @@ public static class ProtoConverter
         // a2a v1.0 moved transport details entirely into the repeated supported_interfaces.
         foreach (var iface in c.SupportedInterfaces)
         {
-            p.SupportedInterfaces.Add(new Lf.A2a.V1.AgentInterface
+            var pi = new Lf.A2a.V1.AgentInterface
             {
                 Url = iface.Url,
                 ProtocolBinding = iface.ProtocolBinding,
                 ProtocolVersion = iface.ProtocolVersion,
-            });
+            };
+            if (iface.Tenant is { } tenant)
+                pi.Tenant = tenant;
+            p.SupportedInterfaces.Add(pi);
         }
         return p;
     }
@@ -497,6 +581,7 @@ public static class ProtoConverter
             Url = ai.Url,
             ProtocolBinding = string.IsNullOrEmpty(ai.ProtocolBinding) ? "JSONRPC" : ai.ProtocolBinding,
             ProtocolVersion = string.IsNullOrEmpty(ai.ProtocolVersion) ? "1.0" : ai.ProtocolVersion,
+            Tenant = string.IsNullOrEmpty(ai.Tenant) ? null : ai.Tenant,
         }).ToList();
         if (list.Count == 0)
         {

@@ -1,158 +1,230 @@
+using System.Collections.Concurrent;
 using A2A;
+using Agntcy.Slim;
 using uniffi.slim_rpc;
 
 namespace SlimA2A;
 
-/// <summary><see cref="IA2AClient"/> over SLIMRPC (generated <see cref="Lf.A2a.V1.A2AServiceClient"/>).</summary>
-public sealed class SlimA2AClient : IA2AClient
+/// <summary>An <see cref="IA2AClient"/> that calls an A2A agent over SLIMRPC, created by <see cref="SlimA2AConnection.CreateClient"/>.</summary>
+public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
 {
+    private static readonly TimeSpan CloseTimeout = TimeSpan.FromSeconds(5);
+
+    private readonly SlimA2AConnection _connection;
+    private readonly SlimApp _app;
+    private readonly Channel _channel;
     private readonly Lf.A2a.V1.A2AServiceClient _client;
     private readonly TimeSpan? _defaultTimeout;
-    private AgentCard? _cachedExtendedCard;
+    private readonly IReadOnlyDictionary<string, string>? _metadata;
+    private readonly ConcurrentDictionary<string, AgentCard> _extendedCards = new();
+    private int _disposed;
 
-    public SlimA2AClient(uniffi.slim_rpc.Channel channel, TimeSpan? defaultTimeout = null)
+    internal SlimA2AClient(SlimA2AConnection connection, SlimApp app, Channel channel, SlimA2AClientOptions options)
     {
-        ArgumentNullException.ThrowIfNull(channel);
+        _connection = connection;
+        _app = app;
+        _channel = channel;
         _client = new Lf.A2a.V1.A2AServiceClient(channel);
-        _defaultTimeout = defaultTimeout;
+        _defaultTimeout = options.DefaultTimeout;
+        _metadata = options.Metadata is { Count: > 0 } metadata ? new Dictionary<string, string>(metadata) : null;
+        Identity = options.Identity;
+        Remote = SlimA2AClientOptions.ToSlimName(options.Remote);
     }
 
+    /// <summary>The client's own SLIM identity.</summary>
+    public string Identity { get; }
+
+    /// <summary>The SLIM identity of the agent this client calls.</summary>
+    public string Remote { get; }
+
+    /// <summary>Closes the client's SLIMRPC sessions and releases its SLIM identity.</summary>
+    /// <returns>A task that completes when the client is released.</returns>
+    public async ValueTask DisposeAsync()
+    {
+        if (Interlocked.Exchange(ref _disposed, 1) != 0)
+            return;
+        try
+        {
+            await _channel.CloseAsync(CloseTimeout).ConfigureAwait(false);
+        }
+        catch (RpcException)
+        {
+            // Closing is best effort; the node may already be gone.
+        }
+        finally
+        {
+            _channel.Dispose();
+            _app.Dispose();
+            _connection.Release(this);
+        }
+    }
+
+    /// <inheritdoc />
     public async Task<SendMessageResponse> SendMessageAsync(SendMessageRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.SendMessageAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.SendMessageAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async IAsyncEnumerable<StreamResponse> SendStreamingMessageAsync(
         SendMessageRequest request,
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
+        ThrowIfDisposed();
         var proto = ProtoConverter.ToProto(request);
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            _client.SendStreamingMessageAsync(proto, _defaultTimeout, null, cancellationToken), cancellationToken);
+            _client.SendStreamingMessageAsync(proto, _defaultTimeout, _metadata, cancellationToken), cancellationToken);
         await foreach (var p in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.FromProtoStream(p);
         }
     }
 
+    /// <inheritdoc />
     public async Task<AgentTask> GetTaskAsync(GetTaskRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetTaskAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.GetTaskAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async Task<ListTasksResponse> ListTasksAsync(ListTasksRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.ListTasksAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.ListTasksAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async Task<AgentTask> CancelTaskAsync(CancelTaskRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.CancelTaskAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.CancelTaskAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async IAsyncEnumerable<StreamResponse> SubscribeToTaskAsync(
         SubscribeToTaskRequest request,
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
+        ThrowIfDisposed();
         var proto = ProtoConverter.ToProto(request);
         var stream = A2ARpcErrorMapping.WithA2AErrors(
-            _client.SubscribeToTaskAsync(proto, _defaultTimeout, null, cancellationToken), cancellationToken);
+            _client.SubscribeToTaskAsync(proto, _defaultTimeout, _metadata, cancellationToken), cancellationToken);
         await foreach (var p in stream.ConfigureAwait(false))
         {
             yield return ProtoConverter.FromProtoStream(p);
         }
     }
 
+    /// <inheritdoc />
     public async Task<TaskPushNotificationConfig> CreateTaskPushNotificationConfigAsync(
         CreateTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.CreateTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.CreateTaskPushNotificationConfigAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async Task<TaskPushNotificationConfig> GetTaskPushNotificationConfigAsync(
         GetTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.GetTaskPushNotificationConfigAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async Task<ListTaskPushNotificationConfigResponse> ListTaskPushNotificationConfigAsync(
         ListTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.ListTaskPushNotificationConfigsAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.ListTaskPushNotificationConfigsAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
         return ProtoConverter.FromProto(resp);
     }
 
+    /// <inheritdoc />
     public async Task DeleteTaskPushNotificationConfigAsync(
         DeleteTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         await InvokeAsync(
-            () => _client.DeleteTaskPushNotificationConfigAsync(proto, _defaultTimeout, null, cancellationToken),
+            () => _client.DeleteTaskPushNotificationConfigAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
     }
 
+    /// <inheritdoc />
     public async Task<AgentCard> GetExtendedAgentCardAsync(
         GetExtendedAgentCardRequest request, CancellationToken cancellationToken = default)
     {
-        if (_cachedExtendedCard is not null)
-            return _cachedExtendedCard;
+        // Cached per tenant: a multi-tenant agent serves a different card to each.
+        var tenant = request.Tenant ?? string.Empty;
+        if (_extendedCards.TryGetValue(tenant, out var cached))
+            return cached;
+        var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
-            () => _client.GetExtendedAgentCardAsync(new Lf.A2a.V1.GetExtendedAgentCardRequest(), _defaultTimeout, null, cancellationToken),
+            () => _client.GetExtendedAgentCardAsync(proto, _defaultTimeout, _metadata, cancellationToken),
             cancellationToken).ConfigureAwait(false);
-        _cachedExtendedCard = ProtoConverter.FromProto(resp);
-        return _cachedExtendedCard;
+        return _extendedCards.GetOrAdd(tenant, ProtoConverter.FromProto(resp));
     }
 
+    /// <summary>
+    /// Runs one unary RPC: stops waiting as soon as <paramref name="cancellationToken"/> is cancelled (SLIM can't cancel the
+    /// call itself, which then ends at its deadline), and reports RPC errors as <see cref="A2ARpcErrorMapping.ToClientException"/> does.
+    /// </summary>
     private async Task<T> InvokeAsync<T>(Func<Task<T>> call, CancellationToken cancellationToken)
     {
+        ThrowIfDisposed();
         cancellationToken.ThrowIfCancellationRequested();
+        var pending = call();
         try
         {
-            return await call().ConfigureAwait(false);
+            return await pending.WaitAsync(cancellationToken).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested && !pending.IsCompleted)
+        {
+            ObserveAbandoned(pending);
+            throw;
         }
         catch (RpcException.Rpc ex)
         {
-            throw A2ARpcErrorMapping.FromRpc(ex);
+            throw A2ARpcErrorMapping.ToClientException(ex);
         }
     }
 
-    private async Task InvokeAsync(Func<Task> call, CancellationToken cancellationToken)
-    {
-        cancellationToken.ThrowIfCancellationRequested();
-        try
+    private async Task InvokeAsync(Func<Task> call, CancellationToken cancellationToken) =>
+        await InvokeAsync(async () =>
         {
             await call().ConfigureAwait(false);
-        }
-        catch (RpcException.Rpc ex)
-        {
-            throw A2ARpcErrorMapping.FromRpc(ex);
-        }
-    }
+            return true;
+        }, cancellationToken).ConfigureAwait(false);
+
+    /// <summary>The caller stopped waiting for <paramref name="pending"/>; observe its outcome so a late failure isn't reported as unobserved.</summary>
+    private static void ObserveAbandoned(Task pending) =>
+        _ = pending.ContinueWith(
+            t => _ = t.Exception,
+            CancellationToken.None,
+            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+            TaskScheduler.Default);
+
+    private void ThrowIfDisposed() => ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
 }

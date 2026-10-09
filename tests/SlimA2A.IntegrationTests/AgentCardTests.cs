@@ -26,6 +26,7 @@ public sealed class AgentCardTests(SlimNodeFixture node)
         Assert.Equal("slim://agntcy/slima2a_it/server", iface.Url);
         Assert.Equal("SLIMRPC", iface.ProtocolBinding);
         Assert.Equal("1.0", iface.ProtocolVersion);
+        Assert.Equal("slima2a_it", iface.Tenant);
 
         var skill = Assert.Single(card.Skills!);
         Assert.Equal("echo", skill.Id);
