@@ -33,6 +33,7 @@ public sealed class CallContextTests(SlimNodeFixture node)
         Assert.Equal(
             ["https://example.com/ext/a", "https://example.com/ext/b"],
             json.RootElement.GetProperty("extensions").EnumerateArray().Select(e => e.GetString()));
+        Assert.StartsWith("agntcy/slima2a_it/ctx_", json.RootElement.GetProperty("peerSubject").GetString());
     }
 
     [Fact]

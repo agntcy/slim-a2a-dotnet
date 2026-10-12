@@ -42,7 +42,7 @@ var response = await client.SendMessageAsync(request);
 - **Deadlines**: `DefaultTimeout` is each call's deadline. When it passes, the call fails with `TimeoutException` and the server cancels the agent's work (the request handler's `CancellationToken`). Without it SLIM's deadline is 10 hours, so set one; a `SubscribeToTask` stream also ends at the deadline.
 - **Cancellation**: cancelling the token passed to a client call stops waiting immediately. SLIM can't cancel an RPC that is already in flight, so the server keeps going until the deadline. Stopping or disposing a server cancels the requests it is handling.
 - **One connection per node endpoint**: the SLIM runtime allows only one per process, so share it. Disposing the connection also stops its servers and disposes its clients.
-- **Identities** are SLIM names (`org/namespace/app`); give each server and client its own. Every identity that talks to an agent must use the same shared secret (at least 32 characters).
+- **Identities** are SLIM names (`org/namespace/app`); give each server and client its own. Each one authenticates with either a `SharedSecret` (at least 32 characters, the same for every identity that talks to an agent) or an `IdentityProvider` and `IdentityVerifier`, such as per-agent JWTs or SPIRE; see [Identity](#identity).
 - **Tenant**: the `Tenant` of every A2A request reaches the server. To serve a card per tenant, set `SlimA2AServerOptions.ResolveExtendedAgentCard`.
 - **Metadata**: `SlimA2AClientOptions.Metadata` is sent with every call. On the server, agent and request-handler code reads it from `SlimA2ACallContext.Current` while it handles the request. The A2A extensions a client requests go under `SlimA2AMetadata.Extensions` (`A2A-Extensions`, the key the other A2A SLIMRPC SDKs use) as a comma-separated list, and the server parses them into `RequestedExtensions`:
 
@@ -55,6 +55,44 @@ var response = await client.SendMessageAsync(request);
   ```
 
   Keys SLIMRPC uses for routing (`service`, `method`, `rpc-id`, `slimrpc-*`) are not available to send, and are left out on the server.
+
+### Identity
+
+Anyone holding a shared secret can claim any SLIM name. To give each agent its own identity, set `IdentityProvider` and `IdentityVerifier` (the `uniffi.slim_bindings` `IdentityProviderConfig` / `IdentityVerifierConfig` of Agntcy.Slim) instead of `SharedSecret`, on servers and clients alike. Exactly one of the two must be set. For example, each agent signs JWTs with its own key, and every agent verifies them against a JWKS listing the trusted keys, its own included, with each key's `kid` equal to its agent's subject:
+
+```csharp
+using uniffi.slim_bindings;
+
+var provider = new IdentityProviderConfig.Jwt(new ClientJwtAuth(
+    new JwtKeyType.Encoding(new JwtKeyConfig(JwtAlgorithm.EdDsa, JwtKeyFormat.Pem, new JwtKeyData.File("/etc/agent/key.pem"))),
+    Audience: ["agntcy-mesh"], Issuer: "agntcy", Subject: "did:key:z6Mk...", Duration: TimeSpan.FromHours(1)));
+var verifier = new IdentityVerifierConfig.Jwt(new JwtAuth(
+    new JwtKeyType.Decoding(new JwtKeyConfig(JwtAlgorithm.EdDsa, JwtKeyFormat.Jwks, new JwtKeyData.File("/etc/agent/trusted.jwks.json"))),
+    Audience: ["agntcy-mesh"], Issuer: "agntcy", Subject: null, Duration: TimeSpan.FromHours(1)));
+
+await using var server = await slim.StartServerAsync(
+    new SlimA2AServerOptions { Identity = "agntcy/a2a/echo", IdentityProvider = provider, IdentityVerifier = verifier },
+    a2a);
+```
+
+On the server, request-handling code reads the caller's verified identity from `SlimA2ACallContext.Current`: `PeerSubject` (the JWT `sub`, here the caller's DID) and `PeerIssuer` (its `iss`). With a shared secret, `PeerSubject` is the caller's SLIM name plus a random suffix, and only proves that the caller holds the secret.
+
+Authenticating to the node itself is separate, and set on the connection: TLS with `Tls`, and anything else with `ConfigureClient`, which can return a configuration of its own built with `Slim.NewClientConfigFromJson`. For example, TLS plus a bearer token read from a file:
+
+```csharp
+await using var slim = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectionOptions
+{
+    Endpoint = "https://slim.example.com:443",
+    // Replaces the generated configuration, including its bounded connect retries.
+    ConfigureClient = _ => Slim.NewClientConfigFromJson("""
+        {
+          "endpoint": "https://slim.example.com:443",
+          "tls": { "include_system_ca_certs_pool": true },
+          "auth": { "type": "static_jwt", "file": "/run/secrets/slim-node-token.jwt" }
+        }
+        """),
+});
+```
 
 ## Codegen
 

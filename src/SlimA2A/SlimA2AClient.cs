@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using A2A;
-using Agntcy.Slim;
 using uniffi.slim_rpc;
 
 namespace SlimA2A;
@@ -11,7 +10,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     private static readonly TimeSpan CloseTimeout = TimeSpan.FromSeconds(5);
 
     private readonly SlimA2AConnection _connection;
-    private readonly SlimApp _app;
+    private readonly uniffi.slim_bindings.App _app;
     private readonly Channel _channel;
     private readonly Lf.A2a.V1.A2AServiceClient _client;
     private readonly TimeSpan? _defaultTimeout;
@@ -19,7 +18,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     private readonly ConcurrentDictionary<string, AgentCard> _extendedCards = new();
     private int _disposed;
 
-    internal SlimA2AClient(SlimA2AConnection connection, SlimApp app, Channel channel, SlimA2AClientOptions options)
+    internal SlimA2AClient(SlimA2AConnection connection, uniffi.slim_bindings.App app, Channel channel, SlimA2AClientOptions options)
     {
         _connection = connection;
         _app = app;
