@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # SLIM data-plane node config for the integration tests (CI and local runs).
-# Same as csit's integrations/agntcy-a2a-slimrpc/ci/slim-server-config.yaml at slim 2.1.1.
+# Same as csit's integrations/agntcy-a2a-slimrpc/ci/slim-server-config.yaml; used with the slim 3.3.0 node image.
 # Insecure TLS is intentional: an ephemeral, loopback-only node started for the test run.
 tracing:
   log_level: info

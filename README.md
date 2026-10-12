@@ -6,7 +6,7 @@
 
 ## Dependencies
 
-**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **2.2.0** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
+**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **3.3.0** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
 
 **A2A** is consumed from NuGet (`A2A` 1.0.0-preview2) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
 
@@ -81,12 +81,10 @@ dotnet test SlimA2A.sln
 
 ### Integration tests
 
-`tests/SlimA2A.IntegrationTests` drives every A2A RPC, including error paths, between a server and a client sharing one `SlimA2AConnection` to a real SLIM node. Without a reachable node these tests are skipped, so `dotnet test` stays green offline. CI runs them against the node pinned in `.github/workflows/ci.yml`. To run them locally, start that node:
+`tests/SlimA2A.IntegrationTests` drives every A2A RPC, including error paths, between a server and a client sharing one `SlimA2AConnection` to a real SLIM node. Without a reachable node these tests are skipped, so `dotnet test` stays green offline. CI runs them against the node pinned in `.github/workflows/ci.yml`. To run them locally, start a node with [`slimctl`](https://github.com/agntcy/slim) (no container needed) and run the tests in another terminal:
 
 ```bash
-docker run -d --name slim-node -p 127.0.0.1:46357:46357 \
-  -v "$PWD/tests/SlimA2A.IntegrationTests/slim-node-config.yaml:/config.yaml:ro" \
-  ghcr.io/agntcy/slim:2.1.1 /slim --config /config.yaml
+slimctl slim start --config tests/SlimA2A.IntegrationTests/slim-node-config.yaml
 dotnet test tests/SlimA2A.IntegrationTests
 ```
 
@@ -127,7 +125,7 @@ CLI overrides env for endpoint and secret: `--server`, `--shared-secret` (server
 Also in 0.3:
 
 - **A2A 1.0.0-preview2**: `SendMessageConfiguration.Blocking` became `ReturnImmediately`, with the **opposite meaning**: replace `Blocking = false` with `ReturnImmediately = true`.
-- **Agntcy.Slim 2.2.0**; projects that reference the SLIM packages themselves need the same version.
+- **Agntcy.Slim 3.3.0**; projects that reference the SLIM packages themselves need the same version.
 - **Timeouts** surface as `TimeoutException`, no longer as `A2AException` with `InternalError`; cancelling a call's token now takes effect.
 - Projects no longer need a reference to the generated `Lf.A2a.V1` types.
 
