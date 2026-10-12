@@ -1,4 +1,4 @@
-using Agntcy.Slim;
+using uniffi.slim_bindings;
 
 namespace SlimA2A;
 
@@ -8,14 +8,14 @@ public sealed class SlimA2AServer : IAsyncDisposable
     private static readonly TimeSpan ShutdownTimeout = TimeSpan.FromSeconds(15);
 
     private readonly SlimA2AConnection _connection;
-    private readonly SlimApp _app;
+    private readonly App _app;
     private readonly uniffi.slim_rpc.Server _server;
     private readonly CancellationTokenSource _stoppingCts;
     private int _stopping;
     private int _disposed;
 
     internal SlimA2AServer(
-        SlimA2AConnection connection, string identity, SlimApp app, uniffi.slim_rpc.Server server, CancellationTokenSource stopping)
+        SlimA2AConnection connection, string identity, App app, uniffi.slim_rpc.Server server, CancellationTokenSource stopping)
     {
         _connection = connection;
         _app = app;

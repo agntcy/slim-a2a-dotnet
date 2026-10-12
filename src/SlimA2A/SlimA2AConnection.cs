@@ -2,7 +2,6 @@ using System.Collections.Concurrent;
 using System.Text.Json.Nodes;
 using A2A;
 using Agntcy.Slim;
-using Agntcy.Slim.SlimRpc;
 
 namespace SlimA2A;
 
@@ -20,6 +19,8 @@ public sealed class SlimA2AConnection : IAsyncDisposable
     private static readonly TimeSpan MaxAttemptTimeout = TimeSpan.FromSeconds(10);
 
     private readonly SlimService _service;
+    // The same global service as _service, at the FFI level, which can create apps with any identity provider and verifier.
+    private readonly uniffi.slim_bindings.Service _apps;
     private readonly ulong _connectionId;
     private readonly ConcurrentDictionary<IAsyncDisposable, byte> _owned = new();
     private int _disposed;
@@ -27,6 +28,7 @@ public sealed class SlimA2AConnection : IAsyncDisposable
     private SlimA2AConnection(SlimService service, ulong connectionId, string endpoint)
     {
         _service = service;
+        _apps = uniffi.slim_bindings.SlimBindingsMethods.GetGlobalService();
         _connectionId = connectionId;
         Endpoint = endpoint;
     }
@@ -74,30 +76,37 @@ public sealed class SlimA2AConnection : IAsyncDisposable
     }
 
     /// <summary>Starts serving an A2A agent under a SLIM identity.</summary>
-    /// <param name="options">The server's identity and shared secret, and optionally how to resolve the extended agent card.</param>
+    /// <param name="options">
+    /// The server's identity and how it authenticates (a shared secret, or an identity provider and verifier), and
+    /// optionally how to resolve the extended agent card.
+    /// </param>
     /// <param name="handler">Handles the A2A requests, typically an <see cref="A2AServer"/>.</param>
     /// <param name="cancellationToken">Cancels starting the server.</param>
     /// <returns>The running server, its identity already subscribed on the node. Dispose it, or the connection, to stop serving.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="options"/> or <paramref name="handler"/> is null.</exception>
-    /// <exception cref="ArgumentException">The identity is not a valid <c>org/namespace/app</c> name, or the shared secret is empty.</exception>
+    /// <exception cref="ArgumentException">
+    /// The identity is not a valid <c>org/namespace/app</c> name, or the options don't set exactly one of
+    /// <see cref="SlimA2AServerOptions.SharedSecret"/> (not empty) or both <see cref="SlimA2AServerOptions.IdentityProvider"/>
+    /// and <see cref="SlimA2AServerOptions.IdentityVerifier"/>.
+    /// </exception>
     /// <exception cref="ObjectDisposedException">The connection is disposed.</exception>
     public Task<SlimA2AServer> StartServerAsync(
         SlimA2AServerOptions options, IA2ARequestHandler handler, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(handler);
-        ArgumentException.ThrowIfNullOrEmpty(options.SharedSecret, nameof(options));
+        SlimA2AIdentity.Validate(options.SharedSecret, options.IdentityProvider, options.IdentityVerifier, nameof(options));
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
         cancellationToken.ThrowIfCancellationRequested();
 
-        using var name = SlimName.Parse(options.Identity);
-        var app = _service.CreateApp(name, options.SharedSecret);
+        using var name = SlimA2AIdentity.ParseName(options.Identity, nameof(options));
+        var app = SlimA2AIdentity.CreateApp(_apps, name, options.SharedSecret, options.IdentityProvider, options.IdentityVerifier);
         var stopping = new CancellationTokenSource();
         try
         {
             app.Subscribe(name, _connectionId);
-            var rpcServer = SlimRpcServerFactory.CreateServer(app, name, _connectionId);
-            Lf.A2a.V1.A2AServiceServerRegistration.RegisterA2AServiceServer(
+            var rpcServer = uniffi.slim_rpc.Server.NewWithConnection(app, name, _connectionId);
+            A2AServiceRegistration.Register(
                 rpcServer, new SlimA2AHandler(handler, options.ResolveExtendedAgentCard, stopping.Token));
             var server = new SlimA2AServer(this, options.Identity, app, rpcServer, stopping);
             _owned.TryAdd(server, 0);
@@ -112,26 +121,34 @@ public sealed class SlimA2AConnection : IAsyncDisposable
     }
 
     /// <summary>Creates a client that calls an A2A agent over SLIMRPC.</summary>
-    /// <param name="options">The client's own identity and shared secret, and the agent to call.</param>
+    /// <param name="options">
+    /// The client's own identity and how it authenticates (a shared secret, or an identity provider and verifier), and the
+    /// agent to call.
+    /// </param>
     /// <returns>The client. Dispose it, or the connection, when done.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="options"/> is null.</exception>
-    /// <exception cref="ArgumentException">An identity is not a valid <c>org/namespace/app</c> name, the shared secret is empty, or <see cref="SlimA2AClientOptions.Metadata"/> uses a key SLIMRPC reserves for routing.</exception>
+    /// <exception cref="ArgumentException">
+    /// An identity is not a valid <c>org/namespace/app</c> name, the options don't set exactly one of
+    /// <see cref="SlimA2AClientOptions.SharedSecret"/> (not empty) or both <see cref="SlimA2AClientOptions.IdentityProvider"/>
+    /// and <see cref="SlimA2AClientOptions.IdentityVerifier"/>, or <see cref="SlimA2AClientOptions.Metadata"/> uses a key
+    /// SLIMRPC reserves for routing.
+    /// </exception>
     /// <exception cref="ObjectDisposedException">The connection is disposed.</exception>
     public SlimA2AClient CreateClient(SlimA2AClientOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
-        ArgumentException.ThrowIfNullOrEmpty(options.SharedSecret, nameof(options));
+        SlimA2AIdentity.Validate(options.SharedSecret, options.IdentityProvider, options.IdentityVerifier, nameof(options));
         if (options.Metadata?.Keys.FirstOrDefault(SlimA2AMetadata.Reserved.Contains) is { } reserved)
             throw new ArgumentException($"Metadata key '{reserved}' is reserved by SLIMRPC.", nameof(options));
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
 
-        using var name = SlimName.Parse(options.Identity);
-        using var remote = SlimName.Parse(SlimA2AClientOptions.ToSlimName(options.Remote));
-        var app = _service.CreateApp(name, options.SharedSecret);
+        using var name = SlimA2AIdentity.ParseName(options.Identity, nameof(options));
+        using var remote = SlimA2AIdentity.ParseName(SlimA2AClientOptions.ToSlimName(options.Remote), nameof(options));
+        var app = SlimA2AIdentity.CreateApp(_apps, name, options.SharedSecret, options.IdentityProvider, options.IdentityVerifier);
         try
         {
             app.Subscribe(name, _connectionId);
-            var channel = SlimRpcChannelFactory.CreateChannel(app, remote, _connectionId);
+            var channel = uniffi.slim_rpc.Channel.NewWithConnection(app, remote, _connectionId);
             var client = new SlimA2AClient(this, app, channel, options);
             _owned.TryAdd(client, 0);
             return client;
@@ -159,6 +176,7 @@ public sealed class SlimA2AConnection : IAsyncDisposable
         {
             // Already disconnected, e.g. the node went away.
         }
+        _apps.Dispose();
         _service.Dispose();
     }
 

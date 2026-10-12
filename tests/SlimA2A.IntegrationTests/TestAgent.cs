@@ -35,7 +35,8 @@ internal sealed class TestAgent : IAgentHandler
 
     /// <summary>
     /// Replies with what <see cref="SlimA2ACallContext.Current"/> held while the agent ran, as JSON
-    /// (<c>{"metadata": {...}, "extensions": [...]}</c>), in every streamed event for streaming requests.
+    /// (<c>{"metadata": {...}, "extensions": [...], "peerSubject": ..., "peerIssuer": ...}</c>), in every streamed event for
+    /// streaming requests.
     /// </summary>
     public const string CallContext = "it:call-context";
 
@@ -149,5 +150,13 @@ internal sealed class TestAgent : IAgentHandler
     }
 
     private static string Describe(SlimA2ACallContext? call) =>
-        call is null ? "null" : JsonSerializer.Serialize(new { metadata = call.Metadata, extensions = call.RequestedExtensions });
+        call is null
+            ? "null"
+            : JsonSerializer.Serialize(new
+            {
+                metadata = call.Metadata,
+                extensions = call.RequestedExtensions,
+                peerSubject = call.PeerSubject,
+                peerIssuer = call.PeerIssuer,
+            });
 }

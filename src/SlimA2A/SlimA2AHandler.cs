@@ -113,7 +113,9 @@ internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
     }
 
     // The generated stubs always pass a context; in-process callers (tests) may not, and then there is no deadline or metadata.
-    private RpcCallScope NewCall(SlimRpcContext? context) => new(context?.RemainingTime, _serverStopping, context?.Metadata);
+    // The peer identity was captured from the raw SLIMRPC context by A2AServiceRegistration.
+    private RpcCallScope NewCall(SlimRpcContext? context) =>
+        new(context?.RemainingTime, _serverStopping, context?.Metadata, A2AServiceRegistration.Peer);
 
     private static Lf.A2a.V1.ListTasksResponse ToProtoListTasks(A2A.ListTasksResponse r)
     {
