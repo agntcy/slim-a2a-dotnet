@@ -4,6 +4,20 @@
 
 .NET library that maps the [A2A](https://github.com/a2aproject/A2A) gRPC contract to [a2a-dotnet](https://github.com/a2aproject/a2a-dotnet) (`IA2AClient` / `IA2ARequestHandler`) over **SLIMRPC**, similar to slim-a2a-go / slim-a2a-python.
 
+## Installation
+
+```bash
+dotnet add package Agntcy.SlimA2A --version 0.5.0
+```
+
+or in your `.csproj`:
+
+```xml
+<PackageReference Include="Agntcy.SlimA2A" Version="0.5.0" />
+```
+
+[Agntcy.SlimA2A on NuGet](https://www.nuget.org/packages/Agntcy.SlimA2A). The package brings in **Agntcy.Slim.SlimRpc** 3.3.0.
+
 ## Dependencies
 
 **Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **3.3.0** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
