@@ -60,6 +60,8 @@ public sealed class CallContextTests
             ["slimrpc-dir"] = "req",
             ["slimrpc-timeout"] = "1000",
             ["slimrpc-code"] = "0",
+            ["slim-peer-subject"] = "agntcy/demo/client",
+            ["slim-payload-sig"] = "MEQCIF",
         });
 
         Assert.Equal(["x-trace-id"], call.Metadata.Keys);
