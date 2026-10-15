@@ -10,8 +10,10 @@ public static class SlimA2AMetadata
     public const string Extensions = "A2A-Extensions";
 
     /// <summary>
-    /// Keys SLIMRPC uses for its own routing (slim-rpc's <c>*_KEY</c> constants). They are left out of
-    /// <see cref="SlimA2ACallContext.Metadata"/>, and a client can't send them.
+    /// Keys SLIM sets itself: SLIMRPC's routing keys (slim-rpc's <c>*_KEY</c> constants) and the session layer's
+    /// <c>slim-peer-subject</c> and <c>slim-payload-sig</c> (SLIM 3.4+). They are left out of
+    /// <see cref="SlimA2ACallContext.Metadata"/>, and a client can't send them. The caller's verified identity is
+    /// <see cref="SlimA2ACallContext.PeerSubject"/>.
     /// </summary>
     internal static readonly IReadOnlySet<string> Reserved = new HashSet<string>(StringComparer.Ordinal)
     {
@@ -21,5 +23,7 @@ public static class SlimA2AMetadata
         "slimrpc-dir",
         "slimrpc-timeout",
         "slimrpc-code",
+        "slim-peer-subject",
+        "slim-payload-sig",
     };
 }

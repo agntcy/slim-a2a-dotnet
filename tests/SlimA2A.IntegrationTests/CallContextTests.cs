@@ -104,6 +104,8 @@ public sealed class CallContextTests(SlimNodeFixture node)
     [InlineData("method")]
     [InlineData("service")]
     [InlineData("rpc-id")]
+    [InlineData("slim-peer-subject")]
+    [InlineData("slim-payload-sig")]
     public void A_client_cannot_send_a_key_SLIMRPC_reserves_for_routing(string key)
     {
         var ex = Assert.Throws<ArgumentException>(() => node.Connection.CreateClient(new SlimA2AClientOptions
