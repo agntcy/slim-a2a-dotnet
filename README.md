@@ -113,7 +113,7 @@ await using var slim = await SlimA2AConnection.ConnectAsync(new SlimA2AConnectio
 1. Install the SlimRPC `protoc` plugin so `protoc-gen-slimrpc-csharp` is on your `PATH` (published as [agntcy-protoc-slimrpc-plugin](https://crates.io/crates/agntcy-protoc-slimrpc-plugin) on crates.io):
 
    ```bash
-   cargo install agntcy-protoc-slimrpc-plugin --version 2.0.0
+   cargo install agntcy-protoc-slimrpc-plugin --version 3.0.0
    ```
 
 2. From `src/SlimA2A.Protos`:
