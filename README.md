@@ -7,13 +7,13 @@
 ## Installation
 
 ```bash
-dotnet add package Agntcy.SlimA2A --version 0.5.0
+dotnet add package Agntcy.SlimA2A --version 0.5.1
 ```
 
 or in your `.csproj`:
 
 ```xml
-<PackageReference Include="Agntcy.SlimA2A" Version="0.5.0" />
+<PackageReference Include="Agntcy.SlimA2A" Version="0.5.1" />
 ```
 
 [Agntcy.SlimA2A on NuGet](https://www.nuget.org/packages/Agntcy.SlimA2A). The package brings in **Agntcy.Slim.SlimRpc** 3.3.2.
