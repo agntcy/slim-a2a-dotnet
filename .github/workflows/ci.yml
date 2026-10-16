@@ -49,7 +49,7 @@ jobs:
     timeout-minutes: 15
     env:
       # The released node csit's A2A SLIMRPC interop matrix pins; the digest is the multi-arch index.
-      SLIM_IMAGE: ghcr.io/agntcy/slim:3.4.1@sha256:ebb97876c3713b2e9a2eac705503a5a11e027ff49d304170226c990b19b9370c
+      SLIM_IMAGE: ghcr.io/agntcy/slim:3.4.3@sha256:44a38b6eda5a5dcf4fc48a0abe2849c75add5ab860995ccc97257dcc9bd82f2a
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
