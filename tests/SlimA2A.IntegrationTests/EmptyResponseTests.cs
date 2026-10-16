@@ -26,7 +26,7 @@ public sealed class EmptyResponseTests(SlimNodeFixture node)
         var ct = TestContext.Current.CancellationToken;
         var task = await node.Client.CreateTaskAsync(TestAgent.InputRequired, cancellationToken: ct);
 
-        var response = await node.Client.ListTaskPushNotificationConfigAsync(new ListTaskPushNotificationConfigRequest { TaskId = task.Id }, ct);
+        var response = await node.Client.ListTaskPushNotificationConfigsAsync(new ListTaskPushNotificationConfigsRequest { TaskId = task.Id }, ct);
 
         Assert.Empty(response.Configs ?? []);
     }

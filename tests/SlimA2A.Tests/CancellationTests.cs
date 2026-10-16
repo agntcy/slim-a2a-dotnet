@@ -21,9 +21,9 @@ public sealed class CancellationTests
             var updater = new TaskUpdater(eventQueue, context.TaskId, context.ContextId);
             if (context.UserText == "input")
             {
-                await updater.SubmitAsync(cancellationToken).ConfigureAwait(false);
+                await updater.SubmitAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
                 await updater.RequireInputAsync(
-                    new Message { Role = Role.Agent, MessageId = "p", Parts = [Part.FromText("?")] }, cancellationToken).ConfigureAwait(false);
+                    new Message { Role = Role.Agent, MessageId = "p", Parts = [Part.FromText("?")] }, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return;
             }
             Started.TrySetResult();

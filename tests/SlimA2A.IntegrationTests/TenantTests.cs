@@ -16,15 +16,15 @@ public sealed class TenantTests(SlimNodeFixture node)
         await node.Client.SendStreamingMessageAsync(TestRequests.Text(TestAgent.Streaming, tenant: tenant), ct).ToListAsync();
         await node.Client.GetTaskAsync(new GetTaskRequest { Id = task.Id, Tenant = tenant }, ct);
         await node.Client.ListTasksAsync(new ListTasksRequest { ContextId = task.ContextId, Tenant = tenant }, ct);
-        await node.Client.CreateTaskPushNotificationConfigAsync(new CreateTaskPushNotificationConfigRequest
+        await node.Client.CreateTaskPushNotificationConfigAsync(new TaskPushNotificationConfig
         {
             TaskId = task.Id,
-            ConfigId = "cfg",
-            Config = new PushNotificationConfig { Url = "https://example.com/hook" },
+            Id = "cfg",
+            Url = "https://example.com/hook",
             Tenant = tenant,
         }, ct);
         await node.Client.GetTaskPushNotificationConfigAsync(new GetTaskPushNotificationConfigRequest { TaskId = task.Id, Id = "cfg", Tenant = tenant }, ct);
-        await node.Client.ListTaskPushNotificationConfigAsync(new ListTaskPushNotificationConfigRequest { TaskId = task.Id, Tenant = tenant }, ct);
+        await node.Client.ListTaskPushNotificationConfigsAsync(new ListTaskPushNotificationConfigsRequest { TaskId = task.Id, Tenant = tenant }, ct);
         await node.Client.DeleteTaskPushNotificationConfigAsync(new DeleteTaskPushNotificationConfigRequest { TaskId = task.Id, Id = "cfg", Tenant = tenant }, ct);
         await node.Client.GetExtendedAgentCardAsync(new GetExtendedAgentCardRequest { Tenant = tenant }, ct);
         await node.Client.CancelTaskAsync(new CancelTaskRequest { Id = task.Id, Tenant = tenant }, ct);
@@ -42,7 +42,7 @@ public sealed class TenantTests(SlimNodeFixture node)
             nameof(IA2ARequestHandler.SubscribeToTaskAsync),
             nameof(IA2ARequestHandler.CreateTaskPushNotificationConfigAsync),
             nameof(IA2ARequestHandler.GetTaskPushNotificationConfigAsync),
-            nameof(IA2ARequestHandler.ListTaskPushNotificationConfigAsync),
+            nameof(IA2ARequestHandler.ListTaskPushNotificationConfigsAsync),
             nameof(IA2ARequestHandler.DeleteTaskPushNotificationConfigAsync),
             nameof(IA2ARequestHandler.GetExtendedAgentCardAsync),
         ];

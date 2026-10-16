@@ -35,8 +35,8 @@ internal static class ProtoConverter
         if (c.HistoryLength is { } hl)
             p.HistoryLength = hl;
         p.AcceptedOutputModes.AddRange(c.AcceptedOutputModes ?? []);
-        if (c.PushNotificationConfig is { } pn)
-            p.TaskPushNotificationConfig = ToProtoPushConfig(pn);
+        if (c.TaskPushNotificationConfig is { } pn)
+            p.TaskPushNotificationConfig = ToProto(pn);
         return p;
     }
 
@@ -46,9 +46,9 @@ internal static class ProtoConverter
             AcceptedOutputModes = [.. p.AcceptedOutputModes],
             HistoryLength = p.HasHistoryLength ? p.HistoryLength : null,
             ReturnImmediately = p.ReturnImmediately,
-            PushNotificationConfig = p.TaskPushNotificationConfig is null
+            TaskPushNotificationConfig = p.TaskPushNotificationConfig is null
                 ? null
-                : FromProtoPushConfig(p.TaskPushNotificationConfig),
+                : FromProto(p.TaskPushNotificationConfig),
         };
 
     public static Lf.A2a.V1.Message ToProto(Message m)
@@ -395,28 +395,6 @@ internal static class ProtoConverter
     public static SubscribeToTaskRequest FromProto(Lf.A2a.V1.SubscribeToTaskRequest p) =>
         new() { Id = p.Id, Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
-    // a2a v1.0 merged PushNotificationConfig into the flattened TaskPushNotificationConfig message.
-    private static Lf.A2a.V1.TaskPushNotificationConfig ToProtoPushConfig(PushNotificationConfig c)
-    {
-        var p = new Lf.A2a.V1.TaskPushNotificationConfig { Url = c.Url };
-        if (c.Id is { } id)
-            p.Id = id;
-        if (c.Token is { } t)
-            p.Token = t;
-        if (c.Authentication is { } a)
-            p.Authentication = ToProto(a);
-        return p;
-    }
-
-    private static PushNotificationConfig FromProtoPushConfig(Lf.A2a.V1.TaskPushNotificationConfig p) =>
-        new()
-        {
-            Id = string.IsNullOrEmpty(p.Id) ? null : p.Id,
-            Url = p.Url,
-            Token = string.IsNullOrEmpty(p.Token) ? null : p.Token,
-            Authentication = p.Authentication is null ? null : FromProto(p.Authentication),
-        };
-
     public static Lf.A2a.V1.AuthenticationInfo ToProto(AuthenticationInfo a) =>
         new()
         {
@@ -431,26 +409,6 @@ internal static class ProtoConverter
             Credentials = string.IsNullOrEmpty(p.Credentials) ? null : p.Credentials,
         };
 
-    public static Lf.A2a.V1.TaskPushNotificationConfig ToProto(CreateTaskPushNotificationConfigRequest r)
-    {
-        var p = ToProtoPushConfig(r.Config);
-        p.TaskId = r.TaskId;
-        p.Id = r.ConfigId;
-        if (r.Tenant is { } tenant)
-            p.Tenant = tenant;
-        return p;
-    }
-
-    /// <summary>a2a v1.0 flattened the create request into <c>TaskPushNotificationConfig</c> itself.</summary>
-    public static CreateTaskPushNotificationConfigRequest FromProtoCreateRequest(Lf.A2a.V1.TaskPushNotificationConfig p) =>
-        new()
-        {
-            TaskId = p.TaskId,
-            ConfigId = p.Id,
-            Config = FromProtoPushConfig(p),
-            Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
-        };
-
     public static Lf.A2a.V1.GetTaskPushNotificationConfigRequest ToProto(GetTaskPushNotificationConfigRequest r)
     {
         var p = new Lf.A2a.V1.GetTaskPushNotificationConfigRequest { TaskId = r.TaskId, Id = r.Id };
@@ -462,7 +420,7 @@ internal static class ProtoConverter
     public static GetTaskPushNotificationConfigRequest FromProto(Lf.A2a.V1.GetTaskPushNotificationConfigRequest p) =>
         new() { TaskId = p.TaskId, Id = p.Id, Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
-    public static Lf.A2a.V1.ListTaskPushNotificationConfigsRequest ToProto(ListTaskPushNotificationConfigRequest r)
+    public static Lf.A2a.V1.ListTaskPushNotificationConfigsRequest ToProto(ListTaskPushNotificationConfigsRequest r)
     {
         var p = new Lf.A2a.V1.ListTaskPushNotificationConfigsRequest { TaskId = r.TaskId };
         if (r.PageSize is { } ps)
@@ -474,7 +432,7 @@ internal static class ProtoConverter
         return p;
     }
 
-    public static ListTaskPushNotificationConfigRequest FromProto(Lf.A2a.V1.ListTaskPushNotificationConfigsRequest p) =>
+    public static ListTaskPushNotificationConfigsRequest FromProto(Lf.A2a.V1.ListTaskPushNotificationConfigsRequest p) =>
         new()
         {
             TaskId = p.TaskId,
@@ -497,17 +455,25 @@ internal static class ProtoConverter
     public static TaskPushNotificationConfig FromProto(Lf.A2a.V1.TaskPushNotificationConfig p) =>
         new()
         {
-            Id = p.Id,
-            TaskId = p.TaskId,
-            PushNotificationConfig = FromProtoPushConfig(p),
+            Id = string.IsNullOrEmpty(p.Id) ? null : p.Id,
+            TaskId = string.IsNullOrEmpty(p.TaskId) ? null : p.TaskId,
+            Url = p.Url,
+            Token = string.IsNullOrEmpty(p.Token) ? null : p.Token,
+            Authentication = p.Authentication is null ? null : FromProto(p.Authentication),
             Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant,
         };
 
-    public static Lf.A2a.V1.TaskPushNotificationConfig ToProtoResource(TaskPushNotificationConfig c)
+    public static Lf.A2a.V1.TaskPushNotificationConfig ToProto(TaskPushNotificationConfig c)
     {
-        var p = ToProtoPushConfig(c.PushNotificationConfig);
-        p.TaskId = c.TaskId;
-        p.Id = c.Id;
+        var p = new Lf.A2a.V1.TaskPushNotificationConfig { Url = c.Url };
+        if (c.TaskId is { } taskId)
+            p.TaskId = taskId;
+        if (c.Id is { } id)
+            p.Id = id;
+        if (c.Token is { } t)
+            p.Token = t;
+        if (c.Authentication is { } a)
+            p.Authentication = ToProto(a);
         if (c.Tenant is { } tenant)
             p.Tenant = tenant;
         return p;
@@ -524,7 +490,7 @@ internal static class ProtoConverter
     public static GetExtendedAgentCardRequest FromProto(Lf.A2a.V1.GetExtendedAgentCardRequest p) =>
         new() { Tenant = string.IsNullOrEmpty(p.Tenant) ? null : p.Tenant };
 
-    public static ListTaskPushNotificationConfigResponse FromProto(Lf.A2a.V1.ListTaskPushNotificationConfigsResponse p) =>
+    public static ListTaskPushNotificationConfigsResponse FromProto(Lf.A2a.V1.ListTaskPushNotificationConfigsResponse p) =>
         new()
         {
             Configs = p.Configs.Select(FromProto).ToList(),

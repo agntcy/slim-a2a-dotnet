@@ -16,7 +16,7 @@ public sealed class CallContextTests
         public async Task ExecuteAsync(RequestContext context, AgentEventQueue eventQueue, CancellationToken cancellationToken)
         {
             Seen = SlimA2ACallContext.Current;
-            await new MessageResponder(eventQueue, context.ContextId).ReplyAsync("ok", cancellationToken).ConfigureAwait(false);
+            await new MessageResponder(eventQueue, context.ContextId).ReplyAsync("ok", cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         public Task CancelAsync(RequestContext context, AgentEventQueue eventQueue, CancellationToken cancellationToken) => Task.CompletedTask;

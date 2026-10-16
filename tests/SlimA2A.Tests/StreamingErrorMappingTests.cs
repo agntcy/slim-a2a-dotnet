@@ -18,7 +18,7 @@ public sealed class StreamingErrorMappingTests
     {
         public async Task ExecuteAsync(RequestContext context, AgentEventQueue eventQueue, CancellationToken cancellationToken)
         {
-            await new MessageResponder(eventQueue, context.ContextId).ReplyAsync("first event", cancellationToken).ConfigureAwait(false);
+            await new MessageResponder(eventQueue, context.ContextId).ReplyAsync("first event", cancellationToken: cancellationToken).ConfigureAwait(false);
             throw new A2AException("bad input from agent", A2AErrorCode.InvalidParams);
         }
     }

@@ -71,19 +71,12 @@ internal sealed class TestRequestHandler(IA2ARequestHandler inner, AgentCard car
     }
 
     public Task<TaskPushNotificationConfig> CreateTaskPushNotificationConfigAsync(
-        CreateTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
+        TaskPushNotificationConfig request, CancellationToken cancellationToken = default)
     {
         LastTenant[nameof(CreateTaskPushNotificationConfigAsync)] = request.Tenant;
         LastCallContext[nameof(CreateTaskPushNotificationConfigAsync)] = SlimA2ACallContext.Current;
-        var config = new TaskPushNotificationConfig
-        {
-            Id = request.ConfigId,
-            TaskId = request.TaskId,
-            PushNotificationConfig = request.Config,
-            Tenant = request.Tenant,
-        };
-        _configs[(request.TaskId, request.ConfigId)] = config;
-        return Task.FromResult(config);
+        _configs[(request.TaskId!, request.Id!)] = request;
+        return Task.FromResult(request);
     }
 
     public Task<TaskPushNotificationConfig> GetTaskPushNotificationConfigAsync(
@@ -96,12 +89,12 @@ internal sealed class TestRequestHandler(IA2ARequestHandler inner, AgentCard car
             : throw new A2AException($"Push notification config '{request.Id}' not found.", A2AErrorCode.InvalidParams);
     }
 
-    public Task<ListTaskPushNotificationConfigResponse> ListTaskPushNotificationConfigAsync(
-        ListTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
+    public Task<ListTaskPushNotificationConfigsResponse> ListTaskPushNotificationConfigsAsync(
+        ListTaskPushNotificationConfigsRequest request, CancellationToken cancellationToken = default)
     {
-        LastTenant[nameof(ListTaskPushNotificationConfigAsync)] = request.Tenant;
-        LastCallContext[nameof(ListTaskPushNotificationConfigAsync)] = SlimA2ACallContext.Current;
-        return Task.FromResult(new ListTaskPushNotificationConfigResponse
+        LastTenant[nameof(ListTaskPushNotificationConfigsAsync)] = request.Tenant;
+        LastCallContext[nameof(ListTaskPushNotificationConfigsAsync)] = SlimA2ACallContext.Current;
+        return Task.FromResult(new ListTaskPushNotificationConfigsResponse
         {
             Configs = _configs.Values.Where(c => c.TaskId == request.TaskId).OrderBy(c => c.Id).ToList(),
         });

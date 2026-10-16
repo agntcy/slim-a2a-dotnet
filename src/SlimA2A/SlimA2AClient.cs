@@ -130,7 +130,7 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
 
     /// <inheritdoc />
     public async Task<TaskPushNotificationConfig> CreateTaskPushNotificationConfigAsync(
-        CreateTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
+        TaskPushNotificationConfig request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
@@ -151,8 +151,8 @@ public sealed class SlimA2AClient : IA2AClient, IAsyncDisposable
     }
 
     /// <inheritdoc />
-    public async Task<ListTaskPushNotificationConfigResponse> ListTaskPushNotificationConfigAsync(
-        ListTaskPushNotificationConfigRequest request, CancellationToken cancellationToken = default)
+    public async Task<ListTaskPushNotificationConfigsResponse> ListTaskPushNotificationConfigsAsync(
+        ListTaskPushNotificationConfigsRequest request, CancellationToken cancellationToken = default)
     {
         var proto = ProtoConverter.ToProto(request);
         var resp = await InvokeAsync(
