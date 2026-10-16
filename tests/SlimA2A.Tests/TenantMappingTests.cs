@@ -12,7 +12,6 @@ public sealed class TenantMappingTests
 {
     private static Message Msg() => new() { MessageId = "m", Role = Role.User, Parts = [Part.FromText("hi")] };
 
-    private static PushNotificationConfig Push() => new() { Url = "https://example.com/hook" };
 
     private static AgentCard Card(string? tenant) => new()
     {
@@ -54,14 +53,9 @@ public sealed class TenantMappingTests
             var p = ProtoConverter.ToProto(new SubscribeToTaskRequest { Id = "t1", Tenant = t });
             return (p.Tenant, ProtoConverter.FromProto(p).Tenant);
         },
-        ["CreateTaskPushNotificationConfigRequest"] = t =>
-        {
-            var p = ProtoConverter.ToProto(new CreateTaskPushNotificationConfigRequest { TaskId = "t1", ConfigId = "c1", Config = Push(), Tenant = t });
-            return (p.Tenant, ProtoConverter.FromProtoCreateRequest(p).Tenant);
-        },
         ["TaskPushNotificationConfig"] = t =>
         {
-            var p = ProtoConverter.ToProtoResource(new TaskPushNotificationConfig { Id = "c1", TaskId = "t1", PushNotificationConfig = Push(), Tenant = t });
+            var p = ProtoConverter.ToProto(new TaskPushNotificationConfig { Id = "c1", TaskId = "t1", Url = "https://example.com/hook", Tenant = t });
             return (p.Tenant, ProtoConverter.FromProto(p).Tenant);
         },
         ["GetTaskPushNotificationConfigRequest"] = t =>
@@ -69,9 +63,9 @@ public sealed class TenantMappingTests
             var p = ProtoConverter.ToProto(new GetTaskPushNotificationConfigRequest { TaskId = "t1", Id = "c1", Tenant = t });
             return (p.Tenant, ProtoConverter.FromProto(p).Tenant);
         },
-        ["ListTaskPushNotificationConfigRequest"] = t =>
+        ["ListTaskPushNotificationConfigsRequest"] = t =>
         {
-            var p = ProtoConverter.ToProto(new ListTaskPushNotificationConfigRequest { TaskId = "t1", Tenant = t });
+            var p = ProtoConverter.ToProto(new ListTaskPushNotificationConfigsRequest { TaskId = "t1", Tenant = t });
             return (p.Tenant, ProtoConverter.FromProto(p).Tenant);
         },
         ["DeleteTaskPushNotificationConfigRequest"] = t =>

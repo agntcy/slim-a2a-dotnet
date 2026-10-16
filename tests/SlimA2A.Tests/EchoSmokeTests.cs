@@ -17,8 +17,8 @@ public class EchoSmokeTests
         public async Task ExecuteAsync(RequestContext context, AgentEventQueue eventQueue, CancellationToken cancellationToken)
         {
             var responder = new MessageResponder(eventQueue, context.ContextId);
-            await responder.ReplyAsync($"Echo: {context.UserText}", cancellationToken).ConfigureAwait(false);
-            await responder.ReplyAsync("[stream] second event (unary-stream demo).", cancellationToken).ConfigureAwait(false);
+            await responder.ReplyAsync($"Echo: {context.UserText}", cancellationToken: cancellationToken).ConfigureAwait(false);
+            await responder.ReplyAsync("[stream] second event (unary-stream demo).", cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 

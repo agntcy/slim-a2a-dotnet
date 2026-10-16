@@ -67,7 +67,7 @@ internal sealed class TestAgent : IAgentHandler
                 break;
 
             case InputRequired:
-                if (isNew) await updater.SubmitAsync(cancellationToken).ConfigureAwait(false);
+                if (isNew) await updater.SubmitAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
                 await updater.RequireInputAsync(
                     new Message
                     {
@@ -76,22 +76,22 @@ internal sealed class TestAgent : IAgentHandler
                         ContextId = context.ContextId,
                         Parts = [Part.FromText(InputPrompt)],
                     },
-                    cancellationToken).ConfigureAwait(false);
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
                 break;
 
             case Continue when !isNew:
                 // A unary response is built from the first Task/Message event, so re-surface the task before updating it.
                 await queue.EnqueueTaskAsync(context.Task!, cancellationToken).ConfigureAwait(false);
                 await updater.AddArtifactAsync([Part.FromText(ContinueReply)], cancellationToken: cancellationToken).ConfigureAwait(false);
-                await updater.CompleteAsync(null, cancellationToken).ConfigureAwait(false);
+                await updater.CompleteAsync(null, cancellationToken: cancellationToken).ConfigureAwait(false);
                 break;
 
             case Streaming:
-                if (isNew) await updater.SubmitAsync(cancellationToken).ConfigureAwait(false);
-                await updater.StartWorkAsync(null, cancellationToken).ConfigureAwait(false);
+                if (isNew) await updater.SubmitAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+                await updater.StartWorkAsync(null, cancellationToken: cancellationToken).ConfigureAwait(false);
                 foreach (var chunk in StreamingChunks)
                     await updater.AddArtifactAsync([Part.FromText(chunk)], cancellationToken: cancellationToken).ConfigureAwait(false);
-                await updater.CompleteAsync(null, cancellationToken).ConfigureAwait(false);
+                await updater.CompleteAsync(null, cancellationToken: cancellationToken).ConfigureAwait(false);
                 break;
 
             case CallContext:
@@ -131,14 +131,14 @@ internal sealed class TestAgent : IAgentHandler
                 throw new A2AException(FailureMessage, A2AErrorCode.InvalidParams);
 
             case FailAfterSubmit:
-                if (isNew) await updater.SubmitAsync(cancellationToken).ConfigureAwait(false);
+                if (isNew) await updater.SubmitAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
                 throw new A2AException(FailureMessage, A2AErrorCode.InvalidParams);
 
             default:
-                if (isNew) await updater.SubmitAsync(cancellationToken).ConfigureAwait(false);
-                await updater.StartWorkAsync(null, cancellationToken).ConfigureAwait(false);
+                if (isNew) await updater.SubmitAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+                await updater.StartWorkAsync(null, cancellationToken: cancellationToken).ConfigureAwait(false);
                 await updater.AddArtifactAsync(context.Message?.Parts ?? [], cancellationToken: cancellationToken).ConfigureAwait(false);
-                await updater.CompleteAsync(null, cancellationToken).ConfigureAwait(false);
+                await updater.CompleteAsync(null, cancellationToken: cancellationToken).ConfigureAwait(false);
                 break;
         }
     }
@@ -146,7 +146,7 @@ internal sealed class TestAgent : IAgentHandler
     public async Task CancelAsync(RequestContext context, AgentEventQueue queue, CancellationToken cancellationToken)
     {
         var updater = new TaskUpdater(queue, context.TaskId, context.ContextId);
-        await updater.CancelAsync(cancellationToken).ConfigureAwait(false);
+        await updater.CancelAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
     }
 
     private static string Describe(SlimA2ACallContext? call) =>

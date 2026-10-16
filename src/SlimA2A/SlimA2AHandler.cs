@@ -53,18 +53,18 @@ internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
 
     public System.Threading.Tasks.Task<Lf.A2a.V1.TaskPushNotificationConfig> CreateTaskPushNotificationConfig(
         Lf.A2a.V1.TaskPushNotificationConfig request, SlimRpcContext context) =>
-        UnaryAsync(context, async ct => ProtoConverter.ToProtoResource(
-            await _inner.CreateTaskPushNotificationConfigAsync(ProtoConverter.FromProtoCreateRequest(request), ct).ConfigureAwait(false)));
+        UnaryAsync(context, async ct => ProtoConverter.ToProto(
+            await _inner.CreateTaskPushNotificationConfigAsync(ProtoConverter.FromProto(request), ct).ConfigureAwait(false)));
 
     public System.Threading.Tasks.Task<Lf.A2a.V1.TaskPushNotificationConfig> GetTaskPushNotificationConfig(
         Lf.A2a.V1.GetTaskPushNotificationConfigRequest request, SlimRpcContext context) =>
-        UnaryAsync(context, async ct => ProtoConverter.ToProtoResource(
+        UnaryAsync(context, async ct => ProtoConverter.ToProto(
             await _inner.GetTaskPushNotificationConfigAsync(ProtoConverter.FromProto(request), ct).ConfigureAwait(false)));
 
     public System.Threading.Tasks.Task<Lf.A2a.V1.ListTaskPushNotificationConfigsResponse> ListTaskPushNotificationConfigs(
         Lf.A2a.V1.ListTaskPushNotificationConfigsRequest request, SlimRpcContext context) =>
         UnaryAsync(context, async ct => ToProtoListPush(
-            await _inner.ListTaskPushNotificationConfigAsync(ProtoConverter.FromProto(request), ct).ConfigureAwait(false)));
+            await _inner.ListTaskPushNotificationConfigsAsync(ProtoConverter.FromProto(request), ct).ConfigureAwait(false)));
 
     public System.Threading.Tasks.Task<Lf.A2a.V1.AgentCard> GetExtendedAgentCard(Lf.A2a.V1.GetExtendedAgentCardRequest request, SlimRpcContext context) =>
         UnaryAsync(context, async ct =>
@@ -125,13 +125,13 @@ internal sealed class SlimA2AHandler : Lf.A2a.V1.IA2AServiceServer
         return p;
     }
 
-    private static Lf.A2a.V1.ListTaskPushNotificationConfigsResponse ToProtoListPush(A2A.ListTaskPushNotificationConfigResponse r)
+    private static Lf.A2a.V1.ListTaskPushNotificationConfigsResponse ToProtoListPush(A2A.ListTaskPushNotificationConfigsResponse r)
     {
         var p = new Lf.A2a.V1.ListTaskPushNotificationConfigsResponse();
         if (r.Configs is not null)
         {
             foreach (var c in r.Configs)
-                p.Configs.Add(ProtoConverter.ToProtoResource(c));
+                p.Configs.Add(ProtoConverter.ToProto(c));
         }
         if (r.NextPageToken is { } t)
             p.NextPageToken = t;
