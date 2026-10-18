@@ -16,11 +16,11 @@ or in your `.csproj`:
 <PackageReference Include="Agntcy.SlimA2A" Version="0.5.0" />
 ```
 
-[Agntcy.SlimA2A on NuGet](https://www.nuget.org/packages/Agntcy.SlimA2A). The package brings in **Agntcy.Slim.SlimRpc** 3.3.5.
+[Agntcy.SlimA2A on NuGet](https://www.nuget.org/packages/Agntcy.SlimA2A). The package brings in **Agntcy.Slim.SlimRpc** 3.3.6.
 
 ## Dependencies
 
-**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **3.3.5** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
+**Agntcy.Slim** / **Agntcy.Slim.SlimRpc** are consumed from NuGet ([Agntcy.Slim.SlimRpc](https://www.nuget.org/packages/Agntcy.Slim.SlimRpc)), pinned to **3.3.6** (2.1.0 or later is required: earlier releases lose RPC responses that encode to zero bytes, such as `google.protobuf.Empty` or an empty list). In 2.0 the SLIMRPC FFI types (`Channel`, `Server`, `Context`, `RpcException`, …) moved out of `uniffi.slim_bindings` into their own `uniffi.slim_rpc` namespace, so the generated stubs and the SLIMRPC plugin must be on 2.x together.
 
 **A2A** is consumed from NuGet (`A2A` 1.0.0-preview3) so the solution builds with the stock .NET 8 SDK. You can instead use a `ProjectReference` to a local `a2a-dotnet` clone if you need unreleased API changes.
 
@@ -178,7 +178,7 @@ Also in 0.3:
 
 - **A2A 1.0.0-preview2**: `SendMessageConfiguration.Blocking` became `ReturnImmediately`, with the **opposite meaning**: replace `Blocking = false` with `ReturnImmediately = true`.
 - **A2A 1.0.0-preview3**: `TaskPushNotificationConfig` is flat (`Url`, `Token`, `Authentication` live on it; `PushNotificationConfig` and `CreateTaskPushNotificationConfigRequest` are gone, `CreateTaskPushNotificationConfigAsync` takes the config directly), and `ListTaskPushNotificationConfig*` became `ListTaskPushNotificationConfigs*`. `TaskUpdater` and `MessageResponder` calls take an optional `metadata` before `cancellationToken`, so pass the token by name.
-- **Agntcy.Slim 3.3.5**; projects that reference the SLIM packages themselves need the same version.
+- **Agntcy.Slim 3.3.6**; projects that reference the SLIM packages themselves need the same version.
 - **Timeouts** surface as `TimeoutException`, no longer as `A2AException` with `InternalError`; cancelling a call's token now takes effect.
 - Projects no longer need a reference to the generated `Lf.A2a.V1` types.
 
